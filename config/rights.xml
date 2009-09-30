@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rights labels="ext/search/locale/rights.xml">
+	<section key="panelwidgets">
+		<allow right="PanelWidgetSearchFilterList" comment="can see quicktaskwizard" />
+	</section>
+</rights>

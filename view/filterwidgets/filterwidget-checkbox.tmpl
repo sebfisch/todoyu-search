@@ -1,0 +1,11 @@
+{extends "ext/search/view/filterwidgets/filterwidget-wrap.tmpl"}
+
+{block name="widgetbody"}
+	<span>
+		<input type="checkbox" class="input value" onchange="Todoyu.Ext.search.Filter.updateConditionNegation('{$definitions.widgetID}', !this.checked)" value="1"
+			{if $definitions.negate != 1}
+				checked="checked";
+			{/if}
+		/>
+	</span>
+{/block}

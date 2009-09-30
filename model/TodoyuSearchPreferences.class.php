@@ -1,0 +1,243 @@
+<?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ * Search preference manager
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
+
+class TodoyuSearchPreferences {
+
+	/**
+	 * Save search extension preference
+	 *
+	 * @param	Integer		$preference
+	 * @param	String		$value
+	 * @param	Integer		$idItem
+	 * @param	Bool		$unique
+	 * @param	Integer		$idArea
+	 * @param	Integer		$idUser
+	 */
+	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idUser = 0) {
+		TodoyuPreferenceManager::savePreference(EXTID_SEARCH, $preference, $value, $idItem, $unique, $idArea, $idUser);
+	}
+
+
+
+	/**
+	 * Get search extension preference
+	 *
+	 * @param	String		$preference
+	 * @param	Integer		$idItem
+	 * @param	Integer		$idArea
+	 * @param	Boolean		$unserialize
+	 * @param	Integer		$idUser
+	 * @return	String
+	 */
+	public static function getPref($preference, $idItem = 0, $idArea = 0, $unserialize = false, $idUser = 0) {
+		return TodoyuPreferenceManager::getPreference(EXTID_SEARCH, $preference, $idItem, $idArea, $unserialize, $idUser);
+	}
+
+
+
+	/**
+	 * Get search extension preferences
+	 *
+	 * @param	String		$preference
+	 * @param	Integer		$idItem
+	 * @param	Integer		$idArea
+	 * @param	Integer		$idUser
+	 * @return	Array
+	 */
+	public static function getPrefs($preference, $idItem = 0, $idArea = 0, $idUser = 0) {
+		return TodoyuPreferenceManager::getPreferences(EXTID_SEARCH, $preference, $idItem, $idArea, $idUser);
+	}
+
+
+
+	/**
+	 * Save current tab
+	 *
+	 * @param	String	$currentTab
+	 */
+	public static function saveActiveTab($currentTab)	{
+		self::savePref('tab', $currentTab, 0, true);
+	}
+
+
+	/**
+	 * Get active tab. If non stored in preferences, use default
+	 *
+	 * @return	String
+	 */
+	public static function getActiveTab()	{
+		$tab = self::getPref('tab');
+
+		if( $tab === false ) {
+			$tab = $GLOBALS['CONFIG']['EXT']['search']['defaultTab'];
+		}
+
+		return $tab;
+	}
+
+
+
+	/**
+	 * Get active filterset ID
+	 *
+	 * @param	String		$tab
+	 * @return	Integer
+	 */
+	public static function getActiveFilterset($tab) {
+		$pref			= 'filterset-' . $tab;
+		$idFilterset	= self::getPref($pref);
+
+		return intval($idFilterset);
+	}
+
+
+
+	/**
+	 * Save active filterset
+	 *
+	 * @param	String		$tab		Tab name
+	 * @param	Integer		$idFilterset
+	 */
+	public static function saveActiveFilterset($tab, $idFilterset) {
+		$idFilterset= intval($idFilterset);
+		$pref		= 'filterset-' . $tab;
+
+		self::savePref($pref, $idFilterset, 0, true);
+	}
+
+
+
+	/**
+	 * Save filterset list toggling status
+	 *
+	 * @param	String		$type
+	 * @param	Bool		$expanded
+	 */
+	public static function saveFiltersetListToggle($type, $expanded = true)	{
+		$preference	= self::getFiltersetListToggle();
+
+		if( $expanded ) {
+			unset($preference[$type]);
+		} else {
+			$preference[$type] = 1;
+		}
+
+		$value	= serialize($preference);
+
+		self::savePref('filtersetListToggle', $value, 0, true);
+	}
+
+
+
+	/**
+	 * Get filterset log toggling status
+	 *
+	 * @return	Array
+	 */
+	public static function getFiltersetListToggle()	{
+		$pref	= self::getPref('filtersetListToggle', 0, 0, true);
+
+		if( $pref === false ) {
+			$pref = array();
+		}
+
+		return $pref;
+	}
+
+
+
+	/**
+	 * Save currently active filter
+	 *
+	 * @param	String	$currentFilter
+	 */
+	public static function saveCurrentFilter($currentFilter) {
+		$extID		= EXTID_SEARCH;
+		$preference	= 'searchcurrentfilter';
+		$value		= $currentFilter;
+		$unique		= true;
+
+		TodoyuPreferenceManager::savePreference($extID, $preference, $value, null, $unique, 0, userid());
+	}
+
+
+
+	/**
+	 * Get active filter from preferences
+	 *
+	 * @return	Integer
+	 */
+	public static function getCurrentFilter()	{
+		$activeFilter	= TodoyuPreferenceManager::getPreference(EXTID_SEARCH, 'searchcurrentfilter');
+
+		return intval($activeFilter);
+	}
+
+
+
+	/**
+	 * Remove current filter
+	 *
+	 * @return	Boolean
+	 */
+	public static function removeCurrentFilter()	{
+		$extID 		= EXTID_SEARCH;
+		$preference = 'searchcurrentfilter';
+
+		return TodoyuPreferenceManager::deletePreference($extID, $preference, null, 0, 0, userid());
+	}
+
+
+
+	/**
+	 * Check toggle status
+	 *
+	 * @param	String	$newArrayKey
+	 * @param	Mixed	$newArrayValue
+	 * @return	String
+	 */
+	protected static function checkToggleStatus($newArrayKey, $newArrayValue)	{
+		$toggleStatusArray = self::getToggleStatus();
+
+		$newArrayValue = $newArrayValue == 'none' ? true:false;
+
+		$newArrayKeyArray = explode('-', $newArrayKey);
+		$newArrayKey = array_pop($newArrayKeyArray);
+
+		if(is_array($toggleStatusArray))	{
+			$toggleStatusArray[$newArrayKey] = $newArrayValue;
+		} else {
+			$toggleStatusArray = array();
+
+			$toggleStatusArray[$newArrayKey] = $newArrayValue;
+		}
+
+		return serialize($toggleStatusArray);
+	}
+
+}

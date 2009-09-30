@@ -1,0 +1,16 @@
+{extends "core/view/headlet.tmpl"}
+
+{block "headlet"}
+	<form action="?" method="get" name="search" id="{$id}-form" onsubmit="return false">
+		<input type="hidden" name="ext" value="search" />
+		<input type="hidden" name="controller" value="ext" />
+		<input type="hidden" name="mode" value="all" id="{$id}-mode" />
+		<div id="{$id}-mode-btn"><div id="{$id}-mode-icon" class="searchmode-all"></div></div>
+	  	<input name="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
+	<ul id="{$id}-modes">
+	{foreach $searchModes searchMode}
+		<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{$searchMode.labelMode}</li>
+	{/foreach}
+	</ul>
+	</form>
+{/block}

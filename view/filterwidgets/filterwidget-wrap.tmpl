@@ -1,0 +1,20 @@
+<div class="filterWidget {$definitions.widgetFilterName}" id="{$definitions.widgetID}">
+	<div class="widgetheader">
+		<span>
+			{Label $definitions.label}
+		</span>
+		{if $definitions.wConf.negation}
+			<span id="{$definitions.widgetID}-negation" class="negation">
+				<span class="true" {if $definitions.negate == false}style="display:none"{/if}>{Label $definitions.wConf.negation.labelTrue}</span>
+				<span class="false" {if $definitions.negate == true}style="display:none"{/if}>{Label $definitions.wConf.negation.labelFalse}</span>
+			</span>
+		{/if}
+		<span class="widgetClose">
+			<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Filter.removeCondition('{$definitions.widgetID}')">remove widget</a>
+		</span>
+	</div>
+
+	{block name="widgetbody"}
+   		  This part should be replaced by your widget template
+   	{/block}
+</div>

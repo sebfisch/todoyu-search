@@ -1,0 +1,11 @@
+{if $empty == true}
+	<ul>
+		<li></li>
+	</ul>
+{else}
+	<ul id="{$widgetID}-ul">
+	{foreach $results key title}
+		<li id="{$key}">{$title}</li>
+	{/foreach}
+	</ul>
+{/if}

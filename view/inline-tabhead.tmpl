@@ -1,0 +1,8 @@
+<ul id="search-tabs" class="tabs">
+	{foreach $tabs key tab}
+		<li id="search-tabhead-{$key}" class="tabkey-{$key} {if $key==$activeTab}active{/if}">
+			<span class="icon"></span>
+			<span class="label">{Label $tab.config.label}</span>
+		</li>
+	{/foreach}
+</ul>

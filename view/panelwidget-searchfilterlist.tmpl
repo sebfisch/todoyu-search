@@ -1,0 +1,40 @@
+<div id="panelwidget-searchfilterlist-clear">
+		<button type="button" class="button" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.clearFilterArea()"><span>{Label 'panelwidget-searchfilterlist.clearFilterArea'}</span><span class="rgt"></span></button>
+</div>
+<div class="searchFilterList">
+	<ul>
+{foreach $groupedFiltersets groupKey filtersets}
+			<li class="listItem title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.toggleList('{$groupKey}')">{Label panelwidget-searchfilterlist.type.$groupKey}</li>
+			<ul id="panelwidget-searchfilterlist-list-{$groupKey}" class="sortable" {if $toggleStatus[$groupKey] == 1}style="display:none"{/if}>
+	{foreach $filtersets index filterset}
+				<li id="filterset_{$filterset.id}" class="listItem filterset {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} hidden{/if}">
+					<div id="filterset-{$filterset.id}-handle" class="handle"></div>
+					<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.loadFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)">
+						{$filterset.title}
+					</a>
+					<span class="controllpanel">
+						<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label 'panelwidget-searchfilterlist.rename'}" href="javascript:void(0)">
+							{Label 'panelwidget-searchfilterlist.rename'}
+						</a>
+						<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}hidden{/if}"  title="{if $filterset.is_hidden == 0}{Label 'panelwidget-searchfilterlist.hide'}{else}{Label 'panelwidget-searchfilterlist.unhide'}{/if}">
+							{if $filterset.is_hidden == 0}{Label 'panelwidget-searchfilterlist.hide'}{else}{Label 'panelwidget-searchfilterlist.unhide'}{/if}
+						</a>
+						<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label 'panelwidget-searchfilterlist.save'}" href="javascript:void(0)">
+							{Label 'panelwidget-searchfilterlist.save'}
+						</a>
+						<a id="filterset-{$filterset.id}-control-delete" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.deleteFilterset({$filterset.id})" class="delete" title="{Label 'panelwidget-searchfilterlist.delete'}" href="javascript:void(0)">
+							{Label 'panelwidget-searchfilterlist.delete'}
+						</a>
+					</span>
+				</li>
+	{/foreach}
+			</ul>
+{/foreach}
+	</ul>
+</div>
+<div class="searchFilterButton">
+		<button type="button" class="button" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveCurrentAreaAsNewFilterset()">
+			<span class="hasIcon saveAsNewFilter">{Label 'panelwidget-searchfilterlist.saveFilterButton'}</span>
+			<span class="rgt"></span>
+		</button>
+</div>

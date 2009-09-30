@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="page.title">Search</label>
+
+		<label index="pleasechoose">Please choose</label>
+
+		<label index="or">OR</label>
+		<label index="and">AND</label>
+
+		<label index="filterlabel.filterset">Filtersets</label>
+		<label index="filter.optgroup">Filter</label>
+		<label index="noConditionsToSave">There are no conditions to save</label>
+		<label index="filterset.rename">Rename filterset</label>
+		<label index="filterset.delete">Delete filterset</label>
+		<label index="filtersetSaveAsWrongType">You tried to save the filterset under a wrong type</label>
+
+		<label index="negation.default.true">is not</label>
+		<label index="negation.default.false">is</label>
+
+		<label index="negation.datetime.true">from</label>
+		<label index="negation.datetime.false">to</label>
+
+		<label index="newFilterLabel">Enter a name for the new filter</label>
+		<label index="newFilterLabel.preset">New filter</label>
+
+		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
+	</labels>
+	<labels lang="de">
+		<label index="page.title">Suche</label>
+
+		<label index="pleasechoose">Bitte wählen</label>
+
+		<label index="or">ODER</label>
+		<label index="and">UND</label>
+
+		<label index="filterlabel.filterset">Filter</label>
+		<label index="search.filter.optgroup">Filter</label>
+
+		<label index="negation.default.true">ist nicht</label>
+		<label index="negation.default.false">ist</label>
+
+		<label index="negation.datetime.true">von</label>
+		<label index="negation.datetime.false">bis</label>
+
+		<label index="newFilterLabel">Name für neuen Filter</label>
+		<label index="newFilterLabel.preset">Neuer Filter</label>
+
+		<label index="overwriteFilterSet">Diesen Filter wirklich überschreiben?</label>
+	</labels>
+</locallang>

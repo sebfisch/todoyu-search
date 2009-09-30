@@ -1,0 +1,22 @@
+<h1 id="filterActionControls" class="headerLine">
+	<span class="filterActionControlsNewFilterSelector">
+		<select id="filtercontrol-conditions" name="conditions">
+			<option value="none">{Label 'search.pleasechoose'}</option>
+{foreach $groupedConditions group conditions}
+				<optgroup label="{Label $group}">
+	{foreach $conditions key condition}
+					<option value="{$type}_{$key}">{Label $condition.label}</option>
+	{/foreach}
+				</optgroup>
+{/foreach}
+		</select>
+	</span>
+	<span class="filterActionControlsLogicConjunctionsSelector">
+		<select id="filtercontrol-conjunction" name="conjunction">
+{foreach $conjunctions conjunction}
+				<option value="{$conjunction.key}" {if $activeConjunction == $conjunction.key}selected="selected"{/if}>{Label $conjunction.label}</option>
+{/foreach}
+		</select>
+	</span>
+	<span class="rgt"><!-- right --></span>
+</h1>

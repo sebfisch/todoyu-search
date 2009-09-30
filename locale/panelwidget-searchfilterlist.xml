@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="title">Filter</label>
+		<label index="type.task">Task</label>
+		<label index="type.project">Project</label>
+		<label index="saveFilterButton">Save as new Filter</label>
+		<label index="hide">Hide</label>
+		<label index="unhide">Unhide</label>
+		<label index="delete">Delete</label>
+		<label index="save">Save</label>
+		<label index="rename">Rename</label>
+		<label index="clearFilterArea">Clear filter area</label>
+	<labels lang="de">
+		<label index="title">Filter</label>
+		<label index="type.task">Task</label>
+		<label index="type.project">Projekt</label>
+		<label index="saveFilterButton">Als neuen Filter speichern</label>
+		<label index="hide">Verstecken</label>
+		<label index="unhide">Anzeigen</label>
+		<label index="delete">Löschen</label>
+		<label index="save">Speichern</label>
+		<label index="rename">Umbenennen</label>
+		<label index="clearFilterArea">Filterbereich leeren</label>
+	</labels>
+</locallang>

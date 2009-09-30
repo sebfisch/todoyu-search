@@ -1,0 +1,13 @@
+{extends "ext/search/view/filterwidgets/filterwidget-wrap.tmpl"}
+
+{block name="widgetbody"}
+	<span>
+		{if $definitions.wConf.autocomplete == true}
+			<input type="text" class="input autocomplete" id="widget-autocompleter-{$definitions.widgetID}" value="{$definitions.value_label}" />
+			<div id="widget-autocompleter-{$definitions.widgetID}-suggestions" class="div-autocompletion"></div>
+			<input id="widget-autocompleter-{$definitions.widgetID}-hidden" type="hidden" class="hidden value" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))" value="{$definitions.value}" />
+		{else}
+			<input type="text" class="input value" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))" value="{$definitions.value}" />
+		{/if}
+	</span>
+{/block}

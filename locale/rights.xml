@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="right.PanelWidgetSearchFilterList">Show search filter list widget</label>
+	</labels>
+	<labels lang="de">
+		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="right.PanelWidgetSearchFilterList">Suchfilter Liste anzeigen</label>
+	</labels>
+</locallang>
