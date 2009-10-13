@@ -332,7 +332,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 		/**
-		 * Enter description here...
+		 * Show headlet
 		 *
 		 */
 		show: function() {
@@ -342,7 +342,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 		/**
-		 * Enter description here...
+		 * Hide headlet
 		 *
 		 */
 		hide: function() {
