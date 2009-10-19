@@ -93,7 +93,7 @@ class TodoyuSearch {
 	 * @return	Array
 	 */
 	public static function getSearchModes() {
-		$modes	= TodoyuDiv::sortArrayByLabel($GLOBALS['CONFIG']['EXT']['search']['modes'], 'position');
+		$modes	= TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['search']['modes'], 'position');
 
 		return $modes;
 	}

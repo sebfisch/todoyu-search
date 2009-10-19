@@ -259,7 +259,7 @@ class TodoyuFilterWidgetManager	{
 	protected static function proceedLabelFunc($definitions)	{
 		$methodString = $definitions['wConf']['LabelFuncRef'];
 
-		if(TodoyuDiv::checkOnMethodString($methodString))	{
+		if( TodoyuDiv::isFunctionReference($methodString) )	{
 			$definitions = TodoyuDiv::callUserFunction($methodString, $definitions);
 		}
 
@@ -313,11 +313,11 @@ class TodoyuFilterWidgetManager	{
 	 */
 	protected static function checkOnCustomDefinitionProcFunc($definitions)	{
 		$customDefinitionProcFunc = $definitions['widgetDefinitions']['customDefinitionProcFunc'];
-		
+
 		if( TodoyuDiv::isFunctionReference($customDefinitionProcFunc) ) {
 			$definitions = TodoyuDiv::callUserFunction($customDefinitionProcFunc, $definitions);
 		}
-		
+
 		return $definitions;
 	}
 }

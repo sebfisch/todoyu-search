@@ -166,11 +166,8 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			// Get render function
 		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($activeTab);
 
-		if ( TodoyuDiv::checkOnMethodString($renderFunction) ) {
-			$funcRef		= explode('::', $renderFunction);
-
-				// Call custom render function for the current type
-			$content		= call_user_func($funcRef, $idFilterset, $useConditions, $filterConditions, $conjunction);
+		if ( TodoyuDiv::isFunctionReference($renderFunction) ) {
+			$content	= TodoyuDiv::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
 		}
 
 		$data = array(

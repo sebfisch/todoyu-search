@@ -344,10 +344,8 @@ class TodoyuFiltersetManager {
 
 		foreach($filterConditions as $condition)	{
 			$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($type, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
-			if(TodoyuDiv::checkOnMethodString($conditionDefinition['funcRef']))	{
-				list($obj, $method) = explode('::', $conditionDefinition['funcRef']);
-				$obj = new $obj();
-				$result = $obj->$method($condition['value'], $condition['negate']);
+			if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
+				$result = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
 
 				if(is_array($result['tables']))	{
 					foreach($result['tables'] as $table)	{

@@ -98,7 +98,7 @@ class TodoyuSearchManager {
 	 */
 	public static function getSearchEngines() {
 		if( is_array($GLOBALS['CONFIG']['EXT']['search']['engines']) ) {
-			return TodoyuDiv::sortArrayByLabel($GLOBALS['CONFIG']['EXT']['search']['engines'], 'position');
+			return TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['search']['engines'], 'position');
 		} else {
 			return array();
 		}
