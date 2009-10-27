@@ -29,40 +29,34 @@
 if( ! defined('TODOYU') ) die('NO ACCESS');
 
 
-	// declare ext ID, path
+
+	// Declare ext ID, path
 define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 
-	// request configurations
+	// Register module locales
+TodoyuLocale::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
+TodoyuLocale::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
+
+	// Request configurations
 require_once( PATH_EXT_SEARCH . '/config/extension.php' );
 require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
 require_once( PATH_EXT_SEARCH . '/config/panelwidgets.php' );
 
-
-	// register modules
-TodoyuLocale::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
-TodoyuLocale::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
-
-
-// load assets which are registered in the filters array. Its a need to load them to render the filterlist correctly
+	// load assets which are registered in the filters array.
+	// its mandatory to load them to render the filterlist correctly
 $assets = TodoyuFilterBase::getTypesAssets();
-
 foreach($assets as $assetArray)	{
 	TodoyuPage::addExtAssets($assetArray['ext'], $assetArray['type']);
 }
 
+	// Add assets
 TodoyuPage::addExtAssets('search', 'public');
 
-
-
-
+	// Add menu entry, add JS inits
 if( TodoyuAuth::isLoggedIn() ) {
-		// add menu entry
 	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 99);
-
-		// add JS oload-functions
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');
 }
-
 
 ?>
