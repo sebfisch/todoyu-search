@@ -42,6 +42,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	submit: function() {
 		//$('headletquicksearch-form').submit();
+		console.log('redirect to full search disabled at the moment');
 	},
 
 
