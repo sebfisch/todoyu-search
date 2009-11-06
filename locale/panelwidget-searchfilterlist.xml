@@ -11,6 +11,7 @@
 		<label index="save">Save</label>
 		<label index="rename">Rename</label>
 		<label index="clearFilterArea">Clear filter area</label>
+	</labels>
 	<labels lang="de">
 		<label index="title">Filter</label>
 		<label index="type.task">Task</label>
