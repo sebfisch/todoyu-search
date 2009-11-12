@@ -114,7 +114,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			element.update('[LLL:panelwidget-searchfilterlist.hide]');
 		}
 
-		this.saveFiltersetVisibility(idFilterset, isHidden === false);
+		this.saveFiltersetVisibility(idFilterset, isHidden);
 	},
 
 
@@ -347,9 +347,9 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type idFilterset
 	 * @param unknown_type isHidden
 	 */
-	saveFiltersetVisibility: function(idFilterset, isHidden) {
-		var cmd		= 'updateFiltersetVisibility';
-		var value	= isHidden ? 0 : 1 ;
+	saveFiltersetVisibility: function(idFilterset, visible) {
+		var cmd		= 'toggleFiltersetVisibility';
+		var value	= visible ? 1 : 0;
 		var idItem	= idFilterset;
 
 		this.ext.Preference.save(cmd, value, idItem);

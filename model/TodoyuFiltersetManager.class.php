@@ -147,7 +147,7 @@ class TodoyuFiltersetManager {
 	 * @param	Integer		$idFilterset
 	 * @param	String		$title
 	 */
-	public static function updateFiltersetTitle($idFilterset, $title) {
+	public static function renameFilterset($idFilterset, $title) {
 		$idFilterset	= intval($idFilterset);
 		$data = array(
 			'title'	=> $title
@@ -165,9 +165,9 @@ class TodoyuFiltersetManager {
 	 * @param	Integer		$idFilterset
 	 * @param	Bool		$isHidden
 	 */
-	public static function updateFiltersetVisibility($idFilterset, $isHidden = true) {
+	public static function updateFiltersetVisibility($idFilterset, $visible = true) {
 		$data = array(
-			'is_hidden'	=> $isHidden ? 1 : 0
+			'is_hidden'	=> $visible ? 0 : 1
 		);
 
 		self::updateFilterset($idFilterset, $data);

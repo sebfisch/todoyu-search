@@ -49,10 +49,56 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 
-	public function filtersetOrderAction(array $params)	{
-		$values	= json_decode($params['value']);
+	/**
+	 * Rename a filterset
+	 *
+	 * @param	Array		$params
+	 */
+	public function renameFiltersetAction(array $params) {
+		$idFilterset= intval($params['item']);
+		$title		= trim($params['value']);
 
-		TodoyuFiltersetManager::updateOrder($values->items);
+		TodoyuFiltersetManager::renameFilterset($idFilterset, $title);
+	}
+
+
+
+	/**
+	 * Update the visibility of a filterset
+	 *
+	 * @param	Array		$params
+	 */
+	public function toggleFiltersetVisibilityAction(array $params) {
+		$idFilterset= intval($params['item']);
+		$visible	= intval($params['value']) === 1;
+
+		TodoyuFiltersetManager::updateFiltersetVisibility($idFilterset, $visible);
+	}
+
+
+
+	/**
+	 * Delete a filterset with its condition
+	 *
+	 * @param	Array		$params
+	 */
+	public function deleteFiltersetAction(array $params) {
+		$idFilterset	= intval($params['item']);
+
+		TodoyuFiltersetManager::deleteFilterset($idFilterset, true);
+	}
+
+
+
+	/**
+	 * Update order of the filtersets
+	 *
+	 * @param	Array		$params
+	 */
+	public function filtersetOrderAction(array $params)	{
+		$orderData	= json_decode($params['value'], true);
+
+		TodoyuFiltersetManager::updateOrder($orderDatas['items']);
 	}
 
 }
