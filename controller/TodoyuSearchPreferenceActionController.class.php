@@ -1,14 +1,14 @@
 <?php
 
 class TodoyuSearchPreferenceActionController extends TodoyuActionController {
-	
+
 	public function saveCurrentFilterSetAction(array $params) {
 		$idFilterset	= intval($params['value']);
-		
+
 		TodoyuSearchPreferences::saveCurrentFilter($idFilterset);
 	}
-	
-	
+
+
 	public function removeCurrentFilterSetAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
@@ -28,25 +28,33 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		} else {
 			$content	= 'No widgets';
 		}
-		
+
 		return $content;
 	}
-	
-	
+
+
 	public function saveActiveTabAction(array $params) {
 		$tab	= $params['value'];
-		
+
 		TodoyuSearchPreferences::saveActiveTab($tab);
 	}
-	
-	
+
+
 	public function activeFiltersetAction(array $params) {
 		$idFilterset= intval($params['item']);
  		$tab		= $params['value'];
- 		
+
  		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 	}
-	
+
+
+
+	public function filtersetOrderAction(array $params)	{
+		$values	= json_decode($params['value']);
+
+		TodoyuFiltersetManager::updateOrder($values->items);
+	}
+
 }
 
 
