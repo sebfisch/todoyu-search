@@ -1,0 +1,20 @@
+#filter-controls .headerLine span{
+	margin: 5px 0 0 5px;
+}
+
+#filtercontrol-conditions option {
+	border-bottom: 1px #848484 dotted;
+	color: #333;
+}
+
+#filtercontrol-conditions option.default {
+	padding: 0;
+}
+
+#filtercontrol-conditions option.odd {
+	background-color: #f3f3f3;
+}
+
+#filtercontrol-conditions optgroup {
+	background-color: #e3eace;
+}

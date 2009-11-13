@@ -1,11 +1,11 @@
 <h1 id="filterActionControls" class="headerLine">
 	<span class="filterActionControlsNewFilterSelector">
 		<select id="filtercontrol-conditions" name="conditions">
-			<option value="none">{Label 'search.pleasechoose'}</option>
+			<option value="none" class="default">{Label 'search.pleasechoose'}</option>
 {foreach $groupedConditions group conditions}
 				<optgroup label="{Label $group}">
 	{foreach $conditions key condition}
-					<option value="{$type}_{$key}">{Label $condition.label}</option>
+					<option class="{cycle values="odd,even"}" value="{$type}_{$key}">{Label $condition.label}</option>
 	{/foreach}
 				</optgroup>
 {/foreach}
