@@ -98,7 +98,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	public function filtersetOrderAction(array $params)	{
 		$orderData	= json_decode($params['value'], true);
 
-		TodoyuFiltersetManager::updateOrder($orderDatas['items']);
+		TodoyuFiltersetManager::updateOrder($orderData['items']);
 	}
 
 }
