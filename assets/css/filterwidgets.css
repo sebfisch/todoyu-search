@@ -3,7 +3,6 @@
 	width: auto;
 	float: left;
 	margin: 10px 5px;
-	border: #ccc dotted 1px;
 }
 
 #widget-area .filterWidget span{
@@ -12,19 +11,25 @@
 }
 
 #widget-area {
-	border-bottom: 1px dotted #ccc;
 	height: auto !important;
 	height: 1px;
 	position: relative;
 }
 
 #widget-area .filterWidget .widgetheader {
-	margin-bottom: 5px;
 	height: 22px;
 	width: 100%;
 	position: relative;
-	background-color: #D5DEE5
+	background: #fff url(../img/bg_search_headerline.png) no-repeat 0 0;
+}
 
+#widget-area .filterWidget .widgetheaderRgt {
+	background: #fff url(../img/bg_search_headerline.png) no-repeat scroll 100% 0;
+	height: 22px;
+	width: 3px;
+	position: absolute;
+	right: 0;
+	padding: 0;
 }
 
 #widget-area .filterWidget .widgetheader span{
@@ -48,10 +53,22 @@
 	color: red;
 }
 
+#widget-area .filterWidget .widgetheader span.widgetClose {
+	position: relative;
+	padding: 5px 7px;
+	z-index: 1;
+}
+
 #widget-area .filterWidget .widgetheader span.widgetClose a {
 	display: block;
 	background: transparent url(../img/icons.png) repeat-x scroll 0 -210px;
-	padding: 7px;
-	margin-left: 5px;
+	height: 14px;
+	width: 14px;
 	text-indent: -9999px;
+}
+
+#widget-area .widgetbody {
+	border: 0 #ccc dotted;
+	border-width: 0 1px 1px;
+	padding: 5px;
 }
