@@ -56,6 +56,9 @@ TodoyuPage::addExtAssets('search', 'public');
 	// Add menu entry, add JS inits
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 99);
+	TodoyuFrontend::addSubmenuEntry('search', 'search', 'LLL:search.submenuentry.task', '?ext=search&tab=task', 105);
+	TodoyuFrontend::addSubmenuEntry('search', 'search', 'LLL:search.submenuentry.project', '?ext=search&tab=project', 110);
+
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');
 }
 
