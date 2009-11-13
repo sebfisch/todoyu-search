@@ -5,8 +5,8 @@
 		</span>
 		{if $definitions.wConf.negation}
 			<span id="{$definitions.widgetID}-negation" class="negation">
-				<span class="true" {if $definitions.negate == false}style="display:none"{/if}>{Label $definitions.wConf.negation.labelTrue}</span>
-				<span class="false" {if $definitions.negate == true}style="display:none"{/if}>{Label $definitions.wConf.negation.labelFalse}</span>
+				<span class="true" {if $definitions.negate == 0}style="display:none"{/if}>{Label $definitions.wConf.negation.labelTrue}</span>
+				<span class="false" {if $definitions.negate == 1}style="display:none"{/if}>{Label $definitions.wConf.negation.labelFalse}</span>
 			</span>
 		{/if}
 		<span class="widgetClose">

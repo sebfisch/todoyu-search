@@ -189,7 +189,7 @@ class TodoyuFilterAreaRenderer {
 		$content	= '';
 
 		foreach($conditions as $condition) {
-			$content .= TodoyuFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['negate']===1);
+			$content .= TodoyuFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['negate']==1);
 		}
 
 		return $content;
