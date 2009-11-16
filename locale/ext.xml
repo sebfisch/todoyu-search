@@ -26,8 +26,8 @@
 
 		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
 		
-		<label index="submenuentry.task">Search > Tasks</label>
-		<label index="submenuentry.project">Search > Projects</label>
+		<label index="submenuentry.task">Tasks</label>
+		<label index="submenuentry.project">Projects</label>
 	</labels>
 	<labels lang="de">
 		<label index="page.title">Suche</label>
@@ -51,7 +51,7 @@
 
 		<label index="overwriteFilterSet">Diesen Filter wirklich überschreiben?</label>
 		
-		<label index="submenuentry.task">Suche > Tasks</label>
-		<label index="submenuentry.project">Suche > Projekte</label>
+		<label index="submenuentry.task">Tasks</label>
+		<label index="submenuentry.project">Projekte</label>
 	</labels>
 </locallang>
