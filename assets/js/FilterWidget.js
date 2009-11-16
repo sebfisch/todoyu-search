@@ -39,7 +39,7 @@ Todoyu.Ext.search.FilterWidget = {
 			'parameters': {
 				'choosenWidget': choosenWidget,
 				'numOfWidget': 'new'+numOfWidget,
-				'cmd': 'addfilterwidget',
+				'action': 'addfilterwidget',
 				'filterID': Todoyu.Ext.search.Filter.FilterID
 			},
 			'onComplete': function(response)	{
@@ -155,7 +155,7 @@ Todoyu.Ext.search.FilterWidget = {
 		widgetID = this.filterWidgetIDFromAutoCompleterID(autoCompleterID);
 
 		var options = {
-			parameters: '&cmd=autocompletion&completionID='+widgetID+'&filtertype='+Todoyu.Ext.search.Filter.FilterType,
+			parameters: '&action=autocompletion&completionID='+widgetID+'&filtertype='+Todoyu.Ext.search.Filter.FilterType,
 			paramName: 'sword',
 			minChars: 2,
 			afterUpdateElement: Todoyu.Ext.search.FilterWidget.handleAutocompleteInput

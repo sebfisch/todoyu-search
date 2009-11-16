@@ -27,13 +27,13 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type cmd
+	 * @param unknown_type action
 	 * @param unknown_type value
 	 * @param unknown_type idItem
 	 * @param unknown_type onComplete
 	 */
-	save: function(cmd, value, idItem, onComplete) {
-		Todoyu.Pref.save('search', cmd, value, idItem, onComplete)
+	save: function(action, value, idItem, onComplete) {
+		Todoyu.Pref.save('search', action, value, idItem, onComplete)
 	},
 
 
@@ -44,9 +44,9 @@ Todoyu.Ext.search.Preference = {
 	 * @param unknown_type tab
 	 */
 	saveActiveTab: function(tab)	{
-		var cmd = 'saveActiveTab';
+		var action = 'saveActiveTab';
 
-		this.sendCommand(cmd, tab);
+		this.sendAction(action, tab);
 	},
 
 
@@ -56,10 +56,10 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 */
 	saveCurrentFilter: function()	{
-		var cmd	= 'saveCurrentFilterSet';
+		var action	= 'saveCurrentFilterSet';
 		var currentFilterSet = Todoyu.Ext.search.Filter.FilterID;
 
-		this.sendCommand(cmd, currentFilterSet);
+		this.sendAction(action, currentFilterSet);
 	},
 
 
@@ -69,9 +69,9 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 */
 	removeCurrentFilter: function()	{
-		var cmd	= 'removeCurrentFilterSet';
+		var action	= 'removeCurrentFilterSet';
 
-		this.sendCommand(cmd, '');
+		this.sendAction(action, '');
 	},
 
 
@@ -83,14 +83,14 @@ Todoyu.Ext.search.Preference = {
 	 * @param unknown_type elementDisplay
 	 */
 	saveToggeling: function(elementID, elementDisplay)	{
-		var cmd = 'saveToggleStatus';
+		var action = 'saveToggleStatus';
 
 		var value = Object.toJSON({
 			elementID: elementID,
 			elementDisplay: elementDisplay
 		});
 
-		this.sendCommand(cmd, value);
+		this.sendAction(action, value);
 	},
 
 
@@ -101,10 +101,10 @@ Todoyu.Ext.search.Preference = {
 	 * @param unknown_type list
 	 */
 	saveOrder: function(list)	{
-		var cmd = 'saveOrder';
+		var action = 'saveOrder';
 		var value = list;
 
-		this.sendCommand(cmd, value);
+		this.sendAction(action, value);
 	},
 
 
@@ -112,14 +112,14 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type cmd
+	 * @param unknown_type action
 	 * @param unknown_type value
 	 */
-	sendCommand: function(cmd, value)	{
+	sendAction: function(action, value)	{
 		var url = Todoyu.getUrl('search', 'preference');
 		var options = {
 			'parameters': {
-				'cmd': cmd,
+				'action': action,
 				'value': value
 			}
 		};

@@ -109,6 +109,8 @@ class TodoyuFilterAreaRenderer {
 
 		$tabsArr	= TodoyuSearchManager::getInlineTabHeads();
 
+		TodoyuDebug::printHtml($tabsArr);
+
 		foreach($tabsArr as $key => $tab) {
 			$tabs[] = array(
 				'id'		=> $key,

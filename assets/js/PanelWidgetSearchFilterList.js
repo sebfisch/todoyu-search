@@ -45,7 +45,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
 		var options = {
 			'parameters': {
-				'cmd': 'update'
+				'action': 'update'
 			},
 			'onComplete': this.initSortable.bind(this)
 		};
@@ -297,14 +297,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type items
 	 */
 	saveFiltersetOrder: function(type, items) {
-		var cmd		= 'filtersetOrder';
+		var action		= 'filtersetOrder';
 		var value	= Object.toJSON({
 			'type': type,
 			'items': items
 		});
 		var idItem	= 0;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	},
 
 
@@ -316,11 +316,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type expanded
 	 */
 	saveListToggle: function(type, expanded) {
-		var cmd		= 'filterlistToggle';
+		var action		= 'filterlistToggle';
 		var value	= type + ':' + (expanded ? 1 : 0);
 		var idItem	= 0;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	},
 
 
@@ -332,11 +332,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type name
 	 */
 	saveFiltersetRename: function(idFilterset, name) {
-		var cmd		= 'renameFilterset';
+		var action		= 'renameFilterset';
 		var value	= name;
 		var idItem	= idFilterset;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	},
 
 
@@ -348,11 +348,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type isHidden
 	 */
 	saveFiltersetVisibility: function(idFilterset, visible) {
-		var cmd		= 'toggleFiltersetVisibility';
+		var action		= 'toggleFiltersetVisibility';
 		var value	= visible ? 1 : 0;
 		var idItem	= idFilterset;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	},
 
 
@@ -363,11 +363,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type idFilterset
 	 */
 	saveFiltersetDelete: function(idFilterset) {
-		var cmd		= 'deleteFilterset';
+		var action		= 'deleteFilterset';
 		var value	= 1;
 		var idItem	= idFilterset;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	}
 
 };

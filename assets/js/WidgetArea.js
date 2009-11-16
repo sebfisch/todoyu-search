@@ -41,7 +41,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			'parameters': {
-				'cmd': 'add',
+				'action': 'add',
 				'name': name,
 				'type': type,
 				'condition': condition,
@@ -116,7 +116,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 			var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
 			var widgetID= acField.id.split('-').slice(2, 4).join('-');
 			var params	= Object.toQueryString({
-				'cmd': 'autocompletion',
+				'action': 'autocompletion',
 				'completionID': name,
 				'filtertype': this.ext.Filter.getTab()
 			});

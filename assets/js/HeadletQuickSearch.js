@@ -405,7 +405,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			var url		= Todoyu.getUrl('search', 'suggest');
 			var options	= {
 				'parameters': {
-					'cmd': 'getSuggestions',
+					'action': 'getSuggestions',
 					'query': query,
 					'mode': this.headlet.Mode.getMode()
 				},

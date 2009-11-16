@@ -167,7 +167,7 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
 		var options = {
 			'parameters': {
-				'cmd': 'load',
+				'action': 'load',
 				'tab': tab
 			}
 		};
@@ -251,7 +251,7 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filterarea');
 		var options	= {
 			'parameters': {
-				'cmd': 'load',
+				'action': 'load',
 				'tab': tab,
 				'filterset': idFiterset
 			}
@@ -272,7 +272,7 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			'parameters': {
-				'cmd': 'load',
+				'action': 'load',
 				'tab': tab,
 				'filterset': idFilterset
 			}
@@ -301,7 +301,7 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
 			'parameters': {
-				'cmd': 'update',
+				'action': 'update',
 				'tab': tab,
 				'filterset': idFilterset,
 				'conditions': Object.toJSON(conditions),
@@ -371,7 +371,7 @@ Todoyu.Ext.search.Filter = {
 				var url		= Todoyu.getUrl('search', 'filterset');
 				var options	= {
 					'parameters': {
-						'cmd': 'saveAsNew',
+						'action': 'saveAsNew',
 						'title': title,
 						'type': this.getTab(),
 						'conditions': this.Conditions.getAll(true),
@@ -402,7 +402,7 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filterset');
 		var options	= {
 			'parameters': {
-				'cmd': 'save',
+				'action': 'save',
 				'filterset': idFilterset,
 				'tab': this.getTab(),
 				'conditions': this.Conditions.getAll(true),
@@ -426,10 +426,10 @@ Todoyu.Ext.search.Filter = {
 	 * @param unknown_type idFilterset
 	 */
 	saveActiveFilterset: function(tab, idFilterset) {
-		var cmd		= 'activeFilterset';
+		var action		= 'activeFilterset';
 		var value	= tab;
 		var idItem	= idFilterset;
 
-		this.ext.Preference.save(cmd, value, idItem);
+		this.ext.Preference.save(action, value, idItem);
 	}
 };
