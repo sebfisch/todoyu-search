@@ -57,11 +57,12 @@ TodoyuPage::addExtAssets('search', 'public');
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 99);
 
-	$entries 	= TodoyuFilterBase::getPossibleFilterTypes();
-	$entryNum	= 100;
-	foreach($entries as $filterType	=> $filterData) {
-		TodoyuFrontend::addSubmenuEntry('search', 'search', $filterData['config']['label'], '?ext=search&tab=' . $filterType, $entryNum);
-		$entryNum++;
+		// Add filtertypes as submenu
+	$filterTypes= TodoyuSearchManager::getFilters();
+	$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
+
+	foreach($filterTypes as $type => $typeConfig) {
+		TodoyuFrontend::addSubmenuEntry('search', 'search', $typeConfig['config']['label'], '?ext=search&tab=' . $type, $typeConfig['config']['position']+100);
 	}
 
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');

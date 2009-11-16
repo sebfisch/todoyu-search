@@ -27,12 +27,40 @@
 class TodoyuSearchManager {
 
 	/**
+	 * Get filter type configs
+	 *
+	 * @return	Array
+	 */
+	public static function getFilters() {
+		return $GLOBALS['CONFIG']['FILTERS'];
+	}
+
+
+
+	/**
+	 * Get filter types (keys)
+	 *
+	 * @return	Array
+	 */
+	public static function getFilterTypes() {
+		return array_keys(self::getFilters());
+	}
+
+
+
+	/**
 	 * function returns the inline tabs
 	 * rendered on top of the filter area
 	 *
 	 */
 	public static function getInlineTabHeads()	{
-		$tabs = TodoyuFilterBase::getPossibleFilterTypes();
+		$tabs = array();
+
+//		TodoyuDebug::printHtml($GLOBALS['CONFIG']['FILTERS']);
+
+		foreach($GLOBALS['CONFIG']['FILTERS'] as $type => $typeConfig)	{
+			$tabs[strtolower($type)] = $typeConfig;
+		}
 
 		return $tabs;
 	}

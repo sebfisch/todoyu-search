@@ -39,7 +39,7 @@ class TodoyuFilterWidgetManager	{
 		$type		= strtoupper(trim($type));
 		$widgetName	= trim($widgetName);
 
-		$config		= $GLOBALS['CONFIG']['FILTERS'][$type]['config']['filterWidgets'][$widgetName];
+		$config		= $GLOBALS['CONFIG']['FILTERS'][$type]['widgets'][$widgetName];
 
 		if( ! is_array($config) ) {
 			$config = array();
@@ -169,23 +169,19 @@ class TodoyuFilterWidgetManager	{
 	 *
 	 * @return	Array
 	 */
-	public static function handleAutocompletion()	{
-		$widgetIDParam	= TodoyuRequest::getParam('completionID');
-		$filterType		= TodoyuRequest::getParam('filtertype');
-		$searchWord		= TodoyuRequest::getParam('sword');
+	public static function getAutocompletionResults($type, $sword, $widgetKey) {
+		$widgetKeyArray	= explode('-', $widgetKey);
 
-		$widgetIDArray = split('-', $widgetIDParam);
+		$widgetName		= $widgetKeyArray[0];
+		$numOfWidget	= $widgetKeyArray[1];
 
-		$widgetName		= $widgetIDArray[0];
-		$numOfWidget	= $widgetIDArray[1];
-
-		$definitions = self::getFilterWidgetDefinitions($filterType, $widgetName, $numOfWidget);
+		$definitions = self::getFilterWidgetDefinitions($type, $widgetName, $numOfWidget);
 
 		$funcRefString = $definitions['wConf']['FuncRef'];
 		$funcRefParams = $definitions['wConf']['FuncParams'];
 
 		if( TodoyuDiv::isFunctionReference($funcRefString) ) {
-			$data = TodoyuDiv::callUserFunction($funcRefString, $searchWord, $funcRefParams);
+			$data = TodoyuDiv::callUserFunction($funcRefString, $sword, $funcRefParams);
 		} else {
 			Todoyu::log('Invalid AC-callback function', LOG_LEVEL_ERROR, array('widget'=>$widgetName, 'acFunc'=>$funcRefString));
 			$data = array();
@@ -248,7 +244,7 @@ class TodoyuFilterWidgetManager	{
 	public static function getFilterWidgetNegationLabel($widgetName, $label)	{
 		$filterType = TodoyuSearchPreferences::getCurrentTab();
 
-		return $GLOBALS['CONFIG']['FILTERS'][strtoupper($filterType)]['config']['filterWidgets'][$widgetName]['wConf']['negation'][$label];
+		return $GLOBALS['CONFIG']['FILTERS'][strtoupper($filterType)]['widgets'][$widgetName]['wConf']['negation'][$label];
 	}
 
 
@@ -284,7 +280,7 @@ class TodoyuFilterWidgetManager	{
 		$filterType	= strtoupper(trim($filterType));
 		$widgetName	= trim($widgetName);
 
-		$definitions	= $GLOBALS['CONFIG']['FILTERS'][$filterType]['config']['filterWidgets'][$widgetName];
+		$definitions	= $GLOBALS['CONFIG']['FILTERS'][$filterType]['widgets'][$widgetName];
 
 		if( ! is_array($definitions) ) {
 			$definitions = array();

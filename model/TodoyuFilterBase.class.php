@@ -137,21 +137,21 @@ abstract class TodoyuFilterBase {
 	 */
 	protected function getFilterMethod($filter) {
 		$method	= 'Filter_' . $filter;
-		
+
 			// Check if filter is a local function
 		if( method_exists($this, $method) ) {
 			return array($this, $method);
 		} else {
 			// Check if a widget is available
-			$widgets	= $GLOBALS['CONFIG']['FILTERS'][$this->type]['config']['filterWidgets'];
-			
+			$widgets	= $GLOBALS['CONFIG']['FILTERS'][$this->type]['widgets'];
+
 			if( array_key_exists($filter, $widgets) ) {
 				return explode('::', $widgets[$filter]['funcRef']);
-			}			
+			}
 		}
-		
+
 		TodoyuDebug::printInFirebug($filter, 'Filter method not found');
-		
+
 		return false;
 	}
 
@@ -185,7 +185,7 @@ abstract class TodoyuFilterBase {
 			// Add extra tables and WHERE parts
 		$queryParts['tables'] 	= array_merge($queryParts['tables'], $this->extraTables);
 		$queryParts['where'] 	= array_merge($queryParts['where'], $this->extraWhere);
-		
+
 			// Fetch all query parts from the filters
 		foreach($this->activeFilters as $filter) {
 			if( $this->isFilter($filter['filter']) ) {
@@ -324,24 +324,6 @@ abstract class TodoyuFilterBase {
 		);
 
 		return $ids;
-	}
-
-
-
-	/**
-	 * Reads possible filter types from the configuration array
-	 * and returns them as an array
-	 *
-	 * @return	Array
-	 */
-	public static function getPossibleFilterTypes()	{
-		$possibleTypes = array();
-
-		foreach($GLOBALS['CONFIG']['FILTERS'] as $type => $typeConfig)	{
-			$possibleTypes[strtolower($type)] = $typeConfig;
-		}
-
-		return $possibleTypes;
 	}
 
 

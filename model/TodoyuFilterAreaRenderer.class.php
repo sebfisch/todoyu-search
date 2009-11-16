@@ -107,22 +107,25 @@ class TodoyuFilterAreaRenderer {
 		$class		= 'tabs';
 		$jsHandler	= 'Todoyu.Ext.search.Filter.onTabClick.bind(Todoyu.Ext.search.Filter)';
 
-		$tabsArr	= TodoyuSearchManager::getInlineTabHeads();
+		$filters	= TodoyuSearchManager::getFilters();
 
-		TodoyuDebug::printHtml($tabsArr);
+//		TodoyuDebug::printHtml($typeConfigs);
 
-		foreach($tabsArr as $key => $tab) {
+		foreach($filters as $type => $filterConfig) {
+			$type = strtolower($type);
 			$tabs[] = array(
-				'id'		=> $key,
-				'htmlId'	=> 'search-tabhead-' . $key,
-				'classKey'	=> $key,
+				'id'		=> $type,
+				'htmlId'	=> 'search-tabhead-' . $type,
+				'classKey'	=> $type,
 				'hasIcon'	=> false,
-				'label'		=> $tab['config']['label']
+				'label'		=> $filterConfig['config']['label']
 			);
 		}
 
 		$tabs[0]['position'] = 'first';
 		$tabs[sizeof($tabs)-1]['position'] = 'last';
+
+		$tabs	= TodoyuArray::sortByLabel($tabs, 'position');
 
 		return TodoyuTabheadRenderer::renderTabs($htmlID, $class, $jsHandler, $tabs, $activeTab);
 	}
