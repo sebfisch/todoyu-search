@@ -18,3 +18,22 @@
 #filtercontrol-conditions optgroup {
 	background-color: #e3eace;
 }
+
+/* -------------------------
+	Tabs 
+   -------------------------*/
+
+.tabs #search-tabhead-task p.label span.labeltext {
+	padding: 0 0 0 18px;
+	background: url(../img/icons.png) no-repeat 0px -358px;
+}
+
+.tabs #search-tabhead-user p.label span.labeltext {
+	padding:0 0 0 15px;
+	background: url(../img/icons.png) no-repeat -3px -450px;
+}
+
+.tabs #search-tabhead-project p.label span.labeltext {
+	padding:0 0 0 18px;
+	background: url(../img/icons.png) no-repeat 0 -420px;
+}
