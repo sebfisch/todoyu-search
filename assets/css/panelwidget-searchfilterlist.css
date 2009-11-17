@@ -61,6 +61,7 @@
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a {
 	float: left;
+	width: 1px;
 	padding: 1px 12px;
 	text-indent: -9999px;
 }
