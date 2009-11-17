@@ -9,7 +9,7 @@
 	  	<input name="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
 	<ul id="{$id}-modes">
 	{foreach $searchModes searchMode}
-		<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{$searchMode.labelMode}</li>
+		<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
 	{/foreach}
 	</ul>
 	</form>

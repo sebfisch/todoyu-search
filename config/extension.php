@@ -24,7 +24,7 @@ $CONFIG['EXT']['search']['suggestLimit'] = 5;
 $CONFIG['EXT']['search']['defaultTab'] = 'task';
 
 
-TodoyuSearchManager::addSearchEngine('all', null, null, '', 'Alles durchsuchen', 0);
+TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
 
 
 //$CONFIG['EXT']['search']['modes']['all'] = array(

@@ -7,6 +7,7 @@
 
 		<label index="or">OR</label>
 		<label index="and">AND</label>
+		<label index="search.label">Search all</label>
 
 		<label index="filterlabel.filterset">Filtersets</label>
 		<label index="filter.optgroup">Filter</label>
@@ -25,7 +26,7 @@
 		<label index="newFilterLabel.preset">New filter</label>
 
 		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
-		
+
 		<label index="submenuentry.task">Tasks</label>
 		<label index="submenuentry.project">Projects</label>
 	</labels>
@@ -50,7 +51,7 @@
 		<label index="newFilterLabel.preset">Neuer Filter</label>
 
 		<label index="overwriteFilterSet">Diesen Filter wirklich überschreiben?</label>
-		
+
 		<label index="submenuentry.task">Tasks</label>
 		<label index="submenuentry.project">Projekte</label>
 	</labels>
