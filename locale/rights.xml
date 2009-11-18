@@ -4,8 +4,5 @@
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="right.PanelWidgetSearchFilterList">Show search filter list widget</label>
 	</labels>
-	<labels lang="de">
-		<label index="section.panelwidgets">Panel widgets</label>
-		<label index="right.PanelWidgetSearchFilterList">Suchfilter Liste anzeigen</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

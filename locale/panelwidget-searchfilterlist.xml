@@ -12,16 +12,5 @@
 		<label index="rename">Rename</label>
 		<label index="clearFilterArea">Clear filter area</label>
 	</labels>
-	<labels lang="de">
-		<label index="title">Filter</label>
-		<label index="type.task">Task</label>
-		<label index="type.project">Projekt</label>
-		<label index="saveFilterButton">Als neuen Filter speichern</label>
-		<label index="hide">Verstecken</label>
-		<label index="unhide">Anzeigen</label>
-		<label index="delete">Löschen</label>
-		<label index="save">Speichern</label>
-		<label index="rename">Umbenennen</label>
-		<label index="clearFilterArea">Filterbereich leeren</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>
