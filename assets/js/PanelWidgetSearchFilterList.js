@@ -107,11 +107,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		element.up('li').toggleClassName('hidden');
 
 		if(isHidden === false)	{
-			element.title		= '[LLL:panelwidget-searchfilterlist.unhide]';
-			element.update('[LLL:panelwidget-searchfilterlist.unhide]');
+			element.title		= '[LLL:core.unhide]';
+			element.update('[LLL:core.unhide]');
 		} else {
-			element.title		= '[LLL:panelwidget-searchfilterlist.hide]';
-			element.update('[LLL:panelwidget-searchfilterlist.hide]');
+			element.title		= '[LLL:core.hide]';
+			element.update('[LLL:core.hide]');
 		}
 
 		this.saveFiltersetVisibility(idFilterset, isHidden);

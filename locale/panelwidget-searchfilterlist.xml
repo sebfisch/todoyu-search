@@ -2,14 +2,7 @@
 <locallang>
 	<labels lang="en">
 		<label index="title">Filter</label>
-		<label index="type.task">Task</label>
-		<label index="type.project">Project</label>
 		<label index="saveFilterButton">Save as new Filter</label>
-		<label index="hide">Hide</label>
-		<label index="unhide">Unhide</label>
-		<label index="delete">Delete</label>
-		<label index="save">Save</label>
-		<label index="rename">Rename</label>
 		<label index="clearFilterArea">Clear filter area</label>
 	</labels>
 	<labels lang="de"></labels>
