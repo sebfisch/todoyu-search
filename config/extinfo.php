@@ -28,8 +28,8 @@ $CONFIG['EXT']['search']['info'] = array(
 	'title'				=> 'todoyu search',
 	'description' 		=> 'todoyu search',
 	'author' 			=> array(
-		'name'		=> '',
-		'email'		=> '',
+		'name'		=> 'Todoyu Core Team',
+		'email'		=> 'team@todoyu.com',
 		'company'	=> 'Snowflake Productions, Zürich'
 	),
 	'dependencies' 		=> 'user, project',
