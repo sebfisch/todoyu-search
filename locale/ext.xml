@@ -7,7 +7,6 @@
 		<label index="and">AND</label>
 		<label index="search.label">Search all</label>
 		<label index="filterlabel.filterset">Filtersets</label>
-		<label index="filter.optgroup">Filter</label>
 		<label index="noConditionsToSave">There are no conditions to save</label>
 		<label index="filterset.rename">Rename filterset</label>
 		<label index="filterset.delete">Delete filterset</label>
