@@ -28,22 +28,22 @@ Todoyu.Ext.search.FilterWidget = {
 	 * @param unknown_type select
 	 */
 	addWidgetToFilterArea: function(select)	{
-		var choosenWidget = $(select).getValue();
+		var chosenWidget = $(select).getValue();
 		// set back selector
 		select.options[0].selected = true;
 		//count of equal elements. (used for the id)
-		var numOfWidget = this.detectNumOfWidget(choosenWidget);
+		var numOfWidget = this.detectNumOfWidget(chosenWidget);
 
 		var url		= Todoyu.getUrl('search', 'filtercontroller');
 		var options	= {
 			'parameters': {
-				'choosenWidget': choosenWidget,
+				'choosenWidget': chosenWidget,
 				'numOfWidget': 'new'+numOfWidget,
 				'action': 'addfilterwidget',
 				'filterID': Todoyu.Ext.search.Filter.FilterID
 			},
 			'onComplete': function(response)	{
-				var WidgetID = choosenWidget.split('_')[1] + '-new' + numOfWidget;
+				var WidgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
 				if($(WidgetID))	{
 					Todoyu.Ext.search.Filter.addFilterWidgetToList($(WidgetID));
 					this.initAutocompletionSingle(WidgetID);

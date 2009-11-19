@@ -2,7 +2,6 @@
 <locallang>
 	<labels lang="en">
 		<label index="page.title">Search</label>
-		<label index="pleasechoose">Please choose</label>
 		<label index="or">OR</label>
 		<label index="and">AND</label>
 		<label index="search.label">Search all</label>
