@@ -11,13 +11,12 @@
 	margin-left: 16px;
 }
 
-/*
+
 #panelwidget-searchfilterlist .searchFilterList li.title {
 	font-size: 11px;
 	border-bottom: 1px solid #000;
 	cursor: pointer;
 }
-*/
 
 #panelwidget-searchfilterlist .searchFilterList li.odd {
 	background-color: #F3F3F3;
@@ -62,6 +61,7 @@
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a {
 	float: left;
 	width: 1px;
+	height: 16px;
 	padding: 1px 12px;
 	text-indent: -9999px;
 }
