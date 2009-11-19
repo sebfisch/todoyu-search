@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="ext.title">Search And Filters</label>
 		<label index="page.title">Search</label>
 		<label index="or">OR</label>
 		<label index="and">AND</label>
