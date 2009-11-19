@@ -1,18 +1,18 @@
 <?php
 
 class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
-	
+
 	public function addAction(array $params) {
 		$widgetName	= $params['name'];
 		$condition	= $params['condition'];
 		$type		= $params['type'];
 		$value		= $params['value'];
 		$negate		= intval($params['negate']) === 1;
-
+		TodoyuDebug::printHtml($params, 'Debug: TodoyuSearchWidgetareaActionController.class.php on Line: '.__LINE__);
 		echo TodoyuFilterWidgetRenderer::renderWidget($type, $condition, $widgetName, $value, $negate);
 	}
-	
-	
+
+
 	public function loadAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
@@ -32,11 +32,11 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 		} else {
 			$content	= 'No widgets';
 		}
-		
+
 		return $content;
 	}
-	
-	
+
+
 }
 
 ?>
