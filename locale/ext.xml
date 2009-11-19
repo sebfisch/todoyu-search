@@ -18,8 +18,8 @@
 		<label index="newFilterLabel">Enter a name for the new filter</label>
 		<label index="newFilterLabel.preset">New filter</label>
 		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
-		<label index="submenuentry.task">Tasks</label>
-		<label index="submenuentry.project">Projects</label>
+		<label index="subMenuEntry.task">Tasks</label>
+		<label index="subMenuEntry.project">Projects</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
