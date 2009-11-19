@@ -8,7 +8,7 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 		$type		= $params['type'];
 		$value		= $params['value'];
 		$negate		= intval($params['negate']) === 1;
-		TodoyuDebug::printHtml($params, 'Debug: TodoyuSearchWidgetareaActionController.class.php on Line: '.__LINE__);
+
 		echo TodoyuFilterWidgetRenderer::renderWidget($type, $condition, $widgetName, $value, $negate);
 	}
 
