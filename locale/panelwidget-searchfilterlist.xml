@@ -4,6 +4,7 @@
 		<label index="title">Filter</label>
 		<label index="saveFilterButton">Save as new Filter</label>
 		<label index="clearFilterArea">Clear filter area</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

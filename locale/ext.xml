@@ -20,6 +20,7 @@
 		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
 		<label index="subMenuEntry.task">Tasks</label>
 		<label index="subMenuEntry.project">Projects</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

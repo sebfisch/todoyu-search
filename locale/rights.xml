@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="right.PanelWidgetSearchFilterList">Show search filter list widget</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
