@@ -37,10 +37,10 @@ Todoyu.Ext.search.FilterWidget = {
 		var url		= Todoyu.getUrl('search', 'filtercontroller');
 		var options	= {
 			'parameters': {
-				'choosenWidget': chosenWidget,
-				'numOfWidget': 'new'+numOfWidget,
-				'action': 'addfilterwidget',
-				'filterID': Todoyu.Ext.search.Filter.FilterID
+				'choosenWidget':	chosenWidget,
+				'numOfWidget':		'new'+numOfWidget,
+				'action':			'addfilterwidget',
+				'filterID':			Todoyu.Ext.search.Filter.FilterID
 			},
 			'onComplete': function(response)	{
 				var WidgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
@@ -155,10 +155,10 @@ Todoyu.Ext.search.FilterWidget = {
 		widgetID = this.filterWidgetIDFromAutoCompleterID(autoCompleterID);
 
 		var options = {
-			parameters: '&action=autocompletion&completionID='+widgetID+'&filtertype='+Todoyu.Ext.search.Filter.FilterType,
-			paramName: 'sword',
-			minChars: 2,
-			afterUpdateElement: Todoyu.Ext.search.FilterWidget.handleAutocompleteInput
+			parameters:			'&action=autocompletion&completionID=' + widgetID + '&filtertype=' + Todoyu.Ext.search.Filter.FilterType,
+			paramName:			'sword',
+			minChars:			2,
+			afterUpdateElement:	Todoyu.Ext.search.FilterWidget.handleAutocompleteInput
 		};
 
 		var Autocompleter = new Ajax.Autocompleter(autoCompleterID, autoCompleterID+'-suggestions', Url, options);
@@ -184,7 +184,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 */
 	filterWidgetIDFromAutoCompleterID: function(autocompleterID)	{
 		splittedID = autocompleterID.split('-');
-		return splittedID[2]+'-'+splittedID[3];
+		return splittedID[2] + '-' + splittedID[3];
 	},
 
 
@@ -196,7 +196,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * @param unknown_type elementLi
 	 */
 	handleAutocompleteInput: function(elementText, elementLi)	{
-		var hiddenElement = $('widget-autocompleter-'+elementLi.parentNode.id.replace(/ul/, 'hidden'));
+		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
 		hiddenElement.setValue(elementLi.id);
 		Todoyu.Ext.search.Filter.setValueToCondition(hiddenElement, elementLi.parentNode.id.replace(/-ul/, ''));
 	}

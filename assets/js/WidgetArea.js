@@ -121,10 +121,10 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 				'filtertype': this.ext.Filter.getTab()
 			});
 			var options	= {
-				'parameters': params,
-				'paramName': 'sword',
-				'minChars': 2,
-				'afterUpdateElement': this.onAutocompleteSelect.bind(this, name)
+				'parameters':			params,
+				'paramName':			'sword',
+				'minChars':				2,
+				'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
 			};
 			var suggestID= acField.id + '-suggestions';
 

@@ -45,7 +45,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
 		var options = {
 			'parameters': {
-				'action': 'update'
+				'action':	'update'
 			},
 			'onComplete': this.initSortable.bind(this)
 		};
@@ -316,7 +316,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type expanded
 	 */
 	saveListToggle: function(type, expanded) {
-		var action		= 'filterlistToggle';
+		var action	= 'filterlistToggle';
 		var value	= type + ':' + (expanded ? 1 : 0);
 		var idItem	= 0;
 
@@ -332,7 +332,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type name
 	 */
 	saveFiltersetRename: function(idFilterset, name) {
-		var action		= 'renameFilterset';
+		var action	= 'renameFilterset';
 		var value	= name;
 		var idItem	= idFilterset;
 
@@ -348,7 +348,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type isHidden
 	 */
 	saveFiltersetVisibility: function(idFilterset, visible) {
-		var action		= 'toggleFiltersetVisibility';
+		var action	= 'toggleFiltersetVisibility';
 		var value	= visible ? 1 : 0;
 		var idItem	= idFilterset;
 
@@ -363,7 +363,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param unknown_type idFilterset
 	 */
 	saveFiltersetDelete: function(idFilterset) {
-		var action		= 'deleteFilterset';
+		var action	= 'deleteFilterset';
 		var value	= 1;
 		var idItem	= idFilterset;
 

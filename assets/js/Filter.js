@@ -167,8 +167,8 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
 		var options = {
 			'parameters': {
-				'action': 'load',
-				'tab': tab
+				'action':	'load',
+				'tab':		tab
 			}
 		};
 		var target	= 'filterActionControls';
@@ -251,9 +251,9 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filterarea');
 		var options	= {
 			'parameters': {
-				'action': 'load',
-				'tab': tab,
-				'filterset': idFiterset
+				'action':		'load',
+				'tab':			tab,
+				'filterset':	idFiterset
 			}
 		};
 
@@ -272,9 +272,9 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			'parameters': {
-				'action': 'load',
-				'tab': tab,
-				'filterset': idFilterset
+				'action':		'load',
+				'tab':			tab,
+				'filterset':	idFilterset
 			}
 		};
 		var target	= 'widget-area';
@@ -301,11 +301,11 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
 			'parameters': {
-				'action': 'update',
-				'tab': tab,
-				'filterset': idFilterset,
-				'conditions': Object.toJSON(conditions),
-				'conjunction': conjunction
+				'action':		'update',
+				'tab':			tab,
+				'filterset':	idFilterset,
+				'conditions':	Object.toJSON(conditions),
+				'conjunction':	conjunction
 			}
 		};
 		var target	= 'search-results';
@@ -371,11 +371,11 @@ Todoyu.Ext.search.Filter = {
 				var url		= Todoyu.getUrl('search', 'filterset');
 				var options	= {
 					'parameters': {
-						'action': 'saveAsNew',
-						'title': title,
-						'type': this.getTab(),
-						'conditions': this.Conditions.getAll(true),
-						'conjunction': this.getConjunction()
+						'action':		'saveAsNew',
+						'title':		title,
+						'type':			this.getTab(),
+						'conditions':	this.Conditions.getAll(true),
+						'conjunction':	this.getConjunction()
 					}
 				};
 
@@ -402,11 +402,11 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'filterset');
 		var options	= {
 			'parameters': {
-				'action': 'save',
-				'filterset': idFilterset,
-				'tab': this.getTab(),
-				'conditions': this.Conditions.getAll(true),
-				'conjunction': this.getConjunction()
+				'action':		'save',
+				'filterset':	idFilterset,
+				'tab':			this.getTab(),
+				'conditions':	this.Conditions.getAll(true),
+				'conjunction':	this.getConjunction()
 			}
 		};
 

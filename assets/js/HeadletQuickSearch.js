@@ -405,11 +405,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			var url		= Todoyu.getUrl('search', 'suggest');
 			var options	= {
 				'parameters': {
-					'action': 'getSuggestions',
-					'query': query,
-					'mode': this.headlet.Mode.getMode()
+					'action':	'getSuggestions',
+					'query':	query,
+					'mode':		this.headlet.Mode.getMode()
 				},
-				'onComplete': this.display.bind(this)
+				'onComplete':	this.display.bind(this)
 			};
 			var target	= this.suggestID;
 
