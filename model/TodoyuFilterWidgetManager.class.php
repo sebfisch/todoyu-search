@@ -222,7 +222,7 @@ class TodoyuFilterWidgetManager	{
 	public function manipulateAutocompleteDefinitions($definitions)	{
 		$optionMethod = $definitions['wConf']['LabelFuncRef'];
 
-		if($definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0)	{
+		if( $definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0 )	{
 			if( TodoyuDiv::isFunctionReference($optionMethod) )	{
 				$definitions = TodoyuDiv::callUserFunction($optionMethod, $definitions);
 				//self::proceedLabelFunc($definitions);

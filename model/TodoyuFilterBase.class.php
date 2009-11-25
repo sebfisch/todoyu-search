@@ -260,7 +260,7 @@ abstract class TodoyuFilterBase {
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
 
-		if($queryArray['where'][0])	{
+		if( $queryArray['where'][0] )	{
 			$queryArray['where'][0] = '('.$queryArray['where'][0].')';
 		} else {
 			unset($queryArray['where'][0]);

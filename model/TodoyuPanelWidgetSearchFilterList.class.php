@@ -65,7 +65,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		$activeFiltersets	= array();
 
 		foreach($filtersetTypes as $filtersetType) {
-			if($filtersetType == TodoyuSearchPreferences::getActiveTab())	{
+			if( $filtersetType == TodoyuSearchPreferences::getActiveTab() )	{
 				$activeFiltersets[] = TodoyuSearchPreferences::getActiveFilterset($filtersetType);
 			}
 		}

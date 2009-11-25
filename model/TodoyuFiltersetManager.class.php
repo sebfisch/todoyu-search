@@ -395,7 +395,7 @@ class TodoyuFiltersetManager {
 					foreach($result['tables'] as $table)	{
 						$localTables[] = $table;
 					}
-				} else if($result['tables']){
+				} else if( $result['tables'] )	{
 					$localTables[] = $result['tables'];
 				}
 
@@ -403,7 +403,7 @@ class TodoyuFiltersetManager {
 					foreach($result['where'] as $where)	{
 						$localWhere[] = $where;
 					}
-				} else if($result['where']){
+				} else if( $result['where'] ) {
 					$localWhere[] = $result['where'];
 				}
 			}
@@ -416,7 +416,7 @@ class TodoyuFiltersetManager {
 
 		$localWhereString = implode(' '.$conjunction.' ', $localWhere);
 
-		if($localWhereString)	{
+		if( $localWhereString )	{
 			$localWhereString = '('.$localWhereString.')';
 		}
 
@@ -441,7 +441,7 @@ class TodoyuFiltersetManager {
 		$curFilter = TodoyuRequest::getParam('filterID') ? TodoyuRequest::getParam('filterID') : TodoyuSearchPreferences::getCurrentFilter();
 
 		foreach($filtersets as $filterSet)	{
-			if($filterSet['id'] != $curFilter)	{
+			if( $filterSet['id'] != $curFilter )	{
 				if(self::checkIfFilterIsUsed($filterSet['id'], $curFilter))	{
 					$selected = ($filterSet['id'] == $definitions['value']);
 					$optionsArray[$filterSet['id']] = array('label' => $filterSet['title'],
@@ -468,8 +468,8 @@ class TodoyuFiltersetManager {
 		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($startFilter);
 
 		foreach($conditions as $condition)	{
-			if($condition['filter'] == 'filterSet')	{
-				if($condition['value'] == $curFilter)	{
+			if( $condition['filter'] == 'filterSet' )	{
+				if( $condition['value'] == $curFilter )	{
 					return false;
 				} else {
 					if(!self::checkIfFilterIsUsed($condition['value'], $curFilter))	{
