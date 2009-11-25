@@ -53,7 +53,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		$filterArea = TodoyuFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset, $conditions, false);
 		TodoyuPage::set('filterArea', $filterArea);
 
-			// Add js init command
+			// Add JS init command
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')');
 
 		return TodoyuPage::render();
