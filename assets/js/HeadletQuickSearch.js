@@ -157,9 +157,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 
-
-
-
 		/**
 		 * Enter description here...
 		 *
@@ -191,7 +188,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Enter description here...
+	 * Quicksearch headlet suggestions
 	 *
 	 */
 	Suggest: {
@@ -244,12 +241,13 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 				window.clearTimeout(this.timeout);
 			}
 
-				// Pressed enter
+				// Pressed ENTER
 			if( event.keyCode === Event.KEY_RETURN ) {
 				if( this.isNavigating() ) {
 					this.goToActiveElement();
 				} else {
-					this.headlet.submitIfNotEmpty();
+//					this.headlet.submitIfNotEmpty();
+					this.timeout = this.show.bind(this).delay(this.frequency / 1000);
 				}
 				return;
 			}
@@ -266,7 +264,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			if( this.headlet.isEmpty() ) {
 				this.hide();
 			} else {
-				this.timeout = window.setTimeout(this.show.bind(this), this.frequency);
+				this.timeout = this.show.bind(this).delay(this.frequency / 1000);
 			}
 		},
 
