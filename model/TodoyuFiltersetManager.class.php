@@ -391,7 +391,7 @@ class TodoyuFiltersetManager {
 			if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
 				$result = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
 
-				if(is_array($result['tables']))	{
+				if( is_array($result['tables']) )	{
 					foreach($result['tables'] as $table)	{
 						$localTables[] = $table;
 					}
@@ -399,7 +399,7 @@ class TodoyuFiltersetManager {
 					$localTables[] = $result['tables'];
 				}
 
-				if(is_array($result['where']))	{
+				if( is_array($result['where']) )	{
 					foreach($result['where'] as $where)	{
 						$localWhere[] = $where;
 					}
@@ -442,7 +442,7 @@ class TodoyuFiltersetManager {
 
 		foreach($filtersets as $filterSet)	{
 			if( $filterSet['id'] != $curFilter )	{
-				if(self::checkIfFilterIsUsed($filterSet['id'], $curFilter))	{
+				if( self::checkIfFilterIsUsed($filterSet['id'], $curFilter) )	{
 					$selected = ($filterSet['id'] == $definitions['value']);
 					$optionsArray[$filterSet['id']] = array('label' => $filterSet['title'],
 															'selected' => $selected);

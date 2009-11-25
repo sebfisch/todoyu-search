@@ -229,7 +229,7 @@ class TodoyuSearchPreferences {
 		$newArrayKeyArray = explode('-', $newArrayKey);
 		$newArrayKey = array_pop($newArrayKeyArray);
 
-		if(is_array($toggleStatusArray))	{
+		if( is_array($toggleStatusArray) )	{
 			$toggleStatusArray[$newArrayKey] = $newArrayValue;
 		} else {
 			$toggleStatusArray = array();

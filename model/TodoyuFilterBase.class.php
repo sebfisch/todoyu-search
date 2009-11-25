@@ -337,7 +337,7 @@ abstract class TodoyuFilterBase {
 		$assets = array();
 
 		foreach($GLOBALS['CONFIG']['FILTERS'] as $typeConfig)	{
-			if(is_array($typeConfig['config']['assets']))	{
+			if( is_array($typeConfig['config']['assets']) )	{
 				$assets[] = $typeConfig['config']['assets'];
 			}
 		}
