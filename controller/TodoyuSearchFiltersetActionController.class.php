@@ -21,6 +21,12 @@
 
 class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 
+	/**
+	 * Save current conditions with their settings as new Filter(set)
+	 *
+	 *	@param	Array	$params
+	 *	@return	Integer
+	 */
 	public function saveAsNewAction(array $params) {
 		$type		= $params['type'];
 		$conditions	= $params['conditions'];
@@ -31,7 +37,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 		$data = array(
 			'filterset'	=> 0,
 			'type'		=> $type,
-			'title'		=> $title,
+			'title'		=> TodoyuFiltersetManager::validateTitle($title),
 			'conjunction'=> $conjunction,
 			'conditions'=> $conditions
 		);
@@ -42,6 +48,8 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 
 		return $idFilterset;
 	}
+
+
 
 	public function saveAction(array $params) {
 		$idFilterset= intval($params['filterset']);

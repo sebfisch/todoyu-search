@@ -204,9 +204,9 @@ class TodoyuFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	type 	= ' . Todoyu::db()->quote($type, true) . ' AND
-					deleted	= 0 AND is_hidden = '.($showHidden ? 1 : 0).' AND
-					(id_user	= ' . $idUser . ' OR id_user = 0)';
+		$where	= '		type 	= ' . Todoyu::db()->quote($type, true) . '
+					AND deleted	= 0 AND is_hidden = '.($showHidden ? 1 : 0) . '
+					AND (id_user	= ' . $idUser . ' OR id_user = 0)';
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -246,6 +246,33 @@ class TodoyuFiltersetManager {
 		$where	= '	id_user	= ' . $idUser . ' AND
 					deleted	= 0';
 		$order	= 'sorting, date_create';
+
+		if( ! is_null($type) ) {
+			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
+	 * Get filterset titles (of a user and of a type)
+	 * If no user defined, it gets filtersets for the current user
+	 * If no type defined, it gets filtersets of all types
+	 *
+	 * @param	Integer		$idUser
+	 * @param	String		$type
+	 * @return	Array
+	 */
+	public static function getFiltersetTitles($idUser = 0, $type = null) {
+		$idUser	= userid($idUser);
+
+		$fields	= 'title';
+		$table	= self::TABLE;
+		$where	= '		id_user	= ' . $idUser . '
+					AND deleted	= 0';
+		$order	= 'title';
 
 		if( ! is_null($type) ) {
 			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
@@ -306,6 +333,23 @@ class TodoyuFiltersetManager {
 		return $idFilterset;
 	}
 
+
+
+	/**
+	 * Validate filterset title (ensure uniqueness)
+	 *
+	 *	@param	String	$title
+	 *	@return String
+	 */
+	public static function validateTitle($title) {
+		$allFilterSetTitles	= TodoyuArray::flatten( self::getFiltersetTitles() );
+
+		if ( in_array($title, $allFilterSetTitles) ) {
+			$title = self::validateTitle( $title . '-2' );
+		}
+
+		return $title;
+	}
 
 
 
