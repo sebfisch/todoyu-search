@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="ext.title">Search And Filters</label>
+		<label index="ext.title">Search snd Filters</label>
 		<label index="page.title">Search</label>
 		<label index="or">OR</label>
 		<label index="and">AND</label>
 		<label index="search.label">Search all</label>
-		<label index="filterlabel.filterset">Filtersets</label>
+		<label index="filterlabel.filterset">Filter Sets</label>
 		<label index="noConditionsToSave">There are no conditions to save</label>
-		<label index="filterset.rename">Rename filterset</label>
-		<label index="filterset.delete">Delete filterset</label>
-		<label index="filtersetSaveAsWrongType">You tried to save the filterset under a wrong type</label>
+		<label index="filterset.rename">Rename Filter Set</label>
+		<label index="filterset.delete">Delete Filter Set</label>
+		<label index="filtersetSaveAsWrongType">You tried to save the filter set under a wrong type</label>
 		<label index="negation.default.true">is not</label>
 		<label index="negation.default.false">is</label>
 		<label index="negation.datetime.true">from</label>
 		<label index="negation.datetime.false">to</label>
 		<label index="newFilterLabel">Enter a name for the new filter</label>
-		<label index="newFilterLabel.preset">New filter</label>
-		<label index="overwriteFilterSet">Overwrite existing filterset?</label>
+		<label index="newFilterLabel.preset">New Filter</label>
+		<label index="overwriteFilterSet">Overwrite existing Filter Set?</label>
 		<label index="subMenuEntry.task">Tasks</label>
 		<label index="subMenuEntry.project">Projects</label>
-<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
+		<label index="ext.title">Suche und Filter</label>
+		<label index="page.title">Suche</label>
+		<label index="or">ODER</label>
+		<label index="and">UND</label>
+		<label index="search.label">Alles durchsuchen</label>
+		<label index="filterlabel.filterset">Filter-Set</label>
+		<label index="noConditionsToSave">Es gibt keine Bedingungen zu speichern</label>
+		<label index="filterset.rename">Filter-Set umbenennen</label>
+		<label index="filterset.delete">Filter-Set löschen</label>
+		<label index="filtersetSaveAsWrongType">Sie versuchten einen Filter unter einem falschen Typ zu speichern</label>
+		<label index="negation.default.true">ist nicht</label>
+		<label index="negation.default.false">is</label>
+		<label index="negation.datetime.true">von</label>
+		<label index="negation.datetime.false">bis</label>
+		<label index="newFilterLabel">Bitte Namen eingeben für den neuen Filter</label>
+		<label index="newFilterLabel.preset">Neuer Filter</label>
+		<label index="overwriteFilterSet">Bestehendes Filter-Set überschreiben?</label>
+		<label index="subMenuEntry.task">Aufgaben</label>
+		<label index="subMenuEntry.project">Projekte</label>
+	</labels>	
 </locallang>
