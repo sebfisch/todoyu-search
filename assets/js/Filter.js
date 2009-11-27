@@ -99,7 +99,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 */
 	setFiltersetID: function(idFilterset) {
 		this.FilterID = idFilterset;
@@ -228,7 +228,7 @@ Todoyu.Ext.search.Filter = {
 	 * Enter description here...
 	 *
 	 * @param unknown_type tab
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 */
 	loadFilterset: function(tab, idFilterset) {
 		if (tab !== this.getTab()) {
@@ -245,7 +245,7 @@ Todoyu.Ext.search.Filter = {
 	 * Enter description here...
 	 *
 	 * @param unknown_type tab
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 */
 	updateFilterArea: function(tab, idFiterset) {
 		var url		= Todoyu.getUrl('search', 'filterarea');
@@ -266,7 +266,7 @@ Todoyu.Ext.search.Filter = {
 	 * Enter description here...
 	 *
 	 * @param unknown_type tab
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 */
 	updateWidgetArea: function(tab, idFilterset) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
@@ -287,8 +287,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idFilterset
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 * @param unknown_type conditions
 	 * @param unknown_type conjunction
 	 */
@@ -395,7 +394,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 * @param unknown_type onComplete
 	 */
 	saveCurrentAreaAsFilterset: function(idFilterset, onComplete) {
@@ -423,7 +422,7 @@ Todoyu.Ext.search.Filter = {
 	 * Enter description here...
 	 *
 	 * @param unknown_type tab
-	 * @param unknown_type idFilterset
+	 * @param Integer idFilterset
 	 */
 	saveActiveFilterset: function(tab, idFilterset) {
 		var action		= 'activeFilterset';

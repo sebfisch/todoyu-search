@@ -29,7 +29,7 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 * @param unknown_type action
 	 * @param unknown_type value
-	 * @param unknown_type idItem
+	 * @param Integer idItem
 	 * @param unknown_type onComplete
 	 */
 	save: function(action, value, idItem, onComplete) {

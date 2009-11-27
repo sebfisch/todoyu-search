@@ -91,7 +91,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type idFilterset
+		 * @param Integer idFilterset
 		 */
 		init: function() {
 			this.button = $('headletquicksearch-mode-btn');
