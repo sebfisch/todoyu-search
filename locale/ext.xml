@@ -21,22 +21,22 @@
 		<label index="subMenuEntry.task">Tasks</label>
 		<label index="subMenuEntry.project">Projects</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
 		<label index="ext.title">Suche und Filter</label>
 		<label index="page.title">Suche</label>
 		<label index="or">ODER</label>
 		<label index="and">UND</label>
 		<label index="search.label">Alles durchsuchen</label>
 		<label index="filterlabel.filterset">Filter-Set</label>
-		<label index="noConditionsToSave">Es gibt keine Bedingungen zu speichern</label>
+		<label index="noConditionsToSave">Es gibt keine Bedingungen zur Speicherung</label>
 		<label index="filterset.rename">Filter-Set umbenennen</label>
 		<label index="filterset.delete">Filter-Set löschen</label>
-		<label index="filtersetSaveAsWrongType">Sie versuchten einen Filter unter einem falschen Typ zu speichern</label>
+		<label index="filtersetSaveAsWrongType">Bitte korrekten Filter-typ wählen</label>
 		<label index="negation.default.true">ist nicht</label>
-		<label index="negation.default.false">is</label>
+		<label index="negation.default.false">ist</label>
 		<label index="negation.datetime.true">von</label>
 		<label index="negation.datetime.false">bis</label>
-		<label index="newFilterLabel">Bitte Namen eingeben für den neuen Filter</label>
+		<label index="newFilterLabel">Bitte einen Filter-Namen angeben</label>
 		<label index="newFilterLabel.preset">Neuer Filter</label>
 		<label index="overwriteFilterSet">Bestehendes Filter-Set überschreiben?</label>
 		<label index="subMenuEntry.task">Aufgaben</label>
