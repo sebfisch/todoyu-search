@@ -23,7 +23,7 @@
  * Configure panel widgets to be shown in Search area
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 
 TodoyuPanelWidgetManager::addDefaultPanelWidget('search', 'TodoyuPanelWidgetSearchFilterList', 10);

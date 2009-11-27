@@ -26,7 +26,7 @@
  * @subpackage	Search
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 
 
