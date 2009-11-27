@@ -56,8 +56,6 @@ class TodoyuSearchManager {
 	public static function getInlineTabHeads()	{
 		$tabs = array();
 
-//		TodoyuDebug::printHtml($GLOBALS['CONFIG']['FILTERS']);
-
 		foreach($GLOBALS['CONFIG']['FILTERS'] as $type => $typeConfig)	{
 			$tabs[strtolower($type)] = $typeConfig;
 		}
