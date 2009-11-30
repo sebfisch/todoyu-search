@@ -19,7 +19,7 @@ if( TodoyuAuth::isLoggedIn() ) {
 	$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
 
 	foreach($filterTypes as $type => $typeConfig) {
-		TodoyuFrontend::addSubmenuEntry('search', 'search', $typeConfig['config']['label'], '?ext=search&tab=' . $type, $typeConfig['config']['position']+100);
+		TodoyuFrontend::addSubmenuEntry('search', 'search', $typeConfig['config']['label'], '?ext=search&tab=' . $typeConfig['key'], $typeConfig['config']['position']+100);
 	}
 
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');

@@ -18,14 +18,24 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Filter widget in search area
+ */
 Todoyu.Ext.search.FilterWidget = {
-
-
-
+	
+	ext: Todoyu.Ext.search,
+	
 	/**
-	 * Enter description here...
-	 *
-	 * @param unknown_type select
+	 * Timeouts of widgets
+	 */
+	timeout: {},
+	
+	
+	
+	/**
+	 * Add a new widget to the filter area
+	 * 
+	 * @param	DomElement		select			The select element where the new widget has ben chosen
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
@@ -64,7 +74,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 */
 	removeWidgetFromFilterArea: function(widgetID)	{
 		$(widgetID).remove();
-		Todoyu.Ext.search.Filter.removeConditionFromFilter(widgetID);
+		this.ext.Filter.removeConditionFromFilter(widgetID);
 	},
 
 
@@ -199,8 +209,33 @@ Todoyu.Ext.search.FilterWidget = {
 		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
 		hiddenElement.setValue(elementLi.id);
 		Todoyu.Ext.search.Filter.setValueToCondition(hiddenElement, elementLi.parentNode.id.replace(/-ul/, ''));
+	},
+	
+	
+	
+	/**
+	 * Handler when text in a text-widget is entered
+	 * The update is delayed, so no every key will force a result update
+	 * 
+	 * @param	DomElement		input			The textinput
+	 */
+	onTextEntered: function(input) {
+			// Get value and widet name
+		var name	= $(input).up('div.filterWidget').id;
+		var value	= $F(input);
+		
+			// Clear existing timeout of privious inputs
+		if( this.timeout[name] ) {
+			window.clearTimeout(this.timeout[name]);
+			delete this.timeout[name];
+		}
+		
+			// Update filter condition
+		this.ext.Filter.setConditionValue(name, value);
+		
+			// Create a new timeout to update the results (can be cleared by new inputs)
+		this.timeout[name] = this.ext.Filter.updateResults.bind(this.ext.Filter).delay(0.4);
 	}
-
-
-
+	
+	
 };

@@ -1,5 +1,6 @@
-<div id="panelwidget-searchfilterlist-clear">
+<div class="buttons">
 	{Button label="panelwidget-searchfilterlist.clearFilterArea" class="clearFilterArea" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.clearFilterArea()"}
+	{Button label="panelwidget-searchfilterlist.saveFilterButton" class="saveAsNewFilter" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveCurrentAreaAsNewFilterset()"}
 </div>
 
 <div class="searchFilterList">
@@ -32,8 +33,4 @@
 		</ul>
 	{/foreach}
 	</ul>
-</div>
-
-<div class="searchFilterButton">
-	{Button label="panelwidget-searchfilterlist.saveFilterButton" class="saveAsNewFilter" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveCurrentAreaAsNewFilterset()"}
 </div>

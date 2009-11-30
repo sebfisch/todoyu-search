@@ -321,9 +321,21 @@ Todoyu.Ext.search.Filter = {
 	 * @param unknown_type value
 	 */
 	updateConditionValue: function(name, value) {
-		this.Conditions.updateValue(name, value);
+		this.setConditionValue(name, value);
 
 		this.updateResults(this.getTab(), 0);
+	},
+	
+	
+	
+	/**
+	 * Set the new value of a condition without updating the results
+	 * 
+	 * @param	String		name		Name of the condition/widget
+	 * @param	Mixed		value		New value
+	 */
+	setConditionValue: function(name, value) {
+		this.Conditions.updateValue(name, value);
 	},
 
 
