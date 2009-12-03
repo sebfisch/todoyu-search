@@ -8,20 +8,20 @@
 	{foreach $groupedFiltersets groupKey filtersets}
 		<li class="listItem title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.toggleList('{$groupKey}')">{$filtersets.label}</li>
 		<ul id="panelwidget-searchfilterlist-list-{$groupKey}" class="sortable" {if $toggleStatus[$groupKey] == 1}style="display:none"{/if}>
-			{foreach $filtersets.filtersets index filterset}
+		{foreach $filtersets.filtersets index filterset}
 			<li id="filterset_{$filterset.id}" class="listItem filterset {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} hidden{/if}">
 				<div id="filterset-{$filterset.id}-handle" class="handle"></div>
 				<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.loadFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)">
-					{cropText $filterset.title 25 false}
+					{htmlencode $filterset.title|truncate:25}
 				</a>
 				<span class="controllpanel">
 					<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.rename}" href="javascript:void(0)">
 						{Label core.rename}
 					</a>
-					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}hidden{/if}"  title="{if $filterset.is_hidden == 0}{Label panelwidget-searchfilterlist.hide}{else}{Label core.unhide}{/if}">
+					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}hidden{/if}"  title="{if $filterset.is_hidden == 0}{Label core.hide}{else}{Label core.unhide}{/if}">
 						{if $filterset.is_hidden == 0}{Label panelwidget-searchfilterlist.hide}{else}{Label core.unhide}{/if}
 					</a>
-					<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label panelwidget-searchfilterlist.save}" href="javascript:void(0)">
+					<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label core.save}" href="javascript:void(0)">
 						{Label core.save}
 					</a>
 					<a id="filterset-{$filterset.id}-control-delete" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.deleteFilterset({$filterset.id})" class="delete" title="{Label core.delete}" href="javascript:void(0)">
@@ -29,7 +29,7 @@
 					</a>
 				</span>
 			</li>
-			{/foreach}
+		{/foreach}
 		</ul>
 	{/foreach}
 	</ul>
