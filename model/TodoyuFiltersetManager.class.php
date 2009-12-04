@@ -377,15 +377,16 @@ class TodoyuFiltersetManager {
 	 */
 	public static function Filter_filterset($value, $negate = false)	{
 		$idFilterset= intval($value);
-
+		
 		$localTables		= array();
 		$localWhere 		= array();
 		$localWhereString 	= '';
+		$returnArray		= array();
 
 		$type = self::getFiltersetType($idFilterset);
 
 		$filterConditions = TodoyuFilterConditionManager::getFilterSetConditions($value);
-
+		
 		foreach($filterConditions as $condition)	{
 			$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($type, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
 			if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
@@ -413,15 +414,19 @@ class TodoyuFiltersetManager {
 		$filter = TodoyuFiltersetManager::getFiltersetRecord($value);
 
 		$conjunction = $filter['conjunction'] ? $filter['conjunction'] : 'AND';
-
+		
 		$localWhereString = implode(' '.$conjunction.' ', $localWhere);
-
+		
 		if( $localWhereString )	{
 			$localWhereString = '('.$localWhereString.')';
+			$returnArray['where']	= $localWhereString;
 		}
-
-		return array('tables' => $localTables, 'where' => $localWhereString);
-
+		
+		if(count($localTables) > 0)	{
+			$returnArray['tables']	= $localTables;
+		}
+		
+		return $returnArray;
 	}
 
 
@@ -436,7 +441,8 @@ class TodoyuFiltersetManager {
 	public static function getFilterSetSelectionOptions($definitions)	{
 		$optionsArray = array();
 
-		$filtersets	= self::getTypeFiltersets('TASK');
+		$filtersets	= self::getTypeFiltersets('TASK', userid(),true);
+		$filtersets	= array_merge($filtersets, self::getTypeFiltersets('TASK', userid(),false));
 
 		$curFilter = TodoyuRequest::getParam('filterID') ? TodoyuRequest::getParam('filterID') : TodoyuSearchPreferences::getCurrentFilter();
 
