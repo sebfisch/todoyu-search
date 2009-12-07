@@ -47,7 +47,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Update value of given conditon to given value 
+	 * Update value of given filter conditon to given value 
 	 *
 	 *	@param	String	conditionName
 	 *	@param	String	value
@@ -59,7 +59,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Enter description here...
+	 * Update negation of given search filter condition
 	 *
 	 *	@param	String	conditionName
 	 *	@param	Boolean	negate
@@ -71,9 +71,10 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Enter description here...
+	 * Check whether given search filter condition is currently negated
 	 *
 	 *	@param	String	conditionName
+	 * 	@return	Boolean
 	 */
 	isNegated: function(conditionName) {
 		return this.conditions[conditionName].negate === true;

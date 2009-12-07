@@ -30,8 +30,7 @@ Todoyu.Ext.search = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Initialize
 	 */
 	init: function() {
 
@@ -40,11 +39,11 @@ Todoyu.Ext.search = {
 
 
 	/**
-	 * Enter description here...
+	 * Refresh search results: get current filters + conditions, active tab and conjunction and get, show the search results accordingly
 	 *
-	 *	@param unknown_type filterID
+	 *	@param	Integer	filterID
 	 */
-	refreshSearchResults: function(filterID)	{
+	refreshSearchResults: function(idActiveFilter)	{
 		var filterConditions = Object.toJSON({
 			Conditions: Todoyu.Ext.search.Filter.Conditions
 		});
@@ -52,11 +51,11 @@ Todoyu.Ext.search = {
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
 			'parameters': {
-				'activeFilter': filterID,
-				'additionalFilterConditions': filterConditions,
-				'useConditionsFromJSON': true,
-				'ActiveTab': this.activeTab,
-				'Conjunction': Todoyu.Ext.search.Filter.Conjunction
+				'activeFilter':					idActiveFilter,
+				'additionalFilterConditions':	filterConditions,
+				'useConditionsFromJSON':		true,
+				'ActiveTab':					this.activeTab,
+				'Conjunction':					Todoyu.Ext.search.Filter.Conjunction
 			}
 		};
 

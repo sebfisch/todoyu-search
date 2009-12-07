@@ -59,8 +59,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type tab
-	 *	@param unknown_type conditions
+	 *	@param	String	tab
+	 *	@param	Object	conditions
 	 */
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
@@ -81,7 +81,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type tab
+	 *	@param	String	tab
 	 */
 	setTab: function(tab)	{
 		this.activeTab = tab;
@@ -92,6 +92,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
+	 * 	@return	String
 	 */
 	getTab: function() {
 		return this.activeTab;
@@ -123,6 +124,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
+	 *	@return	String
 	 */
 	getConjunction: function() {
 		return this.ext.FilterControl.getConjunction();
@@ -133,8 +135,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type event
-	 *	@param unknown_type tab
+	 *	@param	Object	event
+	 *	@param	String	tab
 	 */
 	onTabClick: function(event, tab)	{
 		if( tab !== this.getTab() ) {
@@ -150,7 +152,6 @@ Todoyu.Ext.search.Filter = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	reset: function() {
 		this.Conditions.clear();
@@ -164,7 +165,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type tab
+	 *	@param	String	tab
 	 */
 	updateControll: function(tab) {
 		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
@@ -184,10 +185,10 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type type
-	 *	@param unknown_type condition
-	 *	@param unknown_type value
-	 *	@param unknown_type negate
+	 *	@param	String	type
+	 *	@param	String	condition
+	 *	@param	String	value
+	 *	@param	Boolean	negate
 	 */
 	addNewCondition: function(type, condition, value, negate) {
 		var name = this.makeNewWidgetName(condition);
