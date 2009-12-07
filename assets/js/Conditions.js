@@ -23,35 +23,37 @@ Todoyu.Ext.search.Filter.Conditions = {
 	conditions: {},
 
 
+
 	/**
-	 * Enter description here...
+	 * Add condition
 	 *
-	 *	@param unknown_type name
-	 *	@param unknown_type type
-	 *	@param unknown_type condition
-	 *	@param unknown_type value
-	 *	@param unknown_type negate
+	 *	@param	String	name
+	 *	@param	String	type
+	 *	@param	String	condition
+	 *	@param	String	value
+	 *	@param	Boolean	negate
 	 */
 	add: function(name, type, condition, value, negate) {
 		name = condition + '-' + name;
 		this.conditions[name] = {
-			'name': name,
-			'type': type,
-			'condition': condition,
-			'value': value,
-			'negate': negate
+			'name':			name,
+			'type':			type,
+			'condition':	condition,
+			'value':		value,
+			'negate':		negate
 		};
 	},
 
 
+
 	/**
-	 * Enter description here...
+	 * Update value of given conditon to given value 
 	 *
-	 *	@param unknown_type name
-	 *	@param unknown_type value
+	 *	@param	String	conditionName
+	 *	@param	String	value
 	 */
-	updateValue: function(name, value) {
-		this.conditions[name].value = value;
+	updateValue: function(conditionName, value) {
+		this.conditions[conditionName].value = value;
 	},
 
 
@@ -59,11 +61,11 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type name
-	 *	@param unknown_type negate
+	 *	@param	String	conditionName
+	 *	@param	Boolean	negate
 	 */
-	updateNegation: function(name, negate) {
-		this.conditions[name].negate = negate === true;
+	updateNegation: function(conditionName, negate) {
+		this.conditions[conditionName].negate = negate === true;
 	},
 
 
@@ -71,39 +73,38 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type name
+	 *	@param	String	conditionName
 	 */
-	isNegated: function(name) {
-		return this.conditions[name].negate === true;
+	isNegated: function(conditionName) {
+		return this.conditions[conditionName].negate === true;
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Toggle negation flag of given condition
 	 *
-	 *	@param unknown_type name
+	 *	@param	String	conditionName
 	 */
-	toggleNegated: function(name) {
-		this.conditions[name].negate = !this.conditions[name].negate;
+	toggleNegated: function(conditionName) {
+		this.conditions[conditionName].negate = ! this.conditions[conditionName].negate;
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Remove given condition from current search filter conditions
 	 *
-	 *	@param unknown_type name
+	 *	@param	String	conditionName
 	 */
-	remove: function(name) {
-		delete this.conditions[name];
+	remove: function(conditionName) {
+		delete this.conditions[conditionName];
 	},
 
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Clear current search filter conditions
 	 */
 	clear: function() {
 		this.conditions = {};
@@ -112,9 +113,10 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Enter description here...
+	 * Get all current search filter conditions, optionally as JSON
 	 *
-	 *	@param unknown_type asJSON
+	 *	@param	Boolean	asJSON
+	 * 	@return	Mixed
 	 */
 	getAll: function(asJSON) {
 		if( asJSON ) {
@@ -127,8 +129,9 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Get amount of current set search filter conditions
+	 * 
+	 *	@return	Integer
 	 */
 	size: function() {
 		return Object.keys(this.conditions).size();
