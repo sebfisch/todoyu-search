@@ -20,15 +20,18 @@
 
 Todoyu.Ext.search.FilterControl = {
 
-	ext: Todoyu.Ext.search,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:					Todoyu.Ext.search,
 
-	conditionsObserver: null,
-	conjunctionObserver: null,
+	conditionsObserver:		null,
+	conjunctionObserver:	null,
+
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Initialize search filter controls: install observers
 	 */
 	init: function() {
 		this.installObservers();
@@ -51,7 +54,6 @@ Todoyu.Ext.search.FilterControl = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	uninstallObservers: function() {
 		$('filtercontrol-conditions').stopObserving('change', this.conditionsObserver);

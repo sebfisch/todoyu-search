@@ -20,11 +20,15 @@
 
 Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
-	ext: Todoyu.Ext.search,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:		Todoyu.Ext.search,
 
-	key: 'searchfilterlist',
+	key:		'searchfilterlist',
 
-	sortables: [],
+	sortables:	[],
+
 
 
 	/**

@@ -20,7 +20,10 @@
 
 Todoyu.Ext.search.Preference = {
 
-	ext: Todoyu.Ext.search,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.search,
 
 
 

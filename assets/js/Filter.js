@@ -25,18 +25,21 @@
 
 Todoyu.Ext.search.Filter = {
 
-	ext: Todoyu.Ext.search,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:		Todoyu.Ext.search,
 
-	activeTab: null,
+	activeTab:	null,
 
 
 
 	/**
-	 * Enter description here...
+	 * Initialize search filters: inits active tab, active filterset + control + conditions, and updates to show the resp. results 
 	 *
-	 *	@param unknown_type idProject
-	 *	@param unknown_type conditions
-	 *	@param unknown_type updateResults
+	 *	@param	Integer	idProject
+	 *	@param	Array	conditions
+	 *	@param	Boolean	updateResults
 	 */
 	init: function(activeTab, idFilterset, conditions, updateResults) {
 		this.setTab(activeTab);

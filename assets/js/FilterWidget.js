@@ -22,16 +22,19 @@
  * Filter widget in search area
  */
 Todoyu.Ext.search.FilterWidget = {
-	
-	ext: Todoyu.Ext.search,
-	
+
+	/**
+	 *	Ext shortcut
+	 */
+	ext:		Todoyu.Ext.search,
+
 	/**
 	 * Timeouts of widgets
 	 */
-	timeout: {},
-	
-	
-	
+	timeout:	{},
+
+
+
 	/**
 	 * Add a new widget to the filter area
 	 * 
@@ -39,13 +42,12 @@ Todoyu.Ext.search.FilterWidget = {
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
-		// set back selector
+			// set back selector
 		select.options[0].selected = true;
-		//count of equal elements. (used for the id)
+			// count of equal elements. (used for the ID)
 		var numOfWidget = this.detectNumOfWidget(chosenWidget);
-
-		var url		= Todoyu.getUrl('search', 'filtercontroller');
-		var options	= {
+		var url			= Todoyu.getUrl('search', 'filtercontroller');
+		var options		= {
 			'parameters': {
 				'choosenWidget':	chosenWidget,
 				'numOfWidget':		'new'+numOfWidget,
@@ -236,6 +238,5 @@ Todoyu.Ext.search.FilterWidget = {
 			// Create a new timeout to update the results (can be cleared by new inputs)
 		this.timeout[name] = this.ext.Filter.updateResults.bind(this.ext.Filter).delay(0.4);
 	}
-	
-	
+
 };

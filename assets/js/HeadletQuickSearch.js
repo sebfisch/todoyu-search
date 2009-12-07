@@ -20,9 +20,14 @@
 
 Todoyu.Ext.search.Headlet.QuickSearch = {
 
-	ext: Todoyu.Ext.search,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:			Todoyu.Ext.search,
 
-	searchField: null,
+	searchField:	null,
+
+
 
 	/**
 	 * Enter description here...
@@ -203,21 +208,24 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	Suggest: {
 
-		ext: Todoyu.Ext.search,
+		/**
+		 *	Ext shortcut
+		 */
+		ext:			Todoyu.Ext.search,
 
-		headlet: null,
+		headlet:		null,
 
-		suggestID: 'headletquicksearch-suggest',
+		suggestID:		'headletquicksearch-suggest',
 
-		frequency: 700,
+		frequency:		700,
 
-		navigatePos: -1,
+		navigatePos:	-1,
 
-		navigateActive: null,
+		navigateActive:	null,
 
-		numElements: 0,
+		numElements:	0,
 
-		timeout: null,
+		timeout:		null,
 
 		/**
 		 * Enter description here...
@@ -233,7 +241,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 *
 		 */
 		installObserver: function() {
 			this.headlet.searchField.observe('keyup', this.onFieldUpdate.bind(this));
@@ -282,7 +289,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 *
 		 */
 		isNavigating: function() {
 			return this.navigatePos > -1;
@@ -292,7 +298,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 *
 		 */
 		goToActiveElement: function() {
 			eval(this.navigateActive.down().readAttribute('onclick'));
@@ -342,7 +347,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Show headlet
-		 *
 		 */
 		show: function() {
 			this.load(this.headlet.getValue());
@@ -352,7 +356,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Hide headlet
-		 *
 		 */
 		hide: function() {
 			$(this.suggestID).hide();
@@ -364,7 +367,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 *
 		 */
 		makeDiv: function() {
 			var suggest = '';
@@ -396,7 +398,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 *
 		 */
 		observeCloseEvents: function() {
 			Event.observe(document.body, 'click', this.hide.bind(this));
@@ -429,7 +430,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 *	@param unknown_type response
+		 *	@param	Object	response
 		 */
 		display: function(response) {
 			var el = $(this.suggestID);
