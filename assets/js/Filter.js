@@ -42,7 +42,7 @@ Todoyu.Ext.search.Filter = {
 	 *	@param	Boolean	updateResults
 	 */
 	init: function(activeTab, idFilterset, conditions, updateResults) {
-		this.setTab(activeTab);
+		this.setActiveTab(activeTab);
 		this.setFiltersetID(idFilterset);
 
 		this.ext.FilterControl.init();
@@ -57,7 +57,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Init search conditions as given for given tab, install filters and consequent autocompleter, negations to given tab
 	 *
 	 *	@param	String	tab
 	 *	@param	Object	conditions
@@ -79,22 +79,22 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Set active tab to given tab
 	 *
 	 *	@param	String	tab
 	 */
-	setTab: function(tab)	{
+	setActiveTab: function(tab)	{
 		this.activeTab = tab;
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Get currently active tab
 	 *
 	 * 	@return	String
 	 */
-	getTab: function() {
+	getActiveTab: function() {
 		return this.activeTab;
 	},
 
@@ -139,8 +139,8 @@ Todoyu.Ext.search.Filter = {
 	 *	@param	String	tab
 	 */
 	onTabClick: function(event, tab)	{
-		if( tab !== this.getTab() ) {
-			this.setTab(tab);
+		if( tab !== this.getActiveTab() ) {
+			this.setActiveTab(tab);
 
 			this.ext.Preference.saveActiveTab(tab);
 
@@ -235,7 +235,7 @@ Todoyu.Ext.search.Filter = {
 	 *	@param Integer idFilterset
 	 */
 	loadFilterset: function(tab, idFilterset) {
-		if (tab !== this.getTab()) {
+		if (tab !== this.getActiveTab()) {
 			this.updateFilterArea(tab, idFilterset);
 		} else {
 			this.updateWidgetArea(tab, idFilterset);
@@ -296,7 +296,7 @@ Todoyu.Ext.search.Filter = {
 	 *	@param unknown_type conjunction
 	 */
 	updateResults: function(tab, idFilterset, conditions, conjunction) {
-		tab 		= tab === undefined ? this.getTab() : tab ;
+		tab 		= tab === undefined ? this.getActiveTab() : tab ;
 		idFilterste	= idFilterset === undefined ? this.getFiltersetID() : idFilterset ;
 		conditions	= conditions === undefined ? this.Conditions.getAll() : conditions ;
 		conjunction	= conjunction === undefined ? this.getConjunction() : conjunction ;
@@ -327,7 +327,7 @@ Todoyu.Ext.search.Filter = {
 	updateConditionValue: function(name, value) {
 		this.setConditionValue(name, value);
 
-		this.updateResults(this.getTab(), 0);
+		this.updateResults(this.getActiveTab(), 0);
 	},
 	
 	
@@ -353,7 +353,7 @@ Todoyu.Ext.search.Filter = {
 	updateConditionNegation: function(name, negate) {
 		this.Conditions.updateNegation(name, negate);
 
-		this.updateResults(this.getTab(), 0);
+		this.updateResults(this.getActiveTab(), 0);
 	},
 
 
@@ -366,7 +366,7 @@ Todoyu.Ext.search.Filter = {
 	toggleConditionNegation: function(name) {
 		this.Conditions.toggleNegated(name);
 
-		this.updateResults(this.getTab(), 0);
+		this.updateResults(this.getActiveTab(), 0);
 	},
 
 
@@ -388,7 +388,7 @@ Todoyu.Ext.search.Filter = {
 					'parameters': {
 						'action':		'saveAsNew',
 						'title':		title,
-						'type':			this.getTab(),
+						'type':			this.getActiveTab(),
 						'conditions':	this.Conditions.getAll(true),
 						'conjunction':	this.getConjunction()
 					}
@@ -419,7 +419,7 @@ Todoyu.Ext.search.Filter = {
 			'parameters': {
 				'action':		'save',
 				'filterset':	idFilterset,
-				'tab':			this.getTab(),
+				'tab':			this.getActiveTab(),
 				'conditions':	this.Conditions.getAll(true),
 				'conjunction':	this.getConjunction()
 			}

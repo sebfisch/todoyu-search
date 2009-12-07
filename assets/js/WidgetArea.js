@@ -118,7 +118,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 			var params	= Object.toQueryString({
 				'action': 'autocompletion',
 				'completionID': name,
-				'filtertype': this.ext.Filter.getTab()
+				'filtertype': this.ext.Filter.getActiveTab()
 			});
 			var options	= {
 				'parameters':			params,

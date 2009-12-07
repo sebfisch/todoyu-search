@@ -130,7 +130,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *	@param unknown_type tab
 	 */
 	saveFilterset: function(idFilterset, tab) {
-		if( tab === this.ext.Filter.getTab() ) {
+		if( tab === this.ext.Filter.getActiveTab() ) {
 			if(confirm('[LLL:search.overwriteFilterSet]'))	{
 				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterset, this.onFiltersetSaved.bind(this, idFilterset));
 			}
@@ -148,7 +148,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *	@param unknown_type response
 	 */
 	onFiltersetSaved: function(idFilterset, response) {
-		var tab = this.ext.Filter.getTab();
+		var tab = this.ext.Filter.getActiveTab();
 		this.loadFilterset(tab, idFilterset);
 	},
 
