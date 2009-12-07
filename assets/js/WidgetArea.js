@@ -31,11 +31,11 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type type
-	 * @param unknown_type condition
-	 * @param unknown_type value
-	 * @param unknown_type negate
+	 *	@param unknown_type name
+	 *	@param unknown_type type
+	 *	@param unknown_type condition
+	 *	@param unknown_type value
+	 *	@param unknown_type negate
 	 */
 	add: function(name, type, condition, value, negate) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
@@ -60,9 +60,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type condition
-	 * @param unknown_type response
+	 *	@param unknown_type name
+	 *	@param unknown_type condition
+	 *	@param unknown_type response
 	 */
 	onAdded: function(name, condition, response) {
 		var widgetID	= condition + '-' + name;
@@ -76,7 +76,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	remove: function(name) {
 		$(name).remove();
@@ -107,7 +107,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	installAutocomplete: function(name) {
 		var acField = $(name).select('input.autocomplete')[0];
@@ -137,9 +137,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type textInput
-	 * @param unknown_type listElement
+	 *	@param unknown_type name
+	 *	@param unknown_type textInput
+	 *	@param unknown_type listElement
 	 */
 	onAutocompleteSelect: function(name, textInput, listElement) {
 		var idItem	= listElement.id;
@@ -152,7 +152,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	installNegation: function(name) {
 		var negElement = $(name).select('span.negation')[0];
@@ -166,8 +166,8 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type event
-	 * @param unknown_type name
+	 *	@param unknown_type event
+	 *	@param unknown_type name
 	 */
 	onNegation: function(event, name) {
 		this.ext.Filter.toggleConditionNegation(name);

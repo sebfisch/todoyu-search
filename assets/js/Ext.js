@@ -42,7 +42,7 @@ Todoyu.Ext.search = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type filterID
+	 *	@param unknown_type filterID
 	 */
 	refreshSearchResults: function(filterID)	{
 		var filterConditions = Object.toJSON({

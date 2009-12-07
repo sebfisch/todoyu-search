@@ -35,7 +35,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Add a new widget to the filter area
 	 * 
-	 * @param	DomElement		select			The select element where the new widget has ben chosen
+	 *	@param	DomElement		select			The select element where the new widget has ben chosen
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
@@ -70,7 +70,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type widgetID
+	 *	@param unknown_type widgetID
 	 */
 	removeWidgetFromFilterArea: function(widgetID)	{
 		$(widgetID).remove();
@@ -82,7 +82,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type classNameOfWidget
+	 *	@param unknown_type classNameOfWidget
 	 */
 	detectNumOfWidget: function(classNameOfWidget)	{
 		var className = classNameOfWidget.split('_');
@@ -112,7 +112,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type elementID
+	 *	@param unknown_type elementID
 	 */
 	initAutocompletionSingle: function(elementID)	{
 		var autocompletion = $(elementID).select('.autocomplete');
@@ -143,7 +143,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type elementID
+	 *	@param unknown_type elementID
 	 */
 	initNegationSingle: function(elementID)	{
 		var negation = $(elementID).select('.negation');
@@ -157,7 +157,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type autoCompleterID
+	 *	@param unknown_type autoCompleterID
 	 */
 	setUpAutocompleter: function(autoCompleterID)	{
 		var Url = Todoyu.getUrl('search', 'filtercontroller');
@@ -179,7 +179,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type negationID
+	 *	@param unknown_type negationID
 	 */
 	setUpNegation: function(negationID)	{
 		$(negationID).observe('click', Todoyu.Ext.search.Filter.setNegation.bind(Todoyu.Ext.search.Filter, negationID));
@@ -190,7 +190,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type autocompleterID
+	 *	@param unknown_type autocompleterID
 	 */
 	filterWidgetIDFromAutoCompleterID: function(autocompleterID)	{
 		splittedID = autocompleterID.split('-');
@@ -202,8 +202,8 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type elementText
-	 * @param unknown_type elementLi
+	 *	@param unknown_type elementText
+	 *	@param unknown_type elementLi
 	 */
 	handleAutocompleteInput: function(elementText, elementLi)	{
 		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
@@ -217,7 +217,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
 	 * 
-	 * @param	DomElement		input			The textinput
+	 *	@param	DomElement		input			The textinput
 	 */
 	onTextEntered: function(input) {
 			// Get value and widet name

@@ -34,9 +34,9 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idProject
-	 * @param unknown_type conditions
-	 * @param unknown_type updateResults
+	 *	@param unknown_type idProject
+	 *	@param unknown_type conditions
+	 *	@param unknown_type updateResults
 	 */
 	init: function(activeTab, idFilterset, conditions, updateResults) {
 		this.setTab(activeTab);
@@ -56,8 +56,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
-	 * @param unknown_type conditions
+	 *	@param unknown_type tab
+	 *	@param unknown_type conditions
 	 */
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
@@ -78,7 +78,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
+	 *	@param unknown_type tab
 	 */
 	setTab: function(tab)	{
 		this.activeTab = tab;
@@ -99,7 +99,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
+	 *	@param Integer idFilterset
 	 */
 	setFiltersetID: function(idFilterset) {
 		this.FilterID = idFilterset;
@@ -130,8 +130,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type event
-	 * @param unknown_type tab
+	 *	@param unknown_type event
+	 *	@param unknown_type tab
 	 */
 	onTabClick: function(event, tab)	{
 		if( tab !== this.getTab() ) {
@@ -161,7 +161,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
+	 *	@param unknown_type tab
 	 */
 	updateControll: function(tab) {
 		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
@@ -181,10 +181,10 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type type
-	 * @param unknown_type condition
-	 * @param unknown_type value
-	 * @param unknown_type negate
+	 *	@param unknown_type type
+	 *	@param unknown_type condition
+	 *	@param unknown_type value
+	 *	@param unknown_type negate
 	 */
 	addNewCondition: function(type, condition, value, negate) {
 		var name = this.makeNewWidgetName(condition);
@@ -200,7 +200,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	removeCondition: function(name) {
 		this.Conditions.remove(name);
@@ -214,7 +214,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type condition
+	 *	@param unknown_type condition
 	 */
 	makeNewWidgetName: function(condition) {
 		var numOfWidgets = this.Conditions.size();
@@ -227,8 +227,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
-	 * @param Integer idFilterset
+	 *	@param unknown_type tab
+	 *	@param Integer idFilterset
 	 */
 	loadFilterset: function(tab, idFilterset) {
 		if (tab !== this.getTab()) {
@@ -244,8 +244,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
-	 * @param Integer idFilterset
+	 *	@param unknown_type tab
+	 *	@param Integer idFilterset
 	 */
 	updateFilterArea: function(tab, idFiterset) {
 		var url		= Todoyu.getUrl('search', 'filterarea');
@@ -265,8 +265,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
-	 * @param Integer idFilterset
+	 *	@param unknown_type tab
+	 *	@param Integer idFilterset
 	 */
 	updateWidgetArea: function(tab, idFilterset) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
@@ -287,9 +287,9 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
-	 * @param unknown_type conditions
-	 * @param unknown_type conjunction
+	 *	@param Integer idFilterset
+	 *	@param unknown_type conditions
+	 *	@param unknown_type conjunction
 	 */
 	updateResults: function(tab, idFilterset, conditions, conjunction) {
 		tab 		= tab === undefined ? this.getTab() : tab ;
@@ -317,8 +317,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type value
+	 *	@param unknown_type name
+	 *	@param unknown_type value
 	 */
 	updateConditionValue: function(name, value) {
 		this.setConditionValue(name, value);
@@ -331,8 +331,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Set the new value of a condition without updating the results
 	 * 
-	 * @param	String		name		Name of the condition/widget
-	 * @param	Mixed		value		New value
+	 *	@param	String		name		Name of the condition/widget
+	 *	@param	Mixed		value		New value
 	 */
 	setConditionValue: function(name, value) {
 		this.Conditions.updateValue(name, value);
@@ -343,8 +343,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type negate
+	 *	@param unknown_type name
+	 *	@param unknown_type negate
 	 */
 	updateConditionNegation: function(name, negate) {
 		this.Conditions.updateNegation(name, negate);
@@ -357,7 +357,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	toggleConditionNegation: function(name) {
 		this.Conditions.toggleNegated(name);
@@ -370,7 +370,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type onComplete
+	 *	@param unknown_type onComplete
 	 */
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
@@ -406,8 +406,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
-	 * @param unknown_type onComplete
+	 *	@param Integer idFilterset
+	 *	@param unknown_type onComplete
 	 */
 	saveCurrentAreaAsFilterset: function(idFilterset, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');
@@ -433,8 +433,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
-	 * @param Integer idFilterset
+	 *	@param unknown_type tab
+	 *	@param Integer idFilterset
 	 */
 	saveActiveFilterset: function(tab, idFilterset) {
 		var action		= 'activeFilterset';

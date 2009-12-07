@@ -26,11 +26,11 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type type
-	 * @param unknown_type condition
-	 * @param unknown_type value
-	 * @param unknown_type negate
+	 *	@param unknown_type name
+	 *	@param unknown_type type
+	 *	@param unknown_type condition
+	 *	@param unknown_type value
+	 *	@param unknown_type negate
 	 */
 	add: function(name, type, condition, value, negate) {
 		name = condition + '-' + name;
@@ -47,8 +47,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type value
+	 *	@param unknown_type name
+	 *	@param unknown_type value
 	 */
 	updateValue: function(name, value) {
 		this.conditions[name].value = value;
@@ -59,8 +59,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type negate
+	 *	@param unknown_type name
+	 *	@param unknown_type negate
 	 */
 	updateNegation: function(name, negate) {
 		this.conditions[name].negate = negate === true;
@@ -71,7 +71,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	isNegated: function(name) {
 		return this.conditions[name].negate === true;
@@ -82,7 +82,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	toggleNegated: function(name) {
 		this.conditions[name].negate = !this.conditions[name].negate;
@@ -93,7 +93,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
+	 *	@param unknown_type name
 	 */
 	remove: function(name) {
 		delete this.conditions[name];
@@ -114,7 +114,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type asJSON
+	 *	@param unknown_type asJSON
 	 */
 	getAll: function(asJSON) {
 		if( asJSON ) {

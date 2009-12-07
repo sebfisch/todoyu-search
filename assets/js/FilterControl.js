@@ -66,7 +66,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type event
+	 *	@param	unknown_type event
 	 */
 	onConditionsChange: function(event) {
 		var value 		= event.element().getValue();
@@ -83,7 +83,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type event
+	 *	@param	unknown_type event
 	 */
 	onConjunctionChange: function(event) {
 		var value		= event.element().getValue();

@@ -27,10 +27,10 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type action
-	 * @param unknown_type value
-	 * @param Integer idItem
-	 * @param unknown_type onComplete
+	 *	@param unknown_type action
+	 *	@param unknown_type value
+	 *	@param Integer idItem
+	 *	@param unknown_type onComplete
 	 */
 	save: function(action, value, idItem, onComplete) {
 		Todoyu.Pref.save('search', action, value, idItem, onComplete)
@@ -41,7 +41,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type tab
+	 *	@param unknown_type tab
 	 */
 	saveActiveTab: function(tab)	{
 		var action = 'saveActiveTab';
@@ -79,8 +79,8 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type elementID
-	 * @param unknown_type elementDisplay
+	 *	@param unknown_type elementID
+	 *	@param unknown_type elementDisplay
 	 */
 	saveToggeling: function(elementID, elementDisplay)	{
 		var action = 'saveToggleStatus';
@@ -98,7 +98,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type list
+	 *	@param unknown_type list
 	 */
 	saveOrder: function(list)	{
 		var action = 'saveOrder';
@@ -112,8 +112,8 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type action
-	 * @param unknown_type value
+	 *	@param unknown_type action
+	 *	@param unknown_type value
 	 */
 	sendAction: function(action, value)	{
 		var url = Todoyu.getUrl('search', 'preference');

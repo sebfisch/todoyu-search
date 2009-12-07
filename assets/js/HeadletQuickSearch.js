@@ -78,6 +78,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	},
 
 
+
+/* ---------------------------------------------------------
+	Todoyu.Ext.search.Headlet.Quicksearch.Mode
+------------------------------------------------------------ */
+
 	/**
 	 * Enter description here...
 	 *
@@ -91,7 +96,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param Integer idFilterset
+		 *	@param Integer idFilterset
 		 */
 		init: function() {
 			this.button = $('headletquicksearch-mode-btn');
@@ -114,7 +119,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type mode
+		 *	@param unknown_type mode
 		 */
 		show: function(event) {
 			var btnOffset	= this.button.cumulativeOffset();
@@ -138,7 +143,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type mode
+		 *	@param unknown_type mode
 		 */
 		setMode: function(mode) {
 			$('headletquicksearch-mode').value = mode;
@@ -160,7 +165,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type event
+		 *	@param unknown_type event
 		 */
 		onSelect: function(event) {
 			var mode = event.findElement('li').readAttribute('mode');
@@ -186,6 +191,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	},
 
+
+
+/* ---------------------------------------------------------
+	Todoyu.Ext.search.Headlet.Quicksearch.Suggest
+------------------------------------------------------------ */
 
 	/**
 	 * Quicksearch headlet suggestions
@@ -234,7 +244,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type event
+		 *	@param unknown_type event
 		 */
 		onFieldUpdate: function(event) {
 			if( this.timeout !== null ) {
@@ -294,7 +304,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type down
+		 *	@param unknown_type down
 		 */
 		navigate: function(down) {
 				// Deactivate selection
@@ -397,7 +407,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type query
+		 *	@param unknown_type query
 		 */
 		load: function(query) {
 			var url		= Todoyu.getUrl('search', 'suggest');
@@ -419,7 +429,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type response
+		 *	@param unknown_type response
 		 */
 		display: function(response) {
 			var el = $(this.suggestID);
