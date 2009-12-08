@@ -101,7 +101,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Set current search filter to given ID 
 	 *
 	 *	@param Integer idFilterset
 	 */
@@ -112,8 +112,9 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Get ID of current search filter
+	 * 
+	 *	@return	Integer
 	 */
 	getFiltersetID: function() {
 		return this.FilterID;
@@ -202,13 +203,13 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Remove given condition from current search filter conditions and evoke refresh of results
 	 *
-	 *	@param unknown_type name
+	 *	@param	String	name
 	 */
-	removeCondition: function(name) {
-		this.Conditions.remove(name);
-		this.WidgetArea.remove(name);
+	removeCondition: function(conditionName) {
+		this.Conditions.remove(conditionName);
+		this.WidgetArea.remove(conditionName);
 
 		this.updateResults();
 	},
@@ -345,10 +346,10 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Update negation of conditon with given state
 	 *
-	 *	@param unknown_type name
-	 *	@param unknown_type negate
+	 *	@param	String	name
+	 *	@param	Boolean	negate
 	 */
 	updateConditionNegation: function(name, negate) {
 		this.Conditions.updateNegation(name, negate);
