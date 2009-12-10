@@ -203,7 +203,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 		this.ext.Filter.saveActiveFilterset(tab, idFilterset);
 
-		if( tab !== this.ext.Filter.getTab() ) {
+		if( tab !== this.ext.Filter.getActiveTab() ) {
 			this.ext.Preference.saveActiveTab(tab);
 		}
 	},
