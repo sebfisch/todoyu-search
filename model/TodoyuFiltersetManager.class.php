@@ -28,7 +28,7 @@
 
 class TodoyuFiltersetManager {
 
-	const TABLE = 'ext_filter_set';
+	const TABLE = 'ext_search_filterset';
 
 	/**
 	 * Get filter
@@ -377,7 +377,7 @@ class TodoyuFiltersetManager {
 	 */
 	public static function Filter_filterset($value, $negate = false)	{
 		$idFilterset= intval($value);
-		
+
 		$localTables		= array();
 		$localWhere 		= array();
 		$localWhereString 	= '';
@@ -386,7 +386,7 @@ class TodoyuFiltersetManager {
 		$type = self::getFiltersetType($idFilterset);
 
 		$filterConditions = TodoyuFilterConditionManager::getFilterSetConditions($value);
-		
+
 		foreach($filterConditions as $condition)	{
 			$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($type, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
 			if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
@@ -414,18 +414,18 @@ class TodoyuFiltersetManager {
 		$filter = TodoyuFiltersetManager::getFiltersetRecord($value);
 
 		$conjunction = $filter['conjunction'] ? $filter['conjunction'] : 'AND';
-		
+
 		$localWhereString = implode(' '.$conjunction.' ', $localWhere);
-		
+
 		if( $localWhereString )	{
 			$localWhereString = '('.$localWhereString.')';
 			$returnArray['where']	= $localWhereString;
 		}
-		
+
 		if(count($localTables) > 0)	{
 			$returnArray['tables']	= $localTables;
 		}
-		
+
 		return $returnArray;
 	}
 

@@ -33,7 +33,7 @@ class TodoyuFilterConditionManager {
 	 * Condition table
 	 *
 	 */
-	const TABLE = 'ext_filter_condition';
+	const TABLE = 'ext_search_filtercondition';
 
 
 

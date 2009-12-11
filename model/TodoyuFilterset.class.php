@@ -35,7 +35,7 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	 * @param	Integer		$idFilterset
 	 */
 	public function __construct($idFilterset) {
-		parent::__construct($idFilterset, 'ext_filter_set');
+		parent::__construct($idFilterset, 'ext_search_filterset');
 	}
 
 
