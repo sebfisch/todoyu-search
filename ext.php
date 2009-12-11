@@ -26,10 +26,6 @@
  * @subpackage	Search
  */
 
-
-
-
-
 	// Declare ext ID, path
 define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');

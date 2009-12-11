@@ -27,6 +27,9 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		TodoyuPage::init('ext/search/view/ext.tmpl');
 		TodoyuPage::setTitle('LLL:search.page.title');
 
+			// Add assets
+		TodoyuPage::addExtAssets('search', 'public');
+
 		$activeTab	= $params['tab'];
 
 		if( ! empty($activeTab) ) { 	// If tab is set manualy
@@ -55,6 +58,12 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 			// Add JS init command
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')');
+
+			// Add assets of all search types
+		$assets = TodoyuFilterBase::getTypesAssets();
+		foreach($assets as $assetArray)	{
+			TodoyuPage::addExtAssets($assetArray['ext'], $assetArray['type']);
+		}
 
 		return TodoyuPage::render();
 	}

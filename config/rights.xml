@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights>
 	
-	<section name="panelwidgets">
-		<right name="PanelWidgetSearchFilterList" />
+	<section name="general">
+		<right name="use" />
+	</section>
+	
+	<section name="filtersets" require="use">
+		<right name="save" />
+		<right name="deleteAll" />
+		<right name="hideAll" />
+		<right name="renameAll" />
+	</section>
+	
+	<section name="panelwidgets" require="use">
+		<right name="panelwidget:searchFilterList" />
 	</section>
 	
 </rights>

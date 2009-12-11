@@ -65,14 +65,7 @@ class TodoyuFiltersetManager {
 	 * @return	Integer		Filterset ID
 	 */
 	public static function addFilterset(array $data) {
-		$data['date_create']	= NOW;
-		$data['date_update']	= NOW;
-
-		if( empty($data['id_user']) ) {
-			$data['id_user'] = userid();
-		}
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -87,9 +80,7 @@ class TodoyuFiltersetManager {
 	public static function updateFilterset($idFilterset, array $data) {
 		$idFilterset	= intval($idFilterset);
 
-		$data['date_update'] = NOW;
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idFilterset, $data);
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idFilterset, $data);
 	}
 
 
@@ -204,9 +195,12 @@ class TodoyuFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		type 	= ' . Todoyu::db()->quote($type, true) . '
-					AND deleted	= 0 AND is_hidden = '.($showHidden ? 1 : 0) . '
-					AND (id_user	= ' . $idUser . ' OR id_user = 0)';
+		$where	= '	type 		= ' . Todoyu::db()->quote($type, true) . ' AND
+					deleted		= 0 AND
+					is_hidden 	= ' . ($showHidden ? 1 : 0) . ' AND (
+						id_user_create	= ' . $idUser . ' OR
+						id_user_create	= 0
+					)';
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -243,8 +237,8 @@ class TodoyuFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_user	= ' . $idUser . ' AND
-					deleted	= 0';
+		$where	= '	id_user_create	= ' . $idUser . ' AND
+					deleted			= 0';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
@@ -270,8 +264,8 @@ class TodoyuFiltersetManager {
 
 		$fields	= 'title';
 		$table	= self::TABLE;
-		$where	= '		id_user	= ' . $idUser . '
-					AND deleted	= 0';
+		$where	= '	id_user_create	= ' . $idUser . ' AND
+					deleted			= 0';
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
@@ -314,7 +308,6 @@ class TodoyuFiltersetManager {
 		$idFilterset= intval($filterData['filterset']);
 
 		$filtersetData	= array(
-			'id_user'		=> userid(),
 			'type'			=> $filterData['type'],
 			'title'			=> $filterData['title'],
 			'conjunction'	=> $filterData['conjunction']
