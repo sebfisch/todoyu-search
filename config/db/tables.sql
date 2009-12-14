@@ -2,7 +2,7 @@
 -- Table structure for table `ext_search_filtercondition`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_search_filtercondition` (
+CREATE TABLE `ext_search_filtercondition` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `date_update` int(10) unsigned NOT NULL,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `ext_search_filtercondition` (
 -- Table structure for table `ext_search_filterset`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_search_filterset` (
+CREATE TABLE `ext_search_filterset` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `date_update` int(10) unsigned NOT NULL,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
