@@ -32,7 +32,7 @@ class TodoyuSearchManager {
 	 * @return	Array
 	 */
 	public static function getFilters() {
-		return $GLOBALS['CONFIG']['FILTERS'];
+		return TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS']);
 	}
 
 

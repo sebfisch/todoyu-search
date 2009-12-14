@@ -36,12 +36,12 @@ $CONFIG['EXT']['search']['info'] = array(
 	'version' => '0.1.0',
 	'constraints' => array(
 		'depends' => array(
-			'user'		=> '0.1.0',
-			'project' 	=> '0.1.0'
+
 		),
 		'conflicts' => array(
 
-		)
+		),
+		'system'	=> true
 	)
 );
 
