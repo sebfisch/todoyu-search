@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `ext_search_filterset` (
   `deleted` tinyint(2) NOT NULL DEFAULT '0',
   `sorting` smallint(5) unsigned NOT NULL,
   `is_hidden` tinyint(2) NOT NULL DEFAULT '0',
-  `id_user` smallint(5) unsigned NOT NULL,
+  `id_user_create` smallint(5) unsigned NOT NULL,
   `usergroups` varchar(16) NOT NULL,
   `type` varchar(16) NOT NULL,
   `title` varchar(64) NOT NULL,
