@@ -198,8 +198,8 @@ class TodoyuFiltersetManager {
 		$where	= '	type 		= ' . Todoyu::db()->quote($type, true) . ' AND
 					deleted		= 0 AND
 					is_hidden 	= ' . ($showHidden ? 1 : 0) . ' AND (
-						id_user_create	= ' . $idUser . ' OR
-						id_user_create	= 0
+						id_user	= ' . $idUser . ' OR
+						id_user	= 0
 					)';
 		$order	= 'sorting';
 
