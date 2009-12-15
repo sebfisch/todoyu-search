@@ -24,8 +24,6 @@
  */
 
 
-
-
 TodoyuPanelWidgetManager::addDefaultPanelWidget('search', 'TodoyuPanelWidgetSearchFilterList', 10);
 
 ?>
