@@ -19,8 +19,20 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Searchresults action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 
+	/**
+	 * Update search result for the submitted conditions
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function updateAction(array $params) {
 		$tab			= $params['tab'];
 		$idFilterset	= intval($params['filterset']);
@@ -30,9 +42,10 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 
 		if( $idFilterset > 0 || sizeof($conditions) > 0)	{
 			return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
+		} else {
+			return 'Invalid request';
 		}
 	}
-
 
 }
 

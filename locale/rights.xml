@@ -9,10 +9,17 @@
 		<label index="right.save">Save conditions as filterset</label>
 		<label index="right.deleteAll">Delete ALL filtersets</label>
 		<label index="right.hideAll">Hide ALL filtersets</label>
-		<label index="right.renameAll">Rename ALL filtersets</label>		
+		<label index="right.renameAll">Rename ALL filtersets</label>
 	</labels>
 	<labels lang="de">
-		<label index="section.panelwidgets">Steuerelemente</label>
-		<label index="right.panelwidget:searchFilterList">Suchfilter-Listen Element anzeigen</label>
+		<label index="section.general">Allgemeine Einstellungen</label>
+		<label index="right.use">Suche Benutzen</label>
+		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="right.panelwidget:searchFilterList">Suchfilterliste Widget</label>
+		<label index="section.filtersets">Filtersets</label>
+		<label index="right.save">Speichere Konditionen als Filterset</label>
+		<label index="right.deleteAll">Alle Filtersets löschen</label>
+		<label index="right.hideAll">Alle Filtersets verstecken</label>
+		<label index="right.renameAll">Alle Filtersets umbenennen</label>
 	</labels>
 </locallang>

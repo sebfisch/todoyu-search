@@ -164,6 +164,8 @@ abstract class TodoyuFilterBase {
 	 * @return	String
 	 */
 	public static function getFilterRenderFunction($type = 'task')	{
+		TodoyuExtensions::loadAllFilters();
+
 		$type	= strtoupper($type);
 
 		return $GLOBALS['CONFIG']['FILTERS'][$type]['config']['RenderFunction'];

@@ -211,7 +211,7 @@ class TodoyuFilterAreaRenderer {
 	 * @param	String		$conjunction
 	 * @return	String
 	 */
-	public static function renderResults($tab = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
+	public static function renderResults($tab = 'task', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 
