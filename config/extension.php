@@ -19,30 +19,15 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['EXT']['search']['suggestLimit']= 5;
-$CONFIG['EXT']['search']['defaultTab']	= 'task';
-
 
 TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
 
 
-//$CONFIG['EXT']['search']['modes']['all'] = array(
-//	'mode'		=> 'all',
-//	'label'		=> 'Alles durchsuchen',
-//	'position'	=> 0
-//);
-
-
-
-$CONFIG['EXT']['search']['renderer']['panel'][] = 'TodoyuSearchRenderer::renderPanelWidgets';
-$CONFIG['EXT']['search']['renderer']['tabs'][] = 'TodoyuSearchRenderer::renderInlineTabHead';
-
-
-
-
-if( TodoyuAuth::isLoggedIn() ) {
+if( allowed('search', 'headlet') ) {
 	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickSearch');
 }
 
+$CONFIG['EXT']['search']['suggestLimit']= 5;
+$CONFIG['EXT']['search']['defaultTab']	= 'task';
 
 ?>

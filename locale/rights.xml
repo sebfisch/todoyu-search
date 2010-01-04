@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="section.general">General settings</label>
 		<label index="right.use">Use search</label>
+		<label index="right.headlet">Use search headlet</label>
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="right.panelwidget:searchFilterList">Show search filter list widget</label>
 		<label index="section.filtersets">Filtersets</label>
@@ -13,7 +14,8 @@
 	</labels>
 	<labels lang="de">
 		<label index="section.general">Allgemeine Einstellungen</label>
-		<label index="right.use">Suche Benutzen</label>
+		<label index="right.use">Suche benutzen</label>
+		<label index="right.headlet">Suche im Header anzeigen</label>
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="right.panelwidget:searchFilterList">Suchfilterliste Widget</label>
 		<label index="section.filtersets">Filtersets</label>

@@ -3,6 +3,7 @@
 	
 	<section name="general">
 		<right name="use" />
+		<right name="headlet" require="use" />
 	</section>
 	
 	<section name="filtersets" require="use">
