@@ -75,7 +75,7 @@ class TodoyuFiltersetManager {
 	 *
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$data
-	 * @return	Bool		Updates successfully
+	 * @return	Boolean		Updates successfully
 	 */
 	public static function updateFilterset($idFilterset, array $data) {
 		$idFilterset	= intval($idFilterset);
@@ -89,7 +89,7 @@ class TodoyuFiltersetManager {
 	 * Delete filterset
 	 *
 	 * @param	Integer		$idFilterset			ID of the filterset
-	 * @param	Bool		$deleteConditions		Delete linked conditions too
+	 * @param	Boolean		$deleteConditions		Delete linked conditions too
 	 */
 	public static function deleteFilterset($idFilterset, $deleteConditions = true)	{
 		$idFilterset	= intval($idFilterset);
@@ -154,7 +154,7 @@ class TodoyuFiltersetManager {
 	 * Set hidden attribute of the filterset
 	 *
 	 * @param	Integer		$idFilterset
-	 * @param	Bool		$isHidden
+	 * @param	Boolean		$isHidden
 	 */
 	public static function updateFiltersetVisibility($idFilterset, $visible = true) {
 		$data = array(
@@ -212,7 +212,7 @@ class TodoyuFiltersetManager {
 	 * Get task filtersets
 	 *
 	 * @param	Integer	$idUser
-	 * @param	Bool	$showHidden
+	 * @param	Boolean	$showHidden
 	 * @return	Array
 	 */
 	public static function getTaskFiltersets($idUser = 0, $showHidden = true) {
@@ -364,7 +364,7 @@ class TodoyuFiltersetManager {
 	 * Filter after filter sets
 	 *
 	 * @param	Integer		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 * @todo 	Implement negation?
 	 */
@@ -434,8 +434,8 @@ class TodoyuFiltersetManager {
 	public static function getFilterSetSelectionOptions($definitions)	{
 		$optionsArray = array();
 
-		$filtersets	= self::getTypeFiltersets('TASK', userid(),true);
-		$filtersets	= array_merge($filtersets, self::getTypeFiltersets('TASK', userid(),false));
+		$filtersets	= self::getTypeFiltersets('TASK', userid(), true);
+		$filtersets	= array_merge($filtersets, self::getTypeFiltersets('TASK', userid(), false));
 
 		$curFilter = TodoyuRequest::getParam('filterID') ? TodoyuRequest::getParam('filterID') : TodoyuSearchPreferences::getCurrentFilter();
 
@@ -443,8 +443,10 @@ class TodoyuFiltersetManager {
 			if( $filterSet['id'] != $curFilter )	{
 				if( self::checkIfFilterIsUsed($filterSet['id'], $curFilter) )	{
 					$selected = ($filterSet['id'] == $definitions['value']);
-					$optionsArray[$filterSet['id']] = array('label' => $filterSet['title'],
-															'selected' => $selected);
+					$optionsArray[$filterSet['id']] = array(
+						'label'		=> $filterSet['title'],
+						'selected'	=> $selected
+					);
 				}
 			}
 		}
@@ -471,7 +473,7 @@ class TodoyuFiltersetManager {
 				if( $condition['value'] == $curFilter )	{
 					return false;
 				} else {
-					if(!self::checkIfFilterIsUsed($condition['value'], $curFilter))	{
+					if( ! self::checkIfFilterIsUsed($condition['value'], $curFilter) )	{
 						return false;
 					}
 				}

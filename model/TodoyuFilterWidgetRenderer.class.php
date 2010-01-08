@@ -35,7 +35,7 @@ class TodoyuFilterWidgetRenderer {
 	 * @param	String		$widgetKey
 	 * @param	String		$widgetName
 	 * @param	Mixed		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	String
 	 */
 	public static function renderWidget($type, $widgetKey, $widgetName = 'new1', $value = '', $negate = false) {

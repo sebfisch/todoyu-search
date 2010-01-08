@@ -41,7 +41,7 @@ Todoyu.Ext.search = {
 	/**
 	 * Refresh search results: get current filters + conditions, active tab and conjunction and get, show the search results accordingly
 	 *
-	 *	@param	Integer	filterID
+	 * @param	Integer	filterID
 	 */
 	refreshSearchResults: function(idActiveFilter)	{
 		var filterConditions = Object.toJSON({

@@ -117,7 +117,7 @@ abstract class TodoyuFilterBase {
 	 * Check if filter exists in config
 	 *
 	 * @param	String		$filter
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	protected function isFilter($filter) {
 		$filterMethod = $this->getFilterMethod($filter);
@@ -331,7 +331,7 @@ abstract class TodoyuFilterBase {
 
 
 	/**
-	 * gets the assets for each filtertype configured in the filter array
+	 * Gets the assets for each filtertype configured in the filter array
 	 *
 	 * @return	Array
 	 */

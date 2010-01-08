@@ -30,10 +30,10 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type action
-	 *	@param unknown_type value
-	 *	@param Integer idItem
-	 *	@param unknown_type onComplete
+	 * @param	String	action
+	 * @param	String	value
+	 * @param	String	idItem
+	 * @param	unknown_type onComplete
 	 */
 	save: function(action, value, idItem, onComplete) {
 		Todoyu.Pref.save('search', action, value, idItem, onComplete)
@@ -44,7 +44,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type tab
+	 * @param	String	tab
 	 */
 	saveActiveTab: function(tab)	{
 		var action = 'saveActiveTab';
@@ -56,7 +56,6 @@ Todoyu.Ext.search.Preference = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	saveCurrentFilter: function()	{
 		var action	= 'saveCurrentFilterSet';
@@ -69,7 +68,6 @@ Todoyu.Ext.search.Preference = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	removeCurrentFilter: function()	{
 		var action	= 'removeCurrentFilterSet';
@@ -82,15 +80,15 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type elementID
-	 *	@param unknown_type elementDisplay
+	 * @param	String	elementID
+	 * @param	Boolean	elementDisplay
 	 */
 	saveToggeling: function(elementID, elementDisplay)	{
 		var action = 'saveToggleStatus';
 
 		var value = Object.toJSON({
-			elementID: elementID,
-			elementDisplay: elementDisplay
+			elementID:		elementID,
+			elementDisplay:	elementDisplay
 		});
 
 		this.sendAction(action, value);
@@ -101,7 +99,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type list
+	 * @param	String	list
 	 */
 	saveOrder: function(list)	{
 		var action = 'saveOrder';
@@ -115,15 +113,15 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type action
-	 *	@param unknown_type value
+	 * @param	String	action
+	 * @param	String	value
 	 */
 	sendAction: function(action, value)	{
 		var url = Todoyu.getUrl('search', 'preference');
 		var options = {
 			'parameters': {
-				'action': action,
-				'value': value
+				'action':	action,
+				'value':	value
 			}
 		};
 

@@ -8,6 +8,7 @@
 				<span class="true" {if $definitions.negate == 0}style="display:none"{/if}>{Label $definitions.wConf.negation.labelTrue}</span>
 				<span class="false" {if $definitions.negate == 1}style="display:none"{/if}>{Label $definitions.wConf.negation.labelFalse}</span>
 			</span>
+			<span class="negationRgt"><!--  --></span>
 		{/if}
 		<span class="widgetClose">
 			<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Filter.removeCondition('{$definitions.widgetID}')">remove widget</a>

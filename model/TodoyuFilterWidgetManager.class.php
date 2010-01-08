@@ -75,7 +75,7 @@ class TodoyuFilterWidgetManager	{
 	 * @param	String		$widgetKey
 	 * @param	String		$widgetName
 	 * @param	Mixed		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function getExtendedWidgetConfig($type, $widgetKey, $widgetName = 'new1', $value = '', $negate = false) {
@@ -154,7 +154,7 @@ class TodoyuFilterWidgetManager	{
 	 * Checks if the given widget template exists
 	 *
 	 * @param	Array	$widgetDefinitions
-	 * @return	Mixed	String / Bool
+	 * @return	Mixed	String / Boolean
 	 */
 	public static function checkOnWidgetTemplate($widgetDefinitions)	{
 		$file = $widgetDefinitions['widgetDefinitions']['tmpl'];

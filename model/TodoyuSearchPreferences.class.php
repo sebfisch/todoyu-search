@@ -34,7 +34,7 @@ class TodoyuSearchPreferences {
 	 * @param	Integer		$preference
 	 * @param	String		$value
 	 * @param	Integer		$idItem
-	 * @param	Bool		$unique
+	 * @param	Boolean		$unique
 	 * @param	Integer		$idArea
 	 * @param	Integer		$idUser
 	 */
@@ -136,7 +136,7 @@ class TodoyuSearchPreferences {
 	 * Save filterset list toggling status
 	 *
 	 * @param	String		$type
-	 * @param	Bool		$expanded
+	 * @param	Boolean		$expanded
 	 */
 	public static function saveFiltersetListToggle($type, $expanded = true)	{
 		$preference	= self::getFiltersetListToggle();

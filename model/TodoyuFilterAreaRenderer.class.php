@@ -35,7 +35,7 @@ class TodoyuFilterAreaRenderer {
 	 * @param	String		$tab			Active tab/filter type
 	 * @param	Integer		$idFilterset	Active filterset
 	 * @param	Array		$conditions		Custom conditions instead of a stored filterset
-	 * @param	Bool		$init			Add init script at the bottom of loaded with ajax
+	 * @param	Boolean		$init			Add init script at the bottom of loaded with ajax
 	 * @return	String
 	 */
 	public static function renderFilterArea($tab, $idFilterset = 0, array $conditions = array(), $init = false) {
@@ -89,8 +89,7 @@ class TodoyuFilterAreaRenderer {
 
 
 	/**
-	 * Render type tabs
-	 * Each filter type has its own tab
+	 * Render type tabs. Each filter type has its own tab
 	 *
 	 * @param	String		$activeTab
 	 * @return	String

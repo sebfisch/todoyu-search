@@ -27,11 +27,11 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Add condition
 	 *
-	 *	@param	String	name
-	 *	@param	String	type
-	 *	@param	String	condition
-	 *	@param	String	value
-	 *	@param	Boolean	negate
+	 * @param	String	name
+	 * @param	String	type
+	 * @param	String	condition
+	 * @param	String	value
+	 * @param	Boolean	negate
 	 */
 	add: function(name, type, condition, value, negate) {
 		name = condition + '-' + name;
@@ -49,8 +49,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Update value of given filter conditon to given value 
 	 *
-	 *	@param	String	conditionName
-	 *	@param	String	value
+	 * @param	String	conditionName
+	 * @param	String	value
 	 */
 	updateValue: function(conditionName, value) {
 		this.conditions[conditionName].value = value;
@@ -61,8 +61,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Update negation of given search filter condition
 	 *
-	 *	@param	String	conditionName
-	 *	@param	Boolean	negate
+	 * @param	String	conditionName
+	 * @param	Boolean	negate
 	 */
 	updateNegation: function(conditionName, negate) {
 		this.conditions[conditionName].negate = negate === true;
@@ -73,8 +73,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Check whether given search filter condition is currently negated
 	 *
-	 *	@param	String	conditionName
-	 * 	@return	Boolean
+	 * @param	String	conditionName
+	 * @return	Boolean
 	 */
 	isNegated: function(conditionName) {
 		return this.conditions[conditionName].negate === true;
@@ -85,7 +85,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Toggle negation flag of given condition
 	 *
-	 *	@param	String	conditionName
+	 * @param	String	conditionName
 	 */
 	toggleNegated: function(conditionName) {
 		this.conditions[conditionName].negate = ! this.conditions[conditionName].negate;
@@ -96,7 +96,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Remove given condition from current search filter conditions
 	 *
-	 *	@param	String	conditionName
+	 * @param	String	conditionName
 	 */
 	remove: function(conditionName) {
 		delete this.conditions[conditionName];
@@ -116,8 +116,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Get all current search filter conditions, optionally as JSON
 	 *
-	 *	@param	Boolean	asJSON
-	 * 	@return	Mixed
+	 * @param	Boolean	asJSON
+	 * @return	Mixed
 	 */
 	getAll: function(asJSON) {
 		if( asJSON ) {
@@ -132,7 +132,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Get amount of current set search filter conditions
 	 * 
-	 *	@return	Integer
+	 * @return	Integer
 	 */
 	size: function() {
 		return Object.keys(this.conditions).size();

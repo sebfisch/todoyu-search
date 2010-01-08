@@ -32,8 +32,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Initialize filter list sortable
 	 */
 	init: function()	{
 		this.initSortable();
@@ -42,8 +41,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Refresh filter list
 	 */
 	refresh: function()	{
 		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
@@ -65,7 +63,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type type
+	 * @param unknown_type type
 	 */
 	toggleList: function(type) {
 		var list = 'panelwidget-searchfilterlist-list-' + type;
@@ -81,7 +79,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
+	 * @param Integer idFilterset
 	 */
 	renameFilterset: function(idFilterset)	{
 		var currentName	= $('filterset-' + idFilterset + '-label').innerHTML.stripScripts().stripTags().strip()
@@ -101,7 +99,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
+	 * @param Integer idFilterset
 	 */
 	hideFilterset: function(idFilterset)	{
 		var element = $('filterset-' + idFilterset + '-control-visibility');
@@ -110,7 +108,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		element.toggleClassName('hidden');
 		element.up('li').toggleClassName('hidden');
 
-		if(isHidden === false)	{
+		if( isHidden === false )	{
 			element.title		= '[LLL:core.unhide]';
 			element.update('[LLL:core.unhide]');
 		} else {
@@ -126,8 +124,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
-	 *	@param unknown_type tab
+	 * @param Integer	idFilterset
+	 * @param String	tab
 	 */
 	saveFilterset: function(idFilterset, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
@@ -144,8 +142,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
-	 *	@param unknown_type response
+	 * @param Integer	idFilterset
+	 * @param Object	response
 	 */
 	onFiltersetSaved: function(idFilterset, response) {
 		var tab = this.ext.Filter.getActiveTab();
@@ -157,7 +155,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
+	 * @param Integer idFilterset
 	 */
 	deleteFilterset: function(idFilterset) {
 		if( confirm('[LLL:search.filterset.delete]') ) {
@@ -170,8 +168,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * saves a new filter
-	 *
+	 * Saves a new filter
 	 */
 	saveCurrentAreaAsNewFilterset: function()	{
 		this.ext.Filter.saveCurrentAreaAsNewFilterset(this.onNewFiltersetSaved.bind(this));
@@ -182,7 +179,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Object response
+	 * @param Object response
 	 */
 	onNewFiltersetSaved: function(response) {
 		this.refresh();
@@ -193,8 +190,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type tab
-	 *	@param Integer idFilterset
+	 * @param unknown_type tab
+	 * @param Integer idFilterset
 	 */
 	loadFilterset: function(tab, idFilterset) {
 		this.markActiveFilterset(idFilterset);
@@ -213,7 +210,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
+	 * @param Integer idFilterset
 	 */
 	markActiveFilterset: function(idFilterset) {
 		$('filterset_' + idFilterset).up('div').select('.filterset').invoke('removeClassName', 'current');
@@ -224,7 +221,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	initSortable: function() {
 		this.disableSortable();
@@ -257,7 +253,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	disableSortable: function() {
 		this.sortables.each(function(sortableElement){
@@ -273,7 +268,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type listElement
+	 * @param	element		listElement
 	 */
 	onSortableUpdate: function(listElement) {
 		var type	= listElement.id.split('-').last();
@@ -286,7 +281,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	clearFilterArea: function() {
 		this.ext.Filter.reset();
@@ -297,14 +291,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type type
-	 *	@param unknown_type items
+	 * @param	String		type
+	 * @param unknown_type	items
 	 */
 	saveFiltersetOrder: function(type, items) {
 		var action		= 'filtersetOrder';
 		var value	= Object.toJSON({
-			'type': type,
-			'items': items
+			'type':		type,
+			'items':	items
 		});
 		var idItem	= 0;
 
@@ -316,8 +310,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type type
-	 *	@param unknown_type expanded
+	 * @param	String		type
+	 * @param	Boolean		expanded
 	 */
 	saveListToggle: function(type, expanded) {
 		var action	= 'filterlistToggle';
@@ -332,8 +326,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
-	 *	@param unknown_type name
+	 * @param Integer	idFilterset
+	 * @param String	name
 	 */
 	saveFiltersetRename: function(idFilterset, name) {
 		var action	= 'renameFilterset';
@@ -348,8 +342,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
-	 *	@param unknown_type isHidden
+	 * @param Integer	idFilterset
+	 * @param Boolean	isHidden
 	 */
 	saveFiltersetVisibility: function(idFilterset, visible) {
 		var action	= 'toggleFiltersetVisibility';
@@ -364,7 +358,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param Integer idFilterset
+	 * @param Integer idFilterset
 	 */
 	saveFiltersetDelete: function(idFilterset) {
 		var action	= 'deleteFilterset';

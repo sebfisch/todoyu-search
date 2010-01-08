@@ -38,25 +38,27 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Add a new widget to the filter area
 	 * 
-	 *	@param	DomElement		select			The select element where the new widget has ben chosen
+	 * @param	DomElement		select			The select element where the new widget has ben chosen
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
-			// set back selector
+
+			// reset selector
 		select.options[0].selected = true;
+
 			// count of equal elements. (used for the ID)
 		var numOfWidget = this.detectNumOfWidget(chosenWidget);
 		var url			= Todoyu.getUrl('search', 'filtercontroller');
 		var options		= {
 			'parameters': {
 				'choosenWidget':	chosenWidget,
-				'numOfWidget':		'new'+numOfWidget,
+				'numOfWidget':		'new' + numOfWidget,
 				'action':			'addfilterwidget',
 				'filterID':			Todoyu.Ext.search.Filter.FilterID
 			},
 			'onComplete': function(response)	{
 				var WidgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
-				if($(WidgetID))	{
+				if( $(WidgetID) )	{
 					Todoyu.Ext.search.Filter.addFilterWidgetToList($(WidgetID));
 					this.initAutocompletionSingle(WidgetID);
 					this.initNegationSingle(WidgetID);
@@ -70,9 +72,9 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
+	 * Remove given filter widget from area
 	 *
-	 *	@param unknown_type widgetID
+	 * @param	String	widgetID
 	 */
 	removeWidgetFromFilterArea: function(widgetID)	{
 		$(widgetID).remove();
@@ -82,25 +84,28 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
+	 * Detect number of widget
 	 *
-	 *	@param unknown_type classNameOfWidget
+	 * @param	String	classNameOfWidget
+	 * @return	Integer
 	 */
 	detectNumOfWidget: function(classNameOfWidget)	{
 		var className = classNameOfWidget.split('_');
-		if($('widget-area').select('.'+className[1])){
-			return $('widget-area').select('.'+className[1]).length;
+		if( $('widget-area').select('.' + className[1]) ){
+			return $('widget-area').select('.' + className[1]).length;
 		} else {
 			return 0;
 		}
 	},
+
+
 
 	/**
 	 * Autocompletion Part
 	 */
 	initAutocompletion: function()	{
 		var foundAutocompleter = $('widget-area').select('.autocomplete');
-		if(foundAutocompleter.length > 0)	{
+		if( foundAutocompleter.length > 0 )	{
 			foundAutocompleter.each(
 				function(autocompleter)	{
 					this.setUpAutocompleter(autocompleter.id);
@@ -112,13 +117,13 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
+	 * Initialize given autocompleter
 	 *
-	 *	@param unknown_type elementID
+	 *	@param String	elementID
 	 */
 	initAutocompletionSingle: function(elementID)	{
 		var autocompletion = $(elementID).select('.autocomplete');
-		if(autocompletion.length > 0)	{
+		if( autocompletion.length > 0 )	{
 			this.setUpAutocompleter(autocompletion[0].id);
 		}
 	},
@@ -126,12 +131,11 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
-	 *
+	 * Init widget negation: find and start observing all negation buttons
 	 */
 	initNegation: function()	{
 		var foundNegations = $('widget-area').select('.negation');
-		if(foundNegations.length > 0)	{
+		if( foundNegations.length > 0 )	{
 			foundNegations.each(
 				function(negation)	{
 					this.setUpNegation(negation.id);
@@ -143,13 +147,13 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
+	 * Init single negation: find and start observing negation button to given widget
 	 *
-	 *	@param unknown_type elementID
+	 * @param	String	elementID
 	 */
 	initNegationSingle: function(elementID)	{
 		var negation = $(elementID).select('.negation');
-		if(negation.length > 0)	{
+		if( negation.length > 0 )	{
 			this.setUpNegation(negation[0].id);
 		}
 	},
@@ -157,12 +161,12 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Enter description here...
+	 * Setup given autocompleter
 	 *
-	 *	@param unknown_type autoCompleterID
+	 * @param String	autoCompleterID
 	 */
 	setUpAutocompleter: function(autoCompleterID)	{
-		var Url = Todoyu.getUrl('search', 'filtercontroller');
+		var url = Todoyu.getUrl('search', 'filtercontroller');
 
 		widgetID = this.filterWidgetIDFromAutoCompleterID(autoCompleterID);
 
@@ -173,29 +177,33 @@ Todoyu.Ext.search.FilterWidget = {
 			afterUpdateElement:	Todoyu.Ext.search.FilterWidget.handleAutocompleteInput
 		};
 
-		var Autocompleter = new Ajax.Autocompleter(autoCompleterID, autoCompleterID+'-suggestions', Url, options);
+		var autocompleter = new Ajax.Autocompleter(autoCompleterID, autoCompleterID + '-suggestions', url, options);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Install click observer on given negation button element
 	 *
-	 *	@param unknown_type negationID
+	 *	@param	String	negationID
 	 */
 	setUpNegation: function(negationID)	{
-		$(negationID).observe('click', Todoyu.Ext.search.Filter.setNegation.bind(Todoyu.Ext.search.Filter, negationID));
+		$(negationID).observe('click', 
+			Todoyu.Ext.search.Filter.setNegation.bind(Todoyu.Ext.search.Filter, negationID)
+		);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Extract respective widget ID from given autocompleter element ID
 	 *
-	 *	@param unknown_type autocompleterID
+	 * @param	String	autocompleterID
+	 * @return	String
 	 */
 	filterWidgetIDFromAutoCompleterID: function(autocompleterID)	{
 		splittedID = autocompleterID.split('-');
+
 		return splittedID[2] + '-' + splittedID[3];
 	},
 
@@ -204,8 +212,8 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 *	@param unknown_type elementText
-	 *	@param unknown_type elementLi
+	 * @param	String	elementText
+	 * @param	String	elementLi
 	 */
 	handleAutocompleteInput: function(elementText, elementLi)	{
 		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
@@ -219,23 +227,23 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
 	 * 
-	 *	@param	DomElement		input			The textinput
+	 * @param	DomElement	input	The textinput
 	 */
 	onTextEntered: function(input) {
-			// Get value and widet name
+			// Get widget value and name
 		var name	= $(input).up('div.filterWidget').id;
 		var value	= $F(input);
 		
-			// Clear existing timeout of privious inputs
+			// Clear existing timeout of previous inputs
 		if( this.timeout[name] ) {
 			window.clearTimeout(this.timeout[name]);
 			delete this.timeout[name];
 		}
-		
+
 			// Update filter condition
 		this.ext.Filter.setConditionValue(name, value);
-		
-			// Create a new timeout to update the results (can be cleared by new inputs)
+
+			// Create new timeout to update results (can be cleared by new inputs)
 		this.timeout[name] = this.ext.Filter.updateResults.bind(this.ext.Filter).delay(0.4);
 	}
 
