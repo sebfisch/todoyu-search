@@ -20,6 +20,7 @@
 		<label index="overwriteFilterSet">Overwrite existing Filter Set?</label>
 		<label index="subMenuEntry.task">Tasks</label>
 		<label index="subMenuEntry.project">Projects</label>
+		<label index="filterwidget.condtion.remove">Remove condition</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Suche und Filter</label>
@@ -41,5 +42,6 @@
 		<label index="overwriteFilterSet">Bestehendes Filter-Set überschreiben?</label>
 		<label index="subMenuEntry.task">Aufgaben</label>
 		<label index="subMenuEntry.project">Projekte</label>
+		<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 	</labels>	
 </locallang>

@@ -218,7 +218,7 @@ class TodoyuFilterConditionManager {
 		$conditions	= array();
 
 		foreach($filterConditions as $condition) {
-				// Implode array values to a string
+				// Join array values to a string
 			if( is_array($condition['value']) ) {
 				$condition['value'] = implode(',', $condition['value']);
 			}

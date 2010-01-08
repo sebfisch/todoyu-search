@@ -21,6 +21,12 @@
 
 class TodoyuSearchSuggestActionController extends TodoyuActionController {
 
+	/**
+	 * Get search results suggestion
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function getSuggestionsAction(array $params) {
 		$query	= $params['query'];
 		$mode	= $params['mode'];
@@ -30,7 +36,6 @@ class TodoyuSearchSuggestActionController extends TodoyuActionController {
 			// Display output
 		return TodoyuSearchRenderer::renderSuggestions($suggestions);
 	}
-
 
 }
 

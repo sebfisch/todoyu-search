@@ -441,7 +441,7 @@ class TodoyuFiltersetManager {
 
 		foreach($filtersets as $filterSet)	{
 			if( $filterSet['id'] != $curFilter )	{
-				if( self::checkIfFilterIsUsed($filterSet['id'], $curFilter) )	{
+				if( self::isFilterUsed($filterSet['id'], $curFilter) )	{
 					$selected = ($filterSet['id'] == $definitions['value']);
 					$optionsArray[$filterSet['id']] = array(
 						'label'		=> $filterSet['title'],
@@ -465,7 +465,7 @@ class TodoyuFiltersetManager {
 	 * @param	Integer	$curFilter
 	 * @return	Boolean
 	 */
-	protected static function checkIfFilterIsUsed($startFilter, $curFilter)	{
+	protected static function isFilterUsed($startFilter, $curFilter)	{
 		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($startFilter);
 
 		foreach($conditions as $condition)	{
@@ -473,7 +473,7 @@ class TodoyuFiltersetManager {
 				if( $condition['value'] == $curFilter )	{
 					return false;
 				} else {
-					if( ! self::checkIfFilterIsUsed($condition['value'], $curFilter) )	{
+					if( ! self::isFilterUsed($condition['value'], $curFilter) )	{
 						return false;
 					}
 				}
@@ -484,6 +484,5 @@ class TodoyuFiltersetManager {
 	}
 
 }
-
 
 ?>

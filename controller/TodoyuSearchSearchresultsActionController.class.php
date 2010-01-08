@@ -30,7 +30,7 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 	/**
 	 * Update search result for the submitted conditions
 	 *
-	 * @param	Array		$params
+	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function updateAction(array $params) {

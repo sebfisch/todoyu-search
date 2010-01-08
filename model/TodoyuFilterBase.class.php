@@ -160,7 +160,7 @@ abstract class TodoyuFilterBase {
 	/**
 	 * returns the function to render the searchresults
 	 *
-	 * @param	String		$type
+	 * @param	String	$type
 	 * @return	String
 	 */
 	public static function getFilterRenderFunction($type = 'task')	{

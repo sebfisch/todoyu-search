@@ -43,7 +43,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	}
 
 
-
 	/**
 	 * Render headlet searchbox in the toppanel
 	 *
@@ -51,8 +50,10 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 */
 	public static function renderHeadlet() {
 		$tmpl	= 'ext/search/view/headlet.tmpl';
-		$data	= array('query'			=> TodoyuRequest::getParam('query'),
-						'searchModes'	=> TodoyuSearch::getSearchModes());
+		$data	= array(
+			'query'			=> TodoyuRequest::getParam('query'),
+			'searchModes'	=> TodoyuSearch::getSearchModes()
+		);
 
 		return render($tmpl, $data);
 	}
@@ -148,7 +149,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 * - reads the active tab (filtertype) by url-parameter or preset
 	 * - renders the filtered results by defined render function
 	 *
-	 * @return string
+	 * @return	String
 	 */
 	public static function renderSearchResults($activeTab = null, $idFilterset = 0, $useConditions = true, array $filterConditions = array(), $conjunction = 'AND')	{
 		$idFilterset	= intval($idFilterset);

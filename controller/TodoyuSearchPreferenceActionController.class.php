@@ -71,7 +71,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	/**
 	 * Rename a filterset
 	 *
-	 * @param	Array		$params
+	 * @param	Array	$params
 	 */
 	public function renameFiltersetAction(array $params) {
 		$idFilterset= intval($params['item']);
@@ -85,7 +85,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	/**
 	 * Update the visibility of a filterset
 	 *
-	 * @param	Array		$params
+	 * @param	Array	$params
 	 */
 	public function toggleFiltersetVisibilityAction(array $params) {
 		$idFilterset= intval($params['item']);
@@ -99,7 +99,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	/**
 	 * Delete a filterset with its condition
 	 *
-	 * @param	Array		$params
+	 * @param	Array	$params
 	 */
 	public function deleteFiltersetAction(array $params) {
 		$idFilterset	= intval($params['item']);
@@ -112,7 +112,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	/**
 	 * Update order of the filtersets
 	 *
-	 * @param	Array		$params
+	 * @param	Array	$params
 	 */
 	public function filtersetOrderAction(array $params)	{
 		$orderData	= json_decode($params['value'], true);

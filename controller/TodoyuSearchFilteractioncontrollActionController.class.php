@@ -21,6 +21,12 @@
 
 class TodoyuSearchFilteractioncontrollActionController extends TodoyuActionController {
 
+	/**
+	 * Load filter type controls
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function loadAction(array $params) {
 		$tab		= $params['tab'];
 		$idFilterset= 0; // Where does it come from?
