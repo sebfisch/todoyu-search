@@ -43,7 +43,7 @@
 }
 
 #headletquicksearch-suggest {
-	position: fixed;
+	position:fixed;
 	width:350px;
 	background-color:#FFF;
 	border:1px solid #DDD;
@@ -94,7 +94,7 @@
 	width:140px;
 	background-color:#F3F3F3;
 	border:1px solid #DDD;
-	z-index: 1000;
+	z-index:1000;
 }
 
 #headletquicksearch-modes li {
@@ -110,8 +110,8 @@
 }
 
 #headletquicksearch-results {
-	clear: both;
-	margin-top: 15px;
-	border-top: 1px dotted #CCCCCC;
-	padding: 15px;
+	clear:both;
+	margin-top:15px;
+	border-top:1px dotted #CCCCCC;
+	padding:15px;
 }

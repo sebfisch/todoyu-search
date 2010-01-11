@@ -1,84 +1,84 @@
 #widget-area .filterWidget {
-	height: auto;
-	width: auto;
-	float: left;
-	margin: 10px 5px;
+	height:auto;
+	width:auto;
+	float:left;
+	margin:10px 5px;
 }
 
 #widget-area .filterWidget span{
-	display: block;
-	padding: 5px;
+	display:block;
+	padding:5px;
 }
 
 #widget-area {
-	height: auto !important;
-	height: 1px;
-	position: relative;
+	height:auto !important;
+	height:1px;
+	position:relative;
 }
 
 #widget-area .filterWidget .widgetheader {
-	height: 24px;
-	width: 100%;
-	position: relative;
-	background: #fff url(../img/bg_search_headerline.png) no-repeat 0 0;
+	height:24px;
+	width:100%;
+	position:relative;
+	background:#fff url(../img/bg_search_headerline.png) no-repeat 0 0;
 }
 
 #widget-area .filterWidget .widgetheaderRgt {
-	background: #fff url(../img/bg_search_headerline.png) no-repeat scroll 100% 0;
-	height: 24px;
-	width: 3px;
-	position: absolute;
-	right: 0;
-	padding: 0;
+	background:#fff url(../img/bg_search_headerline.png) no-repeat scroll 100% 0;
+	height:24px;
+	width:3px;
+	position:absolute;
+	right:0;
+	padding:0;
 }
 
 #widget-area .filterWidget .widgetheader span{
-	float: left;
-	display: block;
+	float:left;
+	display:block;
 }
 
 #widget-area .filterWidget .negation {
-	padding: 0 0 0 6px;
-	background: #e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll 2px 4px;
+	padding:0 0 0 6px;
+	background:#e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll 2px 4px;
 }
 
 #widget-area .filterWidget .negationRgt {
-	height: 10px;
-	background: #e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll -280px 4px;
+	height:10px;
+	background:#e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll -280px 4px;
 }
 
 #widget-area .filterWidget .negation span {
-	cursor: pointer;
+	cursor:pointer;
 }
 
 #widget-area .filterWidget .negation span.false	{
-	color: green;
+	color:green;
 }
 
 #widget-area .filterWidget .negation span.true	{
-	color: red;
+	color:red;
 }
 
 #widget-area .filterWidget .widgetheader span.widgetClose {
-	position: relative;
-	padding: 5px 7px;
-	z-index: 1;
+	position:relative;
+	padding:5px 7px;
+	z-index:1;
 }
 
 #widget-area .filterWidget .widgetheader span.widgetClose a {
-	display: block;
-	background: transparent url(../img/icons.png) repeat-x scroll 0 -210px;
-	height: 14px;
-	width: 14px;
-	text-indent: -9999px;
+	display:block;
+	background:transparent url(../img/icons.png) repeat-x scroll 0 -210px;
+	height:14px;
+	width:14px;
+	text-indent:-9999px;
 }
 
 #widget-area .widgetbody {
-	border: 0 #ccc dotted;
-	border-width: 0 1px 1px;
-	padding: 5px;
+	border:0 #ccc dotted;
+	border-width:0 1px 1px;
+	padding:5px;
 }
 
 input.autocomplete {
-	background: transparent url(../img/icons.png) no-repeat 112px -507px;
+	background:transparent url(../img/icons.png) no-repeat 112px -507px;
 }

@@ -1,22 +1,22 @@
 #filter-controls .headerLine span{
-	margin: 5px 0 0 5px;
+	margin:5px 0 0 5px;
 }
 
 #filtercontrol-conditions option {
-	border-bottom: 1px #848484 dotted;
-	color: #333;
+	border-bottom:1px #848484 dotted;
+	color:#333;
 }
 
 #filtercontrol-conditions option.default {
-	padding: 0;
+	padding:0;
 }
 
 #filtercontrol-conditions option.odd {
-	background-color: #f3f3f3;
+	background-color:#f3f3f3;
 }
 
 #filtercontrol-conditions optgroup {
-	background-color: #e3eace;
+	background-color:#e3eace;
 }
 
 /* -------------------------
@@ -24,16 +24,16 @@
    -------------------------*/
 
 .tabs #search-tabhead-task p.label span.labeltext {
-	padding: 0 0 0 18px;
-	background: url(../img/icons.png) no-repeat 0px -358px;
+	padding:0 0 0 18px;
+	background:url(../img/icons.png) no-repeat 0px -358px;
 }
 
 .tabs #search-tabhead-user p.label span.labeltext {
 	padding:0 0 0 15px;
-	background: url(../img/icons.png) no-repeat -3px -450px;
+	background:url(../img/icons.png) no-repeat -3px -450px;
 }
 
 .tabs #search-tabhead-project p.label span.labeltext {
 	padding:0 0 0 18px;
-	background: url(../img/icons.png) no-repeat 0 -420px;
+	background:url(../img/icons.png) no-repeat 0 -420px;
 }
