@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="section.general">General settings</label>
-		<label index="right.use">Use search</label>
-		<label index="right.headlet">Use search headlet</label>
-		<label index="section.panelwidgets">Panel widgets</label>
-		<label index="right.panelwidget:searchFilterList">Show search filter list widget</label>
-		<label index="section.filtersets">Filtersets</label>
-		<label index="right.save">Save conditions as filterset</label>
-		<label index="right.deleteAll">Delete ALL filtersets</label>
-		<label index="right.hideAll">Hide ALL filtersets</label>
-		<label index="right.renameAll">Rename ALL filtersets</label>
+		<label index="general">General settings</label>
+		<label index="general.use">Use search</label>
+		<label index="general.headlet">Use search headlet</label>
+		<label index="filtersets">Filtersets</label>
+		<label index="filtersets.save">Save conditions as filterset</label>
+		<label index="filtersets.deleteAll">Delete ALL filtersets</label>
+		<label index="filtersets.hideAll">Hide ALL filtersets</label>
+		<label index="filtersets.renameAll">Rename ALL filtersets</label>
+		<label index="panelwidgets">Panel widgets</label>
+		<label index="panelwidgets.searchFilterList">Show search filter list widget</label>
 	</labels>
 	<labels lang="de">
-		<label index="section.general">Allgemeine Einstellungen</label>
-		<label index="right.use">Suche benutzen</label>
-		<label index="right.headlet">Suche im Header anzeigen</label>
-		<label index="section.panelwidgets">Panel widgets</label>
-		<label index="right.panelwidget:searchFilterList">Suchfilterliste Widget</label>
-		<label index="section.filtersets">Filtersets</label>
-		<label index="right.save">Speichere Konditionen als Filterset</label>
-		<label index="right.deleteAll">Alle Filtersets löschen</label>
-		<label index="right.hideAll">Alle Filtersets verstecken</label>
-		<label index="right.renameAll">Alle Filtersets umbenennen</label>
+		<label index="general">Allgemeine Einstellungen</label>
+		<label index="general.use">Suche benutzen</label>
+		<label index="general.headlet">Suche im Header anzeigen</label>
+		<label index="filtersets">Filtersets</label>
+		<label index="filtersets.save">Speichere Konditionen als Filterset</label>
+		<label index="filtersets.deleteAll">Alle Filtersets löschen</label>
+		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
+		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
+		<label index="panelwidgets">Panel widgets</label>
+		<label index="panelwidgets.panelwidget:searchFilterList">Suchfilterliste Widget</label>
 	</labels>
 </locallang>

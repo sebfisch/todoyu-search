@@ -23,7 +23,7 @@
 TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
 
 
-if( allowed('search', 'headlet') ) {
+if( allowed('search', 'general:headlet') ) {
 	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickSearch');
 }
 

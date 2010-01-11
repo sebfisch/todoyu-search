@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights>
-	
+
 	<section name="general">
 		<right name="use" />
-		<right name="headlet" require="use" />
+		<right name="headlet" require="general:use" />
 	</section>
-	
-	<section name="filtersets" require="use">
+
+	<section name="filtersets" require="general:use">
 		<right name="save" />
 		<right name="deleteAll" />
 		<right name="hideAll" />
 		<right name="renameAll" />
 	</section>
-	
-	<section name="panelwidgets" require="use">
-		<right name="panelwidget:searchFilterList" />
+
+	<section name="panelwidgets" require="general:use">
+		<right name="searchFilterList" />
 	</section>
-	
+
 </rights>
