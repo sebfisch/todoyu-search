@@ -30,14 +30,27 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 			// Add assets
 		TodoyuPage::addExtAssets('search', 'public');
 
+			// Add assets of all search types
+		$assets = TodoyuFilterBase::getTypesAssets();
+		foreach($assets as $assetArray)	{
+			TodoyuPage::addExtAssets($assetArray['ext'], $assetArray['type']);
+		}
+
+			// Add JS init command
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')');
+
+
+			// Get tab parameter
 		$activeTab	= $params['tab'];
 
-		if( ! empty($activeTab) ) { 	// If tab is set manualy
+			// If tab is set manualy
+		if( ! empty($activeTab) ) {
 			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
 
 			$idFilterset= 0;
 			$conditions = TodoyuSearchManager::convertSimpleToFilterConditionArray($filters);
-		} else {	// Normal preferences rendering
+		} else {
+				// Normal preferences rendering
 			$activeTab	= TodoyuSearchPreferences::getActiveTab();
 			$idFilterset= TodoyuSearchPreferences::getActiveFilterset($activeTab);
 
@@ -49,21 +62,14 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		}
 
 			// panel widgets
-		$panelWidgets = TodoyuSearchRenderer::renderPanelWidgets();
-		TodoyuPage::set('panelWidgets', $panelWidgets);
-
+		$panelWidgets	= TodoyuSearchRenderer::renderPanelWidgets();
+		$tabs			= TodoyuFilterAreaRenderer::renderTypeTabs($tab);
 			// Filter area
 		$filterArea = TodoyuFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset, $conditions, false);
+
+		TodoyuPage::set('panelWidgets', $panelWidgets);
+		TodoyuPage::set('tabs', $tabs);
 		TodoyuPage::set('filterArea', $filterArea);
-
-			// Add JS init command
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')');
-
-			// Add assets of all search types
-		$assets = TodoyuFilterBase::getTypesAssets();
-		foreach($assets as $assetArray)	{
-			TodoyuPage::addExtAssets($assetArray['ext'], $assetArray['type']);
-		}
 
 		return TodoyuPage::render();
 	}

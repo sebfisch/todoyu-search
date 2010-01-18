@@ -55,7 +55,7 @@ class TodoyuFilterAreaRenderer {
 		}
 
 			// Render tabs
-		$typeTabs	= self::renderTypeTabs($tab);
+//		$typeTabs	= self::renderTypeTabs($tab);
 			// Render controls
 		$controls	= self::renderControls($tab, $idFilterset);
 
@@ -73,7 +73,7 @@ class TodoyuFilterAreaRenderer {
 
 		$tmpl	= 'ext/search/view/filter-area.tmpl';
 		$data	= array(
-			'tabs'			=> $typeTabs,
+//			'tabs'			=> $typeTabs,
 			'controls'		=> $controls,
 			'activeWidgets'	=> $widgetArea,
 			'searchResults'	=> $results
