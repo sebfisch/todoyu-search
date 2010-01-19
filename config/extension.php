@@ -22,11 +22,6 @@
 
 TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
 
-
-if( allowed('search', 'general:headlet') ) {
-	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickSearch');
-}
-
 $CONFIG['EXT']['search']['suggestLimit']= 5;
 $CONFIG['EXT']['search']['defaultTab']	= 'task';
 

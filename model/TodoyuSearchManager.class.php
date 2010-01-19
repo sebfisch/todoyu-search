@@ -34,8 +34,6 @@ class TodoyuSearchManager {
 	public static function getFilters() {
 		TodoyuExtensions::loadAllFilters();
 
-		//$filters	=
-
 		return TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS']);
 	}
 
@@ -48,6 +46,18 @@ class TodoyuSearchManager {
 	 */
 	public static function getFilterTypes() {
 		return array_keys(self::getFilters());
+	}
+
+
+	public static function getFilterConfigs() {
+		$filters= self::getFilters();
+		$config	= array();
+
+		foreach($filters as $type => $data) {
+			$config[$type] = $data['config'];
+		}
+
+		return $config;
 	}
 
 
@@ -122,18 +132,20 @@ class TodoyuSearchManager {
 
 
 	/**
-	 * Enter description here...
+	 * Get all registered search engine in correct order
 	 *
 	 * @return	Array
 	 */
 	public static function getSearchEngines() {
 		TodoyuExtensions::loadAllSearch();
 
-		if( is_array($GLOBALS['CONFIG']['EXT']['search']['engines']) ) {
-			return TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['search']['engines'], 'position');
-		} else {
-			return array();
+		$searchEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['search']['engines']);
+
+		if( sizeof($searchEngines) > 0 ) {
+			$searchEngines = TodoyuArray::sortByLabel($searchEngines, 'position');
 		}
+
+		return $searchEngines;
 	}
 
 }

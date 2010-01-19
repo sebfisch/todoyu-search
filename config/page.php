@@ -34,4 +34,9 @@ if( allowed('search', 'general:use') ) {
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');
 }
 
+	// Add quicksearch headlet
+if( allowed('search', 'general:headlet') ) {
+	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickSearch');
+}
+
 ?>

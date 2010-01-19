@@ -32,18 +32,18 @@ class TodoyuFilterAreaRenderer {
 	 * Render whole filter area
 	 * Filter area contains tabs, control, widget area and search results
 	 *
-	 * @param	String		$tab			Active tab/filter type
+	 * @param	String		$activeTab		Active tab/filter type
 	 * @param	Integer		$idFilterset	Active filterset
 	 * @param	Array		$conditions		Custom conditions instead of a stored filterset
 	 * @param	Boolean		$init			Add init script at the bottom of loaded with ajax
 	 * @return	String
 	 */
-	public static function renderFilterArea($tab, $idFilterset = 0, array $conditions = array(), $init = false) {
+	public static function renderFilterArea($activeTab, $idFilterset = 0, array $conditions = array(), $init = false) {
 		$idFilterset= intval($idFilterset);
 
 			// If no filterset and conditions set, check for preset filterset
 		if( $idFilterset === 0 && sizeof($conditions) === 0 ) {
-			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($tab);
+			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($activeTab);
 		}
 
 			// If filterset is set, get filterset conjunction
@@ -54,10 +54,8 @@ class TodoyuFilterAreaRenderer {
 			$conjunction= 'AND';
 		}
 
-			// Render tabs
-//		$typeTabs	= self::renderTypeTabs($tab);
 			// Render controls
-		$controls	= self::renderControls($tab, $idFilterset);
+		$controls	= self::renderControls($activeTab, $idFilterset);
 
 			// Render filterset widgets
 		if( $idFilterset !== 0 ) {
@@ -68,12 +66,11 @@ class TodoyuFilterAreaRenderer {
 
 			// If filterset or conditions are defined, render search results
 		if( $idFilterset !== 0 || sizeof($conditions) > 0 ) {
-			$results	= self::renderResults($tab, $idFilterset, $conditions, $conjunction);
+			$results	= self::renderResults($activeTab, $idFilterset, $conditions, $conjunction);
 		}
 
 		$tmpl	= 'ext/search/view/filter-area.tmpl';
 		$data	= array(
-//			'tabs'			=> $typeTabs,
 			'controls'		=> $controls,
 			'activeWidgets'	=> $widgetArea,
 			'searchResults'	=> $results
@@ -81,7 +78,7 @@ class TodoyuFilterAreaRenderer {
 
 			// If init necessary (ajax), add it to the response
 		if( $init ) {
-			$data['init'] = 'Todoyu.Ext.search.Filter.init(\'' . $tab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')';
+			$data['init'] = 'Todoyu.Ext.search.Filter.init(\'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')';
 		}
 
 		return render($tmpl, $data);
@@ -106,18 +103,17 @@ class TodoyuFilterAreaRenderer {
 		$class		= 'tabs';
 		$jsHandler	= 'Todoyu.Ext.search.Filter.onTabClick.bind(Todoyu.Ext.search.Filter)';
 
-		$filters	= TodoyuSearchManager::getFilters();
+		$filterConf	= TodoyuSearchManager::getFilterConfigs();
+		$filterConf	= TodoyuArray::sortByLabel($filterConf, 'position');
 
-//		TodoyuDebug::printHtml($typeConfigs);
-
-		foreach($filters as $type => $filterConfig) {
-			$type = strtolower($type);
+		foreach($filterConf as $config) {
+			$type = strtolower($config['__key']);
 			$tabs[] = array(
 				'id'		=> $type,
 				'htmlId'	=> 'search-tabhead-' . $type,
 				'classKey'	=> $type,
 				'hasIcon'	=> false,
-				'label'		=> $filterConfig['config']['label']
+				'label'		=> $config['label']
 			);
 		}
 
