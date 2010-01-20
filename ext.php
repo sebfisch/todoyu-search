@@ -31,8 +31,8 @@ define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 
 	// Register module locales
-TodoyuLocale::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
-TodoyuLocale::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
+TodoyuLanguage::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
+TodoyuLanguage::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
 
 	// Request configurations
 require_once( PATH_EXT_SEARCH . '/config/extension.php' );
