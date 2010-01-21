@@ -262,7 +262,7 @@ Todoyu.Ext.search.Filter = {
 			}
 		};
 
-		Todoyu.Ui.updateContent(url, options);
+		Todoyu.Ui.updateContentBody(url, options);
 	},
 
 
