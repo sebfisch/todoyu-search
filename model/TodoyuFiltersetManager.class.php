@@ -197,8 +197,8 @@ class TodoyuFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '	type 		= ' . Todoyu::db()->quote($type, true) . ' AND
 					deleted		= 0 AND ' .
-					($showHidden ? '' : 'is_hidden 	= 0') .
-					' AND (
+					($showHidden ? '' : 'is_hidden 	= 0 AND') .
+					' (
 						id_user_create	= ' . $idUser . ' OR
 						id_user_create	= 0
 					)';
