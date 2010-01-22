@@ -19,14 +19,24 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+$CONFIG['EXT']['search']['ContextMenu']['Task'] = array(
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'portal.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'task-ctxmenu task-showinproject',
+		'position'	=> 10
+	)
+);
 
-TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
-
-$CONFIG['EXT']['search']['suggestLimit']= 5;
-$CONFIG['EXT']['search']['defaultTab']	= 'task';
-
-	// Register context menu functions
-TodoyuContextMenuManager::registerFunction('Project', 'TodoyuSearchManager::getProjectContextMenuItems', 998);
-TodoyuContextMenuManager::registerFunction('Task', 'TodoyuSearchManager::getTaskContextMenuItems', 999);
+$CONFIG['EXT']['search']['ContextMenu']['Project'] = array(
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'search.contextmenu.project.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'task-ctxmenu task-showinproject',
+		'position'	=> 10
+	)
+);
 
 ?>

@@ -33,7 +33,77 @@ Todoyu.Ext.search = {
 	 * Initialize
 	 */
 	init: function() {
+		this.initResultItemContextMenus();
+	},
+	
 
+
+	/**
+	 * Get name of currently active tab (e.g 'task', 'project')
+	 * 
+	 * @return	String
+	 */
+	getActiveTabKey: function() {
+		return Todoyu.Tabs.getActiveKey('search-tabs')
+	},
+
+
+
+	/**
+	 * Init context menus of result items
+	 */
+	initResultItemContextMenus: function() {
+		var tabKey	= this.getActiveTabKey();
+		
+		this.addResultItemsContextMenus(tabKey);
+	},
+
+
+
+	/**
+	 * Refresh context menus to result entrys of current search tab
+	 * 
+	 * @param	String	typeKey
+	 */
+	refreshResultTypeContextMenus: function(tabKey) {
+		this.removeResultItemsContextMenus(tabKey);
+		this.addResultItemsContextMenus(tabKey);
+	},
+
+
+
+	/**
+	 * Add context menu to all result entrys of given type
+	 * 
+	 * @param	String	typeKey
+	 */
+	addResultItemsContextMenus: function(typeKey) {
+		switch( typeKey ) {
+			case 'project':
+				Todoyu.Ext.project.ContextMenuProject.attach();
+				break;
+			case 'task':		
+				Todoyu.Ext.project.ContextMenuTask.attach();
+				break;
+		}
+	},
+
+
+
+	/**
+	 * Remove context menu from all result entrys of given type
+	 * 
+	 * @param	String	typeKey
+	 */
+	removeResultItemsContextMenus: function(typeKey) {
+		switch( typeKey ) {
+			case 'project':
+				Todoyu.Ext.project.ContextMenuProject.detach();
+				break;
+			case 'task':		
+				Todoyu.Ext.project.ContextMenuTask.detach();
+				break;
+		}
 	},
 
 

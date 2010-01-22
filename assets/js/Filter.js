@@ -259,7 +259,8 @@ Todoyu.Ext.search.Filter = {
 				'action':		'load',
 				'tab':			tab,
 				'filterset':	idFiterset
-			}
+			},
+			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
 
 		Todoyu.Ui.updateContentBody(url, options);
@@ -280,7 +281,8 @@ Todoyu.Ext.search.Filter = {
 				'action':		'load',
 				'tab':			tab,
 				'filterset':	idFilterset
-			}
+			},
+			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
 		var target	= 'widget-area';
 
@@ -290,11 +292,11 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Replace search results by result of current filter 
 	 *
-	 *	@param Integer idFilterset
-	 *	@param unknown_type conditions
-	 *	@param unknown_type conjunction
+	 * @param	Integer			idFilterset
+	 * @param	unknown_type	conditions
+	 * @param	unknown_type	conjunction
 	 */
 	updateResults: function(tab, idFilterset, conditions, conjunction) {
 		tab 		= tab === undefined ? this.getActiveTab() : tab ;
@@ -310,11 +312,18 @@ Todoyu.Ext.search.Filter = {
 				'filterset':	idFilterset,
 				'conditions':	Object.toJSON(conditions),
 				'conjunction':	conjunction
-			}
+			},
+			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
 		var target	= 'search-results';
 
 		Todoyu.Ui.update(target, url, options);
+	},
+
+
+
+	onResultsUpdated: function(tab) {
+		this.ext.refreshResultTypeContextMenus(tab);
 	},
 
 

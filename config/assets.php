@@ -28,7 +28,6 @@
 
 
 
-
 $CONFIG['EXT']['search']['assets'] = array(
 		// default: loaded all over the installation always
 	'default' => array(
@@ -83,7 +82,7 @@ $CONFIG['EXT']['search']['assets'] = array(
 			array(
 				'file' => 'ext/search/assets/js/WidgetArea.js',
 				'position' => 105
-			)
+			),
 		),
 		'css' => array(
 			array(
@@ -111,6 +110,5 @@ $CONFIG['EXT']['search']['assets'] = array(
 	)
 
 );
-
 
 ?>
