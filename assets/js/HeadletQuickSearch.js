@@ -45,7 +45,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	submit: function() {
 		//$('headletquicksearch-form').submit();
-		console.log('redirect to full search disabled at the moment');
+		Todoyu.log('redirect to full search disabled at the moment');
 	},
 
 
@@ -63,7 +63,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @return	String
 	 */
 	getValue: function() {
@@ -74,7 +74,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @return	Boolean
 	 */
 	isEmpty: function() {
@@ -156,7 +156,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 * 
+		 *
 		 * @return	String
 		 */
 		getMode: function() {
@@ -289,7 +289,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		/**
 		 * Enter description here...
-		 * 
+		 *
 		 * @return	Boolean
 		 */
 		isNavigating: function() {

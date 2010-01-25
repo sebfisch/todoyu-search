@@ -47,7 +47,7 @@ class TodoyuSearch {
 			return array();
 		}
 
-		$words	= TodoyuDiv::trimExplode(' ', $query, true);
+		$words	= TodoyuArray::trimExplode(' ', $query, true);
 
 		foreach($words as $word) {
 			if( substr($word, 0, 1) === '-' ) {
