@@ -46,6 +46,11 @@ class TodoyuFilterWidgetRenderer {
 			'definitions' => $config
 		);
 
+		if( is_null($tmpl) ) {
+			Todoyu::log('Missing widget template (' . $type . '/' . $widgetKey . ')');
+			return '';
+		}
+
 		return render($tmpl, $data);
 	}
 
