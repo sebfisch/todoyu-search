@@ -17,7 +17,7 @@
 	clear:none;
 	width:30px;
 	height:20px;
-	border:1px solid #B2B2B2;
+	border:1px solid #b2b2b2;
 	border-right:none;
 	background:url('../img/icons.png') no-repeat 0 0;
 	cursor:pointer;
@@ -29,7 +29,7 @@
 	height:18px;
 	margin-top:2px;
 	margin-left:1px;
-	background-color:#F00;
+	background-color:#f00;
 }
 
 #headletquicksearch-query {
@@ -37,16 +37,16 @@
 	height:14px;
 	font-size:12px;
 	font-weight:bold;
-	border:1px solid #B2B2B2;
+	border:1px solid #b2b2b2;
 	padding:4px 27px 2px 5px;
-	background:#FFF url('../img/icons.png') no-repeat 160px -58px;
+	/*background:#FFF url('../img/icons.png') no-repeat 160px -58px;*/
 }
 
 #headletquicksearch-suggest {
 	position:fixed;
 	width:350px;
-	background-color:#FFF;
-	border:1px solid #DDD;
+	background-color:#fff;
+	border:1px solid #ddd;
 	border-top:none;
 	text-align:left;
 	z-index:1000;
@@ -59,8 +59,8 @@
 	font-weight:bold;
 	font-size:14px;
 	padding:2px 3px;
-	background-color:#D5DEE5;
-	border-bottom:1px solid #CCC;
+	background-color:#d5dee5;
+	border-bottom:1px solid #ccc;
 }
 
 #headletquicksearch-suggest ul li ul li a {
@@ -68,12 +68,12 @@
 	width:338px;
 	padding:2px;
 	padding-left:10px;
-	border-bottom:1px solid #CCC;
+	border-bottom:1px solid #ccc;
 }
 
 #headletquicksearch-suggest ul li ul li.active a,
 #headletquicksearch-suggest ul li ul li a:hover {
-	background-color:#FFE256;
+	background-color:#ffe256;
 }
 
 .searchSuggest a span.title {
@@ -81,7 +81,7 @@
 }
 
 .searchSuggest a span.info {
-	color:#AAA;
+	color:#aaa;
 	display:block;
 	padding-left:10px;
 }
@@ -92,8 +92,8 @@
 	left:0px;
 	top:0px;
 	width:140px;
-	background-color:#F3F3F3;
-	border:1px solid #DDD;
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
 	z-index:1000;
 }
 
@@ -102,16 +102,16 @@
 	padding:3px 2px 3px 30px;
 	cursor:pointer;
 	text-align:left;
-	border-bottom:1px solid #DDD;
+	border-bottom:1px solid #ddd;
 }
 
 #headletquicksearch .searchmode-all {
-	background:url(../img/icons.png) no-repeat 2px -26px !important;
+	background:url(../img/icons.png) no-repeat 0 -30px !important;
 }
 
 #headletquicksearch-results {
 	clear:both;
 	margin-top:15px;
-	border-top:1px dotted #CCCCCC;
+	border-top:1px dotted #ccc;
 	padding:15px;
 }

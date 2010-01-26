@@ -202,8 +202,29 @@ class TodoyuFilterWidgetManager	{
 	public function prepareSelectionOptions($definitions)	{
 		$optionMethod = $definitions['wConf']['FuncRef'];
 
-		if(TodoyuDiv::isFunctionReference($optionMethod))	{
+		if( TodoyuDiv::isFunctionReference($optionMethod) )	{
 			$definitions = TodoyuDiv::callUserFunction($optionMethod, $definitions);
+		}
+
+		return $definitions;
+	}
+
+
+
+	/**
+	 * Prepare user role filter widget: get available user roles for selector
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function prepareProjectRoleOptions($definitions) {
+		$roles	= TodoyuUserroleManager::getAllUserroles();
+
+		foreach( $roles as $role ) {
+			$definitions['options'][]=	array(
+				'label'		=> $role['title'],
+				'value'		=> $role[$id],
+			);
 		}
 
 		return $definitions;

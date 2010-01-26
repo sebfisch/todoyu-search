@@ -1,0 +1,27 @@
+{extends "ext/search/view/filterwidgets/filterwidget-wrap.tmpl"}
+
+{block name="widgetbody"}
+	<span>
+		<label>User</label>
+		{if $definitions.wConf.autocomplete == true}
+			<input type="text" title="{Label core.input.autocompleter}" class="input autocomplete" id="widget-autocompleter-{$definitions.widgetID}" value="{$definitions.value_label}" />
+			<div id="widget-autocompleter-{$definitions.widgetID}-suggestions" class="acResultContainer"></div>
+			<input id="widget-autocompleter-{$definitions.widgetID}-hidden" type="hidden" class="hidden value" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))" value="{$definitions.value}" />
+		{else}
+			<input type="text" class="input value" onkeyup="Todoyu.Ext.search.FilterWidget.onTextEntered(this)" value="{$definitions.value}" />
+		{/if}		
+	</span>
+	
+	<span>
+		<label>User Role</label>
+
+		<select class="select value" {if $definitions.wConf.multiple == true}multiple="multiple"{/if} size="{$definitions.wConf.size}" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))">
+		{if $definitions.wConf.size == 1}<option value="0">tmp_please_choose</option>{/if}
+
+		{foreach $definitions.options opt_id opt_array}
+			<option value="{$opt_id}" {if $opt_array.selected == true}selected="selected"{/if}>{$opt_array.label}</option>
+		{/foreach}
+
+		</select>
+	</span>
+{/block}

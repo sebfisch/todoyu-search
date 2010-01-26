@@ -20,24 +20,30 @@
 ***************************************************************/
 
 $GLOBALS['CONFIG']['FILTERCONF']['FILTERWIDGETS'] = array(
-	'textinput'	=> array(
+	'textinput'		=> array(
 		'class'						=> 'filterWidgetTextInput',
 		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-textinput.tmpl',
 		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
 	),
-	'dateinput'	=> array(
+	'dateinput'		=> array(
 		'class'						=> 'filterWidgetDateInput',
 		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-dateinput.tmpl',
 	),
-	'checkbox'	=> array(
+	'checkbox'		=> array(
 		'class'						=> 'filterWidgetCheckbox',
 		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-checkbox.tmpl'
 	),
-	'select'						=> array(
+	'select'		=> array(
 		'class'						=> 'filterWidgetSelect',
 		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-select.tmpl',
 		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::prepareSelectionOptions'
-	)
+	),
+
+//	'projectrole'	=> array(
+//		'class'						=> 'filterWidgetSelect',
+//		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-projectrole.tmpl',
+//		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::prepareProjectRoleOptions'
+//	)
 );
 
 ?>
