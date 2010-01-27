@@ -411,7 +411,7 @@ Todoyu.Ext.search.Filter = {
 				Todoyu.send(url, options);
 			}
 		} else {
-			alert('[LLL:search.noConditionsToSave]');
+			alert('[LLL:search.filterset.error.saveNoConditions]');
 		}
 	},
 

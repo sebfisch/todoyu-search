@@ -63,7 +63,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type type
+	 * @param	String	type
 	 */
 	toggleList: function(type) {
 		var list = 'panelwidget-searchfilterlist-list-' + type;
@@ -129,11 +129,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	saveFilterset: function(idFilterset, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
-			if(confirm('[LLL:search.overwriteFilterSet]'))	{
+			if(confirm('[LLL:search.filterset.confirm.overwrite]'))	{
 				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterset, this.onFiltersetSaved.bind(this, idFilterset));
 			}
 		} else {
-			alert('[LLL:search.filtersetSaveAsWrongType]');
+			alert('[LLL:search.filterset.error.saveWrongType]');
 		}
 	},
 
@@ -158,7 +158,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param Integer idFilterset
 	 */
 	deleteFilterset: function(idFilterset) {
-		if( confirm('[LLL:search.filterset.delete]') ) {
+		if( confirm('[LLL:search.filterset.confirm.delete]') ) {
 			$('filterset_' + idFilterset).remove();
 
 			this.saveFiltersetDelete(idFilterset);
@@ -188,10 +188,10 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Load given filterset (into given tab)
 	 *
 	 * @param unknown_type tab
-	 * @param Integer idFilterset
+	 * @param	Integer	idFilterset
 	 */
 	loadFilterset: function(tab, idFilterset) {
 		this.markActiveFilterset(idFilterset);
@@ -208,9 +208,9 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Mark currently active filterset as such
 	 *
-	 * @param Integer idFilterset
+	 * @param	Integer	idFilterset
 	 */
 	markActiveFilterset: function(idFilterset) {
 		$('filterset_' + idFilterset).up('div').select('.filterset').invoke('removeClassName', 'current');
@@ -220,7 +220,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Init filterset sortables
 	 */
 	initSortable: function() {
 		this.disableSortable();
@@ -252,7 +252,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Disable filtersets sortability
 	 */
 	disableSortable: function() {
 		this.sortables.each(function(sortableElement){
@@ -266,7 +266,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Handler after update of filterset sortables
 	 *
 	 * @param	element		listElement
 	 */
@@ -280,7 +280,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Remove all conditions from filter area
 	 */
 	clearFilterArea: function() {
 		this.ext.Filter.reset();
@@ -289,10 +289,10 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Save order of filterset items (conditions)
 	 *
 	 * @param	String		type
-	 * @param unknown_type	items
+	 * @param	Array		items
 	 */
 	saveFiltersetOrder: function(type, items) {
 		var action		= 'filtersetOrder';
