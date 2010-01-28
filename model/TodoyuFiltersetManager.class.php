@@ -370,57 +370,47 @@ class TodoyuFiltersetManager {
 	 * @todo 	Implement negation?
 	 */
 	public static function Filter_filterset($value, $negate = false)	{
-		$idFilterset= intval($value);
+		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
-		$localTables		= array();
-		$localWhere 		= array();
-		$localWhereString 	= '';
-		$returnArray		= array();
+			// Prepare return values
+		$tables	= array();
+		$wheres	= array();
 
-		$type = self::getFiltersetType($idFilterset);
+			// Process all filtersets
+		foreach($filtersetIDs as $idFilterset) {
+			$filterset		= self::getFiltersetRecord($idFilterset);
+			$filtersetWhere	= array();
+			$filtersetType	= self::getFiltersetType($idFilterset);
+			$conditions		= TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
 
-		$filterConditions = TodoyuFilterConditionManager::getFilterSetConditions($value);
+				// Get queries for all conditions of a filterset
+			foreach($conditions as $condition) {
+				$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($filtersetType, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
+					// If filterset has a valid function reference to generate query parts
+				if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
+					$filterInfo = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
 
-		foreach($filterConditions as $condition)	{
-			$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($type, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
-			if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
-				$result = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
-
-				if( is_array($result['tables']) )	{
-					foreach($result['tables'] as $table)	{
-						$localTables[] = $table;
+						// If condition produced filter parts
+					if( $filterInfo !== false ) {
+						$tables			= array_merge($tables, $filterInfo['tables']);
+						$filtersetWhere[]= $filterInfo['where'];
 					}
-				} else if( $result['tables'] )	{
-					$localTables[] = $result['tables'];
-				}
-
-				if( is_array($result['where']) )	{
-					foreach($result['where'] as $where)	{
-						$localWhere[] = $where;
-					}
-				} else if( $result['where'] ) {
-					$localWhere[] = $result['where'];
 				}
 			}
+
+				// Concatinate all filter conditions with the selected conjunction
+			$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
 		}
 
-		array_unique($localTables);
-		$filter = TodoyuFiltersetManager::getFiltersetRecord($value);
+			// Remove double tables
+		$tables	= array_unique($tables);
+			// Concatinate all filtersets with AND
+		$where	= '(' . implode(' AND ', $wheres) . ')';
 
-		$conjunction = $filter['conjunction'] ? $filter['conjunction'] : 'AND';
-
-		$localWhereString = implode(' '.$conjunction.' ', $localWhere);
-
-		if( $localWhereString )	{
-			$localWhereString = '('.$localWhereString.')';
-			$returnArray['where']	= $localWhereString;
-		}
-
-		if(count($localTables) > 0)	{
-			$returnArray['tables']	= $localTables;
-		}
-
-		return $returnArray;
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
 	}
 
 
@@ -433,26 +423,20 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFilterSetSelectionOptions($definitions)	{
-		$optionsArray = array();
+		$filtersets	= self::getTypeFiltersets('TASK', 0, true);
 
-		$filtersets	= self::getTypeFiltersets('TASK', userid(), true);
-		$filtersets	= array_merge($filtersets, self::getTypeFiltersets('TASK', userid(), false));
+		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
 
-		$curFilter = TodoyuRequest::getParam('filterID') ? TodoyuRequest::getParam('filterID') : TodoyuSearchPreferences::getCurrentFilter();
-
-		foreach($filtersets as $filterSet)	{
-			if( $filterSet['id'] != $curFilter )	{
-				if( self::isFilterUsed($filterSet['id'], $curFilter) )	{
-					$selected = ($filterSet['id'] == $definitions['value']);
-					$optionsArray[$filterSet['id']] = array(
-						'label'		=> $filterSet['title'],
-						'selected'	=> $selected
+		foreach($filtersets as $filterset)	{
+			if( $filterset['id'] != $activeFilterset ) {
+				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) )	{
+					$definitions['options'][] = array(
+						'value'		=> $filterset['id'],
+						'label'		=> $filterset['title']
 					);
 				}
 			}
 		}
-
-		$definitions['options'] = $optionsArray;
 
 		return $definitions;
 	}
@@ -466,22 +450,28 @@ class TodoyuFiltersetManager {
 	 * @param	Integer	$curFilter
 	 * @return	Boolean
 	 */
-	protected static function isFilterUsed($startFilter, $curFilter)	{
-		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($startFilter);
+	protected static function isFiltersetUsed($filterset, $filtersetToCheck)	{
+		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($filterset);
 
 		foreach($conditions as $condition)	{
-			if( $condition['filter'] == 'filterSet' )	{
-				if( $condition['value'] == $curFilter )	{
-					return false;
+			if( $condition['filter'] === 'filterSet' ) {
+				$subFiltersetIDs	= explode(',', $condition['value']);
+
+				if( in_array($filtersetToCheck, $subFiltersetIDs) ) {
+					return true;
 				} else {
-					if( ! self::isFilterUsed($condition['value'], $curFilter) )	{
-						return false;
+					foreach($subFiltersetIDs as $subFiltersetID) {
+						$check = self::isFiltersetUsed($subFiltersetID, $filtersetToCheck);
+
+						if( $check === true ) {
+							return true;
+						}
 					}
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 }

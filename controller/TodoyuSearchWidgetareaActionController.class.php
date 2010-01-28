@@ -39,6 +39,8 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 		if( $idFilterset === 0 ) {
 			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($tab);
+		} else {
+			TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 		}
 
 		if( $idFilterset !== 0 ) {
