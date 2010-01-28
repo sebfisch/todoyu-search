@@ -2,6 +2,10 @@
 	margin:5px 0 0 5px;
 }
 
+#filter-controls .headerLine span.rgt {
+	margin: 0 0 0 0;	
+}
+
 #filtercontrol-conditions option {
 	border-bottom:1px #848484 dotted;
 	color:#333;
