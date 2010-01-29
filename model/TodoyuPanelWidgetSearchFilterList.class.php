@@ -36,7 +36,8 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 * - modifies the filters
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0)	{
-
+		TodoyuExtensions::loadAllFilters();
+		
 		parent::__construct(
 			'search',
 			'searchfilterlist',
@@ -69,7 +70,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 				$activeFiltersets[] = TodoyuSearchPreferences::getActiveFilterset($filtersetType);
 			}
 		}
-
+		
 		$tmpl = 'ext/search/view/panelwidget-searchfilterlist.tmpl';
 		$data = array(
 			'id'				=> $this->getID(),
@@ -116,7 +117,6 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		foreach($filtersets as $filterset) {
 			$groups[ $filterset['type'] ]['label']	= TodoyuDiv::getLabel($GLOBALS['CONFIG']['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
 			$groups[ $filterset['type'] ]['filtersets'][]					= $filterset;
-
 		}
 
 		return $groups;
