@@ -43,7 +43,7 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 		if( $idFilterset > 0 || sizeof($conditions) > 0)	{
 			return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
 		} else {
-			return 'Invalid request';
+			return TodoyuFilterAreaRenderer::renderResults($tab, 0, array(), $conjunction);
 		}
 	}
 
