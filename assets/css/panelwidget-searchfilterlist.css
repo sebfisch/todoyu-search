@@ -101,9 +101,9 @@
 	margin-right:5px;
 }
 
-#panelwidget-searchfilterlist .handle.hover {
-	background:transparent url(../img/icons.png) no-repeat scroll 0px -300px;
-}
+	#panelwidget-searchfilterlist .handle.hover {
+		background:transparent url(../img/icons.png) no-repeat scroll 0px -300px;
+	}
 
 #panelwidget-searchfilterlistdropZone {
 	width:210px;
@@ -114,6 +114,8 @@
 	background-color:#cfcfcf;
 	height:30px;
 }
+
+
 
 #panelwidget-searchfilterlist button.saveAsNewFilter .icon	{
 	background:url(../img/icons.png) no-repeat 0 -118px;
