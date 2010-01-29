@@ -199,8 +199,7 @@ class TodoyuFiltersetManager {
 					deleted		= 0 AND ' .
 					($showHidden ? '' : 'is_hidden 	= 0 AND') .
 					' (
-						id_user_create	= ' . $idUser . ' OR
-						id_user_create	= 0
+						id_user_create	= ' . $idUser . '
 					)';
 		$order	= 'sorting';
 
@@ -389,24 +388,28 @@ class TodoyuFiltersetManager {
 					// If filterset has a valid function reference to generate query parts
 				if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
 					$filterInfo = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
-
 						// If condition produced filter parts
 					if( $filterInfo !== false ) {
 						$tables			= array_merge($tables, $filterInfo['tables']);
 						$filtersetWhere[]= $filterInfo['where'];
 					}
+						
 				}
 			}
 
 				// Concatinate all filter conditions with the selected conjunction
 			$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
 		}
+		
 
 			// Remove double tables
 		$tables	= array_unique($tables);
 			// Concatinate all filtersets with AND
-		$where	= '(' . implode(' AND ', $wheres) . ')';
-
+		
+		if(count($wheres) > 0)	{
+			$where	= '(' . implode(' AND ', $wheres) . ')';
+		}
+		
 		return array(
 			'tables'=> $tables,
 			'where'	=> $where
@@ -423,7 +426,7 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFilterSetSelectionOptions($definitions)	{
-		$filtersets	= self::getTypeFiltersets('TASK', 0, true);
+		$filtersets	= self::getTypeFiltersets('TASK', userid(), true);
 
 		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
 
