@@ -37,6 +37,10 @@
 	display:block;
 }
 
+select#filtercontrol-conjunction {
+	margin-right:4px;
+}
+
 #widget-area .filterWidget .negation {
 	padding:0 0 0 6px;
 	background:#e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll 2px 4px;
