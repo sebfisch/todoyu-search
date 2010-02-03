@@ -19,15 +19,30 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Controller for filterarea (controlls + widgets + results)
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchFilterareaActionController extends TodoyuActionController {
 
+	/**
+	 * Load whole filter area.
+	 * Needs a tab and a filterset
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function loadAction(array $params) {
 		$tab		= $params['tab'];
 		$idFilterset= intval($params['filterset']);
-		$conditions	= array();
-		$init		= true;
 
-		return TodoyuFilterAreaRenderer::renderFilterArea($tab, $idFilterset, $conditions, $init);
+			// Save preferences
+		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
+		TodoyuSearchPreferences::saveActiveTab($tab);
+
+		return TodoyuFilterAreaRenderer::renderFilterArea($tab, $idFilterset);
 	}
 }
 

@@ -38,7 +38,7 @@ class TodoyuFilterAreaRenderer {
 	 * @param	Boolean		$init			Add init script at the bottom of loaded with ajax
 	 * @return	String
 	 */
-	public static function renderFilterArea($activeTab, $idFilterset = 0, array $conditions = array(), $init = false) {
+	public static function renderFilterArea($activeTab, $idFilterset = 0, array $conditions = array(), $init = true) {
 		$idFilterset= intval($idFilterset);
 
 			// If no filterset and conditions set, check for preset filterset
@@ -50,6 +50,7 @@ class TodoyuFilterAreaRenderer {
 		if( $idFilterset !== 0 ) {
 			$filterset	= TodoyuFiltersetManager::getFiltersetRecord($idFilterset);
 			$conjunction= $filterset['conjunction'];
+			$conditions	= TodoyuFilterConditionManager::getFiltersetConditions($idFilterset);
 		} else {
 			$conjunction= 'AND';
 		}
@@ -219,7 +220,20 @@ class TodoyuFilterAreaRenderer {
 			$searchResults	= 'Error: No renderfunction found';
 		}
 
+			// Render message, if no results found and no message has been rendered
+			// Just to prevent an empty result
+		if( strlen($searchResults) === 0 ) {
+			$searchResults	= self::renderDefaultNoResultsMessage();
+		}
+
 		return $searchResults;
+	}
+
+
+	public static function renderDefaultNoResultsMessage() {
+		$tmpl	= 'ext/search/view/no-results.tmpl';
+
+		return render($tmpl);
 	}
 
 }

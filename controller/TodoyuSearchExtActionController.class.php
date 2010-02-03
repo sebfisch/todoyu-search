@@ -49,20 +49,11 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 				// Normal preferences rendering
 			$activeTab	= TodoyuSearchPreferences::getActiveTab();
 			$idFilterset= TodoyuSearchPreferences::getActiveFilterset($activeTab);
-
-			if( $idFilterset !== 0 ) {
-				$conditions	= TodoyuFilterConditionManager::getFiltersetConditions($idFilterset);
-			} else {
-				$conditions	= array();
-			}
 		}
-
-			// Add JS init command
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')');
 
 		$panelWidgets	= TodoyuSearchRenderer::renderPanelWidgets();
 		$tabs			= TodoyuFilterAreaRenderer::renderTypeTabs($tab);
-		$filterArea 	= TodoyuFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset, $conditions, false);
+		$filterArea 	= TodoyuFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('tabs', $tabs);

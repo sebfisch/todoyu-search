@@ -85,6 +85,8 @@ Todoyu.Ext.search.Filter = {
 	 */
 	setActiveTab: function(tab)	{
 		this.activeTab = tab;
+		
+		Todoyu.Tabs.setActiveByKey('search-tabs', tab);
 	},
 
 
@@ -148,7 +150,6 @@ Todoyu.Ext.search.Filter = {
 			this.updateFilterArea(tab, 0);
 		}
 	},
-
 
 
 	/**
@@ -262,6 +263,8 @@ Todoyu.Ext.search.Filter = {
 			},
 			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
+		
+		this.setActiveTab(tab);
 
 		Todoyu.Ui.updateContentBody(url, options);
 	},

@@ -147,7 +147,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	onFiltersetSaved: function(idFilterset, response) {
 		var tab = this.ext.Filter.getActiveTab();
-		this.loadFilterset(tab, idFilterset);
+		this.showFilterset(tab, idFilterset);
 	},
 
 
@@ -185,24 +185,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		this.refresh();
 	},
 
-
-
-	/**
-	 * Load given filterset (into given tab)
-	 *
-	 * @param unknown_type tab
-	 * @param	Integer	idFilterset
-	 */
-	loadFilterset: function(tab, idFilterset) {
-		this.markActiveFilterset(idFilterset);
-
-		this.ext.Filter.loadFilterset(tab, idFilterset);
-
-		this.ext.Filter.saveActiveFilterset(tab, idFilterset);
-
-		if( tab !== this.ext.Filter.getActiveTab() ) {
-			this.ext.Preference.saveActiveTab(tab);
+	showFilterset: function(type, idFilterset) {
+		if( type === this.ext.Filter.getActiveTab() ) {
+			this.ext.Filter.loadFilterset(type, idFilterset);
+		} else {
+			this.ext.Filter.updateFilterArea(type, idFilterset);
 		}
+
+		this.markActiveFilterset(idFilterset);
 	},
 
 

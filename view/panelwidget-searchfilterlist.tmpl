@@ -13,7 +13,7 @@
 		{foreach $filtersets.filtersets index filterset}
 			<li id="filterset_{$filterset.id}" class="listItem filterset {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} hidden{/if}">
 				<div id="filterset-{$filterset.id}-handle" class="handle"></div>
-				<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.loadFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)">
+				<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.showFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)">
 					{htmlencode $filterset.title|truncate:25}
 				</a>
 				<span class="controllpanel">

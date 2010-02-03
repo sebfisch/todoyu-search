@@ -23,6 +23,7 @@
 		<label index="subMenuEntry.project">Projects</label>
 		<label index="filterwidget.condtion.remove">Remove condition</label>
 		<label index="search.noEntryFound">No results found</label>
+		<label index="search.noResultsForActiveFilters">No results found for currently selected filters</label>
 		<label index="contextmenu.project.showinproject">Open in Project view</label>
 	</labels>
 	<labels lang="de">
@@ -48,6 +49,7 @@
 		<label index="subMenuEntry.project">Projekte</label>
 		<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 		<label index="search.noEntryFound">Nichts gefunden</label>
+		<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
 		<label index="contextmenu.project.showinproject">In Projekt-Ansicht öffnen</label>
-	</labels>	
+	</labels>
 </locallang>
