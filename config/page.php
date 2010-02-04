@@ -21,7 +21,7 @@
 
 	// Add menu entry, add JS inits
 if( allowed('search', 'general:use') ) {
-	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 99);
+	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 50);
 
 		// Add filtertypes as submenu
 	$filterTypes= TodoyuSearchManager::getFilters();
