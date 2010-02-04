@@ -393,23 +393,23 @@ class TodoyuFiltersetManager {
 						$tables			= array_merge($tables, $filterInfo['tables']);
 						$filtersetWhere[]= $filterInfo['where'];
 					}
-						
+
 				}
 			}
 
 				// Concatinate all filter conditions with the selected conjunction
 			$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
 		}
-		
+
 
 			// Remove double tables
 		$tables	= array_unique($tables);
 			// Concatinate all filtersets with AND
-		
+
 		if(count($wheres) > 0)	{
 			$where	= '(' . implode(' AND ', $wheres) . ')';
 		}
-		
+
 		return array(
 			'tables'=> $tables,
 			'where'	=> $where
@@ -419,8 +419,7 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * The options of the filter selector.
-	 * Used for filterWidget filterSet
+	 * The options of the filter selector. Used for filterWidget filterSet
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
