@@ -19,6 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Widget area controller
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 	public function addAction(array $params) {

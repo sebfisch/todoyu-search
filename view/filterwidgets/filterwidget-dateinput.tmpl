@@ -2,8 +2,8 @@
 
 {block name="widgetbody"}
 	<span>
-		<input id="filterwidget-dateinput-{$definitions.widgetID}" type="text" class="input value" value="{$definitions.value}" onchange="Todoyu.Ext.search.Filter.updateConditionValue( '{$definitions.widgetID}', $F(this))"/>
-		<span id="filterwidget-dateinput-{$definitions.widgetID}-button" class="calendaricon"></span>
+		<input style="width:70px" id="filterwidget-dateinput-{$definitions.widgetID}" type="text" class="input value" value="{$definitions.value}" onchange="Todoyu.Ext.search.Filter.updateConditionValue( '{$definitions.widgetID}', $F(this))"/>
+		<span id="filterwidget-dateinput-{$definitions.widgetID}-button" class="calendaricon icon"></span>
 	</span>
 	<script type="text/javascript">
 		Calendar.setup({

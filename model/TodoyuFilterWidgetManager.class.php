@@ -39,10 +39,19 @@ class TodoyuFilterWidgetManager	{
 		$type		= strtoupper(trim($type));
 		$widgetName	= trim($widgetName);
 
-		$config		= $GLOBALS['CONFIG']['FILTERS'][$type]['widgets'][$widgetName];
+		$config		= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$type]['widgets'][$widgetName]);
 
-		if( ! is_array($config) ) {
-			$config = array();
+			// Add default negation labels if negation is just true
+		if( gettype($config['wConf']['negation']) === 'string' ) {
+			$config['wConf']['negation'] = array(
+				'labelTrue'	=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.true',
+				'labelFalse'=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.false'
+			);
+
+		}
+
+			// If no configuration available, log
+		if( sizeof($config) === 0 ) {
 			Todoyu::log('Filter widget not found', LOG_LEVEL_ERROR, array($type, $widgetName));
 		}
 
@@ -56,8 +65,8 @@ class TodoyuFilterWidgetManager	{
 	 * @param	String		$fieldType
 	 * @return	Array
 	 */
-	public static function getFieldTypeWidgetConfig($fieldType) {
-		return $GLOBALS['CONFIG']['FILTERCONF']['FILTERWIDGETS'][$fieldType];
+	public static function getWidgetTypeConfig($type) {
+		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['search']['widgettypes'][$type]);
 	}
 
 
@@ -83,7 +92,7 @@ class TodoyuFilterWidgetManager	{
 
 		$extend		= array(
 			'widgetID'				=> $widgetKey . '-' . $widgetName,
-			'widgetDefinitions'		=> self::getFieldTypeWidgetConfig($config['widget']),
+			'widgetDefinitions'		=> self::getWidgetTypeConfig($config['widget']),
 			'widgetFilterName'		=> $widgetKey,
 			'value'					=> $value,
 			'negate'				=> $negate
@@ -91,25 +100,8 @@ class TodoyuFilterWidgetManager	{
 
 		$config = array_merge($config, $extend);
 
-		$config	= self::processConfigFunction($config);
-
-		return $config;
-	}
-
-
-
-	/**
-	 * Call widget config processing function if defined
-	 * Return the modified config array
-	 *
-	 * @param	Array		$config
-	 * @return	Array
-	 */
-	public static function processConfigFunction(array $config) {
-		$funcRef	= $config['widgetDefinitions']['customDefinitionProcFunc'];
-
-		if( ! is_null($funcRef) ) {
-			$config = TodoyuDiv::callUserFunction($funcRef, $config);
+		if( TodoyuDiv::isFunctionReference($config['widgetDefinitions']['configFunc']) ) {
+			$config = TodoyuDiv::callUserFunction($config['widgetDefinitions']['configFunc'], $config);
 		}
 
 		return $config;
@@ -129,10 +121,10 @@ class TodoyuFilterWidgetManager	{
 	public static function getFilterWidgetDefinitions($filterType, $widgetName, $numOfWidget, $value = '', $negate = false)	{
 		$definitions = self::getFilterDefinitionsArray($filterType, $widgetName);
 
-		$definitions['widgetDefinitions'] = self::getWidgetDefinitionsArray($definitions['widget']);
+		$definitions['widgetDefinitions'] = self::getWidgetTypeConfig($definitions['widget']);
 
 			// Create id for the widget
-		$definitions['widgetID'] = $widgetName.'-'.$numOfWidget;
+		$definitions['widgetID'] = $widgetName . '-' . $numOfWidget;
 
 			// Add filtername to widget
 		$definitions['widgetFilterName'] = $widgetName;
@@ -143,7 +135,9 @@ class TodoyuFilterWidgetManager	{
 			// Add negate value to definitions
 		$definitions['negate'] = $negate;
 
-		$definitions = TodoyuFilterWidgetManager::checkOnCustomDefinitionProcFunc($definitions);
+		if( TodoyuDiv::isFunctionReference($definitions['widgetDefinitions']['configFunc']) ) {
+			$definitions = TodoyuDiv::callUserFunction($definitions['widgetDefinitions']['configFunc'], $definitions);
+		}
 
 		return $definitions;
 	}
@@ -178,7 +172,9 @@ class TodoyuFilterWidgetManager	{
 		$definitions = self::getFilterWidgetDefinitions($type, $widgetName, $numOfWidget);
 
 		$funcRefString = $definitions['wConf']['FuncRef'];
-		$funcRefParams = $definitions['wConf']['FuncParams'];
+		$funcRefParams = TodoyuArray::assure($definitions['wConf']['FuncParams']);
+
+		TodoyuDebug::printInFirebug($definitions);
 
 		if( TodoyuDiv::isFunctionReference($funcRefString) ) {
 			$data = TodoyuDiv::callUserFunction($funcRefString, $sword, $funcRefParams);
@@ -187,7 +183,10 @@ class TodoyuFilterWidgetManager	{
 			$data = array();
 		}
 
-		return array('widgetID' => $widgetIDParam, 'results' => $data);
+		return array(
+			'widgetID' => $widgetIDParam,
+			'results' => $data
+		);
 	}
 
 
@@ -217,15 +216,25 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function prepareProjectRoleOptions($definitions) {
-		$roles	= TodoyuUserroleManager::getAllUserroles();
+	public static function prepareProjectrole($definitions) {
+		$userroles	= TodoyuUserroleManager::getAllUserroles();
 
-		foreach( $roles as $role ) {
+			// Add userrole options
+		foreach($userroles as $userrole) {
 			$definitions['options'][]=	array(
-				'label'		=> $role['title'],
-				'value'		=> $role[$id],
+				'label'	=> $userrole['title'],
+				'value'	=> $userrole['id'],
 			);
 		}
+
+			// Prepare seperate values
+		$values	= explode(':', $definitions['value']);
+		$definitions['valueUser'] 		= intval($values[0]);
+		$definitions['valueUserLabel']	= TodoyuUserManager::getLabel($values[0]);
+		$definitions['valueUserroles']	= TodoyuArray::intExplode(',', $values[1], true, true);
+
+			// Add JS config
+		$definitions['specialConfig'] = json_encode(array('acOptions' => array('afterUpdateElement' => 'Todoyu.Ext.project.Filter.onProjectroleUserAcSelect')));
 
 		return $definitions;
 	}
@@ -311,35 +320,6 @@ class TodoyuFilterWidgetManager	{
 		return $definitions;
 	}
 
-
-
-	/**
-	 * Gets the widget Definitions
-	 *
-	 * @param	String	$widgetType
-	 * @return	Array
-	 */
-	protected static function getWidgetDefinitionsArray($widgetType)	{
-		return $GLOBALS['CONFIG']['FILTERCONF']['FILTERWIDGETS'][$widgetType];
-	}
-
-
-
-	/**
-	 * Checks if any manipulation function for the definition is given for the current filter-widget
-	 *
-	 * @param	Array	$definitions
-	 * @return	Array
-	 */
-	protected static function checkOnCustomDefinitionProcFunc($definitions)	{
-		$customDefinitionProcFunc = $definitions['widgetDefinitions']['customDefinitionProcFunc'];
-
-		if( TodoyuDiv::isFunctionReference($customDefinitionProcFunc) ) {
-			$definitions = TodoyuDiv::callUserFunction($customDefinitionProcFunc, $definitions);
-		}
-
-		return $definitions;
-	}
 }
 
 ?>

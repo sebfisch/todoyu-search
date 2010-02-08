@@ -29,6 +29,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 			// Add assets
 		TodoyuPage::addExtAssets('search', 'public');
+		TodoyuPage::addAllExtAssets('search');
 
 			// Add assets of all search types
 		$assets = TodoyuFilterBase::getTypesAssets();

@@ -128,7 +128,7 @@ abstract class TodoyuFilterBase {
 
 
 	/**
-	 * Check first if its a filterWidget. then return class Todoyuand method
+	 * Check first if its a filterWidget. then return class Todoyu and method
 	 *
 	 * else build it from current type and filter
 	 *
@@ -142,15 +142,23 @@ abstract class TodoyuFilterBase {
 		if( method_exists($this, $method) ) {
 			return array($this, $method);
 		} else {
-			// Check if a widget is available
-			$widgets	= $GLOBALS['CONFIG']['FILTERS'][$this->type]['widgets'];
+				// Check if a widget is available
+			$widgets	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$this->type]['widgets']);
 
 			if( array_key_exists($filter, $widgets) ) {
 				return explode('::', $widgets[$filter]['funcRef']);
 			}
+
+				// Check if a hidden filter is available
+			$filters	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$this->type]['filters']);
+
+			if( array_key_exists($filter, $filters) ) {
+				return explode('::', $filters[$filter]['funcRef']);
+			}
 		}
 
-		TodoyuDebug::printInFirebug($filter, 'Filter method not found');
+			// If no function reference found, log error
+		Todoyu::log('Filter method "' . $filter . '" not found for type ' . $this->type);
 
 		return false;
 	}

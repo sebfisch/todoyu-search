@@ -36,10 +36,8 @@ $CONFIG['EXT']['search']['info'] = array(
 	'version' => '0.1.0',
 	'constraints' => array(
 		'depends' => array(
-
 		),
 		'conflicts' => array(
-
 		),
 		'system'	=> true
 	)

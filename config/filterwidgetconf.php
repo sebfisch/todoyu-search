@@ -19,31 +19,22 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$GLOBALS['CONFIG']['FILTERCONF']['FILTERWIDGETS'] = array(
-	'textinput'		=> array(
-		'class'						=> 'filterWidgetTextInput',
-		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-textinput.tmpl',
-		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
-	),
-	'dateinput'		=> array(
-		'class'						=> 'filterWidgetDateInput',
-		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-dateinput.tmpl',
-	),
-	'checkbox'		=> array(
-		'class'						=> 'filterWidgetCheckbox',
-		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-checkbox.tmpl'
-	),
-	'select'		=> array(
-		'class'						=> 'filterWidgetSelect',
-		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-select.tmpl',
-		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::prepareSelectionOptions'
-	),
+$CONFIG['EXT']['search']['widgettypes']['textinput'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-textinput.tmpl',
+	'configFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
+);
 
-//	'projectrole'	=> array(
-//		'class'						=> 'filterWidgetSelect',
-//		'tmpl'						=> 'ext/search/view/filterwidgets/filterwidget-projectrole.tmpl',
-//		'customDefinitionProcFunc'	=> 'TodoyuFilterWidgetManager::prepareProjectRoleOptions'
-//	)
+$CONFIG['EXT']['search']['widgettypes']['dateinput'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-dateinput.tmpl',
+);
+
+$CONFIG['EXT']['search']['widgettypes']['checkbox'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-checkbox.tmpl'
+);
+
+$CONFIG['EXT']['search']['widgettypes']['select'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-select.tmpl',
+	'configFunc'	=> 'TodoyuFilterWidgetManager::prepareSelectionOptions'
 );
 
 ?>

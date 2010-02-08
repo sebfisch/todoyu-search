@@ -41,8 +41,8 @@
 		<label index="filterset.error.saveNoConditions">Es gibt keine Bedingungen zur Speicherung</label>
 		<label index="negation.default.true">ist nicht</label>
 		<label index="negation.default.false">ist</label>
-		<label index="negation.datetime.true">von</label>
-		<label index="negation.datetime.false">bis</label>
+		<label index="negation.datetime.true">nach</label>
+		<label index="negation.datetime.false">vor</label>
 		<label index="newFilterLabel">Bitte einen Filter-Namen angeben</label>
 		<label index="newFilterLabel.preset">Neuer Filter</label>
 		<label index="subMenuEntry.task">Aufgaben</label>
@@ -50,6 +50,6 @@
 		<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 		<label index="search.noEntryFound">Nichts gefunden</label>
 		<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
-		<label index="contextmenu.project.showinproject">In Projekt-Ansicht öffnen</label>
+		<label index="contextmenu.project.showinproject">Projekt-Ansicht öffnen</label>
 	</labels>
 </locallang>

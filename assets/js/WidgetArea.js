@@ -25,6 +25,12 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	areaID: 'widget-area',
 
 	autocompleters: {},
+	
+	/**
+	 * Special configuration added by some widgets
+	 * This is a temporary container for widget config
+	 */
+	specialConfig: {},
 
 
 
@@ -66,9 +72,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 */
 	onAdded: function(name, condition, response) {
 		var widgetID	= condition + '-' + name;
-
-		this.installAutocomplete(widgetID);
-		this.installNegation(widgetID);
+		
+		this.installAutocomplete.bind(this).defer(widgetID);
+		this.installNegation.bind(this).defer(widgetID);
 	},
 
 
@@ -127,8 +133,18 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 				'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
 			};
 			var suggestID= acField.id + '-suggestions';
+			
+				// Override config with specialConfig if available
+			if( this.specialConfig[name] && this.specialConfig[name]['acOptions'] ) {
+				options = $H(options).merge(this.specialConfig[name]['acOptions']).toObject();
+				
+				if( typeof options.afterUpdateElement === 'string' ) {
+					f = Todoyu.getFunctionFromString(options.afterUpdateElement);
+					options.afterUpdateElement = f.bind(this, name);
+				}
+			}
 
-			this.autocompleters[name] = new Ajax.Autocompleter(acField.id, suggestID, acUrl, options);
+			this.autocompleters[name] = new Todoyu.Autocompleter(acField.id, suggestID, acUrl, options);
 		}
 	},
 
@@ -174,6 +190,10 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 		this.ext.Filter.toggleConditionNegation(name);
 
 		event.findElement('span.negation').childElements().invoke('toggle');
+	},
+	
+	addSpecialConfig: function(name, config) {
+		this.specialConfig[name] = config;
 	}
 
 };

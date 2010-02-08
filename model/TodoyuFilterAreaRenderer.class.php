@@ -226,6 +226,8 @@ class TodoyuFilterAreaRenderer {
 			$searchResults	= self::renderDefaultNoResultsMessage();
 		}
 
+
+
 		return $searchResults;
 	}
 

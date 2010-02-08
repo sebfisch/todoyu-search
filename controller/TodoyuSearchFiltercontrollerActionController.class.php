@@ -19,8 +19,22 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Search filter controller
+ *
+ * @todo		Move this controller functions to an other controller
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchFiltercontrollerActionController extends TodoyuActionController {
 
+	/**
+	 * Autocomplete filter widget input
+	 * Configuration is stored in filter config
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function autocompletionAction(array $params) {
 		$widgetKey	= $params['completionID'];
 		$filterType	= $params['filtertype'];
