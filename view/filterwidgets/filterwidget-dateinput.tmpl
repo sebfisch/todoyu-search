@@ -1,10 +1,8 @@
 {extends "ext/search/view/filterwidgets/filterwidget-wrap.tmpl"}
 
 {block name="widgetbody"}
-	<span>
-		<input id="filterwidget-dateinput-{$definitions.widgetID}" type="text" class="input dateinput value" value="{$definitions.value}" onchange="Todoyu.Ext.search.Filter.updateConditionValue( '{$definitions.widgetID}', $F(this))"/>
-		<span id="filterwidget-dateinput-{$definitions.widgetID}-button" class="icon calendaricon"></span>
-	</span>
+	<input id="filterwidget-dateinput-{$definitions.widgetID}" type="text" class="input dateinput value" value="{$definitions.value}" onchange="Todoyu.Ext.search.Filter.updateConditionValue( '{$definitions.widgetID}', $F(this))"/>
+	<span id="filterwidget-dateinput-{$definitions.widgetID}-button" class="icon calendaricon"></span>
 	<script type="text/javascript">
 		Calendar.setup({
 			inputField : "filterwidget-dateinput-{$definitions.widgetID}", // id of the input field

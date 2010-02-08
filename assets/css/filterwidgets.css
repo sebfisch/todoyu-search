@@ -84,10 +84,10 @@ select#filtercontrol-conjunction {
 }
 
 #widget-area .widgetbody {
-	height:25px;
+	min-height:25px;
 	border:0 #ccc dotted;
 	border-width:0 1px 1px;
-	padding:2px;
+	padding:5px;
 }
 
 
@@ -105,4 +105,8 @@ select#filtercontrol-conjunction {
 	float:left;
 	margin-right:5px;
 	width: 85%;
+}
+
+#widget-area .widgetbody select {
+	width:100%;
 }
