@@ -201,18 +201,18 @@ class TodoyuFilterAreaRenderer {
 	/**
 	 * Render
 	 *
-	 * @param	String		$tab
+	 * @param	String		$type
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$conditions
 	 * @param	String		$conjunction
 	 * @return	String
 	 */
-	public static function renderResults($tab = 'task', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
+	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 
 			// Get render function
-		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($tab);
+		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($type);
 
 		if( ! is_null($renderFunction) ) {
 			$searchResults	= TodoyuDiv::callUserFunction($renderFunction, $idFilterset, $conditions, $conjunction);
@@ -225,8 +225,6 @@ class TodoyuFilterAreaRenderer {
 		if( strlen($searchResults) === 0 ) {
 			$searchResults	= self::renderDefaultNoResultsMessage();
 		}
-
-
 
 		return $searchResults;
 	}

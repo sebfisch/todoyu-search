@@ -142,18 +142,10 @@ abstract class TodoyuFilterBase {
 		if( method_exists($this, $method) ) {
 			return array($this, $method);
 		} else {
-				// Check if a widget is available
-			$widgets	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$this->type]['widgets']);
+			$config	= TodoyuFilterManager::getFilterConfig($this->type, $filter);
 
-			if( array_key_exists($filter, $widgets) ) {
-				return explode('::', $widgets[$filter]['funcRef']);
-			}
-
-				// Check if a hidden filter is available
-			$filters	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$this->type]['filters']);
-
-			if( array_key_exists($filter, $filters) ) {
-				return explode('::', $filters[$filter]['funcRef']);
+			if( $config !== false ) {
+				return explode('::', $config['funcRef']);
 			}
 		}
 

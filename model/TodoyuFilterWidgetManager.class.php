@@ -39,7 +39,7 @@ class TodoyuFilterWidgetManager	{
 		$type		= strtoupper(trim($type));
 		$widgetName	= trim($widgetName);
 
-		$config		= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$type]['widgets'][$widgetName]);
+		$config		= TodoyuFilterManager::getFilterConfig($type, $widgetName);
 
 			// Add default negation labels if negation is just true
 		if( gettype($config['wConf']['negation']) === 'string' ) {
@@ -47,7 +47,6 @@ class TodoyuFilterWidgetManager	{
 				'labelTrue'	=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.true',
 				'labelFalse'=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.false'
 			);
-
 		}
 
 			// If no configuration available, log
@@ -310,10 +309,9 @@ class TodoyuFilterWidgetManager	{
 		$filterType	= strtoupper(trim($filterType));
 		$widgetName	= trim($widgetName);
 
-		$definitions	= $GLOBALS['CONFIG']['FILTERS'][$filterType]['widgets'][$widgetName];
+		$definitions	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$filterType]['widgets'][$widgetName]);
 
-		if( ! is_array($definitions) ) {
-			$definitions = array();
+		if( sizeof($definitions) === 0 ) {
 			Todoyu::log('Widget definitions not found', LOG_LEVEL_ERROR, array($filterType,$widgetName));
 		}
 

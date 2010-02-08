@@ -25,8 +25,4 @@ TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label
 $CONFIG['EXT']['search']['suggestLimit']= 5;
 $CONFIG['EXT']['search']['defaultTab']	= 'task';
 
-	// Register context menu functions
-TodoyuContextMenuManager::registerFunction('Project', 'TodoyuSearchManager::getProjectContextMenuItems', 998);
-TodoyuContextMenuManager::registerFunction('Task', 'TodoyuSearchManager::getTaskContextMenuItems', 999);
-
 ?>

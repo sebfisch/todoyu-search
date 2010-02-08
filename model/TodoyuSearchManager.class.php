@@ -148,47 +148,6 @@ class TodoyuSearchManager {
 		return $searchEngines;
 	}
 
-
-
-	/**
-	 * Modify project context menu
-	 *
-	 * @param	Integer		$idProject
-	 * @param	Array		$items
-	 * @return	Array
-	 */
-	public static function getProjectContextMenuItems($idProject, array $items) {
-		$idProject	= intval($idProject);
-
-			// Only modify in resources area
-		if( AREA === EXTID_SEARCH ) {
-				// Add special resources items
-			$items	= $GLOBALS['CONFIG']['EXT']['search']['ContextMenu']['Project'];
-		}
-
-		return $items;
-	}
-
-
-
-	/**
-	 * Add items to task context menu
-	 *
-	 * @param	Integer		$idTask
-	 * @param	Array		$items
-	 * @return	Array
-	 */
-	public static function getTaskContextMenuItems($idTask, array $items) {
-		$idTask	= intval($idTask);
-
-			// Only show it in search
-		if( AREA === EXTID_SEARCH ) {
-			$items	= $GLOBALS['CONFIG']['EXT']['search']['ContextMenu']['Task'];
-		}
-
-		return $items;
-	}
-
 }
 
 ?>

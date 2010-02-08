@@ -35,7 +35,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Initialize search filters: inits active tab, active filterset + control + conditions, and updates to show the resp. results 
+	 * Initialize search filters: inits active tab, active filterset + control + conditions, and updates to show the resp. results
 	 *
 	 * @param	Integer	idProject
 	 * @param	Array	conditions
@@ -85,7 +85,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	setActiveTab: function(tab)	{
 		this.activeTab = tab;
-		
+
 		Todoyu.Tabs.setActiveByKey('search-tabs', tab);
 	},
 
@@ -103,7 +103,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Set current search filter to given ID 
+	 * Set current search filter to given ID
 	 *
 	 * @param Integer idFilterset
 	 */
@@ -115,7 +115,7 @@ Todoyu.Ext.search.Filter = {
 
 	/**
 	 * Get ID of current search filter
-	 * 
+	 *
 	 * @return	Integer
 	 */
 	getFiltersetID: function() {
@@ -263,7 +263,7 @@ Todoyu.Ext.search.Filter = {
 			},
 			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
-		
+
 		this.setActiveTab(tab);
 
 		Todoyu.Ui.updateContentBody(url, options);
@@ -295,7 +295,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Replace search results by result of current filter 
+	 * Replace search results by result of current filter
 	 *
 	 * @param	Integer			idFilterset
 	 * @param	unknown_type	conditions
@@ -326,7 +326,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	onResultsUpdated: function(tab) {
-		this.ext.refreshResultTypeContextMenus(tab);
+
 	},
 
 
@@ -342,12 +342,12 @@ Todoyu.Ext.search.Filter = {
 
 		this.updateResults(this.getActiveTab(), 0);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Set the new value of a condition without updating the results
-	 * 
+	 *
 	 *	@param	String		name		Name of the condition/widget
 	 *	@param	Mixed		value		New value
 	 */
