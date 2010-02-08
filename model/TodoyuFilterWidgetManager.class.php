@@ -41,6 +41,10 @@ class TodoyuFilterWidgetManager	{
 
 		$config		= TodoyuFilterManager::getFilterConfig($type, $widgetName);
 
+		if( $config === false ) {
+			return array();
+		}
+
 			// Add default negation labels if negation is just true
 		if( gettype($config['wConf']['negation']) === 'string' ) {
 			$config['wConf']['negation'] = array(
