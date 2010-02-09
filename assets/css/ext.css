@@ -16,7 +16,7 @@
 }
 
 #filtercontrol-conditions optgroup {
-	background-color:#e3eace;
+	/*background-color:#e3eace;*/
 	font-weight:bold;
 }
 
@@ -25,11 +25,11 @@
 }
 
 #filtercontrol-conditions option.odd {
-	background-color:#f3f3f3;
+	/*background-color:#f3f3f3;*/
 }
 
 #filtercontrol-conditions option.even {
-	background-color:#ffffff;
+	/*background-color:#ffffff;*/
 }
 
 /* -------------------------
