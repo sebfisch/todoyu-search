@@ -25,11 +25,11 @@
 	height:24px;
 	width:100%;
 	position:relative;
-	background:#fff url(../img/bg_search_headerline.png) no-repeat 0 0;
+	background:#fff url(../../../../core/assets/img/bg-headerline.png) no-repeat 0 0;
 }
 
 #widget-area .filterWidget .widgetheaderRgt {
-	background:#fff url(../img/bg_search_headerline.png) no-repeat scroll 100% 0;
+	background:#fff url(../../../../core/assets/img/bg-headerline.png) no-repeat scroll 100% 0;
 	height:24px;
 	width:3px;
 	position:absolute;
@@ -48,12 +48,12 @@ select#filtercontrol-conjunction {
 
 #widget-area .filterWidget .negation {
 	padding:0 0 0 6px;
-	background:#e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll 2px 4px;
+	background:#e7e7e7 url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll 2px 4px;
 }
 
 #widget-area .filterWidget .negationRgt {
 	height:10px;
-	background:#e7e7e7 url(../../../../core/assets/img/bg_button_small.png) no-repeat scroll -280px 4px;
+	background:#e7e7e7 url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll -280px 4px;
 }
 
 #widget-area .filterWidget .negation span {
