@@ -189,7 +189,7 @@ class TodoyuFiltersetManager {
 	 * @param	Integer		$idUser
 	 * @return 	Array
 	 */
-	public static function getTypeFiltersets($type = 'TASK', $idUser = 0, $showHidden = true) {
+	public static function getTypeFiltersets($type = 'TASK', $idUser = 0, $showHidden = false) {
 		$type	= empty($type) ? 'TASK' : strtolower(trim($type));
 		$idUser	= userid($idUser);
 
@@ -204,21 +204,6 @@ class TodoyuFiltersetManager {
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
-	}
-
-
-
-	/**
-	 * Get task filtersets
-	 *
-	 * @param	Integer	$idUser
-	 * @param	Boolean	$showHidden
-	 * @return	Array
-	 */
-	public static function getTaskFiltersets($idUser = 0, $showHidden = true) {
-		$idUser	= intval($idUser);
-
-		return self::getTypeFiltersets('TASK', $idUser, $showHidden);
 	}
 
 
