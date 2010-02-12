@@ -111,7 +111,7 @@ class TodoyuSearchManager {
 	 * @param	String		$labelMode
 	 * @param	Integer		$position
 	 */
-	public static function addSearchEngine($type, $methodSearch, $methodSuggest, $labelSuggest, $labelMode = '', $position = 100) {
+	public static function addEngine($type, $methodSearch, $methodSuggest, $labelSuggest, $labelMode = '', $position = 100) {
 		$type		= strtolower(trim($type));
 		$position	= intval($position);
 
@@ -136,7 +136,7 @@ class TodoyuSearchManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getSearchEngines() {
+	public static function getEngines() {
 		TodoyuExtensions::loadAllSearch();
 
 		$searchEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['search']['engines']);

@@ -57,7 +57,7 @@ class TodoyuSearch {
 			}
 		}
 
-		$engines = TodoyuSearchManager::getSearchEngines();
+		$engines = TodoyuSearchManager::getEngines();
 
 		foreach($engines as $engineConfig) {
 			if( $mode === 'all' || $mode === $engineConfig['type'] ) {

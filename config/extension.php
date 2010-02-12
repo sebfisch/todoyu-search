@@ -20,7 +20,7 @@
 ***************************************************************/
 
 if ( allowed('search', 'general:headlet') ) {
-	TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
+	TodoyuSearchManager::addEngine('all', null, null, '', 'search.search.label', 0);
 }
 
 $CONFIG['EXT']['search']['suggestLimit']= 5;

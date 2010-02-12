@@ -29,7 +29,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
 
 		$this->setData(array(
 			'query'			=> $this->params['query'],
-			'searchModes'	=> TodoyuSearchManager::getSearchEngines()
+			'searchModes'	=> TodoyuSearchManager::getEngines()
 		));
 	}
 
