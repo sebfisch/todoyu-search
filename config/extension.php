@@ -19,8 +19,9 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-
-TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
+if ( allowed('search', 'general:headlet') ) {
+	TodoyuSearchManager::addSearchEngine('all', null, null, '', 'search.search.label', 0);
+}
 
 $CONFIG['EXT']['search']['suggestLimit']= 5;
 $CONFIG['EXT']['search']['defaultTab']	= 'task';

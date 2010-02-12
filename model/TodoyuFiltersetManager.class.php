@@ -316,8 +316,8 @@ class TodoyuFiltersetManager {
 	/**
 	 * Validate filterset title (ensure uniqueness)
 	 *
-	 *	@param	String	$title
-	 *	@return String
+	 * @param	String	$title
+	 * @return String
 	 */
 	public static function validateTitle($title) {
 		$allFilterSetTitles	= TodoyuArray::flatten( self::getFiltersetTitles() );

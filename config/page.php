@@ -19,19 +19,23 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-	// Add menu entry, add JS inits
+	// Add add JS inits, menu entry
 if( allowed('search', 'general:use') ) {
-	TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 50);
-
-		// Add filtertypes as submenu
-	$filterTypes= TodoyuSearchManager::getFilters();
-	$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
-
-	foreach($filterTypes as $type => $typeConfig) {
-		TodoyuFrontend::addSubmenuEntry('search', 'search' . ucfirst($typeConfig['key']), $typeConfig['config']['label'], '?ext=search&tab=' . $typeConfig['key'], $typeConfig['config']['position']+100);
-	}
-
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');
+
+		// Menu entries
+	if( allowed('search', 'general:usearea') ) {
+		TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 50);
+
+			// Add filtertypes as submenu
+		$filterTypes= TodoyuSearchManager::getFilters();
+		$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
+
+		foreach($filterTypes as $type => $typeConfig) {
+//			TodoyuDebug::printHtml($typeConfig);
+			TodoyuFrontend::addSubmenuEntry('search', 'search' . ucfirst($typeConfig['key']), $typeConfig['config']['label'], '?ext=search&tab=' . $typeConfig['key'], $typeConfig['config']['position']+100);
+		}
+	}
 }
 
 	// Add quicksearch headlet

@@ -23,7 +23,6 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
 
 	/**
 	 * Initialize quick search headlet (set template, set initial data)
-	 *
 	 */
 	protected function init() {
 		$this->setTemplate('ext/search/view/headlet-quicksearch.tmpl');
@@ -39,7 +38,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
 	/**
 	 * Render quick search headlet, have resp. JS being added
 	 *
-	 * @return unknown
+	 * @return	String
 	 */
 	public function render() {
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)');

@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="general">General settings</label>
 		<label index="general.use">Use search</label>
+		<label index="general.usearea">Use search area</label>
 		<label index="general.headlet">Use search headlet</label>
 		<label index="filtersets">Filtersets</label>
 		<label index="filtersets.save">Save conditions as filterset</label>
@@ -15,6 +16,7 @@
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Suche benutzen</label>
+		<label index="general.usearea">Such-Bereich Verwenden</label>
 		<label index="general.headlet">Suche im Header anzeigen</label>
 		<label index="filtersets">Filtersets</label>
 		<label index="filtersets.save">Speichere Konditionen als Filterset</label>
@@ -22,6 +24,6 @@
 		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
 		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
 		<label index="panelwidgets">Panel widgets</label>
-		<label index="panelwidgets.panelwidget:searchFilterList">Suchfilterliste Widget</label>
+		<label index="panelwidgets.searchFilterList">Suchfilterliste Widget</label>
 	</labels>
 </locallang>

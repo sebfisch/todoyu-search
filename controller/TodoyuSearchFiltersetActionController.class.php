@@ -24,8 +24,8 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 	/**
 	 * Save current conditions with their settings as new Filter(set)
 	 *
-	 *	@param	Array	$params
-	 *	@return	Integer
+	 * @param	Array	$params
+	 * @return	Integer
 	 */
 	public function saveAsNewAction(array $params) {
 		$type		= $params['type'];
