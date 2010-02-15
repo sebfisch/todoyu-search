@@ -183,7 +183,7 @@ class TodoyuFilterConditionManager {
 		$data = array(
 			'date_create'	=> NOW,
 			'date_update'	=> NOW,
-			'id_user_create'=> personid(),
+			'id_person_create'=> personid(),
 			'id_set'		=> $idFilterset,
 			'filter'		=> $filterName,
 			'value'			=> $value,

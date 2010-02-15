@@ -191,7 +191,7 @@ class TodoyuFiltersetManager {
 	 */
 	public static function getTypeFiltersets($type = 'TASK', $idUser = 0, $showHidden = false) {
 		$type	= empty($type) ? 'TASK' : strtolower(trim($type));
-		$idUser	= userid($idUser);
+		$idUser	= personid($idUser);
 
 		$fields	= '*';
 		$table	= self::TABLE;
@@ -199,7 +199,7 @@ class TodoyuFiltersetManager {
 					deleted		= 0 AND ' .
 					($showHidden ? '' : 'is_hidden 	= 0 AND') .
 					' (
-						id_user_create	= ' . $idUser . '
+						id_person_create	= ' . $idUser . '
 					)';
 		$order	= 'sorting';
 
@@ -218,11 +218,11 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersets($idUser = 0, $type = null) {
-		$idUser	= userid($idUser);
+		$idUser	= personid($idUser);
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_user_create	= ' . $idUser . ' AND
+		$where	= '	id_person_create	= ' . $idUser . ' AND
 					deleted			= 0';
 		$order	= 'sorting, date_create';
 
@@ -245,11 +245,11 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersetTitles($idUser = 0, $type = null) {
-		$idUser	= userid($idUser);
+		$idUser	= personid($idUser);
 
 		$fields	= 'title';
 		$table	= self::TABLE;
-		$where	= '	id_user_create	= ' . $idUser . ' AND
+		$where	= '	id_person_create	= ' . $idUser . ' AND
 					deleted			= 0';
 		$order	= 'title';
 
