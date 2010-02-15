@@ -233,7 +233,7 @@ class TodoyuFilterWidgetManager	{
 			// Prepare seperate values
 		$values	= explode(':', $definitions['value']);
 		$definitions['valueUser'] 		= intval($values[0]);
-		$definitions['valueUserLabel']	= TodoyuUserManager::getLabel($values[0]);
+		$definitions['valueUserLabel']	= TodoyuPersonManager::getLabel($values[0]);
 		$definitions['valueUserroles']	= TodoyuArray::intExplode(',', $values[1], true, true);
 
 			// Add JS config
