@@ -410,7 +410,7 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFilterSetSelectionOptions($definitions)	{
-		$filtersets	= self::getTypeFiltersets('TASK', userid(), true);
+		$filtersets	= self::getTypeFiltersets('TASK', personid(), true);
 
 		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
 
