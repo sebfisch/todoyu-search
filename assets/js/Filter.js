@@ -86,7 +86,7 @@ Todoyu.Ext.search.Filter = {
 	setActiveTab: function(tab)	{
 		this.activeTab = tab;
 
-		Todoyu.Tabs.setActiveByKey('search-tabs', tab);
+		Todoyu.Tabs.setActive('search', tab);
 	},
 
 

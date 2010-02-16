@@ -73,8 +73,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			$activeTab = TodoyuSearchPreferences::getActiveTab();
 		}
 
-		$htmlID		= 'search-tabs';
-		$class		= 'tabs';
+		$name		= 'search';
 		$jsHandler	= 'Todoyu.Ext.search.Filter.onTabClick.bind(Todoyu.Ext.search.Filter)';
 
 		$tabsArr	= TodoyuSearchManager::getInlineTabHeads();
@@ -82,17 +81,14 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 		foreach($tabsArr as $key => $tab) {
 			$tabs[] = array(
 				'id'		=> $key,
-				'htmlId'	=> 'search-tabhead-' . $key,
-				'classKey'	=> $key,
-				'hasIcon'	=> false,
 				'label'		=> $tab['config']['label']
 			);
 		}
 
-		$tabs[0]['position'] = 'first';
-		$tabs[sizeof($tabs)-1]['position'] = 'last';
+//		$tabs[0]['position'] = 'first';
+//		$tabs[sizeof($tabs)-1]['position'] = 'last';
 
-		return TodoyuTabheadRenderer::renderTabs($htmlID, $class, $jsHandler, $tabs, $activeTab);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
 	}
 
 

@@ -31,24 +31,3 @@
 #filtercontrol-conditions option.even {
 	/*background-color:#ffffff;*/
 }
-
-
-
-/* -------------------------
-	Tabs 
-   -------------------------*/
-
-.tabs #search-tabhead-task p.label span.labeltext {
-	padding:0 0 0 20px;
-	background:url(../../../project/assets/img/icons.png) no-repeat 0px 2px;
-}
-
-.tabs #search-tabhead-user p.label span.labeltext {
-	padding:0 0 0 15px;
-	background:url(../../../user/assets/img/icons.png) no-repeat -3px -418px;
-}
-
-.tabs #search-tabhead-project p.label span.labeltext {
-	padding:0 0 0 20px;
-	background:url(../../../project/assets/img/icons.png) no-repeat 0 -355px;
-}
