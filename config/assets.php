@@ -26,8 +26,6 @@
  * @subpackage	Search
  */
 
-
-
 $CONFIG['EXT']['search']['assets'] = array(
 		// default: loaded all over the installation always
 	'default' => array(
