@@ -37,7 +37,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0)	{
 		TodoyuExtensions::loadAllFilters();
-		
+
 		parent::__construct(
 			'search',
 			'searchfilterlist',
@@ -70,7 +70,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 				$activeFiltersets[] = TodoyuSearchPreferences::getActiveFilterset($filtersetType);
 			}
 		}
-		
+
 		$tmpl = 'ext/search/view/panelwidget-searchfilterlist.tmpl';
 		$data = array(
 			'id'				=> $this->getID(),
@@ -98,7 +98,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 
 		TodoyuPage::addExtAssets('search', 'panelwidget-searchfilterlist');
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.PanelWidget.SearchFilterList.init.bind(Todoyu.Ext.search.PanelWidget.SearchFilterList)');
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.PanelWidget.SearchFilterList.init.bind(Todoyu.Ext.search.PanelWidget.SearchFilterList)', 100);
 
 		return parent::render();
 	}

@@ -21,7 +21,7 @@
 
 	// Add add JS inits, menu entry
 if( allowed('search', 'general:use') ) {
-	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)');
+	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)', 100);
 
 		// Menu entries
 	if( allowed('search', 'general:usearea') ) {

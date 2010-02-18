@@ -41,7 +41,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
 	 * @return	String
 	 */
 	public function render() {
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)');
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)', 100);
 
 		return parent::render();
 	}
