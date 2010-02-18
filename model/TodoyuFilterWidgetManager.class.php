@@ -214,37 +214,6 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * Prepare user role filter widget: get available user roles for selector
-	 *
-	 * @param	Array	$definitions
-	 * @return	Array
-	 */
-	public static function prepareProjectrole($definitions) {
-		$userroles	= TodoyuUserroleManager::getAllUserroles();
-
-			// Add userrole options
-		foreach($userroles as $userrole) {
-			$definitions['options'][]=	array(
-				'label'	=> $userrole['title'],
-				'value'	=> $userrole['id'],
-			);
-		}
-
-			// Prepare seperate values
-		$values	= explode(':', $definitions['value']);
-		$definitions['valueUser'] 		= intval($values[0]);
-		$definitions['valueUserLabel']	= TodoyuPersonManager::getLabel($values[0]);
-		$definitions['valueUserroles']	= TodoyuArray::intExplode(',', $values[1], true, true);
-
-			// Add JS config
-		$definitions['specialConfig'] = json_encode(array('acOptions' => array('afterUpdateElement' => 'Todoyu.Ext.project.Filter.onProjectroleUserAcSelect')));
-
-		return $definitions;
-	}
-
-
-
-	/**
 	 * handles the given manipulation function for autocompletion to set the correct label
 	 *
 	 * defined in filters config (LabelFuncRef)
