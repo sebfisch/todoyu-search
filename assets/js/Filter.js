@@ -391,7 +391,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
-				// Promt the user for a filter name
+				// Get name for new filter
 			var title = prompt('[LLL:search.newFilterLabel]', '[LLL:search.newFilterLabel.preset]');
 
 				// If name entered

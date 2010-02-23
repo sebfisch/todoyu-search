@@ -183,15 +183,15 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Get filtersets of a type for the (current) user
+	 * Get filtersets of a type for the (current) person
 	 *
 	 * @param	String		$type
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return 	Array
 	 */
-	public static function getTypeFiltersets($type = 'TASK', $idUser = 0, $showHidden = false) {
-		$type	= empty($type) ? 'TASK' : strtolower(trim($type));
-		$idUser	= personid($idUser);
+	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false) {
+		$type		= empty($type) ? 'TASK' : strtolower(trim($type));
+		$idPerson	= personid($idPerson);
 
 		$fields	= '*';
 		$table	= self::TABLE;
@@ -199,7 +199,7 @@ class TodoyuFiltersetManager {
 					deleted		= 0 AND ' .
 					($showHidden ? '' : 'is_hidden 	= 0 AND') .
 					' (
-						id_person_create	= ' . $idUser . '
+						id_person_create	= ' . $idPerson . '
 					)';
 		$order	= 'sorting';
 
@@ -209,20 +209,20 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Get filtersets (of a user and of a type)
-	 * If no user defined, it gets filtersets for the current user
+	 * Get filtersets (of a person and a type)
+	 * If no person defined, it gets filtersets for the current person
 	 * If no type defined, it gets filtersets of all types
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public static function getFiltersets($idUser = 0, $type = null) {
-		$idUser	= personid($idUser);
+	public static function getFiltersets($idPerson = 0, $type = null) {
+		$idPerson	= personid($idPerson);
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_person_create	= ' . $idUser . ' AND
+		$where	= '	id_person_create= ' . $idPerson . ' AND
 					deleted			= 0';
 		$order	= 'sorting, date_create';
 
@@ -236,20 +236,20 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Get filterset titles (of a user and of a type)
-	 * If no user defined, it gets filtersets for the current user
+	 * Get filterset titles (of a person and of a type)
+	 * If no person defined, it gets filtersets for the current person
 	 * If no type defined, it gets filtersets of all types
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public static function getFiltersetTitles($idUser = 0, $type = null) {
-		$idUser	= personid($idUser);
+	public static function getFiltersetTitles($idPerson = 0, $type = null) {
+		$idPerson	= personid($idPerson);
 
 		$fields	= 'title';
 		$table	= self::TABLE;
-		$where	= '	id_person_create	= ' . $idUser . ' AND
+		$where	= '	id_person_create	= ' . $idPerson . ' AND
 					deleted			= 0';
 		$order	= 'title';
 

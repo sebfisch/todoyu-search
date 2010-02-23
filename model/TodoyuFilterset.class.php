@@ -42,10 +42,10 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	/**
 	 * Get owner of the filterset
 	 *
-	 * @return	User
+	 * @return	TodoyuPerson
 	 */
 	public function getPerson() {
-		return TodoyuPersonManager::getPerson($this->get('id_person_create'));
+		return $this->getPerson('create');
 	}
 
 
