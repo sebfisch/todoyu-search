@@ -25,7 +25,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	ext:			Todoyu.Ext.search,
 
-	searchField:	null,
+	searchField:	null,	
+	button:			null,
+	box:			null,
 
 
 
@@ -33,10 +35,34 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * Enter description here...
 	 */
 	init: function() {
-		this.searchField = $('headletquicksearch-query');
+		this.searchField= $('headletquicksearch-query');
+		this.button		= $('headletquicksearch-button');
+		this.box		= $('headletquicksearch-box');
+		
 		this.Suggest.init();
 		this.Mode.init();
+		
+		this.button.observe('click', this.onButtonClick.bindAsEventListener(this));
 	},
+	
+	
+	onButtonClick: function(event) {
+		if( this.box.visible() ) {
+			this.box.hide();
+			this.Mode.hideModes();
+			this.Suggest.hideResults();
+		} else {
+			this.box.show();
+			this.focus();
+		}
+	},
+	
+	focus: function() {
+		this.searchField.focus();
+	},
+	
+
+
 
 
 
@@ -45,7 +71,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	submit: function() {
 		//$('headletquicksearch-form').submit();
-		Todoyu.log('redirect to full search disabled at the moment');
+		Todoyu.notifyInfo('redirect to full search disabled at the moment');
 	},
 
 
@@ -91,10 +117,17 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * Enter description here...
 	 */
 	Mode: {
+		
+		ext: Todoyu.Ext.search,
+		
+		headlet: null,
 
 		mode: 0,
 
 		button: null,
+		
+		modes: null,
+		
 
 		/**
 		 * Enter description here...
@@ -102,20 +135,14 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * @param Integer idFilterset
 		 */
 		init: function() {
-			this.button = $('headletquicksearch-mode-btn');
+			this.headlet = this.ext.Headlet.QuickSearch;
+			
+			this.button = $('headletquicksearch-mode-button');
+			this.modes	= $('headletquicksearch-modes');
 
-			this.installObserver();
+			this.button.observe('click', this.showModes.bindAsEventListener(this));
+			this.modes.observe('click', this.onModeClick.bindAsEventListener(this));
 		},
-
-
-
-		/**
-		 * Enter description here...
-		 */
-		installObserver: function() {
-			this.button.observe('click', this.show.bindAsEventListener(this));
-		},
-
 
 
 		/**
@@ -123,21 +150,22 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 *
 		 * @param	String	mode
 		 */
-		show: function(event) {
+		showModes: function(event) {
 			var btnOffset	= this.button.cumulativeOffset();
 			var btnHeight	= this.button.getHeight();
+			var btnWidth	= this.button.getWidth();
+			var modeWidth	= this.modes.getWidth();
 
 			var top			= btnOffset.top + btnHeight;
-			var left		= btnOffset.left;
+			var left		= btnOffset.left - modeWidth + btnWidth;
 
 			$('headletquicksearch-modes').setStyle({
 				'display':	'block',
 				'left':		left + 'px',
 				'top':		top + 1 + 'px'
 			});
-
-			$('headletquicksearch-modes').observe('click', this.onSelect.bindAsEventListener(this));
-			Event.observe.delay(0.1, document.body, 'click', this.onBodyClick.bindAsEventListener(this));
+			
+			$(document.body).observe('click', this.onBodyClick.bindAsEventListener(this));
 		},
 
 
@@ -149,7 +177,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 */
 		setMode: function(mode) {
 			$('headletquicksearch-mode').value = mode;
-			$('headletquicksearch-mode-icon').writeAttribute('class', 'searchmode-' + mode);
+			$('headletquicksearch-mode-icon').writeAttribute('class', 'icon searchmode-' + mode);
 		},
 
 
@@ -170,11 +198,12 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 *
 		 * @param	Object	event
 		 */
-		onSelect: function(event) {
+		onModeClick: function(event) {
 			var mode = event.findElement('li').readAttribute('mode');
 
 			this.setMode(mode);
-			this.hide();
+			this.hideModes();
+			this.headlet.focus();
 		},
 
 
@@ -182,7 +211,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Enter description here...
 		 */
 		onBodyClick: function(event) {
-			this.hide();
+			this.hideModes();
 			$(document.body).stopObserving('click');
 		},
 
@@ -191,7 +220,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 */
-		hide: function() {
+		hideModes: function() {
 			$('headletquicksearch-modes').hide();
 		}
 
@@ -216,9 +245,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		headlet:		null,
 
-		suggestID:		'headletquicksearch-suggest',
+		suggest:		null,
 
-		frequency:		700,
+		delay:			0.5,
 
 		navigatePos:	-1,
 
@@ -232,18 +261,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Enter description here...
 		 */
 		init: function() {
-			this.headlet = this.ext.Headlet.QuickSearch;
-			this.makeDiv();
-			this.installObserver();
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 */
-		installObserver: function() {
-			this.headlet.searchField.observe('keyup', this.onFieldUpdate.bind(this));
+			this.headlet	= this.ext.Headlet.QuickSearch;
+			this.suggest	= $('headletquicksearch-suggest');
+			//this.makeDiv();
+			
+			this.headlet.searchField.observe('keyup', this.onQueryChange.bind(this));
 		},
 
 
@@ -253,10 +275,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 *
 		 * @param	Object	event
 		 */
-		onFieldUpdate: function(event) {
-			if( this.timeout !== null ) {
-				window.clearTimeout(this.timeout);
-			}
+		onQueryChange: function(event) {
+			window.clearTimeout(this.timeout);
 
 				// Pressed ENTER
 			if( event.keyCode === Event.KEY_RETURN ) {
@@ -264,14 +284,14 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 					this.goToActiveElement();
 				} else {
 //					this.headlet.submitIfNotEmpty();
-					this.timeout = this.show.bind(this).delay(this.frequency / 1000);
+					this.timeout = this.show.bind(this).delay(this.delay);
 				}
 				return;
 			}
 
 				// Pressed navigation arrows
 			if (event.keyCode === Event.KEY_DOWN || event.keyCode === Event.KEY_UP) {
-				if ($(this.suggestID).visible()) {
+				if( this.suggest.visible() ) {
 					var down = event.keyCode === Event.KEY_DOWN;
 					this.navigate(down);
 				}
@@ -279,9 +299,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			}
 
 			if( this.headlet.isEmpty() ) {
-				this.hide();
+				this.hideResults();
 			} else {
-				this.timeout = this.show.bind(this).delay(this.frequency / 1000);
+				this.timeout = this.updateResults.bind(this).delay(this.delay);
 			}
 		},
 
@@ -339,7 +359,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			}
 
 				// Select active element
-			this.navigateActive = $(this.suggestID).down('li li', this.navigatePos);
+			this.navigateActive = this.suggest.down('li li', this.navigatePos);
 
 				// Set element active
 			this.navigateActive.addClassName('active');
@@ -350,8 +370,52 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Show headlet
 		 */
-		show: function() {
-			this.load(this.headlet.getValue());
+		updateResults: function() {
+			var url		= Todoyu.getUrl('search', 'suggest');
+			var options	= {
+				'parameters': {
+					'action':	'suggest',
+					'query':	this.headlet.getValue(),
+					'mode':		this.headlet.Mode.getMode()
+				},
+				'onComplete':	this.onResultsUpdated.bind(this)
+			};
+			
+			Todoyu.Ui.update(this.suggest, url, options);
+			
+			
+			//this.load(this.headlet.getValue());
+		},
+		
+		
+		/**
+		 * Enter description here...
+		 *
+		 * @param	Object	response
+		 */
+		onResultsUpdated: function(response) {
+			this.navigatePos = -1;
+			this.numElements = this.suggest.select('li li').size();
+
+			this.hideBind = this.hideResults.bind(this);
+
+			this.observeCloseEvents();
+			
+			this.showResults();
+		},
+		
+		
+		showResults: function() {
+			var boxDim	= this.headlet.box.getDimensions();
+			var offset	= this.headlet.box.cumulativeOffset();
+			var sugDim	= this.suggest.getDimensions();
+			
+			this.suggest.setStyle({
+				'left': offset.left - sugDim.width + boxDim.width - 1 + 'px',
+				'top': offset.top + boxDim.height + 'px'
+			});
+			
+			this.suggest.show();
 		},
 
 
@@ -359,8 +423,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Hide headlet
 		 */
-		hide: function() {
-			$(this.suggestID).hide();
+		hideResults: function() {
+			this.suggest.hide();
 
 			Event.stopObserving(document.body, 'click', this.hideBind);
 		},
@@ -371,29 +435,24 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Enter description here...
 		 */
 		makeDiv: function() {
-			var suggest = '';
-
-			if( ! Todoyu.exists(this.suggestID) ) {
-				suggest = new Element('div', {
-					'id': this.suggestID,
-					'class': 'searchSuggest',
-					'style': 'display:none'
+			/*
+			if( ! this.suggest ) {
+				this.suggest = new Element('div', {
+					'id':		'headletquicksearch-suggest',
+					'class': 	'searchSuggest',
+					'style': 	'display:none'
 				});
 
-				document.body.appendChild(suggest);
-			} else {
-				suggest = $(this.suggestID);
+				document.body.appendChild(this.suggest);
 			}
+			*/
+			
 
-			var dim		= this.headlet.searchField.getDimensions();
-			var offset	= this.headlet.searchField.cumulativeOffset();
+			//this.suggest.addClassName('searchSuggest');
 
-			suggest.addClassName('searchSuggest');
-
-			suggest.setStyle({
-				'left': offset.left - suggest.getDimensions().width + dim.width - 1 + 'px',
-				'top': offset.top + dim.height + 'px'
-			});
+			/*
+			
+			*/
 		},
 
 
@@ -402,49 +461,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Enter description here...
 		 */
 		observeCloseEvents: function() {
-			Event.observe(document.body, 'click', this.hide.bind(this));
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	String	query
-		 */
-		load: function(query) {
-			var url		= Todoyu.getUrl('search', 'suggest');
-			var options	= {
-				'parameters': {
-					'action':	'getSuggestions',
-					'query':	query,
-					'mode':		this.headlet.Mode.getMode()
-				},
-				'onComplete':	this.display.bind(this)
-			};
-			var target	= this.suggestID;
-
-			Todoyu.Ui.update(target, url, options);
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	Object	response
-		 */
-		display: function(response) {
-			var el = $(this.suggestID);
-
-			el.show();
-
-			this.navigatePos = -1;
-			this.numElements = el.select('li li').size();
-
-			this.hideBind = this.hide.bind(this);
-
-			this.observeCloseEvents();
+			
+			//Event.observe(document.body, 'click', this.hideResults.bind(this));
 		}
 
 	}

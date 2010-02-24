@@ -40,7 +40,7 @@ if( allowed('search', 'general:use') ) {
 
 	// Add quicksearch headlet
 if( allowed('search', 'general:headlet') ) {
-	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickSearch');
+	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickSearch');
 }
 
 ?>

@@ -1,16 +1,26 @@
-{extends "core/view/headlet.tmpl"}
-
-{block "headlet"}
-	<form action="?" method="get" name="search" id="{$id}-form" onsubmit="return false">
-		<input type="hidden" name="ext" value="search" />
-		<input type="hidden" name="controller" value="ext" />
-		<input type="hidden" name="mode" value="all" id="{$id}-mode" />
-		<div id="{$id}-mode-btn"><div id="{$id}-mode-icon" class="searchmode-all"></div></div>
-	  	<input name="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
+<form action="?ext=search" method="get" name="search" id="{$id}-form" onsubmit="return false">
+	<input type="hidden" name="mode" value="all" id="{$id}-mode" />
+	
+	<div id="{$id}-button" class="button">
+		<div class="icon"></div>
+	</div>
+	
+	<div class="box" id="{$id}-box" style="display:none">
+		<div class="field">
+			<input name="query" class="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
+		</div>
+		<div id="{$id}-mode-button" class="button mode">
+			<div id="{$id}-mode-icon" class="searchmode-all icon"></div>
+		</div>
+		
+	</div>
+	
 	<ul id="{$id}-modes">
-	{foreach $searchModes searchMode}
-		<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
-	{/foreach}
+		{foreach $searchModes searchMode}
+			<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
+		{/foreach}
 	</ul>
-	</form>
-{/block}
+	
+	<div id="{$id}-suggest" class="searchSuggest" style="display:none"></div>
+	
+</form>

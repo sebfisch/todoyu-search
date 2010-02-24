@@ -27,7 +27,7 @@ class TodoyuSearchSuggestActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function getSuggestionsAction(array $params) {
+	public function suggestAction(array $params) {
 		$query	= $params['query'];
 		$mode	= $params['mode'];
 
