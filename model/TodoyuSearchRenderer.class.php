@@ -167,12 +167,20 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			$content	= TodoyuDiv::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
 		}
 
-		$data = array(
+		$tmpl	= 'ext/search/view/search-results.tmpl';
+		$data 	= array(
 			'activeTab'		=> $activeTab,
 			'searchResults'	=> $content
 		);
 
-		return render('ext/search/view/search-results.tmpl', $data);
+		return render($tmpl, $data);
+	}
+
+
+	public static function renderResultsListing($type, array $itemIDs) {
+		$renderFunc		= TodoyuFilterManager::getFilterTypeResultsRenderer($type);
+
+		return TodoyuDiv::callUserFunction($renderFunc, $itemIDs);
 	}
 
 }

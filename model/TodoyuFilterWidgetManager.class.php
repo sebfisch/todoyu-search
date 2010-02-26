@@ -177,8 +177,6 @@ class TodoyuFilterWidgetManager	{
 		$funcRefString = $definitions['wConf']['FuncRef'];
 		$funcRefParams = TodoyuArray::assure($definitions['wConf']['FuncParams']);
 
-		TodoyuDebug::printInFirebug($definitions);
-
 		if( TodoyuDiv::isFunctionReference($funcRefString) ) {
 			$data = TodoyuDiv::callUserFunction($funcRefString, $sword, $funcRefParams);
 		} else {

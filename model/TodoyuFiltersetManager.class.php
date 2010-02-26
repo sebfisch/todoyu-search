@@ -131,6 +131,80 @@ class TodoyuFiltersetManager {
 	}
 
 
+//
+//	public static function getFiltersetsCount($type, array $filtersetIDs) {
+//		$conditions	= TodoyuFiltersetManager::getFiltersetConditions($typeFilterset['id']);
+//				$typeFilter	= new $filterClass($conditions);
+//				$itemIDs	= $typeFilter->getItemIDs();
+//	}
+
+
+
+	public static function getFiltersetResultItemIDs($idFilterset) {
+		$idFilterset	= intval($idFilterset);
+
+		$idFilterset	= intval($idFilterset);
+		$typeKey		= self::getFiltersetType($idFilterset);
+		$filterClass	= TodoyuFilterManager::getFilterTypeClass($typeKey);
+		$conditions		= self::getFiltersetConditions($idFilterset);
+
+		$typeFilter	= new $filterClass($conditions);
+
+		return $typeFilter->getItemIDs();
+	}
+
+
+	/**
+	 * Get items IDs for all filtersets
+	 * Combination: OR
+	 *
+	 * @param	Array		$filtersetIDs
+	 * @return	Array
+	 */
+	public static function getFiltersetsResultItemIDs(array $filtersetIDs) {
+		$filtersetIDs	= TodoyuArray::intval($filtersetIDs, true, true);
+		$allResultItems	= array();
+
+		foreach($filtersetIDs as $idFilterset) {
+			$allResultItems[] = self::getFiltersetResultItemIDs($idFilterset);
+		}
+
+		$resultItems	= array_unique(TodoyuArray::mergeSubArrays($allResultItems));
+
+		return $resultItems;
+	}
+
+
+
+	/**
+	 * Get number of result items for a filterset
+	 *
+	 * @param	Integer		$idFilterset
+	 * @return	Integer
+	 */
+	public static function getFiltersetCount($idFilterset) {
+		$itemIDs	= self::getFiltersetResultItemIDs($idFilterset);
+
+		return sizeof($itemIDs);
+	}
+
+
+
+	/**
+	 * Get result items count for the combination of all filtersets
+	 *
+	 *
+	 * @param array $filtersetIDs
+	 * @return unknown
+	 */
+	public static function getFiltersetsCount(array $filtersetIDs) {
+		$resultItems	= self::getFiltersetsResultItemIDs($filtersetIDs);
+
+		return sizeof($resultItems);
+	}
+
+
+
 
 	/**
 	 * Update filterset title

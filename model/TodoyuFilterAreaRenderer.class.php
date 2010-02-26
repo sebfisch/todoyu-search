@@ -207,29 +207,20 @@ class TodoyuFilterAreaRenderer {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 
-			// Get render function
-		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($type);
-
-		if( ! is_null($renderFunction) ) {
-			$searchResults	= TodoyuDiv::callUserFunction($renderFunction, $idFilterset, $conditions, $conjunction);
+			// If filterset is given, use its conditions
+		if( $idFilterset !== 0 ) {
+			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
 		} else {
-			$searchResults	= 'Error: No renderfunction found';
+			$conditions = TodoyuFilterConditionManager::buildFilterConditionArray($conditions);
 		}
 
-			// Render message, if no results found and no message has been rendered
-			// Just to prevent an empty result
-		if( strlen($searchResults) === 0 ) {
-			$searchResults	= self::renderDefaultNoResultsMessage();
-		}
+			// Build filter
+		$typeClass	= TodoyuFilterManager::getFilterTypeClass($type);
+		$typeFilter	= new $typeClass($conditions, $conjunction);
 
-		return $searchResults;
-	}
+		$itemIDs	= $typeFilter->getItemIDs();
 
-
-	public static function renderDefaultNoResultsMessage() {
-		$tmpl	= 'ext/search/view/no-results.tmpl';
-
-		return render($tmpl);
+		return TodoyuSearchRenderer::renderResultsListing($type, $itemIDs);
 	}
 
 }
