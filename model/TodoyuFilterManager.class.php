@@ -38,9 +38,9 @@ class TodoyuFilterManager {
 		$base	=& $GLOBALS['CONFIG']['FILTERS'][$type];
 		$config	= false;
 
-		if( is_array($base['filters'][$name]) ) {
+		if( isset($base['filters'][$name]) && is_array($base['filters'][$name]) ) {
 			$config	= $base['filters'][$name];
-		} elseif( is_array($base['widgets'][$name]) ) {
+		} elseif( isset($base['widgets'][$name]) && is_array($base['widgets'][$name]) ) {
 			$config	= $base['widgets'][$name];
 		}
 
