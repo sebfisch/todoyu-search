@@ -19,18 +19,15 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
+class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 
 	/**
 	 * Initialize quick search headlet (set template, set initial data)
 	 */
 	protected function init() {
-		$this->setTemplate('ext/search/view/headlet-quicksearch.tmpl');
+		$this->setJsHeadlet('Todoyu.Ext.search.Headlet.QuickSearch');
 
-		$this->setData(array(
-			'query'			=> $this->params['query'],
-			'searchModes'	=> TodoyuSearchManager::getEngines()
-		));
+//		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)', 100);
 	}
 
 
@@ -41,7 +38,16 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadlet {
 	 * @return	String
 	 */
 	public function render() {
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)', 100);
+		$tmpl	= 'ext/search/view/headlet-quicksearch.tmpl';
+		$data	= array(
+			'id'			=> $this->getID(),
+			'searchModes'	=> TodoyuSearchManager::getEngines(),
+			'query'			=> $this->params['query']
+		);
+
+		$content	= render($tmpl, $data);
+
+		$this->setOverlayContent($content);
 
 		return parent::render();
 	}

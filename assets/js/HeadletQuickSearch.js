@@ -23,11 +23,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 *	Ext shortcut
 	 */
-	ext:			Todoyu.Ext.search,
+	ext:		Todoyu.Ext.search,
 
-	searchField:	null,	
-	button:			null,
-	box:			null,
+	query:		null,	
+	button:		null,
+	box:		null,
 
 
 
@@ -35,18 +35,20 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * Enter description here...
 	 */
 	init: function() {
-		this.searchField= $('headletquicksearch-query');
-		this.button		= $('headletquicksearch-button');
-		this.box		= $('headletquicksearch-box');
-		
+		this.query	= $('headlet-quicksearch-query');
+		this.button	= Todoyu.Headlet.getButton('quicksearch'); // $('headlet-quicksearch-button');
+		this.box	= Todoyu.Headlet.getContent('quicksearch'); // $('headlet-quicksearch-box');
+				
 		this.Suggest.init();
 		this.Mode.init();
 		
-		this.button.observe('click', this.onButtonClick.bindAsEventListener(this));
+		//this.button.observe('click', this.onButtonClick.bindAsEventListener(this));
 	},
 	
 	
 	onButtonClick: function(event) {
+		console.log('onContentClick qs');
+		/*
 		if( this.box.visible() ) {
 			this.box.hide();
 			this.Mode.hideModes();
@@ -55,6 +57,19 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.box.show();
 			this.focus();
 		}
+		*/
+	},
+	
+	onContentClick: function(event) {
+		console.log('onContentClick qs');
+	},
+	
+	onMouseOver: function(event) {
+		console.log('onMouseOver qs');
+	},
+	
+	onMouseOut: function(event) {
+		console.log('onMouseOut qs');
 	},
 	
 	focus: function() {
@@ -70,7 +85,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * Enter description here...
 	 */
 	submit: function() {
-		//$('headletquicksearch-form').submit();
+		//$('headlet-quicksearch-form').submit();
 		Todoyu.notifyInfo('redirect to full search disabled at the moment');
 	},
 
@@ -137,8 +152,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		init: function() {
 			this.headlet = this.ext.Headlet.QuickSearch;
 			
-			this.button = $('headletquicksearch-mode-button');
-			this.modes	= $('headletquicksearch-modes');
+			this.button = $('headlet-quicksearch-mode-button');
+			this.modes	= $('headlet-quicksearch-modes');
 
 			this.button.observe('click', this.showModes.bindAsEventListener(this));
 			this.modes.observe('click', this.onModeClick.bindAsEventListener(this));
@@ -159,7 +174,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			var top			= btnOffset.top + btnHeight;
 			var left		= btnOffset.left - modeWidth + btnWidth;
 
-			$('headletquicksearch-modes').setStyle({
+			$('headlet-quicksearch-modes').setStyle({
 				'display':	'block',
 				'left':		left + 'px',
 				'top':		top + 1 + 'px'
@@ -176,8 +191,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * @param	String	mode
 		 */
 		setMode: function(mode) {
-			$('headletquicksearch-mode').value = mode;
-			$('headletquicksearch-mode-icon').writeAttribute('class', 'icon searchmode-' + mode);
+			$('headlet-quicksearch-mode').value = mode;
+			$('headlet-quicksearch-mode-icon').writeAttribute('class', 'icon searchmode-' + mode);
 		},
 
 
@@ -188,7 +203,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * @return	String
 		 */
 		getMode: function() {
-			return $F('headletquicksearch-mode');
+			return $F('headlet-quicksearch-mode');
 		},
 
 
@@ -221,7 +236,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Enter description here...
 		 */
 		hideModes: function() {
-			$('headletquicksearch-modes').hide();
+			$('headlet-quicksearch-modes').hide();
 		}
 
 	},
@@ -262,10 +277,10 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 */
 		init: function() {
 			this.headlet	= this.ext.Headlet.QuickSearch;
-			this.suggest	= $('headletquicksearch-suggest');
+			this.suggest	= $('headlet-quicksearch-suggest');
 			//this.makeDiv();
 			
-			this.headlet.searchField.observe('keyup', this.onQueryChange.bind(this));
+			this.headlet.query.observe('keyup', this.onQueryChange.bind(this));
 		},
 
 
@@ -438,7 +453,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			/*
 			if( ! this.suggest ) {
 				this.suggest = new Element('div', {
-					'id':		'headletquicksearch-suggest',
+					'id':		'headlet-quicksearch-suggest',
 					'class': 	'searchSuggest',
 					'style': 	'display:none'
 				});

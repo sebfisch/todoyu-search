@@ -1,23 +1,14 @@
-#headlet-QuickSearch {
+#headlet-quicksearch {
 	
 }
 
-#headlet-QuickSearch .button {
-	width:30px;
-	height:20px;
-	border:1px solid #b2b2b2;
-	border-right:none;
-	background:url(../../../../core/assets/img/headlet.png) no-repeat 0 0;
-	cursor:pointer;
-}
-
-#headlet-QuickSearch .button .icon {
+#headlet-quicksearch .button .icon {
 	margin-top:2px;
 	margin-left:1px;
 	background:url(../img/icons.png) no-repeat 0 -60px;
 }
 
-#headlet-QuickSearch div.box {
+#headlet-quicksearch div.box {
 	width:200px;
 	height:25px;
 	padding:3px;
@@ -28,13 +19,13 @@
 }
 
 
-#headlet-QuickSearch .field {
+#headlet-quicksearch .field {
 	float:left;
 	clear:none;
 	width:160px;
 }
 
-#headlet-QuickSearch .query {
+#headlet-quicksearch .query {
 	width:100%;
 	font-size:12px;
 	font-weight:bold;
@@ -42,14 +33,14 @@
 	padding:3px;
 }
 
-#headlet-QuickSearch .mode {
+#headlet-quicksearch .mode {
 	float:right;
 	clear:none;
 	width:30px;
 	height:20px;
 }
 
-#headlet-QuickSearch .mode .icon {
+#headlet-quicksearch .mode .icon {
 	margin-top:2px;
 	margin-left:1px;
 	background:url(../img/icons.png) no-repeat 0 -30px;
