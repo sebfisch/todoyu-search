@@ -2,7 +2,7 @@
 <locallang>
 	<labels lang="en">
 		<label index="general">General settings</label>
-		<label index="general.use">Allowed to use/see search functionalities</label>
+		<label index="general.use">Use/see search functionalities</label>
 		<label index="general.usearea">Use search area</label>
 		<label index="general.headlet">Use search headlet</label>
 		<label index="filtersets">Filtersets</label>
@@ -19,7 +19,7 @@
 		<label index="general.usearea">Such-Bereich Verwenden</label>
 		<label index="general.headlet">Suche im Header anzeigen</label>
 		<label index="filtersets">Filtersets</label>
-		<label index="filtersets.save">Speichere Konditionen als Filterset</label>
+		<label index="filtersets.save">Konditionen als Filterset speichern</label>
 		<label index="filtersets.deleteAll">Alle Filtersets löschen</label>
 		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
 		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
