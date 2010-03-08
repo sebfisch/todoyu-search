@@ -39,8 +39,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.button	= Todoyu.Headlet.getButton('quicksearch'); // $('headlet-quicksearch-button');
 		this.box	= Todoyu.Headlet.getContent('quicksearch'); // $('headlet-quicksearch-box');
 				
-		this.Suggest.init();
-		this.Mode.init();
+		//this.Suggest.init();
+		//this.Mode.init();
 		
 		//this.button.observe('click', this.onButtonClick.bindAsEventListener(this));
 	},

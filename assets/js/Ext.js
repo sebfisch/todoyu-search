@@ -44,7 +44,7 @@ Todoyu.Ext.search = {
 	 * @return	String
 	 */
 	getActiveTabKey: function() {
-		return Todoyu.Tabs.getActiveKey('search-tabs')
+		return Todoyu.Tabs.getActiveKey('search-tabs');
 	},
 
 
