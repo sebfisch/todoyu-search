@@ -2,7 +2,7 @@
 <locallang>
 	<labels lang="en">
 		<label index="general">General settings</label>
-		<label index="general.use">Use search</label>
+		<label index="general.use">Allowed to use/see search functionalities</label>
 		<label index="general.usearea">Use search area</label>
 		<label index="general.headlet">Use search headlet</label>
 		<label index="filtersets">Filtersets</label>
@@ -15,7 +15,7 @@
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
-		<label index="general.use">Suche benutzen</label>
+		<label index="general.use">Such-Funktionalitäten benutzen</label>
 		<label index="general.usearea">Such-Bereich Verwenden</label>
 		<label index="general.headlet">Suche im Header anzeigen</label>
 		<label index="filtersets">Filtersets</label>

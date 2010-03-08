@@ -24,7 +24,7 @@ if( allowed('search', 'general:use') ) {
 	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)', 100);
 
 		// Menu entries
-	if( allowed('search', 'general:usearea') ) {
+	if( allowed('search', 'general:area') ) {
 		TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 50);
 
 			// Add filtertypes as submenu
