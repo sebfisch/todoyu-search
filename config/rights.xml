@@ -3,8 +3,7 @@
 
 	<section name="general">
 		<right name="use" />
-		<right name="usearea" require="general:use" />
-		<right name="headlet" require="general:use" />
+		<right name="area" require="general:use" />
 	</section>
 	
 	<section name="filtersets" require="general:use">
