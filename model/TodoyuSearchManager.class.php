@@ -49,12 +49,24 @@ class TodoyuSearchManager {
 	}
 
 
+
+	/**
+	 * Get config array for all filter types
+	 *
+	 * @return	Array
+	 */
 	public static function getFilterConfigs() {
 		$filters= self::getFilters();
 		$config	= array();
 
+			// Check all filtertypes
 		foreach($filters as $type => $data) {
-			$config[$type] = $data['config'];
+			$require	= explode('.', $data['config']['require']);
+
+				// Add if no require set or require clause is allowed
+			if( ! isset($data['config']['require']) || allowed($require[0], $require[1]) ) {
+				$config[$type] = $data['config'];
+			}
 		}
 
 		return $config;

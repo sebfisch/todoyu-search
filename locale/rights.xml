@@ -3,27 +3,21 @@
 	<labels lang="en">
 		<label index="general">General settings</label>
 		<label index="general.use">Use/see search functionalities</label>
-		<label index="general.usearea">Use search area</label>
-		<label index="general.headlet">Use search headlet</label>
+		<label index="general.area">Use search area</label>
 		<label index="filtersets">Filtersets</label>
 		<label index="filtersets.save">Save conditions as filterset</label>
 		<label index="filtersets.deleteAll">Delete ALL filtersets</label>
 		<label index="filtersets.hideAll">Hide ALL filtersets</label>
 		<label index="filtersets.renameAll">Rename ALL filtersets</label>
-		<label index="panelwidgets">Panel widgets</label>
-		<label index="panelwidgets.searchFilterList">Show search filter list widget</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Such-Funktionalitäten benutzen</label>
-		<label index="general.usearea">Such-Bereich Verwenden</label>
-		<label index="general.headlet">Suche im Header anzeigen</label>
+		<label index="general.area">Such-Bereich Verwenden</label>
 		<label index="filtersets">Filtersets</label>
 		<label index="filtersets.save">Konditionen als Filterset speichern</label>
 		<label index="filtersets.deleteAll">Alle Filtersets löschen</label>
 		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
 		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
-		<label index="panelwidgets">Panel widgets</label>
-		<label index="panelwidgets.searchFilterList">Suchfilterliste Widget</label>
 	</labels>
 </locallang>

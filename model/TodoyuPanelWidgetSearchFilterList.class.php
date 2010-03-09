@@ -48,6 +48,10 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		);
 
 		$this->addHasIconClass();
+
+		TodoyuPage::addExtAssets('search', 'panelwidget-searchfilterlist');
+
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.PanelWidget.SearchFilterList.init.bind(Todoyu.Ext.search.PanelWidget.SearchFilterList)', 100);
 	}
 
 
@@ -96,10 +100,6 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	public function render()	{
 		$this->renderContent();
 
-		TodoyuPage::addExtAssets('search', 'panelwidget-searchfilterlist');
-
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.PanelWidget.SearchFilterList.init.bind(Todoyu.Ext.search.PanelWidget.SearchFilterList)', 100);
-
 		return parent::render();
 	}
 
@@ -120,6 +120,11 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		}
 
 		return $groups;
+	}
+
+
+	public static function isAllowed() {
+		return allowed('search', 'general:use');
 	}
 
 }

@@ -32,15 +32,13 @@ if( allowed('search', 'general:use') ) {
 		$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
 
 		foreach($filterTypes as $type => $typeConfig) {
-//			TodoyuDebug::printHtml($typeConfig);
 			TodoyuFrontend::addSubmenuEntry('search', 'search' . ucfirst($typeConfig['key']), $typeConfig['config']['label'], '?ext=search&tab=' . $typeConfig['key'], $typeConfig['config']['position']+100);
 		}
 	}
-}
 
-	// Add quicksearch headlet
-if( allowed('search', 'general:headlet') ) {
+		// Add quicksearch headlet
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickSearch');
 }
+
 
 ?>

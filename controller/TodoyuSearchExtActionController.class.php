@@ -19,8 +19,31 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Search Ext action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchExtActionController extends TodoyuActionController {
 
+	/**
+	 * Restrict access
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:use');
+	}
+
+
+
+	/**
+	 * Render search view
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function defaultAction(array $params) {
 		TodoyuFrontend::setActiveTab('search');
 

@@ -6,15 +6,11 @@
 		<right name="area" require="general:use" />
 	</section>
 	
-	<section name="filtersets" require="general:use">
+	<section name="filtersets" require="general:area">
 		<right name="save" />
 		<right name="deleteAll" />
 		<right name="hideAll" />
 		<right name="renameAll" />
-	</section>
-
-	<section name="panelwidgets" require="general:use">
-		<right name="searchFilterList" />
 	</section>
 
 </rights>
