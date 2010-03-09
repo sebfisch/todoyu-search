@@ -114,6 +114,23 @@ abstract class TodoyuFilterBase {
 
 
 	/**
+	 * Add an extra filter
+	 *
+	 * @param	String		$name		Filter name
+	 * @param	String		$value
+	 * @param	Bool		$negate
+	 */
+	public function addExtraFilter($name, $value, $negate = false) {
+		$this->activeFilters[] = array(
+			'filter'	=> $name,
+			'value'		=> $value,
+			'negate'	=> $negate
+		);
+	}
+
+
+
+	/**
 	 * Check if filter exists in config
 	 *
 	 * @param	String		$filter
