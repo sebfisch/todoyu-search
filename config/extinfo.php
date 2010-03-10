@@ -25,12 +25,12 @@
 
 
 $CONFIG['EXT']['search']['info'] = array(
-	'title'			=> 'todoyu search',
-	'description' 	=> 'todoyu search',
+	'title'			=> 'todoyu Search',
+	'description' 	=> 'todoyu Search',
 	'author' 		=> array(
-		'name'		=> 'Todoyu Core Team',
+		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
-		'company'	=> 'Snowflake Productions, Zürich'
+		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state' 		=> 'beta',
 	'version' 		=> '0.2.0',
