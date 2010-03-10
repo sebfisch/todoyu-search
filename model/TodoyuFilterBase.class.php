@@ -167,7 +167,7 @@ abstract class TodoyuFilterBase {
 		}
 
 			// If no function reference found, log error
-		Todoyu::log('Filter method "' . $filter . '" not found for type ' . $this->type);
+		Todoyu::log('Filter method "' . $filter . '" (table: ext_search_filtercondition) not found for type ' . $this->type);
 
 		return false;
 	}
