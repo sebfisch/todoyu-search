@@ -39,7 +39,7 @@ class TodoyuFiltersetManager {
 	public static function getFilterset($idFilterset) {
 		$idFilterset	= intval($idFilterset);
 
-		return TodoyuCache::getRecord('TodoyuFilterset', $idFilterset);
+		return TodoyuRecordManager::getRecord('TodoyuFilterset', $idFilterset);
 	}
 
 

@@ -1,23 +1,18 @@
 #headlet-quicksearch {
-	
+
 }
 
-#headlet-quicksearch .button .icon {
+#headlet-quicksearch div.button div.icon {
 	margin-top:2px;
 	margin-left:1px;
 	background:url(../img/icons.png) no-repeat 0 -60px;
 }
 
-#headlet-quicksearch div.box {
+#headlet-quicksearch div.content {
 	width:200px;
-	height:25px;
-	padding:3px;
-	border:1px solid #CCC;
-	background-color:#EEE;
-	margin-left:-176px;
-	margin-top:2px;
+	margin-left:-174px;
+	padding:2px;
 }
-
 
 #headlet-quicksearch .field {
 	float:left;
@@ -33,11 +28,14 @@
 	padding:3px;
 }
 
-#headlet-quicksearch .mode {
+
+
+#headlet-quicksearch-mode-button {
 	float:right;
 	clear:none;
 	width:30px;
 	height:20px;
+	cursor:pointer;
 }
 
 #headlet-quicksearch .mode .icon {
@@ -50,18 +48,17 @@
 
 
 
-#headletquicksearch-suggest {
-	position:fixed;
+#headlet-quicksearch-suggest {
+	position:absolute;
 	width:350px;
 	background-color:#fff;
 	border:1px solid #ddd;
 	border-top:none;
 	text-align:left;
-	z-index:1000;
-	/*padding-top:2px;*/
+	z-index:210;
 }
 
-	#headletquicksearch-suggest ul .type {
+	#headlet-quicksearch-suggest ul .type {
 		display:block;
 		width:344px;
 		font-weight:bold;
@@ -71,7 +68,7 @@
 		border-bottom:1px solid #ccc;
 	}
 	
-	#headletquicksearch-suggest ul li ul li a {
+	#headlet-quicksearch-suggest ul li ul li a {
 		display:block;
 		width:338px;
 		padding:2px;
@@ -79,33 +76,31 @@
 		border-bottom:1px solid #ccc;
 	}
 	
-	#headletquicksearch-suggest ul li ul li.active a,
-	#headletquicksearch-suggest ul li ul li a:hover {
+	#headlet-quicksearch-suggest ul li ul li.active a,
+	#headlet-quicksearch-suggest ul li ul li a:hover {
 		background-color:#ffe256;
 	}
 
-.searchSuggest a span.title {
-	font-weight:bold;
-}
+	#headlet-quicksearch-suggest a span.title {
+		font-weight:bold;
+	}
+	
+	#headlet-quicksearch-suggest a span.info {
+		color:#aaa;
+		display:block;
+		padding-left:10px;
+	}
 
-.searchSuggest a span.info {
-	color:#aaa;
-	display:block;
-	padding-left:10px;
-}
-
-#headletquicksearch-modes {
-	display:none;
+#headlet-quicksearch-modes {
 	position:fixed;
 	left:0px;
 	top:0px;
 	width:140px;
 	background-color:#f3f3f3;
 	border:1px solid #ddd;
-	z-index:1000;
 }
 
-	#headletquicksearch-modes li {
+	#headlet-quicksearch-modes li {
 		height:14px;
 		padding:3px 2px 3px 30px;
 		cursor:pointer;
@@ -113,17 +108,10 @@
 		border-bottom:1px solid #ddd;
 	}
 	
-	#headletquicksearch-modes li:hover {
+	#headlet-quicksearch-modes li:hover {
  	   background-color: #d0d8b3 !important;
 	}
 
-#headletquicksearch .searchmode-all {
+#headlet-quicksearch .searchmode-all {
 	background:url(../img/icons.png) no-repeat 1px -30px !important;
-}
-
-#headletquicksearch-results {
-	clear:both;
-	margin-top:15px;
-	border-top:1px dotted #ccc;
-	padding:15px;
 }

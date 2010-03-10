@@ -27,17 +27,11 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.Ext.search.Headlet.QuickSearch');
 
-//		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.Headlet.QuickSearch.init.bind(Todoyu.Ext.search.Headlet.QuickSearch)', 100);
+		TodoyuPage::addExtAssets('search', 'headlet-quicksearch');
 	}
 
 
-
-	/**
-	 * Render quick search headlet, have resp. JS being added
-	 *
-	 * @return	String
-	 */
-	public function render() {
+	public function renderOverlayContent() {
 		$tmpl	= 'ext/search/view/headlet-quicksearch.tmpl';
 		$data	= array(
 			'id'			=> $this->getID(),
@@ -45,11 +39,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 			'query'			=> $this->params['query']
 		);
 
-		$content	= render($tmpl, $data);
-
-		$this->setOverlayContent($content);
-
-		return parent::render();
+		return render($tmpl, $data);
 	}
 
 }
