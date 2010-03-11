@@ -2,8 +2,8 @@
 <locallang>
 	<labels lang="en">
 		<label index="title">Filter</label>
-		<label index="saveFilterButton">Save as new Filter</label>
-		<label index="clearFilterArea">Clear filter area</label>
+		<label index="saveFilterButton">Save As New Filter</label>
+		<label index="clearFilterArea">Clear Filter Area</label>
 	</labels>
 	<labels lang="de">
 		<label index="title">Filter</label>
