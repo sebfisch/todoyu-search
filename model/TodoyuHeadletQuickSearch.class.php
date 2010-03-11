@@ -31,7 +31,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	}
 
 
-	public function renderOverlayContent() {
+	protected function renderOverlayContent() {
 		$tmpl	= 'ext/search/view/headlet-quicksearch.tmpl';
 		$data	= array(
 			'id'			=> $this->getID(),
