@@ -20,6 +20,7 @@
 	padding:0;
 	background-position:0 4px;
 	background-color: transparent;
+	background:url(../img/icons.png) no-repeat 3px 5px;
 }
 
 ul#headlet-quicksearch-modes {
@@ -29,6 +30,10 @@ ul#headlet-quicksearch-modes {
 #headlet-quicksearch-modes li:hover {
 	border:none;
 	background-color:#edf0df;
+}
+
+#headlet-quicksearch li.searchmodeAll a {
+	background:url(../img/icons.png) no-repeat 2px -27px;
 }
 
 

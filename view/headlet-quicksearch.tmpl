@@ -1,5 +1,5 @@
 <li>
-<form action="?ext=search" method="get" name="search" id="{$id}-form" onsubmit="return false">
+<form action="?ext=search" method="get" name="search" id="{$id}-form" onsubmit="return false" class="searchModeAll">
 	<input type="hidden" name="mode" value="all" id="{$id}-mode" />
 
 	<input name="query" class="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
@@ -11,8 +11,8 @@
 	{if $searchModes}
 		<ul id="{$id}-modes" style="display: none;">
 			{foreach $searchModes searchMode}
-				<li class="searchmode-{$searchMode.type}">
-					<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Modes.setMode('{$searchMode.type}')">
+				<li class="searchmode{ucfirst($searchMode.type)}">
+					<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Mode.setMode('{$searchMode.type}')">
 						{Label $searchMode.labelMode}
 					</a>
 				</li>

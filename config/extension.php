@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-if ( allowed('search', 'general:headlet') ) {
+if ( allowed('search', 'general:use') ) {
 	TodoyuSearchManager::addEngine('all', null, null, '', 'search.search.label', 0);
 }
 

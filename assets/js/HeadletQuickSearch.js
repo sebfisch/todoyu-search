@@ -41,6 +41,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.button	= Todoyu.Headlet.getButton('quicksearch'); // $('headlet-quicksearch-button');
 		this.content= Todoyu.Headlet.getContent('quicksearch'); // $('headlet-quicksearch-box');
 				
+		this.query.observe('click', this.onQueryClick.bindAsEventListener(this));
 
 		this.Suggest.init();
 		this.Mode.init();
@@ -60,17 +61,15 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	},
 	
 	onContentClick: function(event) {
-		event.stop();
+		//event.stop();
 		console.log('onContentClick qs');
 	},
 	
-	onMouseOver: function(event) {
-		console.log('onMouseOver qs');
+	
+	onQueryClick: function(event) {
+		this.Mode.hideModes();
 	},
 	
-	onMouseOut: function(event) {
-		console.log('onMouseOut qs');
-	},
 	
 	hideContent: function() {
 		this.headlet.hideContent('quicksearch');
@@ -240,7 +239,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 */
 		setMode: function(mode) {
 			$('headlet-quicksearch-mode').value = mode;
-			$('headlet-quicksearch-mode-icon').writeAttribute('class', 'icon searchmode-' + mode);
+			$('headlet-quicksearch-form').writeAttribute('class', 'icon searchmode' + mode.capitalize());
 			
 			this.hideModes();
 			this.headlet.focus();
