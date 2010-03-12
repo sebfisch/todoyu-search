@@ -11,7 +11,11 @@
 	{if $searchModes}
 		<ul id="{$id}-modes" style="display: none;">
 			{foreach $searchModes searchMode}
-				<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
+				<li class="searchmode-{$searchMode.type}">
+					<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Modes.setMode('{$searchMode.type}')">
+						{Label $searchMode.labelMode}
+					</a>
+				</li>
 			{/foreach}
 		</ul>
 	{/if}

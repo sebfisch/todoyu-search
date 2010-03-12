@@ -50,19 +50,13 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	
 	
 	onButtonClick: function(event) {
-		this.toggleContent();
-		
-		
 		if( this.isContentVisible() ) {
-			this.focus();
-			//this.content.hide();
-			//this.Mode.hideModes();
-			//this.Suggest.hideResults();
+			this.hideContent();
 		} else {
-			//this.content.show();
-			
-		}
-		
+			this.headlet.hideAllContent();
+			this.showContent();
+			this.focus();
+		}		
 	},
 	
 	onContentClick: function(event) {
@@ -76,6 +70,14 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	
 	onMouseOut: function(event) {
 		console.log('onMouseOut qs');
+	},
+	
+	hideContent: function() {
+		this.headlet.hideContent('quicksearch');
+	},
+	
+	showContent: function() {
+		this.headlet.showContent('quicksearch');
 	},
 	
 	toggleContent: function() {
@@ -180,6 +182,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		
 		modes: null,
 		
+		positioned: false,
+		
 
 		/**
 		 * Enter description here...
@@ -193,7 +197,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.modes	= $('headlet-quicksearch-modes');
 
 			this.button.observe('click', this.showModes.bindAsEventListener(this));
-			this.modes.observe('click', this.onModeClick.bindAsEventListener(this));
 		},
 
 
@@ -203,18 +206,25 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * @param	String	mode
 		 */
 		showModes: function(event) {
-			var contentOffset	= this.headlet.content.cumulativeOffset();
-			var contentDim		= this.headlet.content.getDimensions();
-			var modeWidth		= this.modes.getWidth();
-
-			var top			= contentOffset.top + contentDim.height;
-			var left		= contentOffset.left - modeWidth + contentDim.width;
-
-			$('headlet-quicksearch-modes').setStyle({
-				'display':	'block',
-				'left':		left + 'px',
-				'top':		top + 'px'
-			});
+			var modes	= $('headlet-quicksearch-modes');
+			
+			if( ! this.positioned ) {
+				var contentOffset	= this.headlet.content.cumulativeOffset();
+				var contentDim		= this.headlet.content.getDimensions();
+				var modeWidth		= this.modes.getWidth();
+	
+				var top			= contentDim.height;
+				var left		= contentDim.width - modeWidth;
+	
+				modes.setStyle({
+					'left':		left + 'px',
+					'top':		top + 'px'
+				});
+				
+				this.positioned = true;
+			}
+			
+			modes.show();			
 			
 			this.headlet.Suggest.hideResults();
 			
@@ -232,6 +242,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			$('headlet-quicksearch-mode').value = mode;
 			$('headlet-quicksearch-mode-icon').writeAttribute('class', 'icon searchmode-' + mode);
 			
+			this.hideModes();
+			this.headlet.focus();
 			
 			this.headlet.Suggest.updateResults();			
 		},
@@ -245,21 +257,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 */
 		getMode: function() {
 			return $F('headlet-quicksearch-mode');
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	Object	event
-		 */
-		onModeClick: function(event) {
-			var mode = event.findElement('li').readAttribute('mode');
-
-			this.setMode(mode);
-			this.hideModes();
-			this.headlet.focus();
 		},
 
 

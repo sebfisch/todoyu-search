@@ -18,6 +18,16 @@
 	background-color: transparent;
 }
 
+ul#headlet-quicksearch-modes {
+	width:150px;
+}
+
+#headlet-quicksearch-modes li:hover {
+	border:none;
+	background-color:#edf0df;
+}
+
+
 /*
 #headlet-quicksearch div.content {
 	width:200px;
