@@ -1,22 +1,22 @@
+<li>
 <form action="?ext=search" method="get" name="search" id="{$id}-form" onsubmit="return false">
 	<input type="hidden" name="mode" value="all" id="{$id}-mode" />
-	
-	<div class="field">
-		<input name="query" class="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
-	</div>
-	
-	<div id="{$id}-mode-button" class="mode">
-		<div id="{$id}-mode-icon" class="searchmode-all icon"></div>
-	</div>
-	
+
+	<input name="query" class="query" id="{$id}-query" type="text" autocomplete="off" value="{$query}" />
+
+	<a id="{$id}-mode-button" class="button mode">&nbsp;</a>
+
 	<div style="clear:both;"><!-- --></div>
 
-	<ul id="{$id}-modes" style="display:none">
-		{foreach $searchModes searchMode}
-			<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
-		{/foreach}
-	</ul>
+	{if $searchModes}
+		<ul id="{$id}-modes" style="display: none;">
+			{foreach $searchModes searchMode}
+				<li class="searchmode-{$searchMode.type}" mode="{$searchMode.type}">{Label $searchMode.labelMode}</li>
+			{/foreach}
+		</ul>
+	{/if}
 
 	<div id="{$id}-suggest" class="searchSuggest" style="display:none"></div>
 
 </form>
+</li>
