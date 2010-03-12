@@ -472,6 +472,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 				'top':	contentOffset.top + contentDim.height + 'px'
 			});
 			
+			Todoyu.Ui.scrollToTop();
 			this.suggest.show();
 			
 			this.headlet.observeCloseEvents();
