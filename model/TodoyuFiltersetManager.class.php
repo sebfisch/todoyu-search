@@ -350,7 +350,7 @@ class TodoyuFiltersetManager {
 				'sorting'	=> $sorting++
 			);
 
-			Todoyu::db()->updateRecord(self::TABLE, $idItem, $update);
+			TodoyuRecordManager::updateRecord(self::TABLE, $idItem, $update);
 		}
 	}
 

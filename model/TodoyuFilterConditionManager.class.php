@@ -181,16 +181,13 @@ class TodoyuFilterConditionManager {
 		}
 
 		$data = array(
-			'date_create'	=> NOW,
-			'date_update'	=> NOW,
-			'id_person_create'=> personid(),
 			'id_set'		=> $idFilterset,
 			'filter'		=> $filterName,
 			'value'			=> $value,
 			'negate'		=> $negate
 		);
 
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
