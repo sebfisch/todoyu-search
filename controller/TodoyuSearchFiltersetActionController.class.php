@@ -51,6 +51,11 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 
 
 
+	/**
+	 * Save conditions as filterset
+	 *
+	 * @param	Array	$params
+	 */
 	public function saveAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$conditions	= $params['conditions'];
@@ -68,7 +73,6 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 
 		return $idFilterset;
 	}
-
 
 }
 

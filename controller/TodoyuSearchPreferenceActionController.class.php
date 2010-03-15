@@ -97,7 +97,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Delete a filterset with its condition
+	 * Delete a filterset with its condition and all delete it from preferences possibly using it
 	 *
 	 * @param	Array	$params
 	 */

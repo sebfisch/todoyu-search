@@ -33,6 +33,7 @@ class TodoyuSearchFilteractioncontrollActionController extends TodoyuActionContr
 
 		return TodoyuFilterAreaRenderer::renderControls($tab, $idFilterset);
 	}
+
 }
 
 ?>

@@ -131,15 +131,13 @@ class TodoyuFiltersetManager {
 	}
 
 
-//
-//	public static function getFiltersetsCount($type, array $filtersetIDs) {
-//		$conditions	= TodoyuFiltersetManager::getFiltersetConditions($typeFilterset['id']);
-//				$typeFilter	= new $filterClass($conditions);
-//				$itemIDs	= $typeFilter->getItemIDs();
-//	}
 
-
-
+	/**
+	 * Get result items to given set of filter conditions
+	 *
+	 * @param	$idFilterset
+	 * @return	Array
+	 */
 	public static function getFiltersetResultItemIDs($idFilterset) {
 		$idFilterset	= intval($idFilterset);
 
@@ -152,6 +150,7 @@ class TodoyuFiltersetManager {
 
 		return $typeFilter->getItemIDs();
 	}
+
 
 
 	/**
@@ -224,8 +223,7 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Update filterset visibility
-	 * Set hidden attribute of the filterset
+	 * Update filterset visibility: Set hidden attribute of the filterset
 	 *
 	 * @param	Integer		$idFilterset
 	 * @param	Boolean		$isHidden
@@ -310,6 +308,31 @@ class TodoyuFiltersetManager {
 
 
 	/**
+	 * Get IDs of filtersets of given person. if no type given: get all types
+	 *
+	 * @param	Integer	$idPerson
+	 * @param	String	$type
+	 * @return	Array
+	 */
+	public static function getFiltersetIDs($idPerson = 0, $type = null) {
+		$idPerson	= personid($idPerson);
+
+		$fields	= 'id';
+		$table	= self::TABLE;
+		$where	= '	id_person_create	= ' . $idPerson . ' AND
+					deleted			= 0';
+		$order	= 'title';
+
+		if( ! is_null($type) ) {
+			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Get filterset titles (of a person and of a type)
 	 * If no person defined, it gets filtersets for the current person
 	 * If no type defined, it gets filtersets of all types
@@ -357,7 +380,7 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Store submitted filterset data
+	 * Store submitted filterset data.
 	 * Updates or creates a filterset and (re-)creates the conditions in the database
 	 *
 	 * @param	Array		$filterData
