@@ -28,7 +28,12 @@
 
 class TodoyuFiltersetManager {
 
+	/**
+	 * Default table for database requests
+	 */
 	const TABLE = 'ext_search_filterset';
+
+
 
 	/**
 	 * Get filter

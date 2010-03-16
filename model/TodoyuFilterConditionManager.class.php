@@ -30,8 +30,7 @@
 class TodoyuFilterConditionManager {
 
 	/**
-	 * Condition table
-	 *
+	 * Default table for database requests
 	 */
 	const TABLE = 'ext_search_filtercondition';
 
@@ -76,8 +75,7 @@ class TodoyuFilterConditionManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_set	= ' . $idFilterset . ' AND
-					deleted	= 0';
+		$where	= '	id_set	= ' . $idFilterset . ' AND deleted	= 0';
 		$order	= 'id';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -139,6 +137,7 @@ class TodoyuFilterConditionManager {
 	}
 
 
+
 	/**
 	 * Save all filterset conditions
 	 *
@@ -168,7 +167,7 @@ class TodoyuFilterConditionManager {
 	 *
 	 * @param	Integer		$idFilterset		Parent filterset
 	 * @param	String		$filterName			Name of the filter (-function)
-	 * @param	Mixed		$value				String or array value data
+	 * @param	Mixed		$value				String or Array value data
 	 * @param	Boolean		$negate				Filter is negated
 	 * @return	Integer		Condition ID
 	 */

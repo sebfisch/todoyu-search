@@ -30,6 +30,8 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 	const EXTKEY = 'search';
 
+
+
 	/**
 	 * Render search suggestion list
 	 *
@@ -41,6 +43,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 		return render($tmpl, $suggestions);
 	}
+
 
 
 	/**
@@ -104,7 +107,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 		$params	= array();
 
 		return TodoyuPanelWidgetRenderer::renderPanelWidgets('search', $params);
-
 	}
 
 
@@ -116,6 +118,11 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 * - reads the active tab (filtertype) by url-parameter or preset
 	 * - renders the filtered results by defined render function
 	 *
+	 * @param	String		$activeTab
+	 * @param	Integer		$idFilterset
+	 * @param	Boolean		$useConditions
+	 * @param	Array		$filterConditions
+	 * @param	String		$conjunction			AND / OR
 	 * @return	String
 	 */
 	public static function renderSearchResults($activeTab = null, $idFilterset = 0, $useConditions = true, array $filterConditions = array(), $conjunction = 'AND')	{
@@ -148,6 +155,14 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	}
 
 
+
+	/**
+	 * Render listing of search results
+	 *
+	 * @param 	String	$type
+	 * @param	Array	$itemIDs
+	 * @return	String
+	 */
 	public static function renderResultsListing($type, array $itemIDs) {
 		$renderFunc		= TodoyuFilterManager::getFilterTypeResultsRenderer($type);
 
