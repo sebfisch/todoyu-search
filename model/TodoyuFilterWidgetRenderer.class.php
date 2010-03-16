@@ -57,7 +57,7 @@ class TodoyuFilterWidgetRenderer {
 
 
 	/**
-	 * Renders the suggestions of the autocompleter
+	 * Render suggestions of the autocompleter
 	 *
 	 * @param	Array	$results
 	 * @return	String

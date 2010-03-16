@@ -47,6 +47,7 @@ class TodoyuSearch {
 			return array();
 		}
 
+			// Split into words, trim, add to array of terms to be found
 		$words	= TodoyuArray::trimExplode(' ', $query, true);
 
 		foreach($words as $word) {

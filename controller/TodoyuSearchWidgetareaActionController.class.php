@@ -27,6 +27,11 @@
  */
 class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
+	/**
+	 * (Render and) add given search widget
+	 *
+	 * @param	Array	$params
+	 */
 	public function addAction(array $params) {
 		$widgetName	= $params['name'];
 		$condition	= $params['condition'];
@@ -38,17 +43,27 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Load widget area
+	 *
+	 * @param	Array		$params
+	 * @return	String		rendered widget area
+	 */
 	public function loadAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
 		$content	= '';
 
+			// No filterset given? get active filterset of tab
 		if( $idFilterset === 0 ) {
 			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($tab);
 		} else {
+				// Filterset given? save as active set of tab
 			TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 		}
 
+			// Filterset given? get rel. conditions, render and init widget area
 		if( $idFilterset !== 0 ) {
 			$conditions	= TodoyuFiltersetManager::getFiltersetConditions($idFilterset);
 
@@ -62,7 +77,6 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 		return $content;
 	}
-
 
 }
 
