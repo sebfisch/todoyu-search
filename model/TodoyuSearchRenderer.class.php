@@ -61,9 +61,10 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 
 	/**
-	 * Renders the tabhead of the search extension
+	 * Render tab head of search area
 	 *
-	 * @return string
+	 * @param	String		$activeTab
+	 * @return	String
 	 */
 	public static function renderInlineTabHead($activeTab = null)	{
 		$tabs 		= array();
@@ -89,36 +90,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 //		$tabs[sizeof($tabs)-1]['position'] = 'last';
 
 		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
-	}
-
-
-
-	/**
-	 * Render filter controll list and widget area
-	 *
-	 * @param	String		$tab		Active tab
-	 * @return	String
-	 */
-	public static function renderFilterArea($tab = null)	{
-		if( is_null($tab) ) {
-			$tab = TodoyuSearchPreferences::getActiveTab();
-		}
-
-			// Check if a filterset is active (edited)
-		$idFilterset	= TodoyuSearchPreferences::getActiveFilterset($tab);
-
-
-		$tmpl = 'ext/search/view/filter-area.tmpl';
-		$data = array(
-			'controls'		=> TodoyuFilterAreaRenderer::renderControls($tab, $idFilterset),
-			'activeWidgets'	=> ''
-		);
-
-		if( $idFilterset !== 0 ) {
-			$data['activeWidgets'] = TodoyuFilterAreaRenderer::renderFiltersetWidgets($idFilterset);
-		}
-
-		return render($tmpl, $data);
 	}
 
 

@@ -29,8 +29,7 @@
 class TodoyuFilterAreaRenderer {
 
 	/**
-	 * Render whole filter area
-	 * Filter area contains tabs, control, widget area and search results
+	 * Render whole filter area: contains tabs, control, widget area and search results
 	 *
 	 * @param	String		$activeTab		Active tab/filter type
 	 * @param	Integer		$idFilterset	Active filterset
@@ -84,6 +83,7 @@ class TodoyuFilterAreaRenderer {
 
 		return render($tmpl, $data);
 	}
+
 
 
 	/**
