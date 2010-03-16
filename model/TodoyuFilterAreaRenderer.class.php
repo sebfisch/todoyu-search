@@ -220,8 +220,6 @@ class TodoyuFilterAreaRenderer {
 
 		$itemIDs	= $typeFilter->getItemIDs();
 
-		TodoyuDebug::printLastQueryInFirebug();
-
 		return TodoyuSearchRenderer::renderResultsListing($type, $itemIDs);
 	}
 
