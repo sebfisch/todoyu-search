@@ -64,8 +64,8 @@ Todoyu.Ext.search.Filter = {
 	 */
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
-
-		conditions.each(function(item) {
+		
+		$A(conditions).each(function(item) {
 			var name	= item['filter'] + '-' + item['id'];
 			var negate	= item['negate']==1;
 
