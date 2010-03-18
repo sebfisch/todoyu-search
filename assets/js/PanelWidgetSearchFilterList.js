@@ -82,7 +82,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param Integer idFilterset
 	 */
 	renameFilterset: function(idFilterset)	{
-		var currentName	= $('filterset-' + idFilterset + '-label').innerHTML.stripScripts().stripTags().strip()
+		var currentName	= $('filterset-' + idFilterset + '-label').title.stripScripts().stripTags().strip()
 		var newName		= prompt('[LLL:search.filterset.rename]', currentName);
 
 		if( newName !== null && newName.strip() !== '' ) {
