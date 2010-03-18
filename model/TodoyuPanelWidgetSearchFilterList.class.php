@@ -49,8 +49,6 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 
 		$this->addHasIconClass();
 
-		TodoyuPage::addExtAssets('search', 'panelwidget-searchfilterlist');
-
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.PanelWidget.SearchFilterList.init.bind(Todoyu.Ext.search.PanelWidget.SearchFilterList)', 100);
 	}
 

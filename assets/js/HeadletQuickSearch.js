@@ -52,17 +52,17 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	
 	onButtonClick: function(event) {
 		if( this.isContentVisible() ) {
-			this.hideContent();
+			this.hide();
 		} else {
-			this.headlet.hideAllContent();
+			this.hideOthers();
+			//this.headlet.hideAllContent();
 			this.showContent();
 			this.focus();
 		}		
 	},
 	
 	onContentClick: function(event) {
-		//event.stop();
-		console.log('onContentClick qs');
+		
 	},
 	
 	
@@ -71,20 +71,10 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	},
 	
 	
-	hideContent: function() {
-		this.headlet.hideContent('quicksearch');
-	},
-	
-	showContent: function() {
-		this.headlet.showContent('quicksearch');
-	},
-	
-	toggleContent: function() {
-		this.headlet.toggleContent('quicksearch', false);
-	},
-	
-	isContentVisible: function() {
-		return this.headlet.isContentVisible('quicksearch');
+	hide: function() {
+		this.hideContent();
+		this.Mode.hideModes();
+		this.Suggest.hideResults();
 	},
 	
 	focus: function() {

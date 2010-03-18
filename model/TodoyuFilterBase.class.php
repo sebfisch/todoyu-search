@@ -340,28 +340,6 @@ abstract class TodoyuFilterBase {
 
 		return $ids;
 	}
-
-
-
-	/**
-	 * Gets the assets for each filtertype configured in the filter array
-	 *
-	 * @return	Array
-	 */
-	public static function getTypesAssets()	{
-		$assets = array();
-
-		foreach($GLOBALS['CONFIG']['FILTERS'] as $typeConfig)	{
-			if( is_array($typeConfig['config']['assets']) )	{
-				foreach($typeConfig['config']['assets'] as $extraAssets) {
-					$assets[] = $extraAssets;
-				}
-			}
-		}
-
-		return $assets;
-	}
-
 }
 
 ?>

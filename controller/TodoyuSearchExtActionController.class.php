@@ -50,16 +50,6 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		TodoyuPage::init('ext/search/view/ext.tmpl');
 		TodoyuPage::setTitle('LLL:search.page.title');
 
-			// Add assets
-		TodoyuPage::addExtAssets('search', 'public');
-		TodoyuPage::addAllExtAssets('search');
-
-			// Add assets of all search types
-		$assets = TodoyuFilterBase::getTypesAssets();
-		foreach($assets as $assetArray)	{
-			TodoyuPage::addExtAssets($assetArray['ext'], $assetArray['type']);
-		}
-
 			// Get tab parameter
 		$activeTab	= $params['tab'];
 

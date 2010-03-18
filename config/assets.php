@@ -27,91 +27,71 @@
  */
 
 $CONFIG['EXT']['search']['assets'] = array(
-		// default: loaded all over the installation always
-	'default' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/search/assets/js/Ext.js',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/search/assets/js/HeadletQuickSearch.js',
-				'position'	=> 110
-			),
-			array(
-				'file' => 'ext/search/assets/js/Preference.js',
-				'position' => 102
-			)
+	'js' => array(
+		array(
+			'file'		=> 'ext/search/assets/js/Ext.js',
+			'position'	=> 100
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/search/assets/css/global.css',
-				'media'		=> 'all',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/search/assets/css/ext.css',
-				'media'		=> 'all',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/search/assets/css/headlet-quicksearch.css',
-				'media'		=> 'all',
-				'position'	=> 110
-			)
+		array(
+			'file'		=> 'ext/search/assets/js/HeadletQuickSearch.js',
+			'position'	=> 110
+		),
+		array(
+			'file' => 'ext/search/assets/js/Preference.js',
+			'position' => 102
+		),
+		array(
+			'file' => 'ext/search/assets/js/FilterWidget.js',
+			'position' => 101
+		),
+		array(
+			'file' => 'ext/search/assets/js/Filter.js',
+			'position' => 102
+		),
+		array(
+			'file' => 'ext/search/assets/js/FilterControl.js',
+			'position' => 103
+		),
+		array(
+			'file' => 'ext/search/assets/js/Conditions.js',
+			'position' => 104
+		),
+		array(
+			'file' => 'ext/search/assets/js/WidgetArea.js',
+			'position' => 105
+		),
+		array(
+			'file' => 'ext/search/assets/js/PanelWidgetSearchFilterList.js',
+			'position' => 110
 		)
 	),
-
-
-		// public assets: basic assets for this extension
-	'public' => array(
-		'js' => array(
-			array(
-				'file' => 'ext/search/assets/js/FilterWidget.js',
-				'position' => 101
-			),
-			array(
-				'file' => 'ext/search/assets/js/Filter.js',
-				'position' => 102
-			),
-			array(
-				'file' => 'ext/search/assets/js/FilterControl.js',
-				'position' => 103
-			),
-			array(
-				'file' => 'ext/search/assets/js/Conditions.js',
-				'position' => 104
-			),
-			array(
-				'file' => 'ext/search/assets/js/WidgetArea.js',
-				'position' => 105
-			),
+	'css' => array(
+		array(
+			'file'		=> 'ext/search/assets/css/global.css',
+			'media'		=> 'all',
+			'position'	=> 100
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/search/assets/css/filterwidgets.css',
-				'media'		=> 'all',
-				'position'	=> 101
-			)
-		)
-	),
-
-	'panelwidget-searchfilterlist' => array(
-		'js' => array(
-			array(
-				'file' => 'ext/search/assets/js/PanelWidgetSearchFilterList.js',
-				'position' => 110
-			)
+		array(
+			'file'		=> 'ext/search/assets/css/ext.css',
+			'media'		=> 'all',
+			'position'	=> 100
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/search/assets/css/panelwidget-searchfilterlist.css',
-				'media'		=> 'all',
-				'position'	=> 110
-			)
+		array(
+			'file'		=> 'ext/search/assets/css/headlet-quicksearch.css',
+			'media'		=> 'all',
+			'position'	=> 110
+		),
+		array(
+			'file'		=> 'ext/search/assets/css/filterwidgets.css',
+			'media'		=> 'all',
+			'position'	=> 101
+		),
+		array(
+			'file'		=> 'ext/search/assets/css/panelwidget-searchfilterlist.css',
+			'media'		=> 'all',
+			'position'	=> 110
 		)
 	)
-
 );
 
 ?>

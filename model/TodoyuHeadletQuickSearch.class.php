@@ -26,8 +26,6 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	 */
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.Ext.search.Headlet.QuickSearch');
-
-		TodoyuPage::addExtAssets('search', 'headlet-quicksearch');
 	}
 
 
