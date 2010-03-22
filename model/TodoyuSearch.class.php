@@ -40,16 +40,15 @@ class TodoyuSearch {
 	public static function getSuggestions($query, $mode = 'all', $limit = false) {
 		$query	= trim($query);
 		$find	= $ignore	= $results= array();
-
 		$limit	= $limit === false ? $GLOBALS['CONFIG']['EXT']['search']['suggestLimit'] : intval($limit) ;
 
+			// Empty search? abort
 		if( $query === '' ) {
 			return array();
 		}
 
-			// Split into words, trim, add to array of terms to be found
+			// Prepare search: split into words, trim, add to array of terms to be found
 		$words	= TodoyuArray::trimExplode(' ', $query, true);
-
 		foreach($words as $word) {
 			if( substr($word, 0, 1) === '-' ) {
 				$ignore[] = substr($word, 1);
@@ -58,8 +57,8 @@ class TodoyuSearch {
 			}
 		}
 
+			// Fetch suggestions of registered search engines
 		$engines = TodoyuSearchManager::getEngines();
-
 		foreach($engines as $engineConfig) {
 			if( $mode === 'all' || $mode === $engineConfig['type'] ) {
 				if( TodoyuDiv::isFunctionReference($engineConfig['suggestion']) ) {
