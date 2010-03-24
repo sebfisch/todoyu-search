@@ -24,7 +24,7 @@
  */
 
 
-$CONFIG['EXT']['search']['info'] = array(
+Todoyu::$CONFIG['EXT']['search']['info'] = array(
 	'title'			=> 'todoyu Search',
 	'description' 	=> 'todoyu Search',
 	'author' 		=> array(

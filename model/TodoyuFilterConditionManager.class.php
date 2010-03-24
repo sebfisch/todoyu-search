@@ -104,7 +104,7 @@ class TodoyuFilterConditionManager {
 
 		TodoyuExtensions::loadAllFilters();
 
-		$conditionConfigs	= $GLOBALS['CONFIG']['FILTERS'][$type]['widgets'];
+		$conditionConfigs	= Todoyu::$CONFIG['FILTERS'][$type]['widgets'];
 
 		if( ! is_array($conditionConfigs) ) {
 			$conditionConfigs = array();

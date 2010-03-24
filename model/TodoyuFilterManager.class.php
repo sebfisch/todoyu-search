@@ -35,7 +35,7 @@ class TodoyuFilterManager {
 	 * @return	Array		Or FALSE
 	 */
 	public static function getFilterConfig($type, $name) {
-		$base	=& $GLOBALS['CONFIG']['FILTERS'][$type];
+		$base	=& Todoyu::$CONFIG['FILTERS'][$type];
 		$config	= false;
 
 		if( isset($base['filters'][$name]) && is_array($base['filters'][$name]) ) {
@@ -59,7 +59,7 @@ class TodoyuFilterManager {
 	public static function getFilterTypeConfig($type, $key = null) {
 		TodoyuExtensions::loadAllFilters();
 
-		$base =& $GLOBALS['CONFIG']['FILTERS'][strtoupper($type)]['config'];
+		$base =& Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config'];
 
 		return is_null($key) ? $base : $base[$key];
 	}
@@ -75,13 +75,13 @@ class TodoyuFilterManager {
 	public static function getFilterTypes($sort = false) {
 		TodoyuExtensions::loadAllFilters();
 
-		$types	= array_keys($GLOBALS['CONFIG']['FILTERS']);
+		$types	= array_keys(Todoyu::$CONFIG['FILTERS']);
 
 		if( $sort ) {
 			$sorting = array();
 
 			foreach($types as $type) {
-				$sorting[$GLOBALS['CONFIG']['FILTERS'][$type]['config']['position']] = $type;
+				$sorting[Todoyu::$CONFIG['FILTERS'][$type]['config']['position']] = $type;
 			}
 
 			ksort($sorting);
@@ -103,7 +103,7 @@ class TodoyuFilterManager {
 	public static function getFilterTypeClass($type) {
 		TodoyuExtensions::loadAllFilters();
 
-		return $GLOBALS['CONFIG']['FILTERS'][strtoupper($type)]['config']['class'];
+		return Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['class'];
 	}
 
 
@@ -117,7 +117,7 @@ class TodoyuFilterManager {
 	public static function getFilterTypeLabel($type) {
 		TodoyuExtensions::loadAllFilters();
 
-		return TodoyuLanguage::getLabel($GLOBALS['CONFIG']['FILTERS'][strtoupper($type)]['config']['label']);
+		return TodoyuLanguage::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']);
 	}
 
 
@@ -133,7 +133,7 @@ class TodoyuFilterManager {
 
 		$type	= strtoupper($type);
 
-		return $GLOBALS['CONFIG']['FILTERS'][$type]['config']['resultsRenderer'];
+		return Todoyu::$CONFIG['FILTERS'][$type]['config']['resultsRenderer'];
 	}
 
 }

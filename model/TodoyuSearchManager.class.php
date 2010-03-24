@@ -34,7 +34,7 @@ class TodoyuSearchManager {
 	public static function getFilters() {
 		TodoyuExtensions::loadAllFilters();
 
-		return TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['FILTERS']);
 	}
 
 
@@ -82,7 +82,7 @@ class TodoyuSearchManager {
 	public static function getInlineTabHeads()	{
 		$tabs = array();
 
-		foreach($GLOBALS['CONFIG']['FILTERS'] as $type => $typeConfig)	{
+		foreach(Todoyu::$CONFIG['FILTERS'] as $type => $typeConfig)	{
 			$tabs[strtolower($type)] = $typeConfig;
 		}
 
@@ -131,7 +131,7 @@ class TodoyuSearchManager {
 			$labelMode = $labelSuggest;
 		}
 
-		$GLOBALS['CONFIG']['EXT']['search']['engines'][$type] = array(
+		Todoyu::$CONFIG['EXT']['search']['engines'][$type] = array(
 			'type'			=> $type,
 			'search'		=> $methodSearch,
 			'suggestion'	=> $methodSuggest,
@@ -151,7 +151,7 @@ class TodoyuSearchManager {
 	public static function getEngines() {
 		TodoyuExtensions::loadAllSearch();
 
-		$searchEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['search']['engines']);
+		$searchEngines	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['search']['engines']);
 
 		if( sizeof($searchEngines) > 0 ) {
 			$searchEngines = TodoyuArray::sortByLabel($searchEngines, 'position');

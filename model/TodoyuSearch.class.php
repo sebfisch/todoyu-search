@@ -40,7 +40,7 @@ class TodoyuSearch {
 	public static function getSuggestions($query, $mode = 'all', $limit = false) {
 		$query	= trim($query);
 		$find	= $ignore	= $results= array();
-		$limit	= $limit === false ? $GLOBALS['CONFIG']['EXT']['search']['suggestLimit'] : intval($limit) ;
+		$limit	= $limit === false ? Todoyu::$CONFIG['EXT']['search']['suggestLimit'] : intval($limit) ;
 
 			// Empty search? abort
 		if( $query === '' ) {
@@ -93,7 +93,7 @@ class TodoyuSearch {
 	 * @return	Array
 	 */
 	public static function getSearchModes() {
-		$modes	= TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['search']['modes'], 'position');
+		$modes	= TodoyuArray::sortByLabel(Todoyu::$CONFIG['EXT']['search']['modes'], 'position');
 
 		return $modes;
 	}

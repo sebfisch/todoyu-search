@@ -69,7 +69,7 @@ class TodoyuFilterWidgetManager	{
 	 * @return	Array
 	 */
 	public static function getWidgetTypeConfig($type) {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['search']['widgettypes'][$type]);
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['search']['widgettypes'][$type]);
 	}
 
 
@@ -244,7 +244,7 @@ class TodoyuFilterWidgetManager	{
 	public static function getFilterWidgetNegationLabel($widgetName, $label)	{
 		$filterType = TodoyuSearchPreferences::getCurrentTab();
 
-		return $GLOBALS['CONFIG']['FILTERS'][strtoupper($filterType)]['widgets'][$widgetName]['wConf']['negation'][$label];
+		return Todoyu::$CONFIG['FILTERS'][strtoupper($filterType)]['widgets'][$widgetName]['wConf']['negation'][$label];
 	}
 
 
@@ -280,7 +280,7 @@ class TodoyuFilterWidgetManager	{
 		$filterType	= strtoupper(trim($filterType));
 		$widgetName	= trim($widgetName);
 
-		$definitions	= TodoyuArray::assure($GLOBALS['CONFIG']['FILTERS'][$filterType]['widgets'][$widgetName]);
+		$definitions	= TodoyuArray::assure(Todoyu::$CONFIG['FILTERS'][$filterType]['widgets'][$widgetName]);
 
 		if( sizeof($definitions) === 0 ) {
 			Todoyu::log('Widget definitions not found', LOG_LEVEL_ERROR, array($filterType,$widgetName));

@@ -94,7 +94,7 @@ class TodoyuSearchPreferences {
 		$tab = self::getPref('tab');
 
 		if( $tab === false ) {
-			$tab = $GLOBALS['CONFIG']['EXT']['search']['defaultTab'];
+			$tab = Todoyu::$CONFIG['EXT']['search']['defaultTab'];
 		}
 
 		return $tab;

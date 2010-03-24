@@ -26,7 +26,7 @@
  * @subpackage	Search
  */
 
-$CONFIG['EXT']['search']['assets'] = array(
+Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 	'js' => array(
 		array(
 			'file'		=> 'ext/search/assets/js/Ext.js',
