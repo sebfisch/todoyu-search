@@ -48,7 +48,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return 'Todoyu durchsuchen';
+		return Label('search.headlet.label');
 	}
 
 }

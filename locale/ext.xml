@@ -25,6 +25,7 @@
 		<label index="search.noEntryFound">No Results Found</label>
 		<label index="search.noResultsForActiveFilters">No results found for currently selected filters</label>
 		<label index="contextmenu.project.showinproject">Open In Project View</label>
+		<label index="headlet.label">Search in todoyu</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Suche und Filter</label>
@@ -51,5 +52,6 @@
 		<label index="search.noEntryFound">Nichts gefunden</label>
 		<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
 		<label index="contextmenu.project.showinproject">Projekt-Ansicht öffnen</label>
+		<label index="headlet.label">In todoyu suchen</label>
 	</labels>
 </locallang>
