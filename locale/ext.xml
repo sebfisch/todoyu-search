@@ -21,7 +21,7 @@
 		<label index="newFilterLabel.preset">New Filter</label>
 		<label index="subMenuEntry.task">Tasks</label>
 		<label index="subMenuEntry.project">Projects</label>
-		<label index="filterwidget.condtion.remove">Remove cCndition</label>
+		<label index="filterwidget.condtion.remove">Remove Condition</label>
 		<label index="search.noEntryFound">No Results Found</label>
 		<label index="search.noResultsForActiveFilters">No results found for currently selected filters</label>
 		<label index="contextmenu.project.showinproject">Open In Project View</label>
