@@ -117,13 +117,12 @@ class TodoyuSearchManager {
 	 * Add a new search engine and register needed functions
 	 *
 	 * @param	String		$type
-	 * @param	String		$methodSearch
 	 * @param	String		$methodSuggest
 	 * @param	String		$labelSuggest
 	 * @param	String		$labelMode
 	 * @param	Integer		$position
 	 */
-	public static function addEngine($type, $methodSearch, $methodSuggest, $labelSuggest, $labelMode = '', $position = 100) {
+	public static function addEngine($type, $methodSuggest, $labelSuggest, $labelMode = '', $position = 100) {
 		$type		= strtolower(trim($type));
 		$position	= intval($position);
 

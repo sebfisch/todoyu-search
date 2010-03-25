@@ -249,12 +249,23 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersetTypes() {
-		$field	= 'type';
-		$table	= self::TABLE;
-		$where	= '';
-		$group	= 'type';
+		TodoyuExtensions::loadAllFilters();
 
-		return Todoyu::db()->getColumn($field, $table, $where, $group);
+		if( is_array(Todoyu::$CONFIG['FILTERS']) ) {
+			$keys	= array_keys(Todoyu::$CONFIG['FILTERS']);
+		} else {
+			$keys	= array();
+		}
+
+
+		return array_map('strtolower', $keys);
+
+//		$field	= 'type';
+//		$table	= self::TABLE;
+//		$where	= '';
+//		$group	= 'type';
+//
+//		return Todoyu::db()->getColumn($field, $table, $where, $group);
 	}
 
 
@@ -288,19 +299,22 @@ class TodoyuFiltersetManager {
 	/**
 	 * Get filtersets (of a person and a type)
 	 * If no person defined, it gets filtersets for the current person
-	 * If no type defined, it gets filtersets of all types
+	 * If no type defined, it gets filtersets of all types (of installed extensions)
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	String		$type
 	 * @return	Array
 	 */
 	public static function getFiltersets($idPerson = 0, $type = null) {
-		$idPerson	= personid($idPerson);
+		$idPerson		= personid($idPerson);
+		$filtersetTypes	= TodoyuFiltersetManager::getFiltersetTypes();
+		$typeList		= TodoyuArray::implodeQuoted($filtersetTypes);
 
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= '	id_person_create= ' . $idPerson . ' AND
-					deleted			= 0';
+					deleted			= 0 AND
+					type IN(' . $typeList . ')';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {

@@ -22,17 +22,6 @@
 interface TodoyuSearchEngineIf {
 
 	/**
-	 * Get search results
-	 *
-	 * @param	Array	$find
-	 * @param	Array	$ignore
-	 * @param	Integer	$limit
-	 */
-	public static function getResults(array $find, array $ignore = array(), $limit = 5);
-
-
-
-	/**
 	 * Get search (autocompletion) suggestions
 	 *
 	 * @param	Array	$find

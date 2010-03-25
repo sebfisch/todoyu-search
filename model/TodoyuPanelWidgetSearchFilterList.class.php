@@ -60,11 +60,10 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 * @return	String
 	 */
 	public function renderContent() {
+		$filtersetTypes		= TodoyuFiltersetManager::getFiltersetTypes();
 		$filters			= TodoyuFiltersetManager::getFiltersets();
 		$groupedFiltersets	= $this->groupFiltersets($filters);
 		$toggleStatus		= TodoyuSearchPreferences::getFiltersetListToggle();
-
-		$filtersetTypes		= TodoyuFiltersetManager::getFiltersetTypes();
 		$activeFiltersets	= array();
 
 		foreach($filtersetTypes as $filtersetType) {
