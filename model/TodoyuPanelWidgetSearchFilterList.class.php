@@ -113,7 +113,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		$groups = array();
 
 		foreach($filtersets as $filterset) {
-			$groups[ $filterset['type'] ]['label']	= TodoyuDiv::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
+			$groups[ $filterset['type'] ]['label']	= TodoyuString::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
 			$groups[ $filterset['type'] ]['filtersets'][]					= $filterset;
 		}
 

@@ -103,8 +103,8 @@ class TodoyuFilterWidgetManager	{
 
 		$config = array_merge($config, $extend);
 
-		if( TodoyuDiv::isFunctionReference($config['widgetDefinitions']['configFunc']) ) {
-			$config = TodoyuDiv::callUserFunction($config['widgetDefinitions']['configFunc'], $config);
+		if( TodoyuFunction::isFunctionReference($config['widgetDefinitions']['configFunc']) ) {
+			$config = TodoyuFunction::callUserFunction($config['widgetDefinitions']['configFunc'], $config);
 		}
 
 		return $config;
@@ -138,8 +138,8 @@ class TodoyuFilterWidgetManager	{
 			// Add negate value to definitions
 		$definitions['negate'] = $negate;
 
-		if( TodoyuDiv::isFunctionReference($definitions['widgetDefinitions']['configFunc']) ) {
-			$definitions = TodoyuDiv::callUserFunction($definitions['widgetDefinitions']['configFunc'], $definitions);
+		if( TodoyuFunction::isFunctionReference($definitions['widgetDefinitions']['configFunc']) ) {
+			$definitions = TodoyuFunction::callUserFunction($definitions['widgetDefinitions']['configFunc'], $definitions);
 		}
 
 		return $definitions;
@@ -177,8 +177,8 @@ class TodoyuFilterWidgetManager	{
 		$funcRefString = $definitions['wConf']['FuncRef'];
 		$funcRefParams = TodoyuArray::assure($definitions['wConf']['FuncParams']);
 
-		if( TodoyuDiv::isFunctionReference($funcRefString) ) {
-			$data = TodoyuDiv::callUserFunction($funcRefString, $sword, $funcRefParams);
+		if( TodoyuFunction::isFunctionReference($funcRefString) ) {
+			$data = TodoyuFunction::callUserFunction($funcRefString, $sword, $funcRefParams);
 		} else {
 			Todoyu::log('Invalid AC-callback function', LOG_LEVEL_ERROR, array('widget'=>$widgetName, 'acFunc'=>$funcRefString));
 			$data = array();
@@ -202,8 +202,8 @@ class TodoyuFilterWidgetManager	{
 	public function prepareSelectionOptions($definitions)	{
 		$optionMethod = $definitions['wConf']['FuncRef'];
 
-		if( TodoyuDiv::isFunctionReference($optionMethod) )	{
-			$definitions = TodoyuDiv::callUserFunction($optionMethod, $definitions);
+		if( TodoyuFunction::isFunctionReference($optionMethod) )	{
+			$definitions = TodoyuFunction::callUserFunction($optionMethod, $definitions);
 		}
 
 		return $definitions;
@@ -223,8 +223,8 @@ class TodoyuFilterWidgetManager	{
 		$optionMethod = $definitions['wConf']['LabelFuncRef'];
 
 		if( $definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0 )	{
-			if( TodoyuDiv::isFunctionReference($optionMethod) )	{
-				$definitions = TodoyuDiv::callUserFunction($optionMethod, $definitions);
+			if( TodoyuFunction::isFunctionReference($optionMethod) )	{
+				$definitions = TodoyuFunction::callUserFunction($optionMethod, $definitions);
 				//self::proceedLabelFunc($definitions);
 			}
 		}
@@ -258,8 +258,8 @@ class TodoyuFilterWidgetManager	{
 	protected static function proceedLabelFunc($definitions)	{
 		$methodString = $definitions['wConf']['LabelFuncRef'];
 
-		if( TodoyuDiv::isFunctionReference($methodString) )	{
-			$definitions = TodoyuDiv::callUserFunction($methodString, $definitions);
+		if( TodoyuFunction::isFunctionReference($methodString) )	{
+			$definitions = TodoyuFunction::callUserFunction($methodString, $definitions);
 		}
 
 		return $definitions;

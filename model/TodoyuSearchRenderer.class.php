@@ -141,8 +141,8 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			// Get render function
 		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($activeTab);
 
-		if ( TodoyuDiv::isFunctionReference($renderFunction) ) {
-			$content	= TodoyuDiv::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
+		if ( TodoyuFunction::isFunctionReference($renderFunction) ) {
+			$content	= TodoyuFunction::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
 		}
 
 		$tmpl	= 'ext/search/view/search-results.tmpl';
@@ -166,7 +166,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	public static function renderResultsListing($type, array $itemIDs) {
 		$renderFunc		= TodoyuFilterManager::getFilterTypeResultsRenderer($type);
 
-		return TodoyuDiv::callUserFunction($renderFunc, $itemIDs);
+		return TodoyuFunction::callUserFunction($renderFunc, $itemIDs);
 	}
 
 }

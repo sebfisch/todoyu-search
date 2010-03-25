@@ -473,8 +473,8 @@ class TodoyuFiltersetManager {
 			foreach($conditions as $condition) {
 				$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($filtersetType, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
 					// If filterset has a valid function reference to generate query parts
-				if( TodoyuDiv::isFunctionReference($conditionDefinition['funcRef']) ) {
-					$filterInfo = TodoyuDiv::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
+				if( TodoyuFunction::isFunctionReference($conditionDefinition['funcRef']) ) {
+					$filterInfo = TodoyuFunction::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
 						// If condition produced filter parts
 					if( $filterInfo !== false ) {
 						$tables			= array_merge($tables, $filterInfo['tables']);

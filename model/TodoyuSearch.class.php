@@ -61,9 +61,9 @@ class TodoyuSearch {
 		$engines = TodoyuSearchManager::getEngines();
 		foreach($engines as $engineConfig) {
 			if( $mode === 'all' || $mode === $engineConfig['type'] ) {
-				if( TodoyuDiv::isFunctionReference($engineConfig['suggestion']) ) {
+				if( TodoyuFunction::isFunctionReference($engineConfig['suggestion']) ) {
 					$results[$engineConfig['type']]	= array(
-						'results'	=> TodoyuDiv::callUserFunction($engineConfig['suggestion'], $find, $ignore, $limit),
+						'results'	=> TodoyuFunction::callUserFunction($engineConfig['suggestion'], $find, $ignore, $limit),
 						'label'		=> TodoyuLanguage::getLabel($engineConfig['labelSuggest'])
 					);
 				}
