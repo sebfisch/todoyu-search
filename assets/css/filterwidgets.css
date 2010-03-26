@@ -16,7 +16,7 @@
 }
 
 #widget-area {
-	min-height:200px;
+	
 	height:auto !important;
 	height:1px;
 	position:relative;
@@ -95,7 +95,7 @@ select#filtercontrol-conjunction {
 #widget-area .type .widgetbody,
 #widget-area .status .widgetbody,
 #widget-area .filterSet .widgetbody {
-	height:84px;
+	min-height:85px;
 }
 
 
