@@ -16,6 +16,7 @@
 }
 
 #widget-area {
+	min-height:200px;
 	height:auto !important;
 	height:1px;
 	position:relative;
@@ -97,9 +98,6 @@ select#filtercontrol-conjunction {
 	height:84px;
 }
 
-#widget-area input.autocomplete {
-	background:transparent url(../img/icons.png) no-repeat 108% -507px;
-}
 
 #widget-area input.dateinput {
 	float:left;
