@@ -257,7 +257,7 @@ abstract class TodoyuFilterBase {
 	 * fields, tables, where, group, order, limit
 	 *
 	 * @param	String		$orderBy	Optional order by for query
-	 * @param	String		$limit		Optional limit for query		@todo	smells like Integer..
+	 * @param	String		$limit		Optional limit for query
 	 * @param	Boolean		$showDeleted
 	 * @return	Array
 	 */
@@ -295,7 +295,7 @@ abstract class TodoyuFilterBase {
 	 * Get the full query array. This is just for debugging
 	 *
 	 * @param	String		$orderBy	Optional order by for query
-	 * @param	String		$limit		Optional limit for query		@todo	smells like Integer..
+	 * @param	String		$limit		Optional limit for query
 	 * @param 	Boolean		$showDeleted
 	 * @return	String
 	 */
@@ -320,7 +320,7 @@ abstract class TodoyuFilterBase {
 	 * Get item IDs from default table which match to all active filters
 	 *
 	 * @param	String		$orderBy	Optional order by for query
-	 * @param	String		$limit		Optional limit for query			@todo	smells like Integer..
+	 * @param	String		$limit		Optional limit for query
 	 * @param 	Boolean		$showDeleted
 	 * @return	Array		List of IDs of matching records
 	 */

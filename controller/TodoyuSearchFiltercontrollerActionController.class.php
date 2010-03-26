@@ -28,8 +28,7 @@
 class TodoyuSearchFiltercontrollerActionController extends TodoyuActionController {
 
 	/**
-	 * Autocomplete filter widget input
-	 * Configuration is stored in filter config
+	 * Autocomplete filter widget input (configuration is stored in filter config)
 	 *
 	 * @param	Array		$params
 	 * @return	String
