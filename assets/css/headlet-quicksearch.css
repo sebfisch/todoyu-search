@@ -25,6 +25,8 @@
 
 ul#headlet-quicksearch-modes {
 	width:150px;
+	margin-left: -3px;
+	margin-top: -2px;
 }
 
 #headlet-quicksearch-modes li:hover {
