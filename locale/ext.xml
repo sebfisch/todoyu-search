@@ -13,6 +13,7 @@
 		<label index="filterset.confirm.overwrite">Overwrite Existing Filter Set?</label>
 		<label index="filterset.error.saveWrongType">You tried to save the filter set under a wrong type</label>
 		<label index="filterset.error.saveNoConditions">No Conditions To Save</label>
+		<label index="filterset.error.saveEmptyName">Please enter a name for the filterset</label>
 		<label index="negation.default.true">Is Not</label>
 		<label index="negation.default.false">Is</label>
 		<label index="negation.datetime.true">From</label>
@@ -40,6 +41,7 @@
 		<label index="filterset.confirm.overwrite">Bestehendes Filter-Set überschreiben?</label>
 		<label index="filterset.error.saveWrongType">Bitte korrekten Filter-typ wählen</label>
 		<label index="filterset.error.saveNoConditions">Es gibt keine Bedingungen zur Speicherung</label>
+		<label index="filterset.error.saveEmptyName">Bitte geben Sie einen Namen für das Filter-Set ein</label>
 		<label index="negation.default.true">ist nicht</label>
 		<label index="negation.default.false">ist</label>
 		<label index="negation.datetime.true">nach</label>

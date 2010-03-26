@@ -391,27 +391,36 @@ Todoyu.Ext.search.Filter = {
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
 				// Get name for new filter
-			var title = prompt('[LLL:search.newFilterLabel]', '[LLL:search.newFilterLabel.preset]');
-
-				// If name entered
-			if( title !== null ) {
-				var url		= Todoyu.getUrl('search', 'filterset');
-				var options	= {
-					'parameters': {
-						'action':		'saveAsNew',
-						'title':		title,
-						'type':			this.getActiveTab(),
-						'conditions':	this.Conditions.getAll(true),
-						'conjunction':	this.getConjunction()
-					}
-				};
-
-				if( onComplete !== undefined ) {
-					options.onComplete = onComplete;
-				}
-
-				Todoyu.send(url, options);
+			var title 	= prompt('[LLL:search.newFilterLabel]', '[LLL:search.newFilterLabel.preset]');
+			
+				// Canceled saving
+			if( title === null ) {
+				return;
 			}
+
+				// No name entered
+			if( title.strip() === '' ) {
+				alert('[LLL:search.filterset.error.saveEmptyName]');
+				return;
+			}
+			
+				// Save filterset
+			var url		= Todoyu.getUrl('search', 'filterset');
+			var options	= {
+				'parameters': {
+					'action':		'saveAsNew',
+					'title':		title,
+					'type':			this.getActiveTab(),
+					'conditions':	this.Conditions.getAll(true),
+					'conjunction':	this.getConjunction()
+				}
+			};
+
+			if( onComplete !== undefined ) {
+				options.onComplete = onComplete;
+			}
+
+			Todoyu.send(url, options);			
 		} else {
 			alert('[LLL:search.filterset.error.saveNoConditions]');
 		}
