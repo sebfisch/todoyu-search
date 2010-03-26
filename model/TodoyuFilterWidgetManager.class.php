@@ -184,8 +184,8 @@ class TodoyuFilterWidgetManager	{
 		}
 
 		return array(
-			'widgetID' => $widgetIDParam,
-			'results' => $data
+			'widgetID'	=> $widgetKey,
+			'results' 	=> $data
 		);
 	}
 

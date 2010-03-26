@@ -115,7 +115,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param unknown_type name
 	 */
 	installAutocomplete: function(name) {
-		var acField = $(name).select('input.autocomplete')[0];
+		var acField = $(name).select('input.textinputAC')[0];
 
 		if( Object.isElement(acField) ) {
 			var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
