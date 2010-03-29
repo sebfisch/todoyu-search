@@ -468,7 +468,8 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 * @todo 	Implement negation?
 	 */
-	public static function Filter_filterset($value, $negate = false)	{
+	public static function Filter_filterset($value, $negate = false) {
+		$queryParts		= false;
 		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
 			// Prepare return values
@@ -497,23 +498,26 @@ class TodoyuFiltersetManager {
 				}
 			}
 
-				// Concatinate all filter conditions with the selected conjunction
-			$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
+				// If any conditions in filterset found, add
+			if( sizeof($filtersetWhere) > 0 ) {
+					// Concatinate all filter conditions with the selected conjunction
+				$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
+			}
 		}
 
-
-			// Remove double tables
-		$tables	= array_unique($tables);
-			// Concatinate all filtersets with AND
-
-		if(count($wheres) > 0)	{
+			// If conditions found, build query parts
+		if( sizeof($wheres) > 0 ) {
+				// Remove double tables
+			$tables	= array_unique($tables);
 			$where	= '(' . implode(' AND ', $wheres) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
 		}
 
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
+		return $queryParts;
 	}
 
 

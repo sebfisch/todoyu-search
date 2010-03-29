@@ -39,11 +39,13 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 		$conditions		= empty($conditions) ? array() : json_decode($conditions, true) ;
 		$conjunction	= $params['conjunction'];
 
-		if( $idFilterset > 0 || sizeof($conditions) > 0)	{
-			return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
-		} else {
-			return TodoyuFilterAreaRenderer::renderResults($tab, 0, array(), $conjunction);
-		}
+		return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
+//
+//		if( $idFilterset > 0 || sizeof($conditions) > 0)	{
+//			return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
+//		} else {
+//			return TodoyuFilterAreaRenderer::renderResults($tab, 0, array(), $conjunction);
+//		}
 	}
 
 }
