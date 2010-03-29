@@ -236,8 +236,8 @@ abstract class TodoyuFilterBase {
 					}
 				}
 			} else {
-				TodoyuDebug::printInFirebug($filter['filter'], 'Unknown filter');
-				//TodoyuDebug::printHtml($filter, 'Invalid filter');
+//				TodoyuDebug::printInFirebug($filter['filter'], 'Unknown filter');
+//				TodoyuDebug::printHtml($filter, 'Invalid filter');
 			}
 		}
 
