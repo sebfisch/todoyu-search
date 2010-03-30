@@ -98,7 +98,7 @@ select#filtercontrol-conjunction {
 #widget-area input.dateinput {
 	float:left;
 	margin-right:5px;
-	width: 85%;
+	width:85%;
 }
 
 #widget-area .widgetbody select {
