@@ -43,12 +43,19 @@ ul#headlet-quicksearch-modes {
 #headlet-quicksearch-suggest {
 	position:absolute;
 	width:350px;
-	background-color:#fff;
-	border:1px solid #ddd;
-	border-top:none;
 	text-align:left;
 	z-index:210;
+	padding-bottom: 20px;
 }
+	#headlet-quicksearch-suggest ul {
+		background-color:#fff;
+		border-top:none;
+		border:1px solid #ddd;
+	}
+	#headlet-quicksearch-suggest ul ul {
+		background-color: transparent;
+		border: none;
+	}
 
 	#headlet-quicksearch-suggest ul .type {
 		display:block;
