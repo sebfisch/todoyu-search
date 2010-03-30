@@ -48,7 +48,7 @@ Todoyu.Ext.search.Filter = {
 
 		this.initConditions(activeTab, conditions);
 
-		if( updateResults == true )	{
+		if( updateResults === true )	{
 			this.updateResults();
 		}
 	},
@@ -63,12 +63,13 @@ Todoyu.Ext.search.Filter = {
 	 */
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
-		
-		$A(conditions).each(function(item) {
-			var name	= item['filter'] + '-' + item['id'];
-			var negate	= item['negate']==1;
+				
+		$H(conditions).each(function(pair) {
+			var item	= pair.value;
+			var name	= item.filter + '-' + item.id;
+			var negate	= item.negate == 1;
 
-			this.Conditions.add(item['id'], tab, item['filter'], item['value'], negate);
+			this.Conditions.add(item.id, tab, item.filter, item.value, negate);
 
 			this.WidgetArea.installAutocomplete(name);
 			this.WidgetArea.installNegation(name);
