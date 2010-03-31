@@ -131,7 +131,7 @@ class TodoyuSearchManager {
 
 		Todoyu::$CONFIG['EXT']['search']['engines'][$type] = array(
 			'type'			=> $type,
-			'search'		=> $methodSearch,
+//			'search'		=> $methodSearch,
 			'suggestion'	=> $methodSuggest,
 			'labelSuggest'	=> $labelSuggest,
 			'labelMode'		=> $labelMode,
