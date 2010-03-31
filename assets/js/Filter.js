@@ -457,16 +457,14 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Save pref: active filterset ID
 	 *
-	 *	@param unknown_type tab
-	 *	@param Integer idFilterset
+	 *	@param String	tab
+	 *	@param Integer	idFilterset
 	 */
 	saveActiveFilterset: function(tab, idFilterset) {
 		var action		= 'activeFilterset';
-		var value	= tab;
-		var idItem	= idFilterset;
 
-		this.ext.Preference.save(action, value, idItem);
+		this.ext.Preference.save(action, tab, idFilterset);
 	}
 };

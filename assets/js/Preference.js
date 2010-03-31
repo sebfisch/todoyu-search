@@ -100,9 +100,8 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 * @param	String	list
 	 */
-	saveOrder: function(list)	{
+	saveOrder: function(value)	{
 		var action = 'saveOrder';
-		var value = list;
 
 		this.sendAction(action, value);
 	},
