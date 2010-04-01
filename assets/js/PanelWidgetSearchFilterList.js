@@ -320,9 +320,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	saveFiltersetRename: function(idFilterset, value) {
 		var action	= 'renameFilterset';
-		var idItem	= idFilterset;
 
-		this.ext.Preference.save(action, value, idItem);
+		this.ext.Preference.save(action, value, idFilterset);
 	},
 
 
