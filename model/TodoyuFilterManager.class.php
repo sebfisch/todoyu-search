@@ -68,7 +68,7 @@ class TodoyuFilterManager {
 	/**
 	 * Get available filter types (project,task,etc)
 	 *
-	 * @param	Bool		$sort		Sort types by position flag
+	 * @param	Boolean		$sort		Sort types by position flag
 	 * @return	Array
 	 */
 	public static function getFilterTypes($sort = false) {
