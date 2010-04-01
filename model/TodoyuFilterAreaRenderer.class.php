@@ -33,7 +33,7 @@ class TodoyuFilterAreaRenderer {
 	 * @param	String		$activeTab		Active tab/filter type
 	 * @param	Integer		$idFilterset	Active filterset
 	 * @param	Array		$conditions		Custom conditions instead of a stored filterset
-	 * @param	Boolean		$init			Add init script at the bottom of loaded with ajax
+	 * @param	Boolean		$init			Add init script at the bottom of loaded with AJAX
 	 * @return	String
 	 */
 	public static function renderFilterArea($activeTab, $idFilterset = 0, array $conditions = array(), $init = true) {
@@ -75,7 +75,7 @@ class TodoyuFilterAreaRenderer {
 			'searchResults'	=> $results
 		);
 
-			// If init necessary (ajax), add it to the response
+			// If init necessary (AJAX), add it to the response
 		if( $init ) {
 			$data['init'] = 'Todoyu.Ext.search.Filter.init(\'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')';
 		}
