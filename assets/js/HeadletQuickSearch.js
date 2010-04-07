@@ -28,6 +28,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	button:		null,
 	content:	null,
 	
+	openStatus:	null,
+	
 	bodyClickObserver: null,
 
 
@@ -37,8 +39,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	init: function() {
 		this.query	= $('headlet-quicksearch-query');
-		this.button	= Todoyu.Headlet.getButton('quicksearch'); // $('headlet-quicksearch-button');
-		this.content= Todoyu.Headlet.getContent('quicksearch'); // $('headlet-quicksearch-box');
+		this.button	= this.getButton();
+		this.content= this.getContent();
 				
 		this.query.observe('click', this.onQueryClick.bindAsEventListener(this));
 
@@ -54,9 +56,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.hide();
 		} else {
 			this.hideOthers();
-			//this.headlet.hideAllContent();
 			this.showContent();
 			this.focus();
+			this.saveOpenStatus(true);
 		}		
 	},
 	
@@ -74,7 +76,20 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.hideContent();
 		this.Mode.hideModes();
 		this.Suggest.hideResults();
+		this.saveOpenStatus(false);
 	},
+	
+	
+	
+	/**
+	 * Save open status of the headlet
+	 * @param {Object} open
+	 */
+	saveOpenStatus: function(open) {
+		this.headlet.saveOpenStatus('quicksearch', 'search', 'preference', open);
+	},
+	
+	
 	
 	focus: function() {
 		this.query.select();
@@ -122,33 +137,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		return this.getValue() === '';
 	},
 	
-
-	/**
-	 * Observe body for click events to hide the suggest container
-	 */
-	observeCloseEvents: function() {
-		if( this.bodyClickObserver === null ) {
-			this.bodyClickObserver = this.onBodyClick.bindAsEventListener(this);
-		}
-		
-		document.body.observe('click', this.bodyClickObserver);
-	},
-	
-	
-	
-	/**
-	 * Handler when clicked on body
-	 * 
-	 * @param	Event	event
-	 */
-	onBodyClick: function(event) {
-		this.Suggest.hideResults();
-		this.Mode.hideModes();
-		this.toggleContent();
-		
-		document.body.stopObserving('click', this.bodyClickObserver);
-	},
-
 
 
 /* ---------------------------------------------------------
@@ -215,8 +203,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			modes.show();			
 			
 			this.headlet.Suggest.hideResults();
-			
-			this.headlet.observeCloseEvents();
 		},
 
 
@@ -256,6 +242,11 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		}
 
 	},
+
+
+
+
+
 
 
 
@@ -463,8 +454,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			
 			Todoyu.Ui.scrollToTop();
 			this.suggest.show();
-			
-			this.headlet.observeCloseEvents();
 		},
 
 

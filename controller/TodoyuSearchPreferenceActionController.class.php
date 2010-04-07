@@ -132,6 +132,19 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 		TodoyuPanelWidgetManager::saveCollapsedStatus(EXTID_SEARCH, $idWidget, $value);
 	}
+
+
+
+	/**
+	 * Save headlet open status for quicksearch headlet
+	 *
+	 * @param	Array		$params
+	 */
+	public function headletOpenAction(array $params) {
+		$open	= intval($params['open']) === 1 ? 1 : 0;
+
+		TodoyuSearchPreferences::savePref('headletOpen', $open, 0, true);
+	}
 }
 
 
