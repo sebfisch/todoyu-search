@@ -115,35 +115,37 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param unknown_type name
 	 */
 	installAutocomplete: function(name) {
-		var acField = $(name).select('input.textinputAC')[0];
-
-		if( Object.isElement(acField) ) {
-			var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
-			var widgetID= acField.id.split('-').slice(2, 4).join('-');
-			var params	= Object.toQueryString({
-				'action': 'autocompletion',
-				'completionID': name,
-				'filtertype': this.ext.Filter.getActiveTab()
-			});
-			var options	= {
-				'parameters':			params,
-				'paramName':			'sword',
-				'minChars':				2,
-				'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
-			};
-			var suggestID= acField.id + '-suggestions';
-			
-				// Override config with specialConfig if available
-			if( this.specialConfig[name] && this.specialConfig[name]['acOptions'] ) {
-				options = $H(options).merge(this.specialConfig[name]['acOptions']).toObject();
+		if($(name))	{
+			var acField = $(name).select('input.textinputAC')[0];
+	
+			if( Object.isElement(acField) ) {
+				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
+				var widgetID= acField.id.split('-').slice(2, 4).join('-');
+				var params	= Object.toQueryString({
+					'action': 'autocompletion',
+					'completionID': name,
+					'filtertype': this.ext.Filter.getActiveTab()
+				});
+				var options	= {
+					'parameters':			params,
+					'paramName':			'sword',
+					'minChars':				2,
+					'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
+				};
+				var suggestID= acField.id + '-suggestions';
 				
-				if( typeof options.afterUpdateElement === 'string' ) {
-					f = Todoyu.getFunctionFromString(options.afterUpdateElement);
-					options.afterUpdateElement = f.bind(this, name);
+					// Override config with specialConfig if available
+				if( this.specialConfig[name] && this.specialConfig[name]['acOptions'] ) {
+					options = $H(options).merge(this.specialConfig[name]['acOptions']).toObject();
+					
+					if( typeof options.afterUpdateElement === 'string' ) {
+						f = Todoyu.getFunctionFromString(options.afterUpdateElement);
+						options.afterUpdateElement = f.bind(this, name);
+					}
 				}
+	
+				this.autocompleters[name] = new Todoyu.Autocompleter(acField.id, suggestID, acUrl, options);
 			}
-
-			this.autocompleters[name] = new Todoyu.Autocompleter(acField.id, suggestID, acUrl, options);
 		}
 	},
 
@@ -170,10 +172,12 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param unknown_type name
 	 */
 	installNegation: function(name) {
-		var negElement = $(name).select('span.negation')[0];
-
-		if( Object.isElement(negElement) ) {
-			negElement.observe('click', this.onNegation.bindAsEventListener(this, name));
+		if($(name))	{
+			var negElement = $(name).select('span.negation')[0];
+	
+			if( Object.isElement(negElement) ) {
+				negElement.observe('click', this.onNegation.bindAsEventListener(this, name));
+			}
 		}
 	},
 

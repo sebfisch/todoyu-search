@@ -158,6 +158,7 @@ Todoyu.Ext.search.Filter = {
 	reset: function() {
 		this.Conditions.clear();
 		this.WidgetArea.clear();
+		this.setFiltersetID(0);
 
 		$('search-results').update('');
 	},

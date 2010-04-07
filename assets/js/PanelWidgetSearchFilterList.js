@@ -205,6 +205,15 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		$('filterset_' + idFilterset).up('div').select('.filterset').invoke('removeClassName', 'current');
 		$('filterset_' + idFilterset).addClassName('current');
 	},
+	
+	
+	
+	/**
+	 * Removes current from active filterset (called on reset)
+	 */
+	unmarkActiveFilterset: function()	{
+		$('panelwidget-searchfilterlist').select('.filterset').invoke('removeClassName', 'current');
+	},
 
 
 
@@ -273,6 +282,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	clearFilterArea: function() {
 		this.ext.Filter.reset();
+		this.unmarkActiveFilterset();
 	},
 
 
