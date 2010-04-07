@@ -100,7 +100,7 @@ Todoyu.Ext.search.FilterControl = {
 	 * @return	String
 	 */
 	getConjunction: function() {
-		return $F('filtercontrol-conjunction')
+		return $F('filtercontrol-conjunction');
 	}
 
 };
