@@ -145,7 +145,6 @@ class TodoyuFiltersetManager {
 	public static function getFiltersetResultItemIDs($idFilterset) {
 		$idFilterset	= intval($idFilterset);
 
-		$idFilterset	= intval($idFilterset);
 		$typeKey		= self::getFiltersetType($idFilterset);
 		$filterClass	= TodoyuFilterManager::getFilterTypeClass($typeKey);
 		$conditions		= self::getFiltersetConditions($idFilterset);
