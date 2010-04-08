@@ -139,7 +139,7 @@ class TodoyuFiltersetManager {
 	/**
 	 * Get result items to given set of filter conditions
 	 *
-	 * @param	$idFilterset
+	 * @param	Integer		$idFilterset
 	 * @return	Array
 	 */
 	public static function getFiltersetResultItemIDs($idFilterset) {
@@ -147,11 +147,16 @@ class TodoyuFiltersetManager {
 
 		$typeKey		= self::getFiltersetType($idFilterset);
 		$filterClass	= TodoyuFilterManager::getFilterTypeClass($typeKey);
-		$conditions		= self::getFiltersetConditions($idFilterset);
 
-		$typeFilter	= new $filterClass($conditions);
+		if( $filterClass !== false ) {
+			$conditions		= self::getFiltersetConditions($idFilterset);
 
-		return $typeFilter->getItemIDs();
+			$typeFilter	= new $filterClass($conditions);
+
+			return $typeFilter->getItemIDs();
+		} else {
+			return array();
+		}
 	}
 
 

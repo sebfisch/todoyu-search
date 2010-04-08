@@ -102,7 +102,9 @@ class TodoyuFilterManager {
 	public static function getFilterTypeClass($type) {
 		TodoyuExtensions::loadAllFilters();
 
-		return Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['class'];
+		$class	= Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['class'];
+
+		return is_null($class) ? false : $class;
 	}
 
 
