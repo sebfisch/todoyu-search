@@ -9,6 +9,7 @@
 	<ul>
 	{foreach $groupedFiltersets groupKey filtersets}
 		<li class="listItem title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.toggleList('{$groupKey}')">{$filtersets.label}</li>
+		<li class="panelwidget-searchfilterlist-list">
 		<ul id="panelwidget-searchfilterlist-list-{$groupKey}" class="sortable" {if $toggleStatus[$groupKey] == 1}style="display:none"{/if}>
 		{foreach $filtersets.filtersets index filterset}
 			<li id="filterset_{$filterset.id}" class="listItem filterset {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} hidden{/if}">
@@ -41,6 +42,7 @@
 			</li>
 		{/foreach}
 		</ul>
+		</li>
 	{/foreach}
 	</ul>
 </div>

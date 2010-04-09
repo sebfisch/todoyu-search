@@ -8,13 +8,13 @@
 }
 
 #panelwidget-searchfilterlist .searchFilterList li a.title {
-	margin-left:16px;
+	margin-left: 20px;
 }
 
 
 #panelwidget-searchfilterlist .searchFilterList li.title {
 	font-size:11px;
-	border-bottom:1px solid #000;
+	border-bottom:1px solid #848484;
 	cursor:pointer;
 }
 
@@ -33,7 +33,6 @@
 #panelwidget-searchfilterlist .searchFilterList ul {
 	padding-top:5px;
 }
-
 #panelwidget-searchfilterlist .searchFilterList ul li {
 	clear:both;
 	display:block;
@@ -42,6 +41,11 @@
 	height:auto !important;
 	height:1px;
 	border-bottom:1px #000 dotted;
+}
+
+#panelwidget-searchfilterlist ul li.panelwidget-searchfilterlist-list {
+	padding: 0;
+	border: none;
 }
 
 #panelwidget-searchfilterlist .searchFilterList ul ul li {
@@ -54,7 +58,7 @@
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel {
 	right:2px;
-	top:3px;
+	top:4px;
 	position:absolute;
 }
 
@@ -67,23 +71,23 @@
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.save {
-	background:transparent url(../img/icons.png) no-repeat scroll -1px -119px !important;
+	background:transparent url(../img/icons.png) no-repeat scroll 5px -118px !important;
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.delete {
-	background:transparent url(../img/icons.png) no-repeat scroll -1px -89px !important;
+	background:transparent url(../img/icons.png) no-repeat scroll 4px -88px !important;
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.visibility {
-	background:url(../img/icons.png) no-repeat -1px -179px;
+	background:url(../img/icons.png) no-repeat 4px -178px;
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.hidden {
-	background-position:-1px -149px !important;
+	background-position: 5px -148px !important;
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.rename {
-	background:transparent url(../img/icons.png) no-repeat scroll 3px -239px !important;
+	background:transparent url(../img/icons.png) no-repeat scroll 5px -238px !important;
 }
 
 #panelwidget-searchfilterlistsearchFilterButton {
@@ -91,7 +95,7 @@
 }
 
 #panelwidget-searchfilterlist .handle {
-	background:transparent url(../img/icons.png) no-repeat scroll 0 -270px;
+	background:transparent url(../img/icons.png) no-repeat scroll 5px -270px;
 	width:13px;
 	float:left;
 	cursor:move;
