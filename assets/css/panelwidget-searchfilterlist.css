@@ -95,7 +95,7 @@
 }
 
 #panelwidget-searchfilterlist .handle {
-	background:transparent url(../img/icons.png) no-repeat scroll 5px -270px;
+	background:transparent url(../img/icons.png) no-repeat scroll 0 -270px;
 	width:13px;
 	float:left;
 	cursor:move;
