@@ -58,8 +58,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.hideOthers();
 			this.showContent();
 			this.focus();
-			this.saveOpenStatus(true);
-		}		
+		}
+		
+		this.saveOpenStatus(this.isContentVisible());	
 	},
 	
 	onContentClick: function(event) {
