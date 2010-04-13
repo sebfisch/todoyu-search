@@ -20,4 +20,14 @@
 		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
 		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
 	</labels>
+	<labels lang="pt">
+		<label index="general">Configurações Gerais</label>
+		<label index="general.use">Usar/Exibir Funcionalidades de Pesquisa</label>
+		<label index="general.area">Utilizar Área de Pesquisa</label>
+		<label index="filtersets">Grupos de Filtros</label>
+		<label index="filtersets.save">Salvar Condição como Grupo de Filtro</label>
+		<label index="filtersets.deleteAll">Excluir Todos os Grupos de Filtro</label>
+		<label index="filtersets.hideAll">Esconder Todos os Grupos de Filtro</label>
+		<label index="filtersets.renameAll">Renomear Todos os Grupos de Filtro</label>
+	</labels>
 </locallang>

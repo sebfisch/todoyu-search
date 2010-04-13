@@ -10,4 +10,9 @@
 		<label index="saveFilterButton">Als neuen Filter speichern</label>
 		<label index="clearFilterArea">Filter-Bereich leeren</label>
 	</labels>
+	<labels lang="pt">
+		<label index="title">Filtro</label>
+		<label index="saveFilterButton">Salvar Como Novo Filtro</label>
+		<label index="clearFilterArea">Limpar Área de Filtro</label>
+	</labels>
 </locallang>
