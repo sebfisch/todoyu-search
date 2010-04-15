@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="ext.title">Search And Filters</label>
 		<label index="page.title">Search</label>
 		<label index="or">OR</label>
@@ -28,7 +28,7 @@
 		<label index="contextmenu.project.showinproject">Open In Project View</label>
 		<label index="headlet.label">Search In todoyu</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="ext.title">Suche und Filter</label>
 		<label index="page.title">Suche</label>
 		<label index="or">ODER</label>
@@ -56,7 +56,7 @@
 		<label index="contextmenu.project.showinproject">Projekt-Ansicht öffnen</label>
 		<label index="headlet.label">In todoyu suchen</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="ext.title">Pesquisa e Filtros</label>
 		<label index="page.title">Pesquisa</label>
 		<label index="or">OU</label>
