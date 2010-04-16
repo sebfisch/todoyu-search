@@ -79,17 +79,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.Suggest.hideResults();
 		this.saveOpenStatus(false);
 	},
-	
-	
-	
-	/**
-	 * Save open status of the headlet
-	 * @param {Object} open
-	 */
-	saveOpenStatus: function(open) {
-		this.headlet.saveOpenStatus('quicksearch', 'search', 'preference', open);
-	},
-	
+
 	
 	
 	focus: function() {

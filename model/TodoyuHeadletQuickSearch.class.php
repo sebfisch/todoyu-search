@@ -25,26 +25,10 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	 */
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.Ext.search.Headlet.QuickSearch');
-
-		$this->setVisibleStatus();
 	}
 
 
-
-	/**
-	 * Set visible status for headlet
-	 *
-	 */
-	private function setVisibleStatus() {
-		$open	= TodoyuSearchPreferences::getPref('headletOpen');
-
-		if( intval($open) === 1 ) {
-			$this->setVisible();
-		}
-	}
-
-
-
+	
 	/**
 	 * Render headlet: searchword input and list of search engines
 	 *
