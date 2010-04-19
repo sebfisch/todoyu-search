@@ -123,5 +123,4 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 
 }
 
-
 ?>

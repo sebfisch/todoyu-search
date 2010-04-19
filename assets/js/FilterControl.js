@@ -20,7 +20,7 @@
 Todoyu.Ext.search.FilterControl = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:					Todoyu.Ext.search,
 
@@ -67,7 +67,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	Object	event
+	 * @param	{Object}	event
 	 */
 	onConditionsChange: function(event) {
 		var value 		= event.element().getValue();
@@ -84,7 +84,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	Object	event
+	 * @param	{Object}	event
 	 */
 	onConjunctionChange: function(event) {
 		var value	= event.element().getValue();
@@ -97,7 +97,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @return	String
+	 * @return	{String}
 	 */
 	getConjunction: function() {
 		return $F('filtercontrol-conjunction');

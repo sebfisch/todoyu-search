@@ -35,9 +35,8 @@ if( allowed('search', 'general:use') ) {
 		}
 	}
 
-		// Add quicksearch headlet
+		// Add quick search headlet
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickSearch');
 }
-
 
 ?>

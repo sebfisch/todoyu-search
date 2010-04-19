@@ -62,6 +62,7 @@ class TodoyuFilterWidgetManager	{
 	}
 
 
+
 	/**
 	 * Get type configuration for a field type of a widget
 	 *

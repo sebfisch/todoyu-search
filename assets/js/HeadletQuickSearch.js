@@ -20,7 +20,7 @@
 Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:		Todoyu.Ext.search,
 
@@ -111,7 +111,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Enter description here...
 	 *
-	 * @return	String
+	 * @return	{String}
 	 */
 	getValue: function() {
 		return $F(this.query).strip();
@@ -122,7 +122,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Enter description here...
 	 *
-	 * @return	Boolean
+	 * @return	{Boolean}
 	 */
 	isEmpty: function() {
 		return this.getValue() === '';
@@ -155,7 +155,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param Integer idFilterset
+		 * @param {Integer} idFilterset
 		 */
 		init: function() {
 			this.headlet = this.ext.Headlet.QuickSearch;
@@ -170,7 +170,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param	String	mode
+		 * @param	{String}	mode
 		 */
 		showModes: function(event) {
 			var modes	= $('headlet-quicksearch-modes');
@@ -201,7 +201,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param	String	mode
+		 * @param	{String}	mode
 		 */
 		setMode: function(mode) {
 			$('headlet-quicksearch-mode').value = mode;
@@ -218,7 +218,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @return	String
+		 * @return	{String}
 		 */
 		getMode: function() {
 			return $F('headlet-quicksearch-mode');
@@ -247,7 +247,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	/**
 	 * Quicksearch headlet suggestions
-	 *
 	 */
 	Suggest: {
 
@@ -290,7 +289,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param	Object	event
+		 * @param	{Object}	event
 		 */
 		onQueryChange: function(event) {
 			window.clearTimeout(this.timeout);
@@ -336,7 +335,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Check if user is navigating in result list (up and down)
 		 *
-		 * @return	Boolean
+		 * @return	{Boolean}
 		 */
 		isNavigating: function() {
 			return this.navigatePos > -1;
@@ -419,7 +418,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		 * Handler when results have been updated
 		 * 
 		 *
-		 * @param	Object	response
+		 * @param	{Object}	response
 		 */
 		onResultsUpdated: function(response) {
 			this.navigatePos = -1;

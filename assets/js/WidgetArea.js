@@ -91,7 +91,6 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	clear: function() {
 		$(this.areaID).update('');
@@ -101,7 +100,6 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 	/**
 	 * Enter description here...
-	 *
 	 */
 	getNumOfWidgets: function() {
 		return $(this.areaID).select('.filterWidget').size();

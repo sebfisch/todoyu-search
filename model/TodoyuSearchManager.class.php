@@ -77,7 +77,6 @@ class TodoyuSearchManager {
 	/**
 	 * function returns the inline tabs
 	 * rendered on top of the filter area
-	 *
 	 */
 	public static function getInlineTabHeads()	{
 		$tabs = array();

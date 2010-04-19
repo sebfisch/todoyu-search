@@ -23,7 +23,7 @@
 Todoyu.Ext.search.FilterWidget = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:		Todoyu.Ext.search,
 
@@ -37,7 +37,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Add a new widget to the filter area
 	 * 
-	 * @param	DomElement		select			The select element where the new widget has ben chosen
+	 * @param	{DomElement}		select			The select element where the new widget has ben chosen
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
@@ -73,7 +73,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Remove given filter widget from area
 	 *
-	 * @param	String	widgetID
+	 * @param	{String}	widgetID
 	 */
 	removeWidgetFromFilterArea: function(widgetID)	{
 		$(widgetID).remove();
@@ -85,8 +85,8 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Detect number of widget
 	 *
-	 * @param	String	classNameOfWidget
-	 * @return	Integer
+	 * @param	{String}	classNameOfWidget
+	 * @return	{Integer}
 	 */
 	detectNumOfWidget: function(classNameOfWidget)	{
 		var className = classNameOfWidget.split('_');
@@ -118,7 +118,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Initialize given autocompleter
 	 *
-	 *	@param String	elementID
+	 * @param {String}	elementID
 	 */
 	initAutocompletionSingle: function(elementID)	{
 		var autocompletion = $(elementID).select('.autocomplete');
@@ -148,7 +148,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Init single negation: find and start observing negation button to given widget
 	 *
-	 * @param	String	elementID
+	 * @param	{String}	elementID
 	 */
 	initNegationSingle: function(elementID)	{
 		var negation = $(elementID).select('.negation');
@@ -162,7 +162,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Setup given autocompleter
 	 *
-	 * @param String	autoCompleterID
+	 * @param {String}	autoCompleterID
 	 */
 	setUpAutocompleter: function(autoCompleterID)	{
 		var url = Todoyu.getUrl('search', 'filtercontroller');
@@ -184,7 +184,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Install click observer on given negation button element
 	 *
-	 *	@param	String	negationID
+	 * @param	{String}	negationID
 	 */
 	setUpNegation: function(negationID)	{
 		$(negationID).observe('click', 
@@ -197,8 +197,8 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Extract respective widget ID from given autocompleter element ID
 	 *
-	 * @param	String	autocompleterID
-	 * @return	String
+	 * @param	{String}	autocompleterID
+	 * @return	{String}
 	 */
 	filterWidgetIDFromAutoCompleterID: function(autocompleterID)	{
 		splittedID = autocompleterID.split('-');
@@ -211,8 +211,8 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	String	elementText
-	 * @param	String	elementLi
+	 * @param	{String}	elementText
+	 * @param	{String}	elementLi
 	 */
 	handleAutocompleteInput: function(elementText, elementLi)	{
 		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
@@ -226,7 +226,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
 	 * 
-	 * @param	DomElement	input	The textinput
+	 * @param	{DomElement}	input	The textinput
 	 */
 	onTextEntered: function(input) {
 			// Get widget value and name

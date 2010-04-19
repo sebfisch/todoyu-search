@@ -26,7 +26,6 @@
  */
 class TodoyuFilterset extends TodoyuBaseObject {
 
-
 	/**
 	 * Initialize filterset
 	 *
@@ -37,6 +36,7 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	}
 
 
+
 	/**
 	 * Get owner of the filterset
 	 *
@@ -45,6 +45,7 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	public function getPerson() {
 		return $this->getPerson('create');
 	}
+
 
 
 	/**

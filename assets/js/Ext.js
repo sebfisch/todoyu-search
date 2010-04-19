@@ -40,7 +40,7 @@ Todoyu.Ext.search = {
 	/**
 	 * Get name of currently active tab (e.g 'task', 'project')
 	 *
-	 * @return	String
+	 * @return	{String}
 	 */
 	getActiveTabKey: function() {
 		return Todoyu.Tabs.getActiveKey('search-tabs');
@@ -51,7 +51,7 @@ Todoyu.Ext.search = {
 	/**
 	 * Refresh search results: get current filters + conditions, active tab and conjunction and get, show the search results accordingly
 	 *
-	 * @param	Integer	filterID
+	 * @param	{Integer}	filterID
 	 */
 	refreshSearchResults: function(idActiveFilter)	{
 		var filterConditions = Object.toJSON({

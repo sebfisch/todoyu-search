@@ -20,7 +20,7 @@
 Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:		Todoyu.Ext.search,
 
@@ -62,7 +62,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	String	type
+	 * @param	{String}	type
 	 */
 	toggleList: function(type) {
 		var list = 'panelwidget-searchfilterlist-list-' + type;
@@ -78,7 +78,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
+	 * @param {Integer} idFilterset
 	 */
 	renameFilterset: function(idFilterset)	{
 		var currentName	= $('filterset-' + idFilterset + '-label').title.stripScripts().stripTags().strip();
@@ -98,7 +98,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
+	 * @param {Integer} idFilterset
 	 */
 	hideFilterset: function(idFilterset)	{
 		var element = $('filterset-' + idFilterset + '-control-visibility');
@@ -123,8 +123,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer	idFilterset
-	 * @param String	tab
+	 * @param {Integer}	idFilterset
+	 * @param {String}	tab
 	 */
 	saveFilterset: function(idFilterset, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
@@ -141,7 +141,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer	idFilterset
+	 * @param {Integer}	idFilterset
 	 * @param Object	response
 	 */
 	onFiltersetSaved: function(idFilterset, response) {
@@ -154,7 +154,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
+	 * @param {Integer} idFilterset
 	 */
 	deleteFilterset: function(idFilterset) {
 		if( confirm('[LLL:search.filterset.confirm.delete]') ) {
@@ -199,7 +199,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Mark currently active filterset as such
 	 *
-	 * @param	Integer	idFilterset
+	 * @param	{Integer}	idFilterset
 	 */
 	markActiveFilterset: function(idFilterset) {
 		$('filterset_' + idFilterset).up('div').select('.filterset').invoke('removeClassName', 'current');
@@ -290,8 +290,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Save order of filterset items (conditions)
 	 *
-	 * @param	String		type
-	 * @param	Array		items
+	 * @param	{String}		type
+	 * @param	{Array}		items
 	 */
 	saveFiltersetOrder: function(type, items) {
 		var action		= 'filtersetOrder';
@@ -309,8 +309,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	String		type
-	 * @param	Boolean		expanded
+	 * @param	{String}		type
+	 * @param	{Boolean}		expanded
 	 */
 	saveListToggle: function(type, expanded) {
 		var action	= 'filterlistToggle';
@@ -325,8 +325,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer	idFilterset
-	 * @param String	name
+	 * @param {Integer}	idFilterset
+	 * @param {String}	name
 	 */
 	saveFiltersetRename: function(idFilterset, value) {
 		var action	= 'renameFilterset';
@@ -339,7 +339,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer	idFilterset
+	 * @param {Integer}	idFilterset
 	 * @param Boolean	isHidden
 	 */
 	saveFiltersetVisibility: function(idFilterset, visible) {
@@ -354,7 +354,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param Integer idFilterset
+	 * @param {Integer} idFilterset
 	 */
 	saveFiltersetDelete: function(idFilterset) {
 		var action	= 'deleteFilterset';

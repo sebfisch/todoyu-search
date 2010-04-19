@@ -83,6 +83,7 @@ class TodoyuSearchPreferences {
 	}
 
 
+
 	/**
 	 * Get active tab. If non stored in preferences, use default
 	 *

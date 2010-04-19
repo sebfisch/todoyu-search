@@ -31,5 +31,4 @@ interface TodoyuSearchEngineIf {
 
 }
 
-
 ?>
