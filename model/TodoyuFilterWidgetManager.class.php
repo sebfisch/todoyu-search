@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Manager for the filterwidgets
+ * Manager for the filter widgets
  *
  */
 
@@ -75,12 +75,7 @@ class TodoyuFilterWidgetManager	{
 
 	/**
 	 * Get extended widget configuration
-	 * Extends the normal widget config with:
-	 * - widgetID
-	 * - widgetDefinitions
-	 * - widgetFilterName
-	 * - value
-	 * - negate
+	 * Extends the normal widget config with: widgetID, widgetDefinitions,	widgetFilterName, value, negate
 	 *
 	 * @param	String		$type
 	 * @param	String		$widgetKey
@@ -112,7 +107,7 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * perpares the definition of a filterwidget
+	 * Prepare definition of given filter widget
 	 *
 	 * @param	String	$filterType
 	 * @param	String	$widgetName
@@ -147,7 +142,7 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * Checks if the given widget template exists
+	 * Check whether template of given widget definition exists
 	 *
 	 * @param	Array	$widgetDefinitions
 	 * @return	Mixed	String / Boolean
@@ -161,8 +156,11 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * handles the autocompletion input.
+	 * Get autocompletion suggestions to given input of given record type 
 	 *
+	 * @param	String		$type
+	 * @param	String		$sword
+	 * @param	String		$widgetKey
 	 * @return	Array
 	 */
 	public static function getAutocompletionResults($type, $sword, $widgetKey) {
@@ -224,7 +222,7 @@ class TodoyuFilterWidgetManager	{
 		if( $definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0 )	{
 			if( TodoyuFunction::isFunctionReference($optionMethod) )	{
 				$definitions = TodoyuFunction::callUserFunction($optionMethod, $definitions);
-				//self::proceedLabelFunc($definitions);
+//				self::proceedLabelFunc($definitions);
 			}
 		}
 
@@ -282,7 +280,7 @@ class TodoyuFilterWidgetManager	{
 		$definitions	= TodoyuArray::assure(Todoyu::$CONFIG['FILTERS'][$filterType]['widgets'][$widgetName]);
 
 		if( sizeof($definitions) === 0 ) {
-			Todoyu::log('Widget definitions not found', LOG_LEVEL_ERROR, array($filterType,$widgetName));
+			Todoyu::log('Widget definitions not found', LOG_LEVEL_ERROR, array($filterType, $widgetName));
 		}
 
 		return $definitions;

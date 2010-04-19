@@ -115,7 +115,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param unknown_type name
 	 */
 	installAutocomplete: function(name) {
-		if($(name))	{
+		if( $(name) )	{
 			var acField = $(name).select('input.textinputAC')[0];
 	
 			if( Object.isElement(acField) ) {
@@ -172,7 +172,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param unknown_type name
 	 */
 	installNegation: function(name) {
-		if($(name))	{
+		if( $(name) )	{
 			var negElement = $(name).select('span.negation')[0];
 	
 			if( Object.isElement(negElement) ) {
