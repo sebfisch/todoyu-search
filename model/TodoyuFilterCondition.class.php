@@ -24,7 +24,6 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-
 class TodoyuFilterCondition extends TodoyuBaseObject {
 
 	/**

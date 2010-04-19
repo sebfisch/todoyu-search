@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-
 class TodoyuSearch {
 
 	/**

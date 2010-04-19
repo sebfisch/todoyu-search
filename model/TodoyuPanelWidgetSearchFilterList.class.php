@@ -24,9 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-
 class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
-
 
 	/**
 	 * Constructor of the class

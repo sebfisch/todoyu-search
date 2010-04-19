@@ -21,8 +21,9 @@
 /**
  * Manager for the filter widgets
  *
+ * @package		Todoyu
+ * @subpackage	Search
  */
-
 class TodoyuFilterWidgetManager	{
 
 	/**

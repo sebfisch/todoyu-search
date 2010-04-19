@@ -19,10 +19,11 @@
 *****************************************************************************/
 
 /**
- * Manager class Todoyufor the search extension
+ * Manager class for search extension
  *
+ * @package		Todoyu
+ * @subpackage	Search
  */
-
 class TodoyuSearchManager {
 
 	/**
