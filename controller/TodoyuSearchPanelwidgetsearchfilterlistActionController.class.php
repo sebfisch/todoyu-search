@@ -18,13 +18,19 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Search panelwidget filterlist action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchPanelwidgetSearchfilterlistActionController extends TodoyuActionController {
 
 	/**
 	 * Update search widget filter list
 	 *
-	 * @param   Array    $params
-	 * @return  String
+	 * @param	Array    $params
+	 * @return	String
 	 */
 	public function updateAction(array $params) {
 		$panelWidget = TodoyuPanelWidgetManager::getPanelWidget('SearchFilterList');

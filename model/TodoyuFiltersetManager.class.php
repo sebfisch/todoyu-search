@@ -211,7 +211,6 @@ class TodoyuFiltersetManager {
 
 
 
-
 	/**
 	 * Update filterset title
 	 *
