@@ -130,7 +130,7 @@ abstract class TodoyuFilterBase {
 
 
 	/**
-	 * Check if filter exists in config
+	 * Check whether filter exists in config
 	 *
 	 * @param	String		$filter
 	 * @return	Boolean

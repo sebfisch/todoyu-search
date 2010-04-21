@@ -22,7 +22,6 @@
  * Various search extension info data
  */
 
-
 Todoyu::$CONFIG['EXT']['search']['info'] = array(
 	'title'			=> 'todoyu Search',
 	'description' 	=> 'todoyu Search',
@@ -41,6 +40,5 @@ Todoyu::$CONFIG['EXT']['search']['info'] = array(
 		'system'	=> true
 	)
 );
-
 
 ?>
