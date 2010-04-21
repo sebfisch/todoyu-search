@@ -71,17 +71,17 @@ class TodoyuFilterConditionManager {
 	public static function getFiltersetConditions($idFilterset) {
 		$idFilterset	= intval($idFilterset);
 
-		$fields	= '*';
-		$table	= self::TABLE;
+			// Get all conditions of filter set
 		$where	= '	id_set	= ' . $idFilterset . ' AND deleted	= 0';
 		$order	= 'id';
 
-		$conditions = Todoyu::db()->getArray($fields, $table, $where, '', $order);
-		
+		$conditions = TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
+
+			// Get conditions to type of filter set
 		$config = self::getTypeConditions(TodoyuFiltersetManager::getFiltersetType($idFilterset));
-		
+			// Remove conditions without configuration
 		foreach($conditions as $key => $condition)	 {
-			if(!$config[$condition['filter']])	{
+			if( ! $config[$condition['filter']] )	{
 				unset($conditions[$key]);
 			}
 		}
