@@ -33,43 +33,6 @@ Todoyu.Ext.search = {
 	 */
 	init: function() {
 		
-	},
-
-
-
-	/**
-	 * Get name of currently active tab (e.g 'task', 'project')
-	 *
-	 * @return	{String}
-	 */
-	getActiveTabKey: function() {
-		return Todoyu.Tabs.getActiveKey('search-tabs');
-	},
-
-
-
-	/**
-	 * Refresh search results: get current filters + conditions, active tab and conjunction and get, show the search results accordingly
-	 *
-	 * @param	{Integer}	filterID
-	 */
-	refreshSearchResults: function(idActiveFilter)	{
-		var filterConditions = Object.toJSON({
-			Conditions: Todoyu.Ext.search.Filter.Conditions
-		});
-
-		var url		= Todoyu.getUrl('search', 'searchresults');
-		var options	= {
-			'parameters': {
-				'activeFilter':					idActiveFilter,
-				'additionalFilterConditions':	filterConditions,
-				'useConditionsFromJSON':		true,
-				'ActiveTab':					this.activeTab,
-				'Conjunction':					Todoyu.Ext.search.Filter.Conjunction
-			}
-		};
-
-		Todoyu.Ui.replace('search-results', url, options);
 	}
 
 };

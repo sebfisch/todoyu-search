@@ -52,7 +52,7 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 			'position' => 103
 		),
 		array(
-			'file' => 'ext/search/assets/js/Conditions.js',
+			'file' => 'ext/search/assets/js/FilterConditions.js',
 			'position' => 104
 		),
 		array(

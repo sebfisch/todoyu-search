@@ -63,6 +63,10 @@ Todoyu.Ext.search.Filter = {
 	 */
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
+
+		if( conditions.size() === 0 ) {
+			return;
+		}
 				
 		$H(conditions).each(function(pair) {
 			var item	= pair.value;
