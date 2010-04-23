@@ -21,6 +21,8 @@ Todoyu.Ext.search.Preference = {
 
 	/**
 	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.search,
 

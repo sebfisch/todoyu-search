@@ -21,6 +21,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
 	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:		Todoyu.Ext.search,
 

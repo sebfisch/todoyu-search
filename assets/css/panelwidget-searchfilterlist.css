@@ -8,7 +8,7 @@
 }
 
 #panelwidget-searchfilterlist .searchFilterList li a.title {
-	margin-left: 20px;
+	margin-left:20px;
 }
 
 
@@ -44,8 +44,8 @@
 }
 
 #panelwidget-searchfilterlist ul li.panelwidget-searchfilterlist-list {
-	padding: 0;
-	border: none;
+	padding:0;
+	border:none;
 }
 
 #panelwidget-searchfilterlist .searchFilterList ul ul li {
@@ -83,7 +83,7 @@
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.hidden {
-	background-position: 5px -148px !important;
+	background-position:5px -148px !important;
 }
 
 #panelwidget-searchfilterlist .searchFilterList .controllpanel a.rename {

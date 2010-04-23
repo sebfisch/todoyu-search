@@ -24,6 +24,8 @@ Todoyu.Ext.search.FilterWidget = {
 
 	/**
 	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:		Todoyu.Ext.search,
 
