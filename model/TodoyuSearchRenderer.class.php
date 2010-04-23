@@ -26,6 +26,9 @@
  */
 class TodoyuSearchRenderer extends TodoyuRenderer {
 
+	/**
+	 * Extension key
+	 */
 	const EXTKEY = 'search';
 
 
@@ -102,9 +105,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 */
 
 	public static function renderPanelWidgets() {
-		$params	= array();
-
-		return TodoyuPanelWidgetRenderer::renderPanelWidgets('search', $params);
+		return TodoyuPanelWidgetRenderer::renderPanelWidgets(self::EXTKEY);
 	}
 
 
