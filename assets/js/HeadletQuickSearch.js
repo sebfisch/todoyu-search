@@ -27,9 +27,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	query:		null,	
 	button:		null,
 	content:	null,
-	
-	openStatus:	null,
-	
+		
 	bodyClickObserver: null,
 
 
@@ -46,8 +44,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 		this.Suggest.init();
 		this.Mode.init();
-				
-		//this.button.observe('click', this.onButtonClick.bindAsEventListener(this));
 	},
 	
 	
@@ -58,26 +54,46 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.hideOthers();
 			this.showContent();
 			this.focus();
-		}
-		
-		this.saveOpenStatus(this.isContentVisible());	
+
+			this.saveOpenStatus();
+		}		
 	},
 	
 	onContentClick: function(event) {
-		
+		console.log('onContentClick');
+
+		if( this.isEventInOwnContent(event) ) {
+			event.stop();
+		}
 	},
 	
 	
 	onQueryClick: function(event) {
 		this.Mode.hideModes();
+
+		if( this.isEventInOwnContent(event) ) {
+			event.stop();
+		}
+	},
+
+	onBodyClick: function(event) {
+		this.hideExtras();
+
+		if( this.isEventInOwnContent(event) ) {
+			event.stop();
+		}
 	},
 	
 	
 	hide: function() {
 		this.hideContent();
+		this.hideExtras();
+		this.saveOpenStatus();
+	},
+
+	hideExtras: function() {
 		this.Mode.hideModes();
 		this.Suggest.hideResults();
-		this.saveOpenStatus(false);
 	},
 
 	
