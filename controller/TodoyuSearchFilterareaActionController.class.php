@@ -37,9 +37,12 @@ class TodoyuSearchFilterareaActionController extends TodoyuActionController {
 		$tab		= $params['tab'];
 		$idFilterset= intval($params['filterset']);
 
-			// Save preferences
-		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 		TodoyuSearchPreferences::saveActiveTab($tab);
+
+			// Save preferences
+		if( $idFilterset !== 0 ) {
+			TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
+		}
 
 		return TodoyuFilterAreaRenderer::renderFilterArea($tab, $idFilterset);
 	}
