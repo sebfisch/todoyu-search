@@ -40,12 +40,6 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 		$conjunction	= $params['conjunction'];
 
 		return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
-//
-//		if( $idFilterset > 0 || sizeof($conditions) > 0)	{
-//			return TodoyuFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
-//		} else {
-//			return TodoyuFilterAreaRenderer::renderResults($tab, 0, array(), $conjunction);
-//		}
 	}
 
 }
