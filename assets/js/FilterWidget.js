@@ -88,7 +88,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Detect number of widget
 	 *
 	 * @param	{String}	classNameOfWidget
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	detectNumOfWidget: function(classNameOfWidget)	{
 		var className = classNameOfWidget.split('_');

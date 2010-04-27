@@ -173,7 +173,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param {Integer} idFilterset
+		 * @param {Number} idFilterset
 		 */
 		init: function() {
 			this.headlet = this.ext.Headlet.QuickSearch;

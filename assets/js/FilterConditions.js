@@ -131,7 +131,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Get amount of current set search filter conditions
 	 * 
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	size: function() {
 		return Object.keys(this.conditions).size();
