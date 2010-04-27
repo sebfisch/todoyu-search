@@ -15,6 +15,8 @@ CREATE TABLE `ext_search_filtercondition` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `ext_search_filterset`
 --
