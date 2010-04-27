@@ -188,7 +188,7 @@ abstract class TodoyuFilterBase {
 	/**
 	 * Get query parts provided by all active filters
 	 *
-	 * @return	Array		Array with subarrays named 'tables' and 'where'
+	 * @return	Array		Array with sub arrays named 'tables' and 'where'
 	 */
 	protected function fetchFilterQueryParts() {
 		$queryParts	= array(
@@ -206,7 +206,7 @@ abstract class TodoyuFilterBase {
 					// Get array which references the filter function
 				$funcRef	= $this->getFilterMethod($filter['filter']);
 
-					// Filter function params
+					// Filter function parameters
 				$params		= array(
 					$filter['value'],
 					$filter['negate'] == 1
@@ -215,7 +215,7 @@ abstract class TodoyuFilterBase {
 					// Call filter function to get query parts for filter
 				$filterQueryParts = call_user_func_array($funcRef, $params);
 
-					// Check if returnvalue is an array
+					// Check if return value is an array
 				if( ! is_array($filterQueryParts) ) {
 					continue;
 				}
