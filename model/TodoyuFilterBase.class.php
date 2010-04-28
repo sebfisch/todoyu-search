@@ -224,7 +224,7 @@ abstract class TodoyuFilterBase {
 				foreach($filterQueryParts as $partName => $partValues) {
 						// Filter can only add tables and where part, all others are ignored
 					if( !array_key_exists($partName, $queryParts) ) {
-						Todoyu::log('Filter ' . $funcRef['class'] . '::' . $funcRef['method'] . ' returned and unknow filter part (\'' . $partName . '\')', LOG_LEVEL_NOTICE, $partValues);
+						Todoyu::log('Filter ' . $funcRef['class'] . '::' . $funcRef['method'] . ' returned and unknow filter part (\'' . $partName . '\')', TodoyuLogger::LEVEL_NOTICE, $partValues);
 						continue;
 					}
 
