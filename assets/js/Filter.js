@@ -298,9 +298,9 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Replace search results by result of current filter
 	 *
-	 * @param	{Number}			idFilterset
-	 * @param	unknown_type	conditions
-	 * @param	unknown_type	conjunction
+	 * @param	{Number}		idFilterset
+	 * @param	{Array}			conditions
+	 * @param	String			conjunction
 	 */
 	updateResults: function(tab, idFilterset, conditions, conjunction) {
 		tab 		= tab === undefined ? this.getActiveTab() : tab ;

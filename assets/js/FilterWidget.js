@@ -39,7 +39,7 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Add a new widget to the filter area
 	 * 
-	 * @param	{DomElement}		select			The select element where the new widget has ben chosen
+	 * @param	{Element}		select			The select element where the new widget has ben chosen
 	 */
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
@@ -228,7 +228,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
 	 * 
-	 * @param	{DomElement}	input	The textinput
+	 * @param	{Element}	input	The textinput
 	 */
 	onTextEntered: function(input) {
 			// Get widget value and name

@@ -34,7 +34,7 @@ Todoyu.Ext.search.Preference = {
 	 * @param	{String}	action
 	 * @param	{String}	value
 	 * @param	{String}	idItem
-	 * @param	unknown_type onComplete
+	 * @param	{Function}	onComplete
 	 */
 	save: function(action, value, idItem, onComplete) {
 		Todoyu.Pref.save('search', action, value, idItem, onComplete);
@@ -43,7 +43,7 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Enter description here...
+	 * Save active tab
 	 *
 	 * @param	{String}	tab
 	 */
