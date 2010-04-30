@@ -284,12 +284,10 @@ class TodoyuFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	type 		= ' . Todoyu::db()->quote($type, true) . ' AND
-					deleted		= 0 AND ' .
-					($showHidden ? '' : 'is_hidden 	= 0 AND') .
-					' (
-						id_person_create	= ' . $idPerson . '
-					)';
+		$where	= '		type 		= ' . Todoyu::db()->quote($type, true) .
+				  ' AND	deleted		= 0
+				    AND ' .	($showHidden ? '' : 'is_hidden 	= 0 AND') .
+					' ( id_person_create	= ' . $idPerson . '	)';
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -313,9 +311,9 @@ class TodoyuFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_person_create= ' . $idPerson . ' AND
-					deleted			= 0 AND
-					type IN(' . $typeList . ')';
+		$where	= '		id_person_create= ' . $idPerson .
+				  ' AND	deleted			= 0
+				    AND	type IN(' . $typeList . ')';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
@@ -339,8 +337,8 @@ class TodoyuFiltersetManager {
 
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '	id_person_create	= ' . $idPerson . ' AND
-					deleted			= 0';
+		$where	= '		id_person_create= ' . $idPerson .
+				  ' AND	deleted			= 0';
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
@@ -366,8 +364,8 @@ class TodoyuFiltersetManager {
 
 		$fields	= 'title';
 		$table	= self::TABLE;
-		$where	= '	id_person_create	= ' . $idPerson . ' AND
-					deleted			= 0';
+		$where	= '		id_person_create= ' . $idPerson .
+				  ' AND	deleted			= 0';
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
