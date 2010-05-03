@@ -36,11 +36,11 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type type
-	 * @param unknown_type condition
-	 * @param unknown_type value
-	 * @param unknown_type negate
+	 * @param	{String}	name
+	 * @param	{String}	type
+	 * @param	{String}	condition
+	 * @param	{String}	value
+	 * @param	{Boolean}	negate
 	 */
 	add: function(name, type, condition, value, negate) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
@@ -137,8 +137,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 					options = $H(options).merge(this.specialConfig[name]['acOptions']).toObject();
 					
 					if( typeof options.afterUpdateElement === 'string' ) {
-						f = Todoyu.getFunctionFromString(options.afterUpdateElement);
-						options.afterUpdateElement = f.bind(this, name);
+						options.afterUpdateElement = Todoyu.getFunctionFromString(options.afterUpdateElement, true).bind(this, name);
 					}
 				}
 	
