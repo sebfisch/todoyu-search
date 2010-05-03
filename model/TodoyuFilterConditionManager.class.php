@@ -28,7 +28,7 @@
 class TodoyuFilterConditionManager {
 
 	/**
-	 * Default table for database requests
+	 * @var	String		Default table for database requests
 	 */
 	const TABLE = 'ext_search_filtercondition';
 

@@ -27,7 +27,7 @@
 class TodoyuSearchRenderer extends TodoyuRenderer {
 
 	/**
-	 * Extension key
+	 * @var	String		Extension key
 	 */
 	const EXTKEY = 'search';
 
