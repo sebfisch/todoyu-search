@@ -62,8 +62,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	},
 	
 	onContentClick: function(event) {
-		console.log('onContentClick');
-
 		if( this.isEventInOwnContent(event) ) {
 			event.stop();
 		}
