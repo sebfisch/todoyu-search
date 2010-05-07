@@ -193,25 +193,29 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		showModes: function(event) {
 			var modes	= $('headlet-quicksearch-modes');
 			
-			if( ! this.positioned ) {
-				var contentOffset	= this.headlet.content.cumulativeOffset();
-				var contentDim		= this.headlet.content.getDimensions();
-				var modeWidth		= this.modes.getWidth();
-	
-				var top			= contentDim.height;
-				var left		= contentDim.width - modeWidth;
-	
-				modes.setStyle({
-					'left':		left + 'px',
-					'top':		top + 'px'
-				});
+			if(modes.visible() == true)	{
+				this.hideModes();
+			} else {
+				if( ! this.positioned ) {
+					var contentOffset	= this.headlet.content.cumulativeOffset();
+					var contentDim		= this.headlet.content.getDimensions();
+					var modeWidth		= this.modes.getWidth();
+		
+					var top			= contentDim.height;
+					var left		= contentDim.width - modeWidth;
+		
+					modes.setStyle({
+						'left':		left + 'px',
+						'top':		top + 'px'
+					});
+					
+					this.positioned = true;
+				}
 				
-				this.positioned = true;
+				modes.show();			
+				
+				this.headlet.Suggest.hideResults();
 			}
-			
-			modes.show();			
-			
-			this.headlet.Suggest.hideResults();
 		},
 
 
