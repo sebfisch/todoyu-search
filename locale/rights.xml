@@ -6,9 +6,9 @@
 		<label index="general.area">Use Search Area</label>
 		<label index="filtersets">Filter Sets</label>
 		<label index="filtersets.save">Save conditions as filter set</label>
-		<label index="filtersets.deleteAll">Delete ALL filter sets</label>
-		<label index="filtersets.hideAll">Hide ALL filter sets</label>
-		<label index="filtersets.renameAll">Rename ALL filter sets</label>
+		<label index="filtersets.deleteAll">Delete all filter sets</label>
+		<label index="filtersets.hideAll">Hide all filter sets</label>
+		<label index="filtersets.renameAll">Rename all filter sets</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="general">Allgemeine Einstellungen</label>
