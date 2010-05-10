@@ -45,12 +45,12 @@ select#filtercontrol-conjunction {
 
 #widget-area .filterWidget .negation {
 	padding:0 0 0 6px;
-	background:#e7e7e7 url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll 2px 4px;
+	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll 2px 4px;
 }
 
 #widget-area .filterWidget .negationRgt {
 	height:10px;
-	background:#e7e7e7 url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll -280px 4px;
+	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll -280px 4px;
 }
 
 #widget-area .filterWidget .negation span {
