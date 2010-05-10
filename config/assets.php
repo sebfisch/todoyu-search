@@ -36,6 +36,14 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 			'position'	=> 110
 		),
 		array(
+			'file'		=> 'ext/search/assets/js/HeadletQuickSearchMode.js',
+			'position'	=> 111
+		),
+		array(
+			'file'		=> 'ext/search/assets/js/HeadletQuickSearchSuggest.js',
+			'position'	=> 112
+		),
+		array(
 			'file' => 'ext/search/assets/js/Preference.js',
 			'position' => 102
 		),

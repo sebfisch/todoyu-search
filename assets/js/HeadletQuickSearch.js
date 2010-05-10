@@ -47,8 +47,13 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.Suggest.init();
 		this.Mode.init();
 	},
-	
-	
+
+
+
+	/**
+	 *	Enter description here...
+	 *
+	 */
 	onButtonClick: function(event) {
 		if( this.isContentVisible() ) {
 			this.hide();
@@ -60,14 +65,25 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.saveOpenStatus();
 		}		
 	},
-	
+
+
+
+	/**
+	 *	Enter description here...
+	 *
+	 */
 	onContentClick: function(event) {
 		if( this.isEventInOwnContent(event) ) {
 			event.stop();
 		}
 	},
-	
-	
+
+
+
+	/**
+	 *	Enter description here...
+	 *
+	 */
 	onQueryClick: function(event) {
 		this.Mode.hideModes();
 
@@ -76,6 +92,12 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		}
 	},
 
+
+
+	/**
+	 *	Enter description here...
+	 *
+	 */
 	onBodyClick: function(event) {
 		this.hideExtras();
 
@@ -83,25 +105,39 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			event.stop();
 		}
 	},
-	
-	
+
+
+
+	/**
+	 *	Enter description here...
+	 */
 	hide: function() {
 		this.hideContent();
 		this.hideExtras();
 		this.saveOpenStatus();
 	},
 
+
+
+	/**
+	 *	Enter description here...
+	 */
 	hideExtras: function() {
 		this.Mode.hideModes();
 		this.Suggest.hideResults();
 	},
 
-	
-	
+
+
+	/**
+	 *	Enter description here...
+	 */
 	focus: function() {
 		this.query.select();
 	},
 	
+
+
 
 	/**
 	 * Enter description here...
@@ -142,343 +178,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	isEmpty: function() {
 		return this.getValue() === '';
-	},
-	
-
-
-/* ---------------------------------------------------------
-	Todoyu.Ext.search.Headlet.Quicksearch.Mode
------------------------------------------------------------- */
-
-	/**
-	 * Enter description here...
-	 */
-	Mode: {
-		
-		ext: Todoyu.Ext.search,
-		
-		headlet: null,
-
-		mode: 0,
-
-		button: null,
-		
-		modes: null,
-		
-		positioned: false,
-		
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param {Number} idFilterset
-		 */
-		init: function() {
-			this.headlet = this.ext.Headlet.QuickSearch;
-			
-			this.button = $('headlet-quicksearch-mode-button');
-			this.modes	= $('headlet-quicksearch-modes');
-
-			this.button.observe('click', this.showModes.bindAsEventListener(this));
-		},
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	{String}	mode
-		 */
-		showModes: function(event) {
-			var modes	= $('headlet-quicksearch-modes');
-			
-			if(modes.visible() == true)	{
-				this.hideModes();
-			} else {
-				if( ! this.positioned ) {
-					var contentOffset	= this.headlet.content.cumulativeOffset();
-					var contentDim		= this.headlet.content.getDimensions();
-					var modeWidth		= this.modes.getWidth();
-		
-					var top			= contentDim.height;
-					var left		= contentDim.width - modeWidth;
-		
-					modes.setStyle({
-						'left':		left + 'px',
-						'top':		top + 'px'
-					});
-					
-					this.positioned = true;
-				}
-				
-				modes.show();			
-				
-				this.headlet.Suggest.hideResults();
-			}
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	{String}	mode
-		 */
-		setMode: function(mode) {
-			$('headlet-quicksearch-mode').value = mode;
-			$('headlet-quicksearch-form').writeAttribute('class', 'icon searchmode' + mode.capitalize());
-			
-			this.hideModes();
-			this.headlet.focus();
-			
-			this.headlet.Suggest.updateResults();			
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @return	{String}
-		 */
-		getMode: function() {
-			return $F('headlet-quicksearch-mode');
-		},
-
-
-		/**
-		 * Enter description here...
-		 */
-		hideModes: function() {
-			$('headlet-quicksearch-modes').hide();
-		}
-
-	},
-
-
-
-
-
-
-
-
-/* ---------------------------------------------------------
-	Todoyu.Ext.search.Headlet.Quicksearch.Suggest
------------------------------------------------------------- */
-
-	/**
-	 * Quicksearch headlet suggestions
-	 */
-	Suggest: {
-
-		/**
-		 *	Ext shortcut
-		 */
-		ext:			Todoyu.Ext.search,
-
-		headlet:		null,
-
-		suggest:		null,
-
-		delay:			0.5,
-
-		navigatePos:	-1,
-
-		navigateActive:	null,
-
-		numElements:	0,
-
-		timeout:		null,
-		
-		
-
-		/**
-		 * Enter description here...
-		 */
-		init: function() {
-			this.headlet	= this.ext.Headlet.QuickSearch;
-			this.suggest	= $('headlet-quicksearch-suggest');
-			
-				// Move suggest to body (to scroll)
-			document.body.appendChild(this.suggest);
-			
-			this.headlet.query.observe('keyup', this.onQueryChange.bind(this));
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @param	{Object}	event
-		 */
-		onQueryChange: function(event) {
-			window.clearTimeout(this.timeout);
-
-				// Pressed ENTER
-			if( event.keyCode === Event.KEY_RETURN ) {
-				if( this.isNavigating() ) {
-					this.goToActiveElement();
-				} else {
-					this.timeout = this.updateResults.bind(this).delay(this.delay);
-				}
-				return;
-			}
-
-				// Pressed navigation arrows
-			if( event.keyCode === Event.KEY_DOWN || event.keyCode === Event.KEY_UP ) {
-				if( this.suggest.visible() ) {
-					var down = event.keyCode === Event.KEY_DOWN;
-					this.navigate(down);
-				}
-				return;
-			}
-			
-				// Pressed ESC (hide results or whole headlet)
-			if( event.keyCode === Event.KEY_ESC ) {
-				if( this.isResultsVisible() ) {
-					this.hideResults();
-				} else {
-					this.headlet.toggleContent();
-				}				
-				return;
-			}
-
-			if( this.headlet.isEmpty() ) {
-				this.hideResults();
-			} else {
-				this.timeout = this.updateResults.bind(this).delay(this.delay);
-			}
-		},
-
-
-
-		/**
-		 * Check if user is navigating in result list (up and down)
-		 *
-		 * @return	{Boolean}
-		 */
-		isNavigating: function() {
-			return this.navigatePos > -1;
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 */
-		goToActiveElement: function() {
-			eval(this.navigateActive.down().readAttribute('onclick'));
-			this.hide();
-		},
-
-
-
-		/**
-		 * Navigate in result list (up and down)
-		 *
-		 * @param	Boole	down		Navigate down. Yes or No?
-		 */
-		navigate: function(down) {
-				// Deactivate selection
-			if( this.navigateActive !== null ) {
-				this.navigateActive.removeClassName('active');
-			}
-
-				// Increment or decrement to new position
-			if( down ) {
-				this.navigatePos++;
-			} else {
-				this.navigatePos--;
-			}
-
-				// If navigating over the top, stop walking upwards and do nothing
-			if( this.navigatePos <= -1 ) {
-				this.navigatePos = -1;
-				this.navigateActive = null;
-				return;
-			}
-
-				// If navigating over the last element, set position to last element (stay on last element)
-			if( this.navigatePos >= this.numElements ) {
-				this.navigatePos = this.numElements-1;
-			}
-
-				// Select active element
-			this.navigateActive = this.suggest.down('li li', this.navigatePos);
-
-				// Set element active
-			this.navigateActive.addClassName('active');
-		},
-
-
-
-		/**
-		 * Update suggest container with new results
-		 */
-		updateResults: function() {
-			if( this.headlet.isEmpty() ) {
-				return;
-			}
-			
-			var url		= Todoyu.getUrl('search', 'suggest');
-			var options	= {
-				'parameters': {
-					'action':	'suggest',
-					'query':	this.headlet.getValue(),
-					'mode':		this.headlet.Mode.getMode()
-				},
-				'onComplete':	this.onResultsUpdated.bind(this)
-			};
-			
-			Todoyu.Ui.update(this.suggest, url, options);
-		},
-		
-		
-		/**
-		 * Handler when results have been updated
-		 * 
-		 *
-		 * @param	{Object}	response
-		 */
-		onResultsUpdated: function(response) {
-			this.navigatePos = -1;
-			this.numElements = this.suggest.select('li li').size();
-			
-			this.showResults();
-		},
-		
-		
-		
-		/**
-		 * Show suggested results container on right position
-		 */
-		showResults: function() {
-			var contentDim		= this.headlet.content.getDimensions();
-			var contentOffset	= this.headlet.content.cumulativeOffset();
-			var suggestDim		= this.suggest.getDimensions();
-			
-			this.suggest.setStyle({
-				'left':	contentOffset.left - suggestDim.width + contentDim.width - 1 + 'px',
-				'top':	contentOffset.top + contentDim.height + 'px'
-			});
-			
-			Todoyu.Ui.scrollToTop();
-			this.suggest.show();
-		},
-
-
-
-		/**
-		 * Hide suggested restults
-		 */
-		hideResults: function() {
-			this.suggest.hide();
-		},
-		
-		
-		isResultsVisible: function() {
-			return this.suggest.visible();
-		}
 	}
 
 };
