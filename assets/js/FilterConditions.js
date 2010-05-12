@@ -33,13 +33,14 @@ Todoyu.Ext.search.Filter.Conditions = {
 	 * @param	{Boolean}	negate
 	 */
 	add: function(name, type, condition, value, negate) {
-		name = condition + '-' + name;
-		this.conditions[name] = {
-			'name':			name,
+		var conditionName = condition + '-' + name;
+
+		this.conditions[conditionName] = {
+			'name':			conditionName,
 			'type':			type,
 			'condition':	condition,
 			'value':		value,
-			'negate':		negate
+			'negate':		negate === true || negate == 1 ? true : false
 		};
 	},
 

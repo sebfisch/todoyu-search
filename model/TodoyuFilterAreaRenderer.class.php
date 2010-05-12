@@ -111,9 +111,6 @@ class TodoyuFilterAreaRenderer {
 				'label'		=> $config['label']
 			);
 		}
-//
-//		$tabs[0]['position'] = 'first';
-//		$tabs[sizeof($tabs)-1]['position'] = 'last';
 
 		$tabs	= TodoyuArray::sortByLabel($tabs, 'position');
 

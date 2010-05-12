@@ -86,7 +86,7 @@ class TodoyuFilterConditionManager {
 			}
 		}
 		
-		return $conditions;
+		return array_values($conditions);
 	}
 
 
