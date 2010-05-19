@@ -30,4 +30,14 @@
 		<label index="filtersets.hideAll">Esconder Todos os Grupos de Filtro</label>
 		<label index="filtersets.renameAll">Renomear Todos os Grupos de Filtro</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="general">Общие</label>
+		<label index="general.use">Использовать/показывать поиск</label>
+		<label index="general.area">Использовать область поиска</label>
+		<label index="filtersets">Наборы фильтров</label>
+		<label index="filtersets.save">Сохранить условия как набор фильтров</label>
+		<label index="filtersets.deleteAll">Удалить все наборы фильтров</label>
+		<label index="filtersets.hideAll">Спрятать все наборы фильтров</label>
+		<label index="filtersets.renameAll">Переименовать все наборы фмльтров</label>
+	</labels>
 </locallang>

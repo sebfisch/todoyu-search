@@ -15,4 +15,9 @@
 		<label index="saveFilterButton">Salvar Como Novo Filtro</label>
 		<label index="clearFilterArea">Limpar Área de Filtro</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="title">Наборы фильтров</label>
+		<label index="saveFilterButton">Сохранить как новый фильтр</label>
+		<label index="clearFilterArea">Очистить область фильтров</label>
+	</labels>
 </locallang>
