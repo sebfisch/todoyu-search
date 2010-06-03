@@ -40,4 +40,14 @@
 		<label index="filtersets.hideAll">Спрятать все наборы фильтров</label>
 		<label index="filtersets.renameAll">Переименовать все наборы фмльтров</label>
 	</labels>
+	<labels lang="nl_NL">
+		<label index="general">Algemene instellingen</label>
+		<label index="general.use">Zoekfunctionaliteit gebruiken/tonen</label>
+		<label index="general.area">Zoekgebied gebruiken</label>
+		<label index="filtersets">Filtersets</label>
+		<label index="filtersets.save">Voorwaarden als filterset opslaan</label>
+		<label index="filtersets.deleteAll">Alle filtersets opslaan</label>
+		<label index="filtersets.hideAll">Alle filtersets verbergen</label>
+		<label index="filtersets.renameAll">Alle filtersets hernoemen</label>
+	</labels>
 </locallang>

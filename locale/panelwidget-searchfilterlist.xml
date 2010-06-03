@@ -20,4 +20,9 @@
 		<label index="saveFilterButton">Сохранить как новый фильтр</label>
 		<label index="clearFilterArea">Очистить область фильтров</label>
 	</labels>
+	<labels lang="nl_NL">
+		<label index="title">Filtersets</label>
+		<label index="saveFilterButton">Nieuw filter opslaan</label>
+		<label index="clearFilterArea">Filtergebied leegmaken</label>
+	</labels>
 </locallang>
