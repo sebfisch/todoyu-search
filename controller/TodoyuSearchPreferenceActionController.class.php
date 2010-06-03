@@ -119,21 +119,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		TodoyuFiltersetManager::updateOrder($orderData['items']);
 	}
 
-
-
-	/**
-	 * General panelWidget action, saves collapse status
-	 *
-	 * @param	Array	$params
-	 */
-	public function pwidgetAction(array $params) {
-		$idWidget	= $params['item'];
-		$value		= $params['value'];
-
-		TodoyuPanelWidgetManager::saveCollapsedStatus(EXTID_SEARCH, $idWidget, $value);
-	}
-
-
+	
 
 	/**
 	 * Save headlet open status for quicksearch headlet

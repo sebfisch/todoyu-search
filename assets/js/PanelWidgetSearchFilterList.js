@@ -285,6 +285,13 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	clearFilterArea: function() {
 		this.ext.Filter.reset();
 		this.unmarkActiveFilterset();
+
+		this.saveCleanArea();
+	},
+
+
+	saveCleanArea: function() {
+		this.ext.Preference.save('activeFilterset', this.ext.Filter.getActiveTab(), 0);
 	},
 
 
@@ -330,10 +337,10 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param {Number}	idFilterset
 	 * @param {String}	name
 	 */
-	saveFiltersetRename: function(idFilterset, value) {
+	saveFiltersetRename: function(idFilterset, name) {
 		var action	= 'renameFilterset';
 
-		this.ext.Preference.save(action, value, idFilterset);
+		this.ext.Preference.save(action, name, idFilterset);
 	},
 
 

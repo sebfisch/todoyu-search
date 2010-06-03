@@ -529,11 +529,17 @@ class TodoyuFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFilterSetSelectionOptions($definitions)	{
-		$filtersets	= self::getTypeFiltersets('TASK', personid(), true);
+		$allFiltersets	= self::getTypeFiltersets('TASK', personid(), true);
+
+		TodoyuDebug::printInFireBug($allFiltersets);
+
 
 		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
 
-		foreach($filtersets as $filterset)	{
+		TodoyuDebug::printInFireBug($activeFilterset);
+
+		foreach($allFiltersets as $filterset)	{
+				// Prevent adding the filterset to itself
 			if( $filterset['id'] != $activeFilterset ) {
 				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) )	{
 					$definitions['options'][] = array(
@@ -552,22 +558,22 @@ class TodoyuFiltersetManager {
 	/**
 	 * Check to avoid from endless loop.
 	 *
-	 * @param	Integer	$startFilter
-	 * @param	Integer	$curFilter
+	 * @param	Integer		$idFilterset
+	 * @param	Integer		$idFiltersetToCheck
 	 * @return	Boolean
 	 */
-	protected static function isFiltersetUsed($filterset, $filtersetToCheck)	{
-		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($filterset);
+	protected static function isFiltersetUsed($idFilterset, $idFiltersetToCheck)	{
+		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
 
 		foreach($conditions as $condition)	{
 			if( $condition['filter'] === 'filterSet' ) {
 				$subFiltersetIDs	= explode(',', $condition['value']);
 
-				if( in_array($filtersetToCheck, $subFiltersetIDs) ) {
+				if( in_array($idFiltersetToCheck, $subFiltersetIDs) ) {
 					return true;
 				} else {
 					foreach($subFiltersetIDs as $subFiltersetID) {
-						$check = self::isFiltersetUsed($subFiltersetID, $filtersetToCheck);
+						$check = self::isFiltersetUsed($subFiltersetID, $idFiltersetToCheck);
 
 						if( $check === true ) {
 							return true;
