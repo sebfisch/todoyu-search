@@ -7,7 +7,7 @@
 
 #widget-area .filterWidget span {
 	display:block;
-	padding:5px;
+	padding:5px 2px 5px 7px;
 }
 
 #widget-area .filterWidget span.calendaricon {
@@ -19,14 +19,17 @@
 }
 
 #widget-area .filterWidget .widgetheader {
-	height:24px;
 	width:100%;
 	position:relative;
-	background:#fff url(../../../../core/assets/img/bg-headerline.png) no-repeat 0 0;
+	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat 0 0;
+}
+#widget-area .filterWidget .widgetheader .widgetLabel {
+	width: 130px;
+	padding-right: 0;
 }
 
 #widget-area .filterWidget .widgetheaderRgt {
-	background:#fff url(../../../../core/assets/img/bg-headerline.png) no-repeat scroll 100% 0;
+	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat scroll 100% 0;
 	height:24px;
 	width:3px;
 	position:absolute;
@@ -37,6 +40,13 @@
 #widget-area .filterWidget .widgetheader span {
 	float:left;
 	display:block;
+}
+
+#widget-area .filterWidget .widgetheader span.clear {
+	display: block;
+	clear: both;
+	float: none;
+	padding: 0;
 }
 
 select#filtercontrol-conjunction {
@@ -68,7 +78,6 @@ select#filtercontrol-conjunction {
 #widget-area .filterWidget .widgetheader span.widgetClose {
 	position:absolute;
 	right:5px;
-	padding:5px 7px;
 	z-index:1;
 }
 
