@@ -24,7 +24,7 @@
 	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat 0 0;
 }
 #widget-area .filterWidget .widgetheader .widgetLabel {
-	width: 130px;
+	width: 120px;
 	padding-right: 0;
 }
 
@@ -53,12 +53,19 @@ select#filtercontrol-conjunction {
 	margin-right:4px;
 }
 
-#widget-area .filterWidget .negation {
+#widget-area .filterWidget span.negationButton {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	padding: 0;
+}
+
+#widget-area .filterWidget span.negation {
 	padding:0 0 0 6px;
 	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll 2px 4px;
 }
 
-#widget-area .filterWidget .negationRgt {
+#widget-area .filterWidget span.negationRgt {
 	height:10px;
 	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll -280px 4px;
 }
