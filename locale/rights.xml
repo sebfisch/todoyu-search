@@ -50,4 +50,14 @@
 		<label index="filtersets.hideAll">Alle filtersets verbergen</label>
 		<label index="filtersets.renameAll">Alle filtersets hernoemen</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="general">Obecné nastavení</label>
+		<label index="general.use">Používat/Vidět funkcionalitu vyhledávání</label>
+		<label index="general.area">Používat oblast vyhledávání</label>
+		<label index="filtersets">Sady filtrů</label>
+		<label index="filtersets.save">Uložit podmínky jako sadu filtrů</label>
+		<label index="filtersets.deleteAll">Odstranit všechny sady filtrů</label>
+		<label index="filtersets.hideAll">Skrýt všechny sady fitlrů</label>
+		<label index="filtersets.renameAll">Přejmenovat všechny sady filtrů</label>
+	</labels>
 </locallang>

@@ -25,4 +25,9 @@
 		<label index="saveFilterButton">Nieuw filter opslaan</label>
 		<label index="clearFilterArea">Filtergebied leegmaken</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="title">Sady filtrů</label>
+		<label index="saveFilterButton">Uložit nový filtr</label>
+		<label index="clearFilterArea">Vyčistit filtr</label>
+	</labels>
 </locallang>
