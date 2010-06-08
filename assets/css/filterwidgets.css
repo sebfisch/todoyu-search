@@ -111,7 +111,7 @@ select#filtercontrol-conjunction {
 }
 
 
-#widget-area input.dateinput {
+#widget-area input.date {
 	float:left;
 	margin-right:5px;
 	width:85%;

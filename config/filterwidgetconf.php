@@ -23,8 +23,8 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['textinput'] = array(
 	'configFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
 );
 
-Todoyu::$CONFIG['EXT']['search']['widgettypes']['dateinput'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-dateinput.tmpl',
+Todoyu::$CONFIG['EXT']['search']['widgettypes']['date'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-date.tmpl',
 );
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['checkbox'] = array(
