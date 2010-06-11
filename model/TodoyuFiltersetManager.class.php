@@ -531,12 +531,7 @@ class TodoyuFiltersetManager {
 	public static function getFilterSetSelectionOptions($definitions)	{
 		$allFiltersets	= self::getTypeFiltersets('TASK', personid(), true);
 
-		TodoyuDebug::printInFireBug($allFiltersets);
-
-
 		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
-
-		TodoyuDebug::printInFireBug($activeFilterset);
 
 		foreach($allFiltersets as $filterset)	{
 				// Prevent adding the filterset to itself
