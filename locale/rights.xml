@@ -60,4 +60,14 @@
 		<label index="filtersets.hideAll">Skrýt všechny sady fitlrů</label>
 		<label index="filtersets.renameAll">Přejmenovat všechny sady filtrů</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="general">一般設定</label>
+		<label index="general.use">検索機能の表示および使用</label>
+		<label index="general.area">検索エリアの使用</label>
+		<label index="filtersets">フィルタセット</label>
+		<label index="filtersets.save">フィルタセットの条件として保存</label>
+		<label index="filtersets.deleteAll">全フィルタセットの削除</label>
+		<label index="filtersets.hideAll">全フィルタセットの非表示</label>
+		<label index="filtersets.renameAll">全フィルタセット名の変更</label>
+	</labels>
 </locallang>
