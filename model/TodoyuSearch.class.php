@@ -108,10 +108,10 @@ class TodoyuSearch {
 	 * @param	Integer	$limit
 	 * @return	String
 	 */
-	public static function searchTable($table, array $fields, array $find, array $ignore = array(), $limit = 200) {
+	public static function searchTable($table, array $fields, array $find, array $ignore = array(), $limit = 200, $addToWhere = ' AND deleted = 0') {
 		$field	= 'id';
 		$where	= Todoyu::db()->buildLikeQuery($find, $fields);
-		$where	.=' AND deleted = 0';
+		$where	.= $addToWhere;
 		$limit	= intval($limit);
 
 		if( sizeof($ignore) > 0 ) {
