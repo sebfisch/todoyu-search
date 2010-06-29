@@ -75,17 +75,20 @@ class TodoyuFilterManager {
 		TodoyuExtensions::loadAllFilters();
 
 		$types	= array_keys(Todoyu::$CONFIG['FILTERS']);
-
+		
 		if( $sort ) {
 			$sorting = array();
 
 			foreach($types as $type) {
-				$sorting[Todoyu::$CONFIG['FILTERS'][$type]['config']['position']] = $type;
+				$sorting[] = array(
+					'position'	=> intval(Todoyu::$CONFIG['FILTERS'][$type]['config']['position']),
+					'type'		=> $type
+				);
 			}
 
-			ksort($sorting);
+			$sorted	= TodoyuArray::sortByLabel($sorting, 'position');
 
-			$types = $sorting;
+			$types	= TodoyuArray::getColumn($sorted, 'type');
 		}
 
 		return $types;
