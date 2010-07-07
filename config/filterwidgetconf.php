@@ -18,8 +18,8 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['EXT']['search']['widgettypes']['textinput'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-textinput.tmpl',
+Todoyu::$CONFIG['EXT']['search']['widgettypes']['text'] = array(
+	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-text.tmpl',
 	'configFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
 );
 
