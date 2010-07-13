@@ -141,8 +141,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Handler being evoked after saving of given filterSet
 	 *
-	 * @param	{Number}		idFilterSet
-	 * @param	{Ajax.Response}	response
+	 * @param	{Number}			idFilterSet
+	 * @param	{Ajax.Response}		response
 	 */
 	onFiltersetSaved: function(idFilterSet, response) {
 		var tab = this.ext.Filter.getActiveTab();
@@ -336,7 +336,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	saveListToggle: function(type, expanded) {
 		var action	= 'filterlistToggle';
-		var value	= type + ':' + (expanded ? 1 : 0);
+		var value	= type + ':' + ( expanded ) ? 1 : 0;
 		var idItem	= 0;
 
 		this.ext.Preference.save(action, value, idItem);

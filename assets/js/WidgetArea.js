@@ -54,14 +54,14 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			'parameters': {
-				'action': 'add',
-				'name': name,
-				'type': type,
-				'condition': condition,
-				'value': value,
-				'negate': negate ? 1 : 0
+				'action':		'add',
+				'name':			name,
+				'type':			type,
+				'condition':	condition,
+				'value':		value,
+				'negate':		negate ? 1 : 0
 			},
-			'onComplete': this.onAdded.bind(this, name, condition)
+			'onComplete':	this.onAdded.bind(this, name, condition)
 		};
 		var target	= this.areaID;
 
@@ -73,9 +73,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Evoked after adding filter widget. Installs widget autoCompleter and negation handling
 	 *
-	 * @param	{String}	name
-	 * @param	{String}	condition
-	 * @param	{Object}	response
+	 * @param	{String}			name
+	 * @param	{String}			condition
+	 * @param	{Ajax.Response}		response
 	 */
 	onAdded: function(name, condition, response) {
 		var widgetID	= condition + '-' + name;

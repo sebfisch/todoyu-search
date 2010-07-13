@@ -18,12 +18,12 @@
 *****************************************************************************/
 
 /**
- * Quicksearch headlet suggestions
+ * Quick search headlet input autoCompletion suggestions
  */
 Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:			Todoyu.Ext.search,
 
@@ -44,7 +44,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 
 	/**
-	 * Enter description here...
+	 * Initialize quick search query input suggesting
 	 */
 	init: function() {
 		this.headlet	= this.ext.Headlet.QuickSearch;
@@ -52,7 +52,6 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 			// Move suggest to body (to scroll)
 		document.body.appendChild(this.suggest);
-
 		this.headlet.query.observe('keyup', this.onQueryChange.bind(this));
 	},
 

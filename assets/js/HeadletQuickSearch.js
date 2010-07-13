@@ -111,7 +111,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Hide quick search content and extras
+	 * Hide quick search content and extras
 	 */
 	hide: function() {
 		this.hideContent();
@@ -122,7 +122,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Hide extras of quick search: mode selector, result suggestions
+	 * Hide extras of quick search: mode selector, result suggestions
 	 */
 	hideExtras: function() {
 		this.Mode.hideModes();
@@ -132,7 +132,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Focus search query input field
+	 * Focus search query input field
 	 */
 	focus: function() {
 		this.query.select();

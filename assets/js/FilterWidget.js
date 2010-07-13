@@ -44,11 +44,12 @@ Todoyu.Ext.search.FilterWidget = {
 	addWidgetToFilterArea: function(select)	{
 		var chosenWidget = $(select).getValue();
 
-			// reset selector
+			// Reset selector
 		select.options[0].selected = true;
 
-			// count of equal elements. (used for the ID)
+			// Count of equal elements. (used for the ID)
 		var numOfWidget = this.detectNumOfWidget(chosenWidget);
+
 		var url			= Todoyu.getUrl('search', 'filtercontroller');
 		var options		= {
 			'parameters': {
@@ -58,11 +59,11 @@ Todoyu.Ext.search.FilterWidget = {
 				'filterID':			Todoyu.Ext.search.Filter.FilterID
 			},
 			'onComplete': function(response)	{
-				var WidgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
-				if( $(WidgetID) )	{
-					Todoyu.Ext.search.Filter.addFilterWidgetToList($(WidgetID));
-					this.initAutocompletionSingle(WidgetID);
-					this.initNegationSingle(WidgetID);
+				var widgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
+				if( $(widgetID) )	{
+					Todoyu.Ext.search.Filter.addFilterWidgetToList($(widgetID));
+					this.initAutocompletionSingle(widgetID);
+					this.initNegationSingle(widgetID);
 				}
 			}.bind(this)
 		};
