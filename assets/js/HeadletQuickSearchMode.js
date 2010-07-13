@@ -34,7 +34,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 
 	/**
-	 * Enter description here...
+	 * Initialize quick search modes option: declare properties, setup click observer
 	 *
 	 * @param {Number} idFilterset
 	 */
@@ -50,14 +50,14 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 
 	/**
-	 * Enter description here...
+	 * Show quick search modes selector
 	 *
 	 * @param	{String}	mode
 	 */
 	showModes: function(event) {
 		var modes	= $('headlet-quicksearch-modes');
 
-		if(modes.visible() == true)	{
+		if( modes.visible() == true ) {
 			this.hideModes();
 		} else {
 			if( ! this.positioned ) {
@@ -77,7 +77,6 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 			}
 
 			modes.show();
-
 			this.headlet.Suggest.hideResults();
 		}
 	},
@@ -85,7 +84,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 
 	/**
-	 * Enter description here...
+	 * Activate given quick search mode
 	 *
 	 * @param	{String}	mode
 	 */
@@ -95,14 +94,13 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 		this.hideModes();
 		this.headlet.focus();
-
 		this.headlet.Suggest.updateResults();
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Get currently active quick search mode
 	 *
 	 * @return	{String}
 	 */
@@ -113,7 +111,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 
 	/**
-	 * Enter description here...
+	 * Hide quick search modes selector
 	 */
 	hideModes: function() {
 		$('headlet-quicksearch-modes').hide();

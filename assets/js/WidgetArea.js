@@ -17,14 +17,22 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ *	Ext: search
+ */
+
 Todoyu.Ext.search.Filter.WidgetArea = {
 
+	/**
+	 * Extension backlink
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.search,
 
 	areaID: 'widget-area',
 
 	autocompleters: {},
-	
+
 	/**
 	 * Special configuration added by some widgets
 	 * This is a temporary container for widget config
@@ -34,7 +42,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Add given filter widget to search page widget area 
 	 *
 	 * @param	{String}	name
 	 * @param	{String}	type
@@ -63,11 +71,11 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoked after adding filter widget. Installs widget autoCompleter and negation handling
 	 *
-	 * @param unknown_type name
-	 * @param unknown_type condition
-	 * @param unknown_type response
+	 * @param	{String}	name
+	 * @param	{String}	condition
+	 * @param	{Object}	response
 	 */
 	onAdded: function(name, condition, response) {
 		var widgetID	= condition + '-' + name;
@@ -79,9 +87,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Remove given widget from widget area
 	 *
-	 * @param unknown_type name
+	 * @param	{String}	name
 	 */
 	remove: function(name) {
 		$(name).remove();
@@ -90,7 +98,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Clear widget area (refresh)
 	 */
 	clear: function() {
 		$(this.areaID).update('');
@@ -99,7 +107,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Get amount of filter widgets in widget area
+	 *
+	 * @return	{Number}
 	 */
 	getNumOfWidgets: function() {
 		return $(this.areaID).select('.filterWidget').size();
@@ -108,9 +118,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Install autoCompleter to ('textAC' input field of) given filter widget 
 	 *
-	 * @param unknown_type name
+	 * @param	{String}	name
 	 */
 	installAutocomplete: function(name) {
 		if( $(name) )	{
@@ -120,9 +130,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
 				var widgetID= acField.id.split('-').slice(2, 4).join('-');
 				var params	= Object.toQueryString({
-					'action': 'autocompletion',
-					'completionID': name,
-					'filtertype': this.ext.Filter.getActiveTab()
+					'action':				'autocompletion',
+					'completionID':			name,
+					'filtertype':			this.ext.Filter.getActiveTab()
 				});
 				var options	= {
 					'parameters':			params,
@@ -149,7 +159,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Handle selection of autoCompleter suggestion: send value to condition of widget 
 	 *
 	 * @param	{String}	name
 	 * @param	{Element}	textInput
@@ -164,9 +174,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Install widget negating option click observer 
 	 *
-	 * @param unknown_type name
+	 * @param	{String}	name
 	 */
 	installNegation: function(name) {
 		if( $(name) )	{
@@ -181,17 +191,24 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Enter description here...
+	 * Handle filter widget negation: invoke toggle of child elements' conditions
 	 *
-	 * @param unknown_type event
-	 * @param unknown_type name
+	 * @param	{Object}	event
+	 * @param	{String}	name
 	 */
 	onNegation: function(event, name) {
 		this.ext.Filter.toggleConditionNegation(name);
 
 		event.findElement('span.negation').childElements().invoke('toggle');
 	},
-	
+
+
+
+	/**
+	 * @todo	comment
+	 * @param	{String}		name
+	 * @param	{unknown_type}	config
+	 */
 	addSpecialConfig: function(name, config) {
 		this.specialConfig[name] = config;
 	}

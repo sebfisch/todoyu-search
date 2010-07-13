@@ -20,7 +20,7 @@
 Todoyu.Ext.search.Headlet.QuickSearch = {
 
 	/**
-	 * Ext shortcut
+	 * Ext namespace shortcut
 	 *
 	 * @var	{Object}	ext
 	 */
@@ -29,13 +29,13 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	query:		null,	
 	button:		null,
 	content:	null,
-		
+
 	bodyClickObserver: null,
 
 
 
 	/**
-	 * Enter description here...
+	 * Initialize quick search headlet: install click observer, initialize search input autoCompleter value suggestion and modes selector 
 	 */
 	init: function() {
 		this.query	= $('headlet-quicksearch-query');
@@ -51,8 +51,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 * Handle headlet button clicks: toggle headlet content visibility
 	 *
+	 * @param	{Object}	event
 	 */
 	onButtonClick: function(event) {
 		if( this.isContentVisible() ) {
@@ -69,8 +70,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
-	 *
+	 * @todo	comment
 	 */
 	onContentClick: function(event) {
 		if( this.isEventInOwnContent(event) ) {
@@ -81,8 +81,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 * Upon clicking search query input: hide modes selection
 	 *
+	 * @param	{Object}	event
 	 */
 	onQueryClick: function(event) {
 		this.Mode.hideModes();
@@ -95,8 +96,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 * Upon click: hide mode selector and result suggestions. 
 	 *
+	 * @param	{Object}	event
 	 */
 	onBodyClick: function(event) {
 		this.hideExtras();
@@ -109,7 +111,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 *	Hide quick search content and extras
 	 */
 	hide: function() {
 		this.hideContent();
@@ -120,7 +122,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 *	Hide extras of quick search: mode selector, result suggestions
 	 */
 	hideExtras: function() {
 		this.Mode.hideModes();
@@ -130,7 +132,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 *	Enter description here...
+	 *	Focus search query input field
 	 */
 	focus: function() {
 		this.query.select();
@@ -140,7 +142,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Enter description here...
+	 * Submit quick search form
+	 *
+	 * @todo	is disabled, check and enable
 	 */
 	submit: function() {
 		//$('headlet-quicksearch-form').submit();
@@ -150,7 +154,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Enter description here...
+	 * If any search query given: submit search form
 	 */
 	submitIfNotEmpty: function() {
 		if( ! this.isEmpty() ) {
@@ -161,7 +165,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Enter description here...
+	 * Get search query input
 	 *
 	 * @return	{String}
 	 */
@@ -172,7 +176,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Enter description here...
+	 * Check whether search query is empty
 	 *
 	 * @return	{Boolean}
 	 */

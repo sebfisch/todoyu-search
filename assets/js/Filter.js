@@ -125,7 +125,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Get logical filters conjunction (AND / OR)
 	 *
 	 * @return	{String}
 	 */
@@ -136,7 +136,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
+	 * Handle tab click: activate, save pref, evoke content update
 	 *
 	 * @param	{Object}	event
 	 * @param	{String}	tab
@@ -144,16 +144,14 @@ Todoyu.Ext.search.Filter = {
 	onTabClick: function(event, tab)	{
 		if( tab !== this.getActiveTab() ) {
 			this.setActiveTab(tab);
-
 			this.ext.Preference.saveActiveTab(tab);
-
 			this.updateFilterArea(tab, 0);
 		}
 	},
 
 
 	/**
-	 * Enter description here...
+	 * Reset filters
 	 */
 	reset: function() {
 		this.Conditions.clear();
@@ -220,9 +218,9 @@ Todoyu.Ext.search.Filter = {
 
 	/**
 	 * Build a new name for a new added widget
-	 * new + counter number
 	 *
-	 * @param	{String}	 condition
+	 * @param	{String}	condition
+	 * @return	{String}	new + counter number
 	 */
 	makeNewWidgetName: function(condition) {
 		var numOfWidgets = this.Conditions.size();
@@ -233,37 +231,35 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Load a filterset by ID
-	 * Update the widget area and the result list
+	 * Load a filterSet by ID, update the widget area and the result list
 	 *
 	 * @param	{String}	tab
-	 * @param	{Number}	idFilterset
+	 * @param	{Number}	idFilterSet
 	 */
-	loadFilterset: function(tab, idFilterset) {
+	loadFilterset: function(tab, idFilterSet) {
 		if ( tab !== this.getActiveTab() ) {
-			this.updateFilterArea(tab, idFilterset);
+			this.updateFilterArea(tab, idFilterSet);
 		} else {
-			this.updateWidgetArea(tab, idFilterset);
-			this.updateResults(tab, idFilterset);
+			this.updateWidgetArea(tab, idFilterSet);
+			this.updateResults(tab, idFilterSet);
 		}
 	},
 
 
 
 	/**
-	 * Update the filter area for a filterset
-	 * Update tab, widgets and results
+	 * Update the filter area for a filterSet, update tab, widgets and results
 	 *
 	 * @param	{String}	tab
-	 * @param	{Number}	idFilterset
+	 * @param	{Number}	idFilterSet
 	 */
-	updateFilterArea: function(tab, idFilterset) {
+	updateFilterArea: function(tab, idFilterSet) {
 		var url		= Todoyu.getUrl('search', 'filterarea');
 		var options	= {
 			'parameters': {
 				'action':		'load',
 				'tab':			tab,
-				'filterset':	idFilterset
+				'filterset':	idFilterSet
 			},
 			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
@@ -276,18 +272,18 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Update the widget area with the widget of the selected filterset
+	 * Update the widget area with the widget of the selected filterSet
 	 *
 	 * @param	{String}	tab
-	 * @param	{Number}	idFilterset
+	 * @param	{Number}	idFilterSet
 	 */
-	updateWidgetArea: function(tab, idFilterset) {
+	updateWidgetArea: function(tab, idFilterSet) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			'parameters': {
 				'action':		'load',
 				'tab':			tab,
-				'filterset':	idFilterset
+				'filterset':	idFilterSet
 			},
 			'onComplete': 	this.onResultsUpdated.bind(this, tab)
 		};
@@ -301,22 +297,22 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Replace search results by result of current filter
 	 *
-	 * @param	{Number}		idFilterset
+	 * @param	{Number}		idFilterSet
 	 * @param	{Array}			conditions
 	 * @param	{String}		conjunction
 	 */
-	updateResults: function(tab, idFilterset, conditions, conjunction) {
-		tab 		= tab === undefined ? this.getActiveTab() : tab ;
-		idFilterset	= idFilterset === undefined ? this.getFiltersetID() : idFilterset ;
-		conditions	= conditions === undefined ? this.Conditions.getAll() : conditions ;
-		conjunction	= conjunction === undefined ? this.getConjunction() : conjunction ;
+	updateResults: function(tab, idFilterSet, conditions, conjunction) {
+		tab 		= ( tab === undefined ) ? this.getActiveTab() : tab ;
+		idFilterSet	= ( idFilterSet === undefined ) ? this.getFiltersetID() : idFilterSet ;
+		conditions	= ( conditions === undefined ) ? this.Conditions.getAll() : conditions ;
+		conjunction	= ( conjunction === undefined ) ? this.getConjunction() : conjunction ;
 
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
 			'parameters': {
 				'action':		'update',
 				'tab':			tab,
-				'filterset':	idFilterset,
+				'filterset':	idFilterSet,
 				'conditions':	Object.toJSON(conditions),
 				'conjunction':	conjunction
 			},
@@ -348,7 +344,6 @@ Todoyu.Ext.search.Filter = {
 	 */
 	updateConditionValue: function(name, value) {
 		this.setConditionValue(name, value);
-
 		this.updateResults(this.getActiveTab(), 0);
 	},
 
@@ -374,7 +369,6 @@ Todoyu.Ext.search.Filter = {
 	 */
 	updateConditionNegation: function(name, negate) {
 		this.Conditions.updateNegation(name, negate);
-
 		this.updateResults(this.getActiveTab(), 0);
 	},
 
@@ -387,7 +381,6 @@ Todoyu.Ext.search.Filter = {
 	 */
 	toggleConditionNegation: function(name) {
 		this.Conditions.toggleNegated(name);
-
 		this.updateResults(this.getActiveTab(), 0);
 	},
 
@@ -407,14 +400,13 @@ Todoyu.Ext.search.Filter = {
 			if( title === null ) {
 				return;
 			}
-
 				// No name entered
 			if( title.strip() === '' ) {
 				alert('[LLL:search.filterset.error.saveEmptyName]');
 				return;
 			}
 			
-				// Save filterset
+				// Save filterSet
 			var url		= Todoyu.getUrl('search', 'filterset');
 			var options	= {
 				'parameters': {
@@ -439,17 +431,17 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Save current collection of filters as filterset
+	 * Save current collection of filters as filterSet
 	 *
-	 * @param	{Number}	idFilterset
+	 * @param	{Number}	idFilterSet
 	 * @param	{Function}	 onComplete
 	 */
-	saveCurrentAreaAsFilterset: function(idFilterset, onComplete) {
+	saveCurrentAreaAsFilterset: function(idFilterSet, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');
 		var options	= {
 			'parameters': {
 				'action':		'save',
-				'filterset':	idFilterset,
+				'filterset':	idFilterSet,
 				'tab':			this.getActiveTab(),
 				'conditions':	this.Conditions.getAll(true),
 				'conjunction':	this.getConjunction()
@@ -466,14 +458,15 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Save pref: active filterset ID
+	 * Save pref: currently active filterSet ID
 	 *
 	 * @param {String}	tab
-	 * @param {Number}	idFilterset
+	 * @param {Number}	idFilterSet
 	 */
-	saveActiveFilterset: function(tab, idFilterset) {
+	saveActiveFilterset: function(tab, idFilterSet) {
 		var action		= 'activeFilterset';
 
-		this.ext.Preference.save(action, tab, idFilterset);
+		this.ext.Preference.save(action, tab, idFilterSet);
 	}
+
 };

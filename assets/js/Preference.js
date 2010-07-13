@@ -29,7 +29,7 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Enter description here...
+	 * Save given preference of search extension 
 	 *
 	 * @param	{String}	action
 	 * @param	{String}	value
@@ -43,20 +43,19 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Save active tab
+	 * Save preference: current active tab
 	 *
 	 * @param	{String}	tab
 	 */
 	saveActiveTab: function(tab)	{
 		var action = 'saveActiveTab';
-
 		this.sendAction(action, tab);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: current filter set
 	 */
 	saveCurrentFilter: function()	{
 		var action	= 'saveCurrentFilterSet';
@@ -68,18 +67,17 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Enter description here...
+	 * Remove current filter set
 	 */
 	removeCurrentFilter: function()	{
 		var action	= 'removeCurrentFilterSet';
-
 		this.sendAction(action, '');
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: collapsed-state of given element
 	 *
 	 * @param	{String}	elementID
 	 * @param	{Boolean}	elementDisplay
@@ -98,20 +96,19 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: current order of search filters
 	 *
-	 * @param	{String}	list
+	 * @param	{String}	value
 	 */
 	saveOrder: function(value)	{
 		var action = 'saveOrder';
-
 		this.sendAction(action, value);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Wrapper method to evoke given search action with given value
 	 *
 	 * @param	{String}	action
 	 * @param	{String}	value
@@ -127,4 +124,5 @@ Todoyu.Ext.search.Preference = {
 
 		Todoyu.send(url, options);
 	}
+
 };

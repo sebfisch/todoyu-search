@@ -66,7 +66,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	onQueryChange: function(event) {
 		window.clearTimeout(this.timeout);
 
-			// Pressed ENTER
+			// Pressed [ENTER]
 		if( event.keyCode === Event.KEY_RETURN ) {
 			if( this.isNavigating() ) {
 				this.goToActiveElement();
@@ -85,7 +85,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 			return;
 		}
 
-			// Pressed ESC (hide results or whole headlet)
+			// Pressed [ESC] (hide results or whole headlet)
 		if( event.keyCode === Event.KEY_ESC ) {
 			if( this.isResultsVisible() ) {
 				this.hideResults();
@@ -128,7 +128,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Navigate in result list (up and down)
 	 *
-	 * @param	Boole	down		Navigate down. Yes or No?
+	 * @param	{Boolean}	down		Navigate down. Yes or No?
 	 */
 	navigate: function(down) {
 			// Deactivate selection
@@ -165,7 +165,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 
 	/**
-	 * Update suggest container with new results
+	 * Update suggestion container with new results
 	 */
 	updateResults: function() {
 		if( this.headlet.isEmpty() ) {
@@ -190,8 +190,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Handler when results have been updated
 	 *
-	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onResultsUpdated: function(response) {
 		this.navigatePos = -1;

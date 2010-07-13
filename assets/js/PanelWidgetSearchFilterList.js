@@ -53,16 +53,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			'onComplete': this.initSortable.bind(this)
 		};
 		var target	= 'panelwidget-searchfilterlist-content';
-
 		this.disableSortable();
-
 		Todoyu.Ui.update(target, url, options);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Toggle visibility of given type's listing in widget 
 	 *
 	 * @param	{String}	type
 	 */
@@ -78,32 +76,32 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Prompt for new name and rename given filterSet
 	 *
-	 * @param {Number} idFilterset
+	 * @param {Number} idFilterSet
 	 */
-	renameFilterset: function(idFilterset)	{
-		var currentName	= $('filterset-' + idFilterset + '-label').title.stripScripts().stripTags().strip();
+	renameFilterset: function(idFilterSet)	{
+		var currentName	= $('filterset-' + idFilterSet + '-label').title.stripScripts().stripTags().strip();
 		var newName		= prompt('[LLL:search.filterset.rename]', currentName);
 
 		if( newName !== null && newName.strip() !== '' ) {
 			newName = newName.stripScripts().stripTags().strip();
 
-			$('filterset-' + idFilterset + '-label').update(newName);
+			$('filterset-' + idFilterSet + '-label').update(newName);
 
-			this.saveFiltersetRename(idFilterset, newName);
+			this.saveFiltersetRename(idFilterSet, newName);
 		}
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Hide given filterSet (visual and pref)
 	 *
-	 * @param {Number} idFilterset
+	 * @param {Number} idFilterSet
 	 */
-	hideFilterset: function(idFilterset)	{
-		var element = $('filterset-' + idFilterset + '-control-visibility');
+	hideFilterset: function(idFilterSet)	{
+		var element = $('filterset-' + idFilterSet + '-control-visibility');
 		var isHidden= element.hasClassName('hidden');
 
 		element.toggleClassName('hidden');
@@ -117,21 +115,21 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			element.update('[LLL:core.hide]');
 		}
 
-		this.saveFiltersetVisibility(idFilterset, isHidden);
+		this.saveFiltersetVisibility(idFilterSet, isHidden);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Save given filterSet
 	 *
-	 * @param {Number}	idFilterset
+	 * @param {Number}	idFilterSet
 	 * @param {String}	tab
 	 */
-	saveFilterset: function(idFilterset, tab) {
+	saveFilterset: function(idFilterSet, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
 			if(confirm('[LLL:search.filterset.confirm.overwrite]'))	{
-				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterset, this.onFiltersetSaved.bind(this, idFilterset));
+				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
 			}
 		} else {
 			alert('[LLL:search.filterset.error.saveWrongType]');
@@ -141,28 +139,27 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Handler being evoked after saving of given filterSet
 	 *
-	 * @param {Number}	idFilterset
-	 * @param Object	response
+	 * @param	{Number}		idFilterSet
+	 * @param	{Ajax.Response}	response
 	 */
-	onFiltersetSaved: function(idFilterset, response) {
+	onFiltersetSaved: function(idFilterSet, response) {
 		var tab = this.ext.Filter.getActiveTab();
-		this.showFilterset(tab, idFilterset);
+		this.showFilterset(tab, idFilterSet);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Delete given filterSet (visual and from prefs)
 	 *
-	 * @param {Number} idFilterset
+	 * @param {Number} idFilterSet
 	 */
-	deleteFilterset: function(idFilterset) {
+	deleteFilterset: function(idFilterSet) {
 		if( confirm('[LLL:search.filterset.confirm.delete]') ) {
-			$('filterset_' + idFilterset).remove();
-
-			this.saveFiltersetDelete(idFilterset);
+			$('filterset_' + idFilterSet).remove();
+			this.saveFiltersetDelete(idFilterSet);
 		}
 	},
 
@@ -178,14 +175,22 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Handler being evoked after saving of new (= creating) filterSet (evokes refresh of widget).
 	 *
-	 * @param Object response
+	 * @param	{Ajax.Response}		response
 	 */
 	onNewFiltersetSaved: function(response) {
 		this.refresh();
 	},
 
+
+
+	/**
+	 * Load or Refresh and activate given filterSet
+	 *
+	 * @param	{String}	type
+	 * @param	{Number}	idFilterset
+	 */
 	showFilterset: function(type, idFilterset) {
 		if( type === this.ext.Filter.getActiveTab() ) {
 			this.ext.Filter.loadFilterset(type, idFilterset);
@@ -199,19 +204,19 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Mark currently active filterset as such
+	 * Mark currently active filterSet visually
 	 *
-	 * @param	{Number}	idFilterset
+	 * @param	{Number}	idFilterSet
 	 */
-	markActiveFilterset: function(idFilterset) {
-		$('filterset_' + idFilterset).up('div').select('.filterset').invoke('removeClassName', 'current');
-		$('filterset_' + idFilterset).addClassName('current');
+	markActiveFilterset: function(idFilterSet) {
+		$('filterset_' + idFilterSet).up('div').select('.filterset').invoke('removeClassName', 'current');
+		$('filterset_' + idFilterSet).addClassName('current');
 	},
-	
-	
-	
+
+
+
 	/**
-	 * Removes current from active filterset (called on reset)
+	 * Remove current from active filterSet (called on reset)
 	 */
 	unmarkActiveFilterset: function()	{
 		$('panelwidget-searchfilterlist').select('.filterset').invoke('removeClassName', 'current');
@@ -220,7 +225,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Init filterset sortables
+	 * Initialize filterSet sortables
 	 */
 	initSortable: function() {
 		this.disableSortable();
@@ -252,7 +257,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Disable filtersets sortability
+	 * Disable filterSets sortability
 	 */
 	disableSortable: function() {
 		this.sortables.each(function(sortableElement){
@@ -266,9 +271,9 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Handler after update of filterset sortables
+	 * Handler after update of filterSet sortables
 	 *
-	 * @param	element		listElement
+	 * @param	{Element}	listElement
 	 */
 	onSortableUpdate: function(listElement) {
 		var type	= listElement.id.split('-').last();
@@ -290,14 +295,22 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	},
 
 
+
+	/**
+	 * Save preference of clean area: active filterSet, tab
+	 */
 	saveCleanArea: function() {
-		this.ext.Preference.save('activeFilterset', this.ext.Filter.getActiveTab(), 0);
+		var action	= 'activeFilterset';
+		var value	= this.ext.Filter.getActiveTab();
+		var	idItem	= 0;
+
+		this.ext.Preference.save(action, value, idItem);
 	},
 
 
 
 	/**
-	 * Save order of filterset items (conditions)
+	 * Save order of filterSet items (conditions)
 	 *
 	 * @param	{String}		type
 	 * @param	{Array}		items
@@ -316,7 +329,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Save expanded-state of given type list
 	 *
 	 * @param	{String}		type
 	 * @param	{Boolean}		expanded
@@ -332,44 +345,44 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: given renamed title of filterSet
 	 *
-	 * @param {Number}	idFilterset
+	 * @param {Number}	idFilterSet
 	 * @param {String}	name
 	 */
-	saveFiltersetRename: function(idFilterset, name) {
+	saveFiltersetRename: function(idFilterSet, name) {
 		var action	= 'renameFilterset';
 
-		this.ext.Preference.save(action, name, idFilterset);
+		this.ext.Preference.save(action, name, idFilterSet);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: visibility of given filterSet
 	 *
-	 * @param {Number}	idFilterset
-	 * @param Boolean	isHidden
+	 * @param	{Number}	idFilterSet
+	 * @param	{Boolean}	visible
 	 */
-	saveFiltersetVisibility: function(idFilterset, visible) {
+	saveFiltersetVisibility: function(idFilterSet, visible) {
 		var action	= 'toggleFiltersetVisibility';
 		var value	= visible ? 1 : 0;
 
-		this.ext.Preference.save(action, value, idFilterset);
+		this.ext.Preference.save(action, value, idFilterSet);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Save preference: deleted filterSet
 	 *
-	 * @param {Number} idFilterset
+	 * @param {Number} idFilterSet
 	 */
-	saveFiltersetDelete: function(idFilterset) {
+	saveFiltersetDelete: function(idFilterSet) {
 		var action	= 'deleteFilterset';
 		var value	= 1;
 
-		this.ext.Preference.save(action, value, idFilterset);
+		this.ext.Preference.save(action, value, idFilterSet);
 	}
 
 };
