@@ -74,11 +74,6 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 	),
 	'css' => array(
 		array(
-			'file'		=> 'ext/search/assets/css/global.css',
-			'media'		=> 'all',
-			'position'	=> 100
-		),
-		array(
 			'file'		=> 'ext/search/assets/css/ext.css',
 			'media'		=> 'all',
 			'position'	=> 100
