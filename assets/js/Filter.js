@@ -237,7 +237,7 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{Number}	idFilterSet
 	 */
 	loadFilterset: function(tab, idFilterSet) {
-		if ( tab !== this.getActiveTab() ) {
+		if( tab !== this.getActiveTab() ) {
 			this.updateFilterArea(tab, idFilterSet);
 		} else {
 			this.updateWidgetArea(tab, idFilterSet);

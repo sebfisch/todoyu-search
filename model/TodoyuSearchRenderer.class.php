@@ -140,7 +140,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			// Get render function
 		$renderFunction	= TodoyuFilterBase::getFilterRenderFunction($activeTab);
 
-		if ( TodoyuFunction::isFunctionReference($renderFunction) ) {
+		if( TodoyuFunction::isFunctionReference($renderFunction) ) {
 			$content	= TodoyuFunction::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
 		}
 

@@ -437,7 +437,7 @@ class TodoyuFiltersetManager {
 	public static function validateTitle($title) {
 		$allFilterSetTitles	= TodoyuArray::flatten( self::getFiltersetTitles() );
 
-		if ( in_array($title, $allFilterSetTitles) ) {
+		if( in_array($title, $allFilterSetTitles) ) {
 			$title = self::validateTitle( $title . '-2' );
 		}
 
