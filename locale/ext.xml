@@ -18,6 +18,8 @@
 		<label index="negation.default.false">Is</label>
 		<label index="negation.datetime.true">From</label>
 		<label index="negation.datetime.false">To</label>
+		<label index="negation.numbercompare.true">bigger than</label>
+		<label index="negation.numbercompare.false">smaller than</label>
 		<label index="newFilterLabel">Enter a name for the new filter</label>
 		<label index="newFilterLabel.preset">New Filter</label>
 		<label index="subMenuEntry.task">Tasks</label>
@@ -46,6 +48,8 @@
 		<label index="negation.default.false">ist</label>
 		<label index="negation.datetime.true">nach</label>
 		<label index="negation.datetime.false">vor</label>
+		<label index="negation.numbercompare.true">grösser als</label>
+		<label index="negation.numbercompare.false">kleiner als</label>
 		<label index="newFilterLabel">Bitte einen Filter-Namen angeben</label>
 		<label index="newFilterLabel.preset">Neuer Filter</label>
 		<label index="subMenuEntry.task">Aufgaben</label>

@@ -125,7 +125,7 @@ class TodoyuFilterWidgetManager	{
 			// Create id for the widget
 		$definitions['widgetID'] = $widgetName . '-' . $numOfWidget;
 
-			// Add filtername to widget
+			// Add filter name to widget
 		$definitions['widgetFilterName'] = $widgetName;
 
 			// Add value to definitions
@@ -158,7 +158,7 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * Get autocompletion suggestions to given input of given record type 
+	 * Get autoCompletion suggestions to given input of given record type 
 	 *
 	 * @param	String		$type
 	 * @param	String		$sword
@@ -211,7 +211,7 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * handles the given manipulation function for autocompletion to set the correct label
+	 * handles the given manipulation function for autoCompletion to set the correct label
 	 *
 	 * defined in filters config (LabelFuncRef)
 	 *

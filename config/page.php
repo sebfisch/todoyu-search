@@ -26,12 +26,18 @@ if( allowed('search', 'general:use') ) {
 	if( allowed('search', 'general:area') ) {
 		TodoyuFrontend::addMenuEntry('search', 'LLL:search.page.title', '?ext=search', 50);
 
-			// Add filtertypes as submenu
+			// Add filter types as sub menu
 		$filterTypes= TodoyuSearchManager::getFilters();
 		$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
 
 		foreach($filterTypes as $type => $typeConfig) {
-			TodoyuFrontend::addSubmenuEntry('search', 'search' . ucfirst($typeConfig['key']), $typeConfig['config']['label'], '?ext=search&tab=' . $typeConfig['key'], $typeConfig['config']['position']+100);
+			$parentKey	= 'search';
+			$key		= 'search' . ucfirst($typeConfig['key']);
+			$label		= $typeConfig['config']['label'];
+			$href		= '?ext=search&tab=' . $typeConfig['key'];
+			$position	= $typeConfig['config']['position'] + 100;
+
+			TodoyuFrontend::addSubmenuEntry($parentKey, $key, $label, $href, $position);
 		}
 	}
 
