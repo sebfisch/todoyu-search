@@ -246,7 +246,7 @@ Todoyu.Ext.search.FilterWidget = {
 		this.ext.Filter.setConditionValue(name, value);
 
 			// Create new timeout to update results (can be cleared by new inputs)
-		this.timeout[name] = this.ext.Filter.updateResults.bind(this.ext.Filter).delay(0.4);
+		this.timeout[name] = this.ext.Filter.updateResults.bind(this.ext.Filter, this.ext.Filter.getActiveTab(), 0).delay(0.4);
 	}
 
 };
