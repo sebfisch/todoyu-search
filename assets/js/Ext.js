@@ -32,7 +32,7 @@ Todoyu.Ext.search = {
 	 * Initialize
 	 */
 	init: function() {
-		
+
 	}
 
 };

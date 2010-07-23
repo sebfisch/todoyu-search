@@ -395,7 +395,7 @@ Todoyu.Ext.search.Filter = {
 		if( this.Conditions.size() > 0 ) {
 				// Get name for new filter
 			var title 	= prompt('[LLL:search.newFilterLabel]', '[LLL:search.newFilterLabel.preset]');
-			
+
 				// Canceled saving
 			if( title === null ) {
 				return;
@@ -405,7 +405,7 @@ Todoyu.Ext.search.Filter = {
 				alert('[LLL:search.filterset.error.saveEmptyName]');
 				return;
 			}
-			
+
 				// Save filterSet
 			var url		= Todoyu.getUrl('search', 'filterset');
 			var options	= {
@@ -422,7 +422,7 @@ Todoyu.Ext.search.Filter = {
 				options.onComplete = onComplete;
 			}
 
-			Todoyu.send(url, options);			
+			Todoyu.send(url, options);
 		} else {
 			alert('[LLL:search.filterset.error.saveNoConditions]');
 		}

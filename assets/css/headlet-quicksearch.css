@@ -51,13 +51,13 @@ ul#headlet-quicksearch-modes {
 		border-top:none;
 		border:1px solid #ddd;
 	}
-	
+
 	#headlet-quicksearch-suggest .quicksearch-suggest {
 		-webkit-box-shadow:2px 2px 5px #999;
 		-moz-box-shadow:2px 2px 5px #999;
 		box-shadow:2px 2px 5px #999;
 	}
-	
+
 	#headlet-quicksearch-suggest ul ul {
 		background-color:transparent;
 		border:none;

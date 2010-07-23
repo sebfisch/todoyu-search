@@ -85,7 +85,7 @@ class TodoyuFilterConditionManager {
 				unset($conditions[$key]);
 			}
 		}
-		
+
 		return array_values($conditions);
 	}
 

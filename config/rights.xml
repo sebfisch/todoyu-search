@@ -5,7 +5,7 @@
 		<right name="use" />
 		<right name="area" require="general:use" />
 	</section>
-	
+
 	<section name="filtersets" require="general:area">
 		<right name="save" />
 		<right name="deleteAll" />

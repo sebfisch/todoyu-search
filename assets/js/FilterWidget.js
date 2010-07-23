@@ -222,9 +222,9 @@ Todoyu.Ext.search.FilterWidget = {
 		hiddenElement.setValue(elementLi.id);
 		Todoyu.Ext.search.Filter.setValueToCondition(hiddenElement, elementLi.parentNode.id.replace(/-ul/, ''));
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
@@ -235,7 +235,7 @@ Todoyu.Ext.search.FilterWidget = {
 			// Get widget value and name
 		var name	= $(input).up('div.filterWidget').id;
 		var value	= $F(input);
-		
+
 			// Clear existing timeout of previous inputs
 		if( this.timeout[name] ) {
 			window.clearTimeout(this.timeout[name]);

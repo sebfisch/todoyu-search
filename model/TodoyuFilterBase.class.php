@@ -199,13 +199,13 @@ abstract class TodoyuFilterBase {
 			// Add extra tables and WHERE parts
 		$queryParts['tables'] 	= array_merge($queryParts['tables'], $this->extraTables);
 		$queryParts['where'] 	= array_merge($queryParts['where'], $this->extraWhere);
-		
+
 			// Fetch all query parts from the filters
 		foreach($this->activeFilters as $filter) {
 			if( $this->isFilter($filter['filter']) ) {
 					// Get array which references the filter function
 				$funcRef	= $this->getFilterMethod($filter['filter']);
-				
+
 					// Filter function parameters
 				$params		= array(
 					$filter['value'],

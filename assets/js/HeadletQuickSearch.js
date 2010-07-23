@@ -26,7 +26,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	ext:		Todoyu.Ext.search,
 
-	query:		null,	
+	query:		null,
 	button:		null,
 	content:	null,
 
@@ -41,7 +41,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 		this.query	= $('headlet-quicksearch-query');
 		this.button	= this.getButton();
 		this.content= this.getContent();
-				
+
 		this.query.observe('click', this.onQueryClick.bindAsEventListener(this));
 
 		this.Suggest.init();
@@ -64,7 +64,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 			this.focus();
 
 			this.saveOpenStatus();
-		}		
+		}
 	},
 
 
@@ -137,7 +137,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	focus: function() {
 		this.query.select();
 	},
-	
+
 
 
 

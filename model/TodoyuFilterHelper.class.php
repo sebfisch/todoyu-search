@@ -76,7 +76,7 @@ class TodoyuFilterHelper {
 
 		return $info;
 	}
-	
+
 }
 
 ?>

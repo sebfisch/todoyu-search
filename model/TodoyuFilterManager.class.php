@@ -75,7 +75,7 @@ class TodoyuFilterManager {
 		TodoyuExtensions::loadAllFilters();
 
 		$types	= array_keys(Todoyu::$CONFIG['FILTERS']);
-		
+
 		if( $sort ) {
 			$sorting = array();
 

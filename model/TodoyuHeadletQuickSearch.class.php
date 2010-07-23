@@ -28,9 +28,9 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	}
 
 
-	
+
 	/**
-	 * Render headlet: searchword input and list of search engines
+	 * Render headlet: search word input and list of search engines
 	 *
 	 * @return	String
 	 */

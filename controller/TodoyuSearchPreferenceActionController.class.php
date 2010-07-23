@@ -119,7 +119,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		TodoyuFiltersetManager::updateOrder($orderData['items']);
 	}
 
-	
+
 
 	/**
 	 * Save headlet open status for quicksearch headlet

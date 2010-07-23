@@ -79,7 +79,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 */
 	onAdded: function(name, condition, response) {
 		var widgetID	= condition + '-' + name;
-		
+
 		this.installAutocomplete.bind(this).defer(widgetID);
 		this.installNegation.bind(this).defer(widgetID);
 	},
@@ -125,7 +125,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	installAutocomplete: function(name) {
 		if( $(name) )	{
 			var acField = $(name).select('input.textAC')[0];
-	
+
 			if( Object.isElement(acField) ) {
 				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
 				var widgetID= acField.id.split('-').slice(2, 4).join('-');
@@ -141,16 +141,16 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 					'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
 				};
 				var suggestID= acField.id + '-suggestions';
-				
+
 					// Override config with specialConfig if available
 				if( this.specialConfig[name] && this.specialConfig[name]['acOptions'] ) {
 					options = $H(options).merge(this.specialConfig[name]['acOptions']).toObject();
-					
+
 					if( typeof options.afterUpdateElement === 'string' ) {
 						options.afterUpdateElement = Todoyu.getFunctionFromString(options.afterUpdateElement, true).bind(this, name);
 					}
 				}
-	
+
 				this.autocompleters[name] = new Todoyu.Autocompleter(acField.id, suggestID, acUrl, options);
 			}
 		}
@@ -181,7 +181,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	installNegation: function(name) {
 		if( $(name) )	{
 			var negElement = $(name).select('span.negation')[0];
-	
+
 			if( Object.isElement(negElement) ) {
 				negElement.observe('click', this.onNegation.bindAsEventListener(this, name));
 			}
