@@ -137,4 +137,5 @@ Todoyu.Ext.search.Filter.Conditions = {
 	size: function() {
 		return Object.keys(this.conditions).size();
 	}
+
 };
