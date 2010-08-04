@@ -1,7 +1,19 @@
+/* ----------------------------------------------
+	Extension icon: stand-alone and in heading
+   ---------------------------------------------- */
+span.extIconSearch {
+	background:url('../img/exticon.png') no-repeat 0 0px;
+}
+
 h1.extIconSearch .title {
 	background:url('../img/exticon.png') no-repeat 0 5px;
 }
 
+
+
+/* --------------------------
+	Filter controls
+   -------------------------- */
 #filter-controls .headerLine span{
 	margin:5px 0 0 5px;
 }
