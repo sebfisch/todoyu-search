@@ -331,7 +331,7 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{String}	tab
 	 */
 	onResultsUpdated: function(tab) {
-		Todoyu.Hook.exec('searchResultsUpdated', tab);
+		Todoyu.Hook.exec('search.results.updated', tab);
 	},
 
 
