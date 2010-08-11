@@ -52,7 +52,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 			// Get tab parameter
 		$activeTab	= $params['tab'];
 
-			// If tab is set manualy
+			// If tab is set manually
 		if( ! empty($activeTab) ) {
 			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
 
