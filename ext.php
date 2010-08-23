@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Extension main file for project extension
+ * Extension main file for search extension
  *
  * @package		Todoyu
  * @subpackage	Search
