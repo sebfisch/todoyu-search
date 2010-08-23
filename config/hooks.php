@@ -18,25 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Extension main file for project extension
- *
- * @package		Todoyu
- * @subpackage	Search
- */
-
-	// Declare ext ID, path
-define('EXTID_SEARCH', 115);
-define('PATH_EXT_SEARCH', PATH_EXT . '/search');
-
-	// Register module locales
-TodoyuLanguage::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
-TodoyuLanguage::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
-
-	// Request configurations
-	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
-require_once( PATH_EXT_SEARCH . '/config/extension.php' );
-require_once( PATH_EXT_SEARCH . '/config/hooks.php' );
-require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
+TodoyuHookManager::registerHook('core', 'onload', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
 
 ?>

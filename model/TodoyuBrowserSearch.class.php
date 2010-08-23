@@ -28,12 +28,29 @@ class TodoyuBrowserSearch {
 
 	public static function addPageLinkTag() {
 		$title		= 'todoyu';
-		$xmlPath	= 'ext/search/config/opensearch.xml';
+		$xmlPath	= 'index.php?ext=search&controller=browsersearch&action=xml';
 		$linkTag	= '<link rel="search" type="application/opensearchdescription+xml" title="' . $title . '" href="' . $xmlPath . '" />';
 
-		// /deki/gui/opensearch.php?type=description
-
 		TodoyuPage::addAdditionalHeaderData($linkTag);
+	}
+
+
+	/**
+	 * Hook
+	 * If not logged in and request is a browser search, send back an empty json array to prevent errors in the browser
+	 *
+	 * @param	Array		$requestVars
+	 * @param	Array		$originalRequestVars
+	 * @return	Array
+	 */
+	public static function hookNotLoggedIn(array $requestVars, array $originalRequestVars) {
+		if( ! TodoyuAuth::isLoggedIn() && $requestVars['ext'] === 'search' && $requestVars['ctrl'] === 'browsersearch' ) {
+			TodoyuHeader::sendHeaderJSON();
+			echo json_encode(array());
+			exit();
+		}
+
+		return $requestVars;
 	}
 
 }
