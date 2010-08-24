@@ -45,7 +45,7 @@ class TodoyuBrowserSearch {
 	 */
 	public static function hookNotLoggedIn(array $requestVars, array $originalRequestVars) {
 		if( ! TodoyuAuth::isLoggedIn() && $requestVars['ext'] === 'search' && $requestVars['ctrl'] === 'browsersearch' ) {
-			TodoyuHeader::sendHeaderJSON();
+			TodoyuHeader::sendTypeJSON();
 			echo json_encode(array());
 			exit();
 		}

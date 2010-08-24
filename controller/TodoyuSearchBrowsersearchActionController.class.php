@@ -34,7 +34,7 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 			'suggestUrl'=> TODOYU_URL . '/index.php?ext=search&amp;controller=browsersearch&amp;action=suggest&amp;q={searchTerms}'
 		);
 
-		TodoyuHeader::sendHeaderXML();
+		TodoyuHeader::sendTypeXML();
 
 		return render($tmpl, $data);
 	}
@@ -60,7 +60,7 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 			$suggestions
 		);
 
-		TodoyuHeader::sendHeaderJSON();
+		TodoyuHeader::sendTypeJSON();
 
 		return json_encode($response);
 	}
