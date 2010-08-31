@@ -64,7 +64,11 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 			// Filterset given? get rel. conditions, render and init widget area
 		if( $idFilterset !== 0 ) {
-			$conditions	= TodoyuFiltersetManager::getFiltersetConditions($idFilterset);
+			$filterSet	= TodoyuFiltersetManager::getFilterset($idFilterset);
+			$conditions	= $filterSet->getConditions();
+//			$conditions	= TodoyuFiltersetManager::getFiltersetConditions($idFilterset);
+
+			TodoyuHeader::sendTodoyuHeader('conjunction', $filterSet->getConjunction());
 
 				// Send widgets
 			$content	= TodoyuFilterAreaRenderer::renderWidgetArea($idFilterset);

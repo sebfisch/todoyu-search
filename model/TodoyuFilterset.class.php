@@ -54,7 +54,18 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getConditions() {
-		return TodoyuFiltersetManager::getFiltersetConditions($this->id);
+		return TodoyuFiltersetManager::getFiltersetConditions($this->getID());
+	}
+
+
+
+	/**
+	 * Get filterset conjunction
+	 *
+	 * @return	String
+	 */
+	public function getConjunction() {
+		return $this->get('conjunction');
 	}
 
 }

@@ -37,7 +37,7 @@ class TodoyuFiltersetManager {
 	 * Get filter
 	 *
 	 * @param	Integer		$idFilter
-	 * @return	Filterset
+	 * @return	TodoyuFilterset
 	 */
 	public static function getFilterset($idFilterset) {
 		$idFilterset	= intval($idFilterset);

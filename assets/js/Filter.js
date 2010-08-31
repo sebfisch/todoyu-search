@@ -241,7 +241,6 @@ Todoyu.Ext.search.Filter = {
 			this.updateFilterArea(tab, idFilterSet);
 		} else {
 			this.updateWidgetArea(tab, idFilterSet);
-			this.updateResults(tab, idFilterSet);
 		}
 	},
 
@@ -280,16 +279,33 @@ Todoyu.Ext.search.Filter = {
 	updateWidgetArea: function(tab, idFilterSet) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
-			'parameters': {
-				'action':		'load',
-				'tab':			tab,
-				'filterset':	idFilterSet
+			parameters: {
+				action:		'load',
+				tab:		tab,
+				filterset:	idFilterSet
 			},
-			'onComplete': 	this.onResultsUpdated.bind(this, tab)
+			onComplete: 	this.onWidgetAreaUpdated.bind(this, tab, idFilterSet)
 		};
 		var target	= 'widget-area';
 
 		Todoyu.Ui.update(target, url, options);
+	},
+
+
+	/**
+	 * Handler when widget area was updated
+	 *
+	 * @param	{String}		tab
+	 * @param	{Number}		idFilterSet
+	 * @param	{Ajax.Response}	response
+	 */
+	onWidgetAreaUpdated: function(tab, idFilterSet, response) {
+			// Get conjunction of loaded filterset
+		var conjunction	= response.getTodoyuHeader('conjunction');
+			// Update conjunction in selector element
+		this.ext.FilterControl.setConjunction(conjunction);
+			// Update results for new filterset
+		this.updateResults(tab, idFilterSet, undefined, conjunction);
 	},
 
 
@@ -302,10 +318,10 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{String}		conjunction
 	 */
 	updateResults: function(tab, idFilterSet, conditions, conjunction) {
-		tab 		= ( tab === undefined ) ? this.getActiveTab() : tab ;
-		idFilterSet	= ( idFilterSet === undefined ) ? this.getFiltersetID() : idFilterSet ;
-		conditions	= ( conditions === undefined ) ? this.Conditions.getAll() : conditions ;
-		conjunction	= ( conjunction === undefined ) ? this.getConjunction() : conjunction ;
+		tab 		= tab || this.getActiveTab();
+		idFilterSet	= idFilterSet || this.getFiltersetID();
+		conditions	= conditions || this.Conditions.getAll();
+		conjunction	= conjunction || this.getConjunction();
 
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
@@ -316,9 +332,12 @@ Todoyu.Ext.search.Filter = {
 				'conditions':	Object.toJSON(conditions),
 				'conjunction':	conjunction
 			},
-			'onComplete': 	this.onResultsUpdated.bind(this, tab)
+			'onComplete': 	this.onResultsUpdated.bind(this, tab, idFilterSet)
 		};
 		var target	= 'search-results';
+
+			// Empty results area (for slow updates)
+		$(target).update('');
 
 		Todoyu.Ui.update(target, url, options);
 	},
@@ -330,8 +349,8 @@ Todoyu.Ext.search.Filter = {
 	 *
 	 * @param	{String}	tab
 	 */
-	onResultsUpdated: function(tab) {
-		Todoyu.Hook.exec('search.results.updated', tab);
+	onResultsUpdated: function(tab, idFilterSet, response) {
+		Todoyu.Hook.exec('search.results.updated', tab, idFilterSet);
 	},
 
 

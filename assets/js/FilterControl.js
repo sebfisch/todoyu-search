@@ -67,9 +67,9 @@ Todoyu.Ext.search.FilterControl = {
 
 
 	/**
-	 * Enter description here...
+	 * Handler when condition changes
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onConditionsChange: function(event) {
 		var value 		= event.element().getValue();
@@ -86,11 +86,9 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}	event
 	 */
 	onConjunctionChange: function(event) {
-		var value	= event.element().getValue();
-
 		this.ext.Filter.updateResults();
 	},
 
@@ -103,6 +101,17 @@ Todoyu.Ext.search.FilterControl = {
 	 */
 	getConjunction: function() {
 		return $F('filtercontrol-conjunction');
+	},
+
+
+
+	/**
+	 * Set conjunction value
+	 *
+	 * @param	{String}	conjunction		AND or OR
+	 */
+	setConjunction: function(conjunction) {
+		$('filtercontrol-conjunction').selectedIndex = (conjunction === 'AND' ? 0 : 1);
 	}
 
 };
