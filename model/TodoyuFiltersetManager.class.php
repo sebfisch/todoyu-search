@@ -146,13 +146,14 @@ class TodoyuFiltersetManager {
 
 		$typeKey		= self::getFiltersetType($idFilterset);
 		$filterClass	= TodoyuFilterManager::getFilterTypeClass($typeKey);
+		$sorting		= TodoyuFilterManager::getFilterDefaultSorting($typeKey);
 
 		if( $filterClass !== false ) {
 			$conditions		= self::getFiltersetConditions($idFilterset);
 
 			$typeFilter	= new $filterClass($conditions);
 
-			return $typeFilter->getItemIDs();
+			return $typeFilter->getItemIDs($sorting);
 		} else {
 			return array();
 		}

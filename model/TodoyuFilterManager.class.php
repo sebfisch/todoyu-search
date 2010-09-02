@@ -111,6 +111,22 @@ class TodoyuFilterManager {
 	}
 
 
+	/**
+	 * Get filter sorting for type
+	 *
+	 * @static
+	 * @param	String	$type
+	 * @return	String
+	 */
+	public static function getFilterDefaultSorting($type)	{
+		TodoyuExtensions::loadAllFilters();
+
+		$sorting	= Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['defaultSorting'];
+
+		return is_null($sorting) ? '' : $sorting;
+	}
+
+
 
 	/**
 	 * Get label of a filter type (Ex: Task)
