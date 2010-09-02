@@ -95,7 +95,7 @@
 }
 
 #panelwidget-searchfilterlist .handle {
-	background:transparent url(../img/icons.png) no-repeat scroll 0 -270px;
+	background:transparent url(../../../../core/assets/img/icons.png) no-repeat scroll 0 -960px;
 	width:13px;
 	float:left;
 	cursor:move;
@@ -106,7 +106,7 @@
 }
 
 	#panelwidget-searchfilterlist .handle.hover {
-		background:transparent url(../img/icons.png) no-repeat scroll 0 -300px;
+		background:transparent url(../../../../core/assets/img/icons.png) no-repeat scroll 0 -1020px;
 	}
 
 #panelwidget-searchfilterlistdropZone {

@@ -20,6 +20,10 @@
 
 class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
+	/**
+	 * @todo	comment
+	 * @param	Array	$params
+	 */
 	public function saveCurrentFilterSetAction(array $params) {
 		$idFilterset	= intval($params['value']);
 
@@ -27,6 +31,11 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	}
 
 
+	/**
+	 * @todo	comment
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function removeCurrentFilterSetAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
@@ -51,6 +60,11 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Array	$params
+	 */
 	public function saveActiveTabAction(array $params) {
 		$tab	= $params['value'];
 
@@ -58,6 +72,11 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Array	$params
+	 */
 	public function activeFiltersetAction(array $params) {
 		$idFilterset= intval($params['item']);
  		$tab		= $params['value'];
@@ -132,7 +151,5 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		TodoyuSearchPreferences::savePref('headletOpen', $open, 0, true);
 	}
 }
-
-
 
 ?>

@@ -232,8 +232,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 			// Define options for all sortables
 		var options	= {
-			'handle': 'dragPointListItem',
-			'onUpdate': this.onSortableUpdate.bind(this)
+			'handle':	'dragPointListItem',
+			'onUpdate':	this.onSortableUpdate.bind(this)
 		};
 
 			// Get all sortable lists
@@ -312,7 +312,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Save order of filterSet items (conditions)
 	 *
-	 * @param	{String}		type
+	 * @param	{String}	type
 	 * @param	{Array}		items
 	 */
 	saveFiltersetOrder: function(type, items) {

@@ -379,15 +379,14 @@ class TodoyuFiltersetManager {
 
 
 	/**
-	 * Updates given order of the filterset to the database
+	 * Updates given order of the filterset in the database
 	 *
-	 * @param	String	$type
-	 * @param	Array	$order
+	 * @param	Array	$items
 	 */
-	public static function updateOrder(array $orderedItems) {
+	public static function updateOrder(array $items) {
 		$sorting	= 0;
 
-		foreach($orderedItems as $idItem) {
+		foreach($items as $idItem) {
 			$update	= array(
 				'sorting'	=> $sorting++
 			);
