@@ -78,6 +78,8 @@ Todoyu.Ext.search.FilterControl = {
 
 		event.element().selectedIndex = 0;
 
+		this.ext.Filter.setFiltersetID(0);
+
 		this.ext.Filter.addNewCondition(type, condition, null, false);
 	},
 

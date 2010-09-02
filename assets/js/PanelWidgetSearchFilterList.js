@@ -197,7 +197,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		} else {
 			this.ext.Filter.updateFilterArea(type, idFilterset);
 		}
-
+		this.ext.Filter.setFiltersetID(idFilterset);
 		this.markActiveFilterset(idFilterset);
 	},
 

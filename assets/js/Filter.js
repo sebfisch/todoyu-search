@@ -319,7 +319,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	updateResults: function(tab, idFilterSet, conditions, conjunction) {
 		tab 		= tab || this.getActiveTab();
-		idFilterSet	= idFilterSet || this.getFiltersetID();
+		idFilterSet	= idFilterSet || 0;
 		conditions	= conditions || this.Conditions.getAll();
 		conjunction	= conjunction || this.getConjunction();
 
