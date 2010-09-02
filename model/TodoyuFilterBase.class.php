@@ -188,9 +188,10 @@ abstract class TodoyuFilterBase {
 	/**
 	 * Get query parts provided by all active filters
 	 *
-	 * @return	Array		Array with sub arrays named 'tables' and 'where'
+	 * @return	Array|Boolean		Array with sub arrays named 'tables' and 'where' OR false of no query is active
 	 */
 	protected function fetchFilterQueryParts() {
+		$runQuery	= false;
 		$queryParts	= array(
 			'tables'	=> array($this->defaultTable),
 			'where'		=> array()
@@ -220,6 +221,9 @@ abstract class TodoyuFilterBase {
 					continue;
 				}
 
+					// This filter is active, so query can be done
+				$runQuery = true;
+
 					// Add query parts
 				foreach($filterQueryParts as $partName => $partValues) {
 						// Filter can only add tables and where part, all others are ignored
@@ -240,6 +244,12 @@ abstract class TodoyuFilterBase {
 			}
 		}
 
+			// Return false if non of the filters is active
+		if( $runQuery === false ) {
+			return false;
+		}
+
+
 			// Remove double entries
 		foreach($queryParts as $partName => $partValues) {
 			$queryParts[$partName] = array_unique($partValues);
@@ -258,10 +268,15 @@ abstract class TodoyuFilterBase {
 	 * @param	String		$orderBy	Optional order by for query
 	 * @param	String		$limit		Optional limit for query
 	 * @param	Boolean		$showDeleted
-	 * @return	Array
+	 * @return	Array|Boolean
 	 */
 	public function getQueryArray($orderBy = '', $limit = '', $showDeleted = false) {
 		$queryParts	= $this->fetchFilterQueryParts();
+
+			// Don't build a query if no filters are active
+		if( $queryParts === false ) {
+			return false;
+		}
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
 		$queryArray	= array();
@@ -325,6 +340,17 @@ abstract class TodoyuFilterBase {
 	 */
 	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
 		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted);
+
+			// If query was not built, return an empty array
+		if( $queryArray === false ) {
+			TodoyuDebug::printInFireBug('No filter active, no query was sent');
+			return array();
+		}
+
+//		TodoyuDebug::printInFireBug($queryArray, 'queryArray');
+//		TodoyuDebug::printInFireBug(Todoyu::db()->buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where'], $queryArray['group'], $queryArray['order'], $queryArray['limit'], 'id'), 'query');
+//
+//		return array();
 
 		$ids = Todoyu::db()->getColumn(
 			$queryArray['fields'],
