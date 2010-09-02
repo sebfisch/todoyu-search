@@ -349,7 +349,7 @@ abstract class TodoyuFilterBase {
 
 //		TodoyuDebug::printInFireBug($queryArray, 'queryArray');
 //		TodoyuDebug::printInFireBug(Todoyu::db()->buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where'], $queryArray['group'], $queryArray['order'], $queryArray['limit'], 'id'), 'query');
-//
+
 //		return array();
 
 		$ids = Todoyu::db()->getColumn(
