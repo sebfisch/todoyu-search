@@ -446,65 +446,26 @@ class TodoyuFiltersetManager {
 
 
 
-
-
-
-
-
-
-
-	### NOT YET CLEANED UP FUNCTIONS ###
-
-
-
-
-
-
 	/**
-	 * Filter after filter sets
+	 * Merges FilterObjects as one query
 	 *
-	 * @param	Integer		$value
+	 * @static
+	 * @param	Array		$value
 	 * @param	Boolean		$negate
 	 * @return	Array
-	 * @todo 	Implement negation?
 	 */
-	public static function Filter_filterset($value, $negate = false) {
+	public static function Filter_filterObject(array $value, $negate = false)	{
 		$queryParts		= false;
-		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
-			// Prepare return values
-		$tables	= array();
-		$wheres	= array();
-
-			// Process all filtersets
-		foreach($filtersetIDs as $idFilterset) {
-			$filterset		= self::getFiltersetRecord($idFilterset);
-			$filtersetWhere	= array();
-			$filtersetType	= self::getFiltersetType($idFilterset);
-			$conditions		= TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
-
-				// Get queries for all conditions of a filterset
-			foreach($conditions as $condition) {
-				$conditionDefinition = TodoyuFilterWidgetManager::getFilterWidgetDefinitions($filtersetType, $condition['filter'], 0, $condition['value'], $condition['negate'] == 1);
-					// If filterset has a valid function reference to generate query parts
-				if( TodoyuFunction::isFunctionReference($conditionDefinition['funcRef']) ) {
-					$filterInfo = TodoyuFunction::callUserFunction($conditionDefinition['funcRef'], $condition['value'], $condition['negate']);
-						// If condition produced filter parts
-					if( $filterInfo !== false ) {
-						$tables			= array_merge($tables, $filterInfo['tables']);
-						$filtersetWhere[]= $filterInfo['where'];
-					}
-
-				}
-			}
-
-				// If any conditions in filterset found, add
-			if( sizeof($filtersetWhere) > 0 ) {
-					// Concatinate all filter conditions with the selected conjunction
-				$wheres[] = '(' . implode(' ' . $filterset['conjunction'] . ' ', $filtersetWhere) . ')';
-			}
+		$tables		= array();
+		$wheres		= array();
+		
+		foreach($value as $filterSet)	{
+			$queryArray = $filterSet->getQueryArray();
+			$wheres[]		= $queryArray['where'];
+			$tables[]		= $queryArray['tables'];
 		}
-
+		
 			// If conditions found, build query parts
 		if( sizeof($wheres) > 0 ) {
 				// Remove double tables
@@ -522,6 +483,39 @@ class TodoyuFiltersetManager {
 
 
 
+	/**
+	 * Filter after filter sets
+	 *
+	 * @param	Integer		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 * @todo 	Implement negation?
+	 */
+	public static function Filter_filterset($value, $negate = false) {
+		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
+
+			// Prepare return values
+		$filter	= array();
+
+			// Process all filtersets
+		foreach($filtersetIDs as $idFilterset) {
+			$filterSet		= self::getFilterset($idFilterset);
+			$className		= 'Todoyu'.ucfirst($filterSet['type']).'Filter';
+			if(class_exists($className))	{
+				$filter[] = new $className($filterSet->getConditions(), $filterSet->getConjunction());
+			}
+		}
+
+		
+		return (sizeof($filter) > 0) ? self::Filter_filterObject($filter, $negate) : array();
+	}
+
+
+
+		### NOT YET CLEANED UP FUNCTIONS ###
+
+
+	
 	/**
 	 * The options of the filter selector. Used for filterWidget filterSet
 	 *
