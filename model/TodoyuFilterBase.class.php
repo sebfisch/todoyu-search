@@ -63,6 +63,11 @@ abstract class TodoyuFilterBase {
 	protected $extraWhere	= array();
 
 	/**
+	 * @var	Array
+	 */
+	protected $rightsFilters	= array();
+
+	/**
 	 * Logical conjunction
 	 *
 	 * @var String
@@ -125,6 +130,22 @@ abstract class TodoyuFilterBase {
 			'value'		=> $value,
 			'negate'	=> $negate
 		);
+	}
+
+
+
+	/**
+	 * Add a rights filter where is always added with AND
+	 *
+	 * @param	String		$name
+	 * @param	Mixed		$value
+	 */
+	public function addRightsFilter($name, $value) {
+		 $this->rightsFilters[] = array(
+			 'filter'	=> $name,
+			 'value'	=> $value,
+			 'negate'	=> false
+		 );
 	}
 
 
@@ -261,6 +282,47 @@ abstract class TodoyuFilterBase {
 
 
 	/**
+	 * Fetch extra rights parts for query
+	 * They are always added with AND
+	 *
+	 * @return	Array|Boolean
+	 */
+	protected function fetchRightsQueryParts() {
+		$where		= array();
+		$tables		= array();
+
+		if( TodoyuAuth::isAdmin() || sizeof($this->rightsFilters) === 0 ) {
+			return false;
+		}
+
+		foreach($this->rightsFilters as $filter) {
+			$funcRef	= $this->getFilterMethod($filter['filter']);
+
+			$params		= array(
+					$filter['value'],
+					false
+				);
+
+				// Call filter function to get query parts for filter
+			$filterQueryParts = call_user_func_array($funcRef, $params);
+
+			if( is_array($filterQueryParts['tables']) ) {
+				$tables = array_merge($tables, $filterQueryParts['tables']);
+			}
+			if( $filterQueryParts !== false && array_key_exists('where', $filterQueryParts) ) {
+				$where[] = $filterQueryParts['where'];
+			}
+		}
+
+		return array(
+			'tables'	=> array_unique($tables),
+			'where'		=> '(' . implode(' AND ', $where) . ')'
+		);
+	}
+
+
+
+	/**
 	 * Gets the query array which is merged from all filters
 	 * Array contains the strings for the following parts:
 	 * fields, tables, where, group, order, limit
@@ -271,11 +333,19 @@ abstract class TodoyuFilterBase {
 	 * @return	Array|Boolean
 	 */
 	public function getQueryArray($orderBy = '', $limit = '', $showDeleted = false) {
+			// Get normal query parts
 		$queryParts	= $this->fetchFilterQueryParts();
+			// Get rights query parts
+		$rightsParts= $this->fetchRightsQueryParts();
 
 			// Don't build a query if no filters are active
 		if( $queryParts === false ) {
 			return false;
+		}
+
+			// If rights filters are set, add the extra tables to the normal query parts
+		if( $rightsParts !== false ) {
+			$queryParts['tables'] = array_unique(array_merge($queryParts['tables'], $rightsParts['tables']));
 		}
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
@@ -288,14 +358,21 @@ abstract class TodoyuFilterBase {
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
 
+			// Add normal where conditions from filters
 		if( $queryArray['where'][0] )	{
 			$queryArray['where'][0] = '('.$queryArray['where'][0].')';
 		} else {
 			unset($queryArray['where'][0]);
 		}
 
+			// Add deleted where clause
 		if( $showDeleted === false ) {
-			$queryArray['where'][1] = $this->defaultTable . '.deleted = 0';
+			$queryArray['where'][] = $this->defaultTable . '.deleted = 0';
+		}
+
+			// Add rights clause
+		if( $rightsParts !== false ) {
+			$queryArray['where'][] = $rightsParts['where'];
 		}
 
 		$queryArray['where'] = implode(' AND ', $queryArray['where']);
@@ -347,7 +424,10 @@ abstract class TodoyuFilterBase {
 			return array();
 		}
 
-//		TodoyuDebug::printInFireBug($queryArray, 'queryArray');
+//		TodoyuDebug::printHtml($queryArray);
+//		exit();
+
+		TodoyuDebug::printInFireBug($queryArray, 'queryArray');
 //		TodoyuDebug::printInFireBug(Todoyu::db()->buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where'], $queryArray['group'], $queryArray['order'], $queryArray['limit'], 'id'), 'query');
 
 //		return array();
@@ -361,6 +441,10 @@ abstract class TodoyuFilterBase {
 			$queryArray['limit'],
 			'id'
 		);
+
+
+//		TodoyuDebug::printHtml($ids, 'ids');
+//		exit();
 
 		return $ids;
 	}
