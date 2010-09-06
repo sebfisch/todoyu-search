@@ -50,6 +50,7 @@ ul#headlet-quicksearch-modes {
 		background-color:#fff;
 		border-top:none;
 		border:1px solid #ddd;
+		border-bottom: none;
 	}
 
 	#headlet-quicksearch-suggest .quicksearch-suggest {
@@ -66,9 +67,10 @@ ul#headlet-quicksearch-modes {
 	#headlet-quicksearch-suggest ul .type {
 		display:block;
 		font-weight:bold;
-		font-size:14px;
-		padding:2px 3px 2px 10px;
-		background-color:#d5dee5;
+		text-transform:uppercase;
+		letter-spacing:1px;
+		padding:5px 3px 5px 10px;
+		background-color:#e2e2e2;
 		border-bottom:1px solid #ccc;
 	}
 
@@ -81,7 +83,7 @@ ul#headlet-quicksearch-modes {
 
 	#headlet-quicksearch-suggest ul li ul li.active a,
 	#headlet-quicksearch-suggest ul li ul li a:hover {
-		background-color:#ffe256;
+		background-color:#f2f2d2;
 	}
 
 	#headlet-quicksearch-suggest a span.title {
