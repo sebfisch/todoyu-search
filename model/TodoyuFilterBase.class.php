@@ -345,7 +345,7 @@ abstract class TodoyuFilterBase {
 
 			// If rights filters are set, add the extra tables to the normal query parts
 		if( $rightsParts !== false ) {
-			$queryParts['tables'] = array_merge($queryParts['tables'], $rightsParts['tables']);
+			$queryParts['tables'] = array_unique(array_merge($queryParts['tables'], $rightsParts['tables']));
 		}
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
@@ -353,7 +353,7 @@ abstract class TodoyuFilterBase {
 
 		$queryArray['fields']	= $this->defaultTable . '.id';
 		$queryArray['tables']	= implode(', ', array_unique($queryParts['tables']));
-		$queryArray['where'][0]	= implode(' ' . $connection . ' ', $queryParts['where']);
+		$queryArray['where'][0]	= implode(' ' . $connection . ' ', $queryParts['where']);	
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
@@ -376,6 +376,11 @@ abstract class TodoyuFilterBase {
 		}
 
 		$queryArray['where'] = implode(' AND ', $queryArray['where']);
+
+			// Clean up tables part: prevent duplicate table entries
+		if ( sizeof($queryParts['tables']) > 1 ) {
+			$queryArray['tables']	= TodoyuString::listUnique($queryArray['tables'], ', ');
+		}
 
 		return $queryArray;
 	}
