@@ -339,21 +339,21 @@ abstract class TodoyuFilterBase {
 		$rightsParts= $this->fetchRightsQueryParts();
 
 			// Don't build a query if no filters are active
-		if( $queryParts === false ) {
+		if( $queryParts === false && $rightsParts === false ) {
 			return false;
 		}
 
 			// If rights filters are set, add the extra tables to the normal query parts
 		if( $rightsParts !== false ) {
-			$queryParts['tables'] = array_unique(array_merge($queryParts['tables'], $rightsParts['tables']));
+			$queryParts['tables'] = array_unique(array_merge((array)$queryParts['tables'], $rightsParts['tables']));
 		}
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
 		$queryArray	= array();
 
 		$queryArray['fields']	= $this->defaultTable . '.id';
-		$queryArray['tables']	= implode(', ', array_unique($queryParts['tables']));
-		$queryArray['where'][0]	= implode(' ' . $connection . ' ', $queryParts['where']);	
+		$queryArray['tables']	= implode(', ', array_unique((array)$queryParts['tables']));
+		$queryArray['where'][0]	= implode(' ' . $connection . ' ', (array)$queryParts['where']);
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
