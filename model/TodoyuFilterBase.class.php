@@ -215,7 +215,8 @@ abstract class TodoyuFilterBase {
 		$runQuery	= false;
 		$queryParts	= array(
 			'tables'	=> array($this->defaultTable),
-			'where'		=> array()
+			'where'		=> array(),
+			'join'		=> array()
 		);
 
 			// Add extra tables and WHERE parts
@@ -245,20 +246,19 @@ abstract class TodoyuFilterBase {
 					// This filter is active, so query can be done
 				$runQuery = true;
 
-					// Add query parts
-				foreach($filterQueryParts as $partName => $partValues) {
-						// Filter can only add tables and where part, all others are ignored
-					if( !array_key_exists($partName, $queryParts) ) {
-						Todoyu::log('Filter ' . $funcRef['class'] . '::' . $funcRef['method'] . ' returned and unknow filter part (\'' . $partName . '\')', TodoyuLogger::LEVEL_NOTICE, $partValues);
-						continue;
-					}
 
-						// Merge if $partValues is an array, else add the string
-					if( is_array($partValues) ) {
-						$queryParts[$partName] = array_merge($queryParts[$partName], $partValues);
-					} else {
-						$queryParts[$partName][] = $partValues;
-					}
+					#### Add queryParts from filter ####
+					// Add tables
+				if( is_array($filterQueryParts['tables']) ) {
+					$queryParts['tables'] = array_merge($queryParts['tables'], $filterQueryParts['tables']);
+				}
+					// Add where
+				if( is_string($filterQueryParts['where']) ) {
+					$queryParts['where'][] = $filterQueryParts['where'];
+				}
+					// Add join where
+				if( is_array($filterQueryParts['join']) ) {
+					$queryParts['join'] = array_merge($queryParts['join'], $filterQueryParts['join']);
 				}
 			} else {
 				Todoyu::log('Unknown filter: ' . $filter['filter'], TodoyuLogger::LEVEL_ERROR);
@@ -290,6 +290,7 @@ abstract class TodoyuFilterBase {
 	protected function fetchRightsQueryParts() {
 		$where		= array();
 		$tables		= array();
+		$join		= array();
 
 		if( TodoyuAuth::isAdmin() || sizeof($this->rightsFilters) === 0 ) {
 			return false;
@@ -312,11 +313,15 @@ abstract class TodoyuFilterBase {
 			if( $filterQueryParts !== false && array_key_exists('where', $filterQueryParts) ) {
 				$where[] = $filterQueryParts['where'];
 			}
+			if( is_array($filterQueryParts['join']) ) {
+				$join = array_merge($join, $filterQueryParts['join']);
+			}
 		}
 
 		return array(
 			'tables'	=> array_unique($tables),
-			'where'		=> '(' . implode(' AND ', $where) . ')'
+			'where'		=> '(' . implode(' AND ', $where) . ')',
+			'join'		=> array_unique($join)
 		);
 	}
 
@@ -343,44 +348,39 @@ abstract class TodoyuFilterBase {
 			return false;
 		}
 
-			// If rights filters are set, add the extra tables to the normal query parts
-		if( $rightsParts !== false ) {
-			$queryParts['tables'] = array_unique(array_merge((array)$queryParts['tables'], $rightsParts['tables']));
-		}
+			// Combine join from filter and rights
+		$join	= array_unique(array_merge((array)$queryParts['join'], (array)$rightsParts['join']));
+		$tables	= array_unique(array_merge((array)$queryParts['tables'], (array)$rightsParts['tables']));
+
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
 		$queryArray	= array();
 
 		$queryArray['fields']	= $this->defaultTable . '.id';
-		$queryArray['tables']	= implode(', ', array_unique((array)$queryParts['tables']));
-		$queryArray['where'][0]	= implode(' ' . $connection . ' ', (array)$queryParts['where']);
+		$queryArray['tables']	= implode(', ', $tables);
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
 
-			// Add normal where conditions from filters
-		if( $queryArray['where'][0] )	{
-			$queryArray['where'][0] = '('.$queryArray['where'][0].')';
-		} else {
-			unset($queryArray['where'][0]);
-		}
 
-			// Add deleted where clause
+		$whereParts	= array();
+
+			// Join
+		if( sizeof($join) > 0 ) {
+			$whereParts[] = implode(' AND ', $join);
+		}
+			// Filter
+		$whereParts[] = implode(' ' . $connection . ' ', $queryParts['where']);
+			// Deleted
 		if( $showDeleted === false ) {
-			$queryArray['where'][] = $this->defaultTable . '.deleted = 0';
+			$whereParts[] = $this->defaultTable . '.deleted = 0';
 		}
-
-			// Add rights clause
+			// Rights
 		if( $rightsParts !== false ) {
-			$queryArray['where'][] = $rightsParts['where'];
+			$whereParts[] = $rightsParts['where'];
 		}
 
-		$queryArray['where'] = implode(' AND ', $queryArray['where']);
-
-			// Clean up tables part: prevent duplicate table entries
-		if ( sizeof($queryParts['tables']) > 1 ) {
-			$queryArray['tables']	= TodoyuString::listUnique($queryArray['tables'], ', ');
-		}
+		$queryArray['where'] = '(' . implode(') AND (', $whereParts) . ')';
 
 		return $queryArray;
 	}
@@ -438,6 +438,8 @@ abstract class TodoyuFilterBase {
 			$queryArray['limit'],
 			'id'
 		);
+
+		TodoyuDebug::printLastQueryInFirebug();
 
 		return $ids;
 	}
