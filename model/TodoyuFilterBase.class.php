@@ -214,14 +214,16 @@ abstract class TodoyuFilterBase {
 	protected function fetchFilterQueryParts() {
 		$runQuery	= false;
 		$queryParts	= array(
-			'tables'	=> array($this->defaultTable),
+			'tables'	=> array(
+				$this->defaultTable
+			),
 			'where'		=> array(),
 			'join'		=> array()
 		);
 
 			// Add extra tables and WHERE parts
-		$queryParts['tables'] 	= array_merge($queryParts['tables'], $this->extraTables);
-		$queryParts['where'] 	= array_merge($queryParts['where'], $this->extraWhere);
+		$queryParts['tables'] 	= TodoyuArray::merge($queryParts['tables'], $this->extraTables);
+		$queryParts['where'] 	= TodoyuArray::merge($queryParts['where'], $this->extraWhere);
 
 			// Fetch all query parts from the filters
 		foreach($this->activeFilters as $filter) {
@@ -250,7 +252,7 @@ abstract class TodoyuFilterBase {
 					#### Add queryParts from filter ####
 					// Add tables
 				if( is_array($filterQueryParts['tables']) ) {
-					$queryParts['tables'] = array_merge($queryParts['tables'], $filterQueryParts['tables']);
+					$queryParts['tables'] = TodoyuArray::merge($queryParts['tables'], $filterQueryParts['tables']);
 				}
 					// Add where
 				if( is_string($filterQueryParts['where']) ) {
@@ -349,8 +351,8 @@ abstract class TodoyuFilterBase {
 		}
 
 			// Combine join from filter and rights
-		$join	= array_unique(array_merge(TodoyuArray::assure($queryParts['join']), TodoyuArray::assure($rightsParts['join'])));
-		$tables	= array_unique(array_merge(TodoyuArray::assure($queryParts['tables']), TodoyuArray::assure($rightsParts['tables'])));
+		$join	= array_unique(TodoyuArray::merge($queryParts['join'], $rightsParts['join']));
+		$tables	= array_unique(TodoyuArray::merge($queryParts['tables'], $rightsParts['tables']));
 
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
