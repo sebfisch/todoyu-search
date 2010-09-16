@@ -212,7 +212,6 @@ abstract class TodoyuFilterBase {
 	 * @return	Array|Boolean		Array with sub arrays named 'tables' and 'where' OR false of no query is active
 	 */
 	protected function fetchFilterQueryParts() {
-		$runQuery	= false;
 		$queryParts	= array(
 			'tables'	=> array(
 				$this->defaultTable
@@ -245,10 +244,6 @@ abstract class TodoyuFilterBase {
 					continue;
 				}
 
-					// This filter is active, so query can be done
-				$runQuery = true;
-
-
 					#### Add queryParts from filter ####
 					// Add tables
 				if( is_array($filterQueryParts['tables']) ) {
@@ -260,18 +255,12 @@ abstract class TodoyuFilterBase {
 				}
 					// Add join where
 				if( is_array($filterQueryParts['join']) ) {
-					$queryParts['join'] = array_merge($queryParts['join'], $filterQueryParts['join']);
+					$queryParts['join'] = TodoyuArray::merge($queryParts['join'], $filterQueryParts['join']);
 				}
 			} else {
 				Todoyu::log('Unknown filter: ' . $filter['filter'], TodoyuLogger::LEVEL_ERROR);
 			}
 		}
-
-			// Return false if non of the filters is active
-		if( $runQuery === false ) {
-			return false;
-		}
-
 
 			// Remove double entries
 		foreach($queryParts as $partName => $partValues) {
@@ -310,13 +299,13 @@ abstract class TodoyuFilterBase {
 			$filterQueryParts = call_user_func_array($funcRef, $params);
 
 			if( is_array($filterQueryParts['tables']) ) {
-				$tables = array_merge($tables, $filterQueryParts['tables']);
+				$tables = TodoyuArray::merge($tables, $filterQueryParts['tables']);
 			}
 			if( $filterQueryParts !== false && array_key_exists('where', $filterQueryParts) ) {
 				$where[] = $filterQueryParts['where'];
 			}
 			if( is_array($filterQueryParts['join']) ) {
-				$join = array_merge($join, $filterQueryParts['join']);
+				$join = TodoyuArray::merge($join, $filterQueryParts['join']);
 			}
 		}
 
@@ -344,11 +333,6 @@ abstract class TodoyuFilterBase {
 		$queryParts	= $this->fetchFilterQueryParts();
 			// Get rights query parts
 		$rightsParts= $this->fetchRightsQueryParts();
-
-			// Don't build a query if no filters are active
-		if( $queryParts === false && $rightsParts === false ) {
-			return false;
-		}
 
 			// Combine join from filter and rights
 		$join	= array_unique(TodoyuArray::merge($queryParts['join'], $rightsParts['join']));
@@ -382,7 +366,7 @@ abstract class TodoyuFilterBase {
 		}
 
 			// Rights
-		if( $rightsParts !== false ) {
+		if( $rightsParts !== false && !empty($rightsParts['where']) ) {
 			$whereParts[] = $rightsParts['where'];
 		}
 
