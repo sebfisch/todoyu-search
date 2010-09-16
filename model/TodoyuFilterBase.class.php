@@ -349,8 +349,8 @@ abstract class TodoyuFilterBase {
 		}
 
 			// Combine join from filter and rights
-		$join	= array_unique(array_merge((array)$queryParts['join'], (array)$rightsParts['join']));
-		$tables	= array_unique(array_merge((array)$queryParts['tables'], (array)$rightsParts['tables']));
+		$join	= array_unique(array_merge(TodoyuArray::assure($queryParts['join']), TodoyuArray::assure($rightsParts['join'])));
+		$tables	= array_unique(array_merge(TodoyuArray::assure($queryParts['tables']), TodoyuArray::assure($rightsParts['tables'])));
 
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
@@ -361,9 +361,6 @@ abstract class TodoyuFilterBase {
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
-
-		TodoyuDebug::printInFireBug($queryParts, '$queryParts');
-
 
 		$whereParts	= array();
 
