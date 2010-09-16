@@ -362,6 +362,8 @@ abstract class TodoyuFilterBase {
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
 
+		TodoyuDebug::printInFireBug($queryParts, '$queryParts');
+
 
 		$whereParts	= array();
 
@@ -369,12 +371,17 @@ abstract class TodoyuFilterBase {
 		if( sizeof($join) > 0 ) {
 			$whereParts[] = implode(' AND ', $join);
 		}
+
 			// Filter
-		$whereParts[] = implode(' ' . $connection . ' ', $queryParts['where']);
+		if( sizeof($queryParts['where']) > 0 ) {
+			$whereParts[] = implode(' ' . $connection . ' ', $queryParts['where']);
+		}
+
 			// Deleted
 		if( $showDeleted === false ) {
 			$whereParts[] = $this->defaultTable . '.deleted = 0';
 		}
+
 			// Rights
 		if( $rightsParts !== false ) {
 			$whereParts[] = $rightsParts['where'];
