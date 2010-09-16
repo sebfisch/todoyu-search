@@ -38,7 +38,9 @@ class TodoyuSearch {
 	public static function getSuggestions($query, $mode = 'all', $limit = false) {
 		$query	= trim($query);
 		$find	= $ignore	= $results= array();
-		$limit	= $limit === false ? Todoyu::$CONFIG['EXT']['search']['suggestLimit'] : intval($limit) ;
+		$configLimit	= $mode == 'all' ? Todoyu::$CONFIG['EXT']['search']['suggestLimitAll'] : Todoyu::$CONFIG['EXT']['search']['suggestLimit'];
+
+		$limit	= $limit === false ? $configLimit : intval($limit) ;
 
 			// Empty search? abort
 		if( $query === '' ) {

@@ -22,7 +22,8 @@ if( allowed('search', 'general:use') ) {
 	TodoyuSearchManager::addEngine('all', null, '', 'search.search.label', 0);
 }
 
-Todoyu::$CONFIG['EXT']['search']['suggestLimit']= 5;
+Todoyu::$CONFIG['EXT']['search']['suggestLimitAll']= 5;
+Todoyu::$CONFIG['EXT']['search']['suggestLimit']= 30;
 Todoyu::$CONFIG['EXT']['search']['defaultTab']	= 'task';
 
 ?>
