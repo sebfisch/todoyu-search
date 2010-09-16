@@ -344,9 +344,11 @@ abstract class TodoyuFilterBase {
 
 		$queryArray['fields']	= $this->defaultTable . '.id';
 		$queryArray['tables']	= implode(', ', $tables);
+		$queryArray['where']	= ''; // Where clause is added later
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
+
 
 		$whereParts	= array();
 
@@ -370,7 +372,9 @@ abstract class TodoyuFilterBase {
 			$whereParts[] = $rightsParts['where'];
 		}
 
-		$queryArray['where'] = '(' . implode(') AND (', $whereParts) . ')';
+		if( sizeof($whereParts) > 0 ) {
+			$queryArray['where'] = '(' . implode(') AND (', $whereParts) . ')';
+		}
 
 		return $queryArray;
 	}
