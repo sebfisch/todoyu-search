@@ -32,6 +32,12 @@ Todoyu.Ext.search.Filter = {
 
 	activeTab:	null,
 
+	/**
+	 * Counter for new names "new1, new2, etc.
+	 * @var	{Number}	nameCounter
+	 */
+	nameCounter: 0,
+
 
 	/**
 	 * Initialize search filters: inits active tab, active filterset + control + conditions
@@ -74,6 +80,8 @@ Todoyu.Ext.search.Filter = {
 			this.WidgetArea.installAutocomplete(name);
 			this.WidgetArea.installNegation(name);
 		}.bind(this, tab));
+
+		this.nameCounter = this.Conditions.size();
 	},
 
 
@@ -158,6 +166,8 @@ Todoyu.Ext.search.Filter = {
 		this.WidgetArea.clear();
 		this.setFiltersetID(0);
 
+		this.nameCounter = 0;
+
 		$('search-results').update('');
 	},
 
@@ -223,9 +233,9 @@ Todoyu.Ext.search.Filter = {
 	 * @return	{String}	new + counter number
 	 */
 	makeNewWidgetName: function(condition) {
-		var numOfWidgets = this.Conditions.size();
+		var counter = ++this.nameCounter;
 
-		return 'new' + (numOfWidgets + 1);
+		return 'new' + counter;
 	},
 
 
