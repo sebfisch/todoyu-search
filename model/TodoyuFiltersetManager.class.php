@@ -459,13 +459,16 @@ class TodoyuFiltersetManager {
 
 		$tables		= array();
 		$wheres		= array();
-		
+
 		foreach($value as $filterSet)	{
-			$queryArray = $filterSet->getQueryArray();
-			$wheres[]		= $queryArray['where'];
-			$tables[]		= $queryArray['tables'];
+			$queryArray = $filterSet->getQueryArray('', '', false, true);
+
+			if( $queryArray !== false ) {
+				$wheres[] = $queryArray['where'];
+				$tables[] = $queryArray['tables'];
+			}
 		}
-		
+
 			// If conditions found, build query parts
 		if( sizeof($wheres) > 0 ) {
 				// Remove double tables
@@ -506,7 +509,7 @@ class TodoyuFiltersetManager {
 			}
 		}
 
-		
+
 		return (sizeof($filter) > 0) ? self::Filter_filterObject($filter, $negate) : array();
 	}
 
@@ -515,7 +518,7 @@ class TodoyuFiltersetManager {
 		### NOT YET CLEANED UP FUNCTIONS ###
 
 
-	
+
 	/**
 	 * The options of the filter selector. Used for filterWidget filterSet
 	 *
