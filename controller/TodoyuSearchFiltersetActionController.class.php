@@ -36,7 +36,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 		$data = array(
 			'filterset'	=> 0,
 			'type'		=> $type,
-			'title'		=> TodoyuFiltersetManager::validateTitle($title),
+			'title'		=> TodoyuFiltersetManager::validateTitle($type, $title),
 			'conjunction'=> $conjunction,
 			'conditions'=> $conditions
 		);

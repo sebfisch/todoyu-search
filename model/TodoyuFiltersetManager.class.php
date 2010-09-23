@@ -373,7 +373,7 @@ class TodoyuFiltersetManager {
 			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
 		}
 
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		return Todoyu::db()->getColumn($fields, $table, $where, '', $order);
 	}
 
 
@@ -431,14 +431,15 @@ class TodoyuFiltersetManager {
 	/**
 	 * Validate filterset title (ensure uniqueness)
 	 *
+	 * @param	String		$type
 	 * @param	String		$title
 	 * @return	String
 	 */
-	public static function validateTitle($title) {
-		$allFilterSetTitles	= TodoyuArray::flatten( self::getFiltersetTitles() );
+	public static function validateTitle($type, $title) {
+		$typeFiltersets	= self::getFiltersetTitles(0, $type);
 
-		if( in_array($title, $allFilterSetTitles) ) {
-			$title = self::validateTitle( $title . '-2' );
+		if( in_array($title, $typeFiltersets) ) {
+			$title = self::validateTitle($type, $title . '-2');
 		}
 
 		return $title;
