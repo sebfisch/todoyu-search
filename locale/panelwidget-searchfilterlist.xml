@@ -34,6 +34,11 @@
 		<label index="title">Sady filtrů</label>
 		<label index="saveFilterButton">Uložit nový filtr</label>
 		<label index="clearFilterArea">Vyčistit filtr</label>
+	</labels>	
+	<labels lang="sr_RS">
+		<label index="title">Филтери</label>
+		<label index="saveFilterButton">Сачувај као нови филтер</label>
+		<label index="clearFilterArea">Изпразни област филтера</label>
 	</labels>
 	<labels lang="ja_JP">
 		<label index="title">フィルタセット</label>

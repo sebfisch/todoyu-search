@@ -70,6 +70,16 @@
 		<label index="filtersets.hideAll">Skrýt všechny sady fitlrů</label>
 		<label index="filtersets.renameAll">Přejmenovat všechny sady filtrů</label>
 	</labels>
+		<labels lang="sr_RS">
+		<label index="general">Општа подешавања</label>
+		<label index="general.use">Употреби функције претраге</label>
+		<label index="general.area">Употреби област претраге</label>
+		<label index="filtersets">Филтери</label>
+		<label index="filtersets.save">Сачувај кондиције као филтер</label>
+		<label index="filtersets.deleteAll">Избриши све филтере</label>
+		<label index="filtersets.hideAll">Сакрији све филтере</label>
+		<label index="filtersets.renameAll">Преимењуј све филтере</label>
+	</labels>
 	<labels lang="ja_JP">
 		<label index="general">一般設定</label>
 		<label index="general.use">検索機能の表示および使用</label>

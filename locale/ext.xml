@@ -18,8 +18,6 @@
 		<label index="negation.default.false">Is</label>
 		<label index="negation.datetime.true">From</label>
 		<label index="negation.datetime.false">To</label>
-		<label index="negation.numbercompare.true">smaller than</label>
-		<label index="negation.numbercompare.false">bigger than</label>
 		<label index="newFilterLabel">Enter a name for the new filter</label>
 		<label index="newFilterLabel.preset">New Filter</label>
 		<label index="subMenuEntry.task">Tasks</label>
@@ -48,8 +46,6 @@
 		<label index="negation.default.false">ist</label>
 		<label index="negation.datetime.true">nach</label>
 		<label index="negation.datetime.false">vor</label>
-		<label index="negation.numbercompare.true">kleiner als</label>
-		<label index="negation.numbercompare.false">grösser als</label>
 		<label index="newFilterLabel">Bitte einen Filter-Namen angeben</label>
 		<label index="newFilterLabel.preset">Neuer Filter</label>
 		<label index="subMenuEntry.task">Aufgaben</label>
@@ -115,34 +111,6 @@
 		<label index="search.noResultsForActiveFilters">Для выбраных фильтров ничего не найдено</label>
 		<label index="contextmenu.project.showinproject">Открыть в проекте</label>
 		<label index="headlet.label">Искать в todoyu</label>
-	</labels>
-	<labels lang="fr_FR">
-		<label index="ext.title">Rechercher et créer des filtres</label>
-		<label index="page.title">Recherche</label>
-		<label index="or">OU</label>
-		<label index="and">ET</label>
-		<label index="search.label">Rechercher tout</label>
-		<label index="filterlabel.filterset">Groupes de filtre</label>
-		<label index="filterset.rename">Renommer le groupe de filtre</label>
-		<label index="filterset.delete">Supprimer le groupe de filtre</label>
-		<label index="filterset.confirm.delete">Voulez-vous vraiment supprimer ce groupe de filtre?</label>
-		<label index="filterset.confirm.overwrite">Remplacer le groupe de filtre existant?</label>
-		<label index="filterset.error.saveWrongType">Vous avez tenté d'enregistrer un groupe de filtres sous un type incorrect</label>
-		<label index="filterset.error.saveNoConditions">Aucune condition à enregistrer</label>
-		<label index="filterset.error.saveEmptyName">Veuillez entrer un nom pour le groupe de filtre</label>
-		<label index="negation.default.true">N'est pas</label>
-		<label index="negation.default.false">Est</label>
-		<label index="negation.datetime.true">De</label>
-		<label index="negation.datetime.false">à</label>
-		<label index="newFilterLabel">Entrez un nom pour le nouveau filtre</label>
-		<label index="newFilterLabel.preset">Nouveau filtre</label>
-		<label index="subMenuEntry.task">Tâches</label>
-		<label index="subMenuEntry.project">Projets</label>
-		<label index="filterwidget.condtion.remove">Retirer la condition</label>
-		<label index="search.noEntryFound">Aucun résultat trouvé</label>
-		<label index="search.noResultsForActiveFilters">Aucun résultat trouvé avec les filtres actuellement sélectionnés</label>
-		<label index="contextmenu.project.showinproject">Ouvrir dans la section projet</label>
-		<label index="headlet.label">Rechercher dans todoyu</label>
 	</labels>
 	<labels lang="nl_NL">
 		<label index="ext.title">Filters zoeken en aanmaken</label>
@@ -227,5 +195,33 @@
 		<label index="search.noResultsForActiveFilters">現在選択したフィルタの結果はありません</label>
 		<label index="contextmenu.project.showinproject">プロジェクトビューで開く</label>
 		<label index="headlet.label">todoyu で検索</label>
+	</labels>
+		<labels lang="sr_RS">
+		<label index="ext.title">Претрага и филтери</label>
+		<label index="page.title">Претрага</label>
+		<label index="or">ИЛИ</label>
+		<label index="and">И</label>
+		<label index="search.label">Претражи све</label>
+		<label index="filterlabel.filterset">Филтер</label>
+		<label index="filterset.rename">Преимењуј филтер</label>
+		<label index="filterset.delete">Избриши филтер</label>
+		<label index="filterset.confirm.delete">Стварно избрисати филтер?</label>
+		<label index="filterset.confirm.overwrite">Постојећи филтер преписати?</label>
+		<label index="filterset.error.saveWrongType">Молимо изаберите тачну врсту филтера</label>
+		<label index="filterset.error.saveNoConditions">Не постоје услови за сачување</label>
+		<label index="filterset.error.saveEmptyName">Молимо унесите наслов за филтер</label>
+		<label index="negation.default.true">није</label>
+		<label index="negation.default.false">је</label>
+		<label index="negation.datetime.true">после</label>
+		<label index="negation.datetime.false">пре</label>
+		<label index="newFilterLabel">Молимо унесите наслов за филтер</label>
+		<label index="newFilterLabel.preset">Нови филтер</label>
+		<label index="subMenuEntry.task">Задаци</label>
+		<label index="subMenuEntry.project">Пројекти</label>
+		<label index="filterwidget.condtion.remove">Уклони услов</label>
+		<label index="search.noEntryFound">Ништа није нађено</label>
+		<label index="search.noResultsForActiveFilters">Нема нађених резултата за овај филтер</label>
+		<label index="contextmenu.project.showinproject">Отвори поглед пројект-а </label>
+		<label index="headlet.label">Претражи todoyu</label>
 	</labels>
 </locallang>
