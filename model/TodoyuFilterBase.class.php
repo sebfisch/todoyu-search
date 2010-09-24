@@ -124,7 +124,7 @@ abstract class TodoyuFilterBase {
 	 * @param	String		$value
 	 * @param	Boolean		$negate
 	 */
-	public function addExtraFilter($name, $value, $negate = false) {
+	public function addFilter($name, $value, $negate = false) {
 		$this->activeFilters[] = array(
 			'filter'	=> $name,
 			'value'		=> $value,
