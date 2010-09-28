@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en_GB">
+		<label index="general">General Settings</label>
+		<label index="general.use">Use/see search functionality</label>
+		<label index="general.area">Use Search Area</label>
+		<label index="filtersets">Filter Sets</label>
+		<label index="filtersets.save">Save conditions as filter set</label>
+		<label index="filtersets.deleteAll">Delete all filter sets</label>
+		<label index="filtersets.hideAll">Hide all filter sets</label>
+		<label index="filtersets.renameAll">Rename all filter sets</label>
+	</labels>
+	<labels lang="de_DE">
+		<label index="general">Allgemeine Einstellungen</label>
+		<label index="general.use">Such-Funktionalitäten benutzen</label>
+		<label index="general.area">Such-Bereich Verwenden</label>
+		<label index="filtersets">Filtersets</label>
+		<label index="filtersets.save">Konditionen als Filterset speichern</label>
+		<label index="filtersets.deleteAll">Alle Filtersets löschen</label>
+		<label index="filtersets.hideAll">Alle Filtersets verstecken</label>
+		<label index="filtersets.renameAll">Alle Filtersets umbenennen</label>
+	</labels>
+	<labels lang="pt_BR">
+		<label index="general">Configurações Gerais</label>
+		<label index="general.use">Usar/Exibir Funcionalidades de Pesquisa</label>
+		<label index="general.area">Utilizar Área de Pesquisa</label>
+		<label index="filtersets">Grupos de Filtros</label>
+		<label index="filtersets.save">Salvar Condição como Grupo de Filtro</label>
+		<label index="filtersets.deleteAll">Excluir Todos os Grupos de Filtro</label>
+		<label index="filtersets.hideAll">Esconder Todos os Grupos de Filtro</label>
+		<label index="filtersets.renameAll">Renomear Todos os Grupos de Filtro</label>
+	</labels>
+	<labels lang="ru_RU">
+		<label index="general">Общие</label>
+		<label index="general.use">Использовать/показывать поиск</label>
+		<label index="general.area">Использовать область поиска</label>
+		<label index="filtersets">Наборы фильтров</label>
+		<label index="filtersets.save">Сохранить условия как набор фильтров</label>
+		<label index="filtersets.deleteAll">Удалить все наборы фильтров</label>
+		<label index="filtersets.hideAll">Спрятать все наборы фильтров</label>
+		<label index="filtersets.renameAll">Переименовать все наборы фмльтров</label>
+	</labels>
+	<labels lang="fr_FR">
+		<label index="general">Paramètres généraux</label>
+		<label index="general.use">Utiliser/voir la fonctionnalité de recherche</label>
+		<label index="general.area">Utilisez la zone de recherche</label>
+		<label index="filtersets">Groupes de filtre</label>
+		<label index="filtersets.save">Enregistrer les conditions en tant que groupe de filtre</label>
+		<label index="filtersets.deleteAll">Supprimer tous les groupes de filtre</label>
+		<label index="filtersets.hideAll">Cacher tous les groupes de filtre</label>
+		<label index="filtersets.renameAll">Renommer tous les groupes de filtre</label>
+	</labels>
+	<labels lang="nl_NL">
+		<label index="general">Algemene instellingen</label>
+		<label index="general.use">Zoekfunctionaliteit gebruiken/tonen</label>
+		<label index="general.area">Zoekgebied gebruiken</label>
+		<label index="filtersets">Filtersets</label>
+		<label index="filtersets.save">Voorwaarden als filterset opslaan</label>
+		<label index="filtersets.deleteAll">Alle filtersets opslaan</label>
+		<label index="filtersets.hideAll">Alle filtersets verbergen</label>
+		<label index="filtersets.renameAll">Alle filtersets hernoemen</label>
+	</labels>
+	<labels lang="cs_CZ">
+		<label index="general">Obecné nastavení</label>
+		<label index="general.use">Používat/Vidět funkcionalitu vyhledávání</label>
+		<label index="general.area">Používat oblast vyhledávání</label>
+		<label index="filtersets">Sady filtrů</label>
+		<label index="filtersets.save">Uložit podmínky jako sadu filtrů</label>
+		<label index="filtersets.deleteAll">Odstranit všechny sady filtrů</label>
+		<label index="filtersets.hideAll">Skrýt všechny sady fitlrů</label>
+		<label index="filtersets.renameAll">Přejmenovat všechny sady filtrů</label>
+	</labels>
+		<labels lang="sr_RS">
+		<label index="general">Општа подешавања</label>
+		<label index="general.use">Употреби функције претраге</label>
+		<label index="general.area">Употреби област претраге</label>
+		<label index="filtersets">Филтери</label>
+		<label index="filtersets.save">Сачувај кондиције као филтер</label>
+		<label index="filtersets.deleteAll">Избриши све филтере</label>
+		<label index="filtersets.hideAll">Сакрији све филтере</label>
+		<label index="filtersets.renameAll">Преимењуј све филтере</label>
+	</labels>
+	<labels lang="ja_JP">
+		<label index="general">一般設定</label>
+		<label index="general.use">検索機能の表示および使用</label>
+		<label index="general.area">検索エリアの使用</label>
+		<label index="filtersets">フィルタセット</label>
+		<label index="filtersets.save">フィルタセットの条件として保存</label>
+		<label index="filtersets.deleteAll">全フィルタセットの削除</label>
+		<label index="filtersets.hideAll">全フィルタセットの非表示</label>
+		<label index="filtersets.renameAll">全フィルタセット名の変更</label>
+	</labels>
+</locallang>
