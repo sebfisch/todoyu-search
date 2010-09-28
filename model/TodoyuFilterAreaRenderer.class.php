@@ -212,11 +212,18 @@ class TodoyuFilterAreaRenderer {
 			// Build filter
 		$typeClass	= TodoyuFilterManager::getFilterTypeClass($type);
 
+		/**
+		 * @var	TodoyuFilterBase	$typeFilter
+		 */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
 		$sorting	= TodoyuFilterManager::getFilterDefaultSorting($type);
 
-		$itemIDs	= $typeFilter->getItemIDs($sorting);
+		if( $typeFilter->hasActiveFilters() ) {
+			$itemIDs	= $typeFilter->getItemIDs($sorting);
+		} else {
+			$itemIDs	= array();
+		}		
 
 		return TodoyuSearchRenderer::renderResultsListing($type, $itemIDs);
 	}

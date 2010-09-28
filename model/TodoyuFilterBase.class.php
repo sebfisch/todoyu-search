@@ -323,14 +323,20 @@ abstract class TodoyuFilterBase {
 	 * Array contains the strings for the following parts:
 	 * fields, tables, where, group, order, limit
 	 *
-	 * @param	String		$orderBy	Optional order by for query
-	 * @param	String		$limit		Optional limit for query
-	 * @param	Boolean		$showDeleted
+	 * @param	String		$orderBy					Optional order by for query
+	 * @param	String		$limit						Optional limit for query
+	 * @param	Boolean		$showDeleted				Show deleted records
+	 * @param	Boolean		$noResultOnEmptyConditions	Return false if no condition is active
 	 * @return	Array|Boolean
 	 */
-	public function getQueryArray($orderBy = '', $limit = '', $showDeleted = false) {
+	public function getQueryArray($orderBy = '', $limit = '', $showDeleted = false, $noResultOnEmptyConditions = false) {
 			// Get normal query parts
 		$queryParts	= $this->fetchFilterQueryParts();
+
+		    // If no conditions in where clause and $noResultOnEmptyConditions flag set, return flag (no sql query performed)
+		if( $noResultOnEmptyConditions === true && sizeof($queryParts['where']) === 0 ) {
+			return false;
+		}
 
 			// Get rights query parts
 		$rightsParts= $this->fetchRightsQueryParts();
@@ -409,6 +415,17 @@ abstract class TodoyuFilterBase {
 
 
 	/**
+	 * Check if filter has conditions
+	 *
+	 * @return	Boolean
+	 */
+	public function hasActiveFilters() {
+		return $this->getQueryArray('', '', false, true) !== false;
+	}
+
+
+
+	/**
 	 * Get item IDs from default table which match to all active filters
 	 *
 	 * @param	String		$orderBy					Optional order by for query
@@ -417,13 +434,13 @@ abstract class TodoyuFilterBase {
 	 * @return	Array		List of IDs of matching records
 	 */
 	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
-		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted);
+		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted, false);
 
 			// If query was not built, return an empty array
-		if( $queryArray === false ) {
-			TodoyuDebug::printInFireBug('No filter active, no query was sent');
-			return array();
-		}
+//		if( $queryArray === false ) {
+//			TodoyuDebug::printInFireBug('No filter active, no query was sent');
+//			return array();
+//		}
 
 		$ids = Todoyu::db()->getColumn(
 			$queryArray['fields'],
