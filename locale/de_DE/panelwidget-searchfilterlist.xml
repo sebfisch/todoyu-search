@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="title">Filtersets</label>
+	<label index="saveFilterButton">Als neuen Filter speichern</label>
+	<label index="clearFilterArea">Filter-Bereich leeren</label>
+</labels>

@@ -137,7 +137,7 @@ class TodoyuFilterManager {
 	public static function getFilterTypeLabel($type) {
 		TodoyuExtensions::loadAllFilters();
 
-		return TodoyuLanguage::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']);
+		return TodoyuLabelManager::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']);
 	}
 
 

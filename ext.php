@@ -30,8 +30,8 @@ define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 
 	// Register module locales
-TodoyuLanguage::register('search', PATH_EXT_SEARCH . '/locale/ext.xml');
-TodoyuLanguage::register('panelwidget-searchfilterlist', PATH_EXT_SEARCH . '/locale/panelwidget-searchfilterlist.xml');
+TodoyuLabelManager::register('search', 'search', 'ext.xml');
+TodoyuLabelManager::register('panelwidget-searchfilterlist', 'search', 'panelwidget-searchfilterlist.xml');
 
 	// Request configurations
 	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search

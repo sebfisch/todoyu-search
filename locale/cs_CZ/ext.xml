@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="ext.title">Prohledávání a vytváření nových filtrů</label>
+	<label index="page.title">Vyhledej</label>
+	<label index="or">NEBO</label>
+	<label index="and">A</label>
+	<label index="search.label">Prohledat vše</label>
+	<label index="filterlabel.filterset">Sady filtrů</label>
+	<label index="filterset.rename">Přejmenuj sadu filtrů</label>
+	<label index="filterset.delete">Odstraň sadu filtrů</label>
+	<label index="filterset.confirm.delete">Opravdu chcete odstranit tuto sadu filtrů?</label>
+	<label index="filterset.confirm.overwrite">Chcete přepsat existující sadu filtrů?</label>
+	<label index="filterset.error.saveWrongType">Pokoušíte se uložit sadu filtrů nesprávného typu</label>
+	<label index="filterset.error.saveNoConditions">Žádné podmínky k uložení</label>
+	<label index="filterset.error.saveEmptyName">Zadejte název sady fitrů</label>
+	<label index="negation.default.true">Není</label>
+	<label index="negation.default.false">Je</label>
+	<label index="negation.datetime.true">Od</label>
+	<label index="negation.datetime.false">Do</label>
+	<label index="newFilterLabel">Zadejte název filtru</label>
+	<label index="newFilterLabel.preset">Nový filtr</label>
+	<label index="subMenuEntry.task">Úkoly</label>
+	<label index="subMenuEntry.project">Projekty</label>
+	<label index="filterwidget.condtion.remove">Odstranit podmínku</label>
+	<label index="search.noEntryFound">Nebyly nalezeny žádné zázanamy</label>
+	<label index="search.noResultsForActiveFilters">Nebyly nalezeny žádné záznamy pro zvolené filry</label>
+	<label index="contextmenu.project.showinproject">Otevřít v projektovém náhledu</label>
+	<label index="headlet.label">Vyhledat v todoyu</label>
+</labels>
