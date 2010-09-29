@@ -12,7 +12,8 @@ CREATE TABLE `ext_search_filtercondition` (
 	`filter` varchar(64) NOT NULL,
 	`value` varchar(100) NOT NULL,
 	`negate` tinyint(1) NOT NULL DEFAULT '0',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `id_set` (`id_set`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 -- --------------------------------------------------------
@@ -34,6 +35,5 @@ CREATE TABLE `ext_search_filterset` (
 	`title` varchar(64) NOT NULL,
 	`conjunction` varchar(3) NOT NULL,
 	PRIMARY KEY (`id`),
-	KEY `id_set` (`id_set`,`deleted`),
 	KEY `createdelete` (`id_person_create`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
