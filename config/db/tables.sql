@@ -33,5 +33,7 @@ CREATE TABLE `ext_search_filterset` (
 	`type` varchar(16) NOT NULL,
 	`title` varchar(64) NOT NULL,
 	`conjunction` varchar(3) NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `id_set` (`id_set`,`deleted`),
+	KEY `createdelete` (`id_person_create`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
