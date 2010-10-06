@@ -24,8 +24,12 @@
 	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat 0 0;
 }
 #widget-area .filterWidget .widgetheader .widgetLabel {
-	width: 120px;
-	padding-right: 0;
+	width:120px;
+	padding-right:0;
+}
+
+#widget-area .filterWidget .widgetheader .widgetLabel.staggered {
+	padding-top:22px;
 }
 
 #widget-area .filterWidget .widgetheaderRgt {
@@ -43,10 +47,10 @@
 }
 
 #widget-area .filterWidget .widgetheader span.clear {
-	display: block;
-	clear: both;
-	float: none;
-	padding: 0;
+	display:block;
+	clear:both;
+	float:none;
+	padding:0;
 }
 
 select#filtercontrol-conjunction {
@@ -54,10 +58,10 @@ select#filtercontrol-conjunction {
 }
 
 #widget-area .filterWidget span.negationButton {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	padding: 0;
+	position:absolute;
+	top:0;
+	right:25px;
+	padding:0;
 }
 
 #widget-area .filterWidget span.negation {

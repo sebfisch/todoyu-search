@@ -1,6 +1,6 @@
 <div class="filterWidget {$definitions.widgetFilterName}" id="{$definitions.widgetID}">
 	<div class="widgetheader">
-		<span class="widgetLabel">
+		<span class="widgetLabel{if strlen(label($definitions.wConf.negation.labelTrue)) > 10 || strlen(label($definitions.wConf.negation.labelFalse)) > 10 } staggered{/if}">
 			{Label $definitions.label}
 		</span>
 		{if $definitions.wConf.negation}
