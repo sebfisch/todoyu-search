@@ -103,11 +103,11 @@ class TodoyuSearch {
 	/**
 	 * Search table
 	 *
-	 * @param	String	$table
-	 * @param	Array	$fields
-	 * @param	Array 	$find
-	 * @param	Array	$ignore
-	 * @param	Integer	$limit
+	 * @param	String		$table			Table to search in
+	 * @param	Array		$fields			Fields to search in
+	 * @param	Array 		$find			Words to find
+	 * @param	Array		$ignore			Words to ignore
+	 * @param	Integer		$limit
 	 * @return	String
 	 */
 	public static function searchTable($table, array $fields, array $find, array $ignore = array(), $limit = 200, $addToWhere = ' AND deleted = 0') {
