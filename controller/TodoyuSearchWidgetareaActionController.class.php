@@ -52,7 +52,6 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 	public function loadAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
-		$content	= '';
 
 			// No filterset given? get active filterset of tab
 		if( $idFilterset === 0 ) {

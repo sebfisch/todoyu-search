@@ -39,7 +39,6 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	public function removeCurrentFilterSetAction(array $params) {
 		$idFilterset= intval($params['filterset']);
 		$tab		= $params['tab'];
-		$content	= '';
 
 		if( $idFilterset === 0 ) {
 			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($tab);
