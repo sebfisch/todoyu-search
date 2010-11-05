@@ -60,7 +60,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Toggle visibility of given type's listing in widget 
+	 * Toggle visibility of given type's listing in widget
 	 *
 	 * @param	{String}	type
 	 */
@@ -81,13 +81,13 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param {Number} idFilterSet
 	 */
 	renameFilterset: function(idFilterSet)	{
-		var currentName	= $('filterset-' + idFilterSet + '-label').title.stripScripts().stripTags().strip();
+		var currentName	= $('filterset-' + idFilterSet + '-label').title.stripScripts().strip();
 		var newName		= prompt('[LLL:search.filterset.rename]', currentName);
 
 		if( newName !== null && newName.strip() !== '' ) {
-			newName = newName.stripScripts().stripTags().strip();
+			newName = newName.stripScripts().strip();
 
-			$('filterset-' + idFilterSet + '-label').update(newName);
+			$('filterset-' + idFilterSet + '-label').update(newName.escapeHTML());
 
 			this.saveFiltersetRename(idFilterSet, newName);
 		}

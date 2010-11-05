@@ -30,7 +30,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 		$type		= $params['type'];
 		$conditions	= $params['conditions'];
 		$conditions = empty($conditions) ? array() : json_decode($conditions, true);
-		$title		= strip_tags($params['title']);
+		$title		= trim($params['title']);
 		$conjunction= $params['conjunction'];
 
 		$data = array(

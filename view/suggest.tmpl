@@ -1,13 +1,13 @@
 <ul class="quicksearch-suggest">
 {foreach $ type resultType}
 	<li>
-		<span class="type type{ucfirst($type)}">{$resultType.label}</span>
+		<span class="type type{ucfirst($type)}">{htmlencode $resultType.label}</span>
 		<ul>
 		{foreach $resultType.results result}
 			<li>
-				<a href="javascript:void(0)" onclick="Todoyu.Headlet.submitOpenStatus();{$result.onclick}" title="{$result.title}">
-					<span class="title">{$result.labelTitle}</span>
-					<span class="info">{$result.labelInfo}</span>
+				<a href="javascript:void(0)" onclick="Todoyu.Headlet.submitOpenStatus();{$result.onclick}" title="{htmlencode $result.title}">
+					<span class="title">{htmlencode $result.labelTitle}</span>
+					<span class="info">{htmlencode $result.labelInfo}</span>
 				</a>
 			</li>
 		{else}
