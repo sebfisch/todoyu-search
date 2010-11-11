@@ -18,9 +18,15 @@
 *****************************************************************************/
 
 /**
- *	Ext: search
+ * @module	Search
  */
 
+/**
+ * Search main object
+ *
+ * @class		search
+ * @namespace	Todoyu.Ext
+ */
 Todoyu.Ext.search = {
 
 	PanelWidget: {},
