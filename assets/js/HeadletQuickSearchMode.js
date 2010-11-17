@@ -19,6 +19,11 @@
 
 Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
+	/**
+	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.search,
 
 	headlet: null,
@@ -35,7 +40,6 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 	/**
 	 * Initialize quick search modes option: declare properties, setup click observer
-	 *
 	 */
 	init: function() {
 		this.headlet = this.ext.Headlet.QuickSearch;
@@ -54,29 +58,30 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 	 * @param	{Event}		event
 	 */
 	showModes: function(event) {
-		var modes	= $('headlet-quicksearch-modes');
-
-		if( modes.visible() ) {
+		if( this.modes.visible() ) {
 			this.hideModes();
 		} else {
+			this.modes.show();
+
 			if( ! this.positioned ) {
-				var contentDim		= this.headlet.content.getDimensions();
-				var modeWidth		= this.modes.getWidth();
-
-				var top		= contentDim.height;
-				var left	= contentDim.width - modeWidth;
-
-				modes.setStyle({
-					'left':		left + 'px',
-					'top':		top + 'px'
-				});
-
-				this.positioned = true;
+				this.positionModes();
 			}
 
-			modes.show();
+			var amountModes = $$('#headlet-quicksearch-modes li').length;
+			$('headlet-quicksearch-form').style.height= ((amountModes * 21) + 18 ) + 'px';
+
 			this.headlet.Suggest.hideResults();
 		}
+	},
+
+
+
+	/**
+	 * Hide quick search modes selector
+	 */
+	hideModes: function() {
+		this.modes.hide();
+		$('headlet-quicksearch-form').style.height='16px';
 	},
 
 
@@ -109,10 +114,22 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 
 	/**
-	 * Hide quick search modes selector
+	 * Set search modes sub menu position
 	 */
-	hideModes: function() {
-		$('headlet-quicksearch-modes').hide();
+	positionModes: function() {
+		var contentDim		= this.headlet.content.getDimensions();
+		var modeWidth		= this.modes.getWidth();
+
+		var top		= contentDim.height - 24;
+		var left	= contentDim.width - modeWidth + 1;
+
+		this.modes.setStyle({
+			'position':	'absolute',
+			'left':		left + 'px',
+			'top':		top + 'px'
+		});
+
+		this.positioned = true;
 	}
 
 };

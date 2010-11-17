@@ -23,19 +23,29 @@
 	background:url(../img/icons.png) no-repeat 3px -536px;
 }
 
-ul#headlet-quicksearch-modes {
-	width:150px;
+
+/* -------------------
+	Modes sub menu
+   ------------------- */
+#headlet-quicksearch-modes {
+	width:198px;
 	margin-left:-3px;
 	margin-top:-2px;
 	-webkit-box-shadow:2px 2px 7px #999;
 	-moz-box-shadow:2px 2px 7px #999;
 	box-shadow:2px 2px 7px #999;
 }
+	#headlet-quicksearch-modes ul {
+		width:198px;
+		border:none !important;
+	}
 
-#headlet-quicksearch-modes li:hover {
-	border:none;
-	background-color:#edf0df;
-}
+	#headlet-quicksearch-modes li:hover {
+		border:none;
+		background-color:#edf0df;
+	}
+
+
 
 #headlet-quicksearch li.searchmodeAll a {
 	background:url(../img/icons.png) no-repeat 2px -27px;

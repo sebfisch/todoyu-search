@@ -9,15 +9,17 @@
 	<div style="clear:both;"><!-- --></div>
 
 	{if $searchModes}
-		<ul id="{$id}-modes" style="display: none;">
-			{foreach $searchModes searchMode}
-				<li class="searchmode{ucfirst($searchMode.type)}">
-					<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Mode.setMode('{$searchMode.type}')">
-						{Label $searchMode.labelMode}
-					</a>
-				</li>
-			{/foreach}
-		</ul>
+		<div id="{$id}-modes" style="display: none;">
+			<ul>
+				{foreach $searchModes searchMode}
+					<li class="searchmode{ucfirst($searchMode.type)}">
+						<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Mode.setMode('{$searchMode.type}')">
+							{Label $searchMode.labelMode}
+						</a>
+					</li>
+				{/foreach}
+			</ul>
+		</div>
 	{/if}
 
 	<div id="{$id}-suggest" class="searchSuggest" style="display:none"></div>
