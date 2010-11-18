@@ -18,5 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+//TodoyuHookManager::registerHook('core', 'onload', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
 
 ?>
