@@ -158,7 +158,7 @@ class TodoyuFilterWidgetManager	{
 
 
 	/**
-	 * Get autoCompletion suggestions to given input of given record type 
+	 * Get autoCompletion suggestions to given input of given record type
 	 *
 	 * @param	String		$type
 	 * @param	String		$sword
@@ -175,6 +175,9 @@ class TodoyuFilterWidgetManager	{
 
 		$funcRefString = $definitions['wConf']['FuncRef'];
 		$funcRefParams = TodoyuArray::assure($definitions['wConf']['FuncParams']);
+
+		TodoyuDebug::printInFireBug($funcRefString);
+
 
 		if( TodoyuFunction::isFunctionReference($funcRefString) ) {
 			$data = TodoyuFunction::callUserFunction($funcRefString, $sword, $funcRefParams);
