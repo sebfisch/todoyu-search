@@ -5,26 +5,25 @@
 {/restrict}
 </div>
 
-<div class="searchFilterList">
-	<ul>
-	{foreach $groupedFiltersets groupKey filtersets}
-		<li class="listItem title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.toggleList('{$groupKey}')">{$filtersets.label}</li>
-		<li class="panelwidget-searchfilterlist-list">
+<ul id="filterset-list" class="sortablePanelList">
+{foreach $groupedFiltersets groupKey filtersets}
+	<li class="listItem groupTitle groupName{ucfirst $groupKey}">{$filtersets.label}</li>
+	<li class="itemList">
 		<ul id="panelwidget-searchfilterlist-list-{$groupKey}" class="sortable" {if $toggleStatus[$groupKey] == 1}style="display:none"{/if}>
 		{foreach $filtersets.filtersets index filterset}
-			<li id="filterset_{$filterset.id}" class="listItem filterset {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} hidden{/if}">
+			<li id="filterset_{$filterset.id}" class="listItem {cycle values='odd,even'} {if in_array($filterset.id, $activeFiltersets)}current{/if}{if $filterset.is_hidden == 1} invisible{/if}">
 				<div id="filterset-{$filterset.id}-handle" class="handle"></div>
 				<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.showFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)" title="{htmlencode $filterset.title}">
 					{htmlencode(truncate($filterset.title,25))}
 				</a>
-				<span class="controllpanel">
+				<span class="actions">
 					{restrictOrOwn 'search' 'filtersets.renameAll' $filterset.id_person_create}
 					<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.rename}" href="javascript:void(0)">
 						{Label core.rename}
 					</a>
 					{/restrictOrOwn}
 					{restrictOrOwn 'search' 'filtersets.hideAll' $filterset.id_person_create}
-					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}hidden{/if}"  title="{if $filterset.is_hidden == 0}{Label core.hide}{else}{Label core.unhide}{/if}">
+					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}invisible{/if}"  title="{if $filterset.is_hidden == 0}{Label core.hide}{else}{Label core.unhide}{/if}">
 						{if $filterset.is_hidden == 0}{Label panelwidget-searchfilterlist.hide}{else}{Label core.unhide}{/if}
 					</a>
 					{/restrictOrOwn}
@@ -42,7 +41,6 @@
 			</li>
 		{/foreach}
 		</ul>
-		</li>
-	{/foreach}
-	</ul>
-</div>
+	</li>
+{/foreach}
+</ul>

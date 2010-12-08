@@ -36,7 +36,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * Initialize filter list sortable
 	 */
 	init: function()	{
-		this.initSortable();
+		//this.initSortable();
+
+		this.initSortableList();
+	},
+
+
+	initSortableList: function() {
+		Todoyu.SortablePanelList.init('filterset-list', this.toggleList.bind(this), this.saveFiltersetOrder.bind(this));
 	},
 
 
@@ -50,7 +57,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			'parameters': {
 				'action':	'update'
 			},
-			'onComplete': this.initSortable.bind(this)
+			'onComplete': this.initSortableList.bind(this)
 		};
 		var target	= 'panelwidget-searchfilterlist-content';
 		this.disableSortable();
@@ -64,13 +71,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *
 	 * @param	{String}	type
 	 */
-	toggleList: function(type) {
-		var list = 'panelwidget-searchfilterlist-list-' + type;
-
-		if( Todoyu.exists(list) ) {
-			$(list).toggle();
-			this.saveListToggle(type, $(list).visible());
-		}
+	toggleList: function(type, isExpanded) {
+		this.saveListToggle(type, isExpanded);
 	},
 
 
@@ -220,66 +222,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	unmarkActiveFilterset: function()	{
 		$('panelwidget-searchfilterlist').select('.filterset').invoke('removeClassName', 'current');
-	},
-
-
-
-	/**
-	 * Initialize filterSet sortables
-	 */
-	initSortable: function() {
-		this.disableSortable();
-
-			// Define options for all sortables
-		var options	= {
-			'handle':	'dragPointListItem',
-			'onUpdate':	this.onSortableUpdate.bind(this)
-		};
-
-			// Get all sortable lists
-		var lists	= $('panelwidget-searchfilterlist-content').select('.sortable');
-
-			// Make each list sortable
-		lists.each(function(element) {
-				// Create a sortable
-			Sortable.create(element, options);
-				// Register sortable element
-			this.sortables.push(element);
-		}.bind(this));
-
-			// Add hover effect to handles
-		var handles = $('panelwidget-searchfilterlist-content').select('.handle');
-		handles.each(function(item){
-			Todoyu.Ui.addHoverEffect(item);
-		});
-	},
-
-
-
-	/**
-	 * Disable filterSets sortability
-	 */
-	disableSortable: function() {
-		this.sortables.each(function(sortableElement){
-			Sortable.destroy(sortableElement);
-		});
-
-		this.sortables = [];
-	},
-
-
-
-
-	/**
-	 * Handler after update of filterSet sortables
-	 *
-	 * @param	{Element}	listElement
-	 */
-	onSortableUpdate: function(listElement) {
-		var type	= listElement.id.split('-').last();
-		var items	= Sortable.sequence(listElement);
-
-		this.saveFiltersetOrder(type, items);
 	},
 
 

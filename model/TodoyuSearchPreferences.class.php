@@ -91,8 +91,8 @@ class TodoyuSearchPreferences {
 	 */
 	public static function getActiveTab()	{
 		$tab = self::getPref('tab');
-
-		if( $tab === false ) {
+		
+		if( empty($tab) ) {
 			$tab = Todoyu::$CONFIG['EXT']['search']['defaultTab'];
 		}
 
