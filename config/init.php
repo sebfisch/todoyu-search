@@ -18,6 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-//TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
+require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
+
+if( allowed('search', 'general:use') ) {
+	TodoyuSearchManager::addEngine('all', null, '', 'search.search.label', 0);
+}
+
+Todoyu::$CONFIG['EXT']['search']['suggestLimitAll']= 5;
+Todoyu::$CONFIG['EXT']['search']['suggestLimit']= 30;
+Todoyu::$CONFIG['EXT']['search']['defaultTab']	= 'task';
 
 ?>

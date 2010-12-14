@@ -18,6 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-//TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
+// Declare ext ID, path
+define('EXTID_SEARCH', 115);
+define('PATH_EXT_SEARCH', PATH_EXT . '/search');
+
+// Register module locales
+TodoyuLabelManager::register('search', 'search', 'ext.xml');
+TodoyuLabelManager::register('panelwidget-searchfilterlist', 'search', 'panelwidget-searchfilterlist.xml');
+
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
 
 ?>
