@@ -47,7 +47,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 
 	/**
-	 * Update value of given filter conditon to given value 
+	 * Update value of given filter condition to given value 
 	 *
 	 * @param	{String}	conditionName
 	 * @param	{String}	value
