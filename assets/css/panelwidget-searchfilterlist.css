@@ -2,6 +2,10 @@
 	background:transparent url('../img/icons.png') no-repeat 6px -325px;
 }
 
+#panelwidget-searchfilterlist .panelwidgetContent {
+	margin-top:5px;
+}
+
 #panelwidget-searchfilterlist .listItem .actions .save {
 	background:transparent url(../img/icons.png) no-repeat scroll 5px -118px !important;
 }
@@ -37,4 +41,3 @@
 #panelwidget-searchfilterlist button.saveAsNewFilter .icon	{
 	background:url(../img/icons.png) no-repeat 0 -117px;
 }
-
