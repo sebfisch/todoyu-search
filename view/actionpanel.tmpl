@@ -1,0 +1,10 @@
+<div class="buttons">
+	{Button label="panelwidget-searchfilterlist.clearFilterArea" class="clearFilterArea" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.clearFilterArea()"}
+{restrict 'search' 'filtersets:save'}
+	{Button label="panelwidget-searchfilterlist.saveFilterButton" class="saveAsNewFilter" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveCurrentAreaAsNewFilterset()"}
+{/restrict}
+
+	{foreach $exports name data}
+		{Button label="$data.label"  onclick="Todoyu.Ext.search.ActionPanel.export('$name')" class="searchExportButton $data.htmlClass" id="export-$name" title="$data.label"}
+	{/foreach}
+</div>

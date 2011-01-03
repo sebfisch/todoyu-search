@@ -46,3 +46,27 @@ h1.extIconSearch .title {
 #filtercontrol-conditions option.even {
 
 }
+
+
+/* --------------------------------
+	Search Action Panel
+	------------------------------- */
+
+#action-panel button.clearFilterArea .icon	{
+	background:url(../img/icons.png) no-repeat 0 -87px;
+}
+
+#action-panel button.saveAsNewFilter .icon	{
+	background:url(../img/icons.png) no-repeat 0 -117px;
+}
+
+#action-panel {
+	padding: 10px 5px;
+	margin: 10px 0;
+	background-color: #E3EACE;
+}
+
+
+#action-panel .button.searchExportButton .icon	{
+	background: url(../img/icons.png) no-repeat 0 -567px;
+}

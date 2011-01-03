@@ -70,6 +70,10 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 		array(
 			'file' => 'ext/search/assets/js/PanelWidgetSearchFilterList.js',
 			'position' => 110
+		),
+		array(
+			'file' => 'ext/search/assets/js/ActionPanel.js',
+			'position' => 111
 		)
 	),
 	'css' => array(

@@ -71,6 +71,7 @@ class TodoyuFilterAreaRenderer {
 		$data	= array(
 			'controls'		=> $controls,
 			'activeWidgets'	=> $widgetArea,
+			'actionpanel'	=> TodoyuSearchActionPanelManager::renderActionPanel($activeTab),
 			'searchResults'	=> $results
 		);
 
