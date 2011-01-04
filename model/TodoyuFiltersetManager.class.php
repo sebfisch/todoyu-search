@@ -460,13 +460,24 @@ class TodoyuFiltersetManager {
 
 		$tables		= array();
 		$wheres		= array();
+		$joins		= array();
 
-		foreach($value as $filterSet)	{
+		foreach($value as $filterSet) {
+			/**
+			 * @var	TodoyuFilterBase	$filterSet
+			 */
 			$queryArray = $filterSet->getQueryArray('', '', false, true);
 
+				// If filterset is active
 			if( $queryArray !== false ) {
-				$wheres[] = $queryArray['where'];
-				$tables[] = $queryArray['tables'];
+					// Add where part (without join)
+				$wheres[] 	= '(' . implode(') ' . $filterSet->getConjunction() . ' (', $queryArray['whereNoJoin']) . ')';
+					// Add tables (they are already concatenated as string, so explode)
+				$tables	= array_merge($tables, explode(',', $queryArray['tables']));
+					// Add joins
+				if( is_array($queryArray['join']) ) {
+					$joins	= array_merge($joins, $queryArray['join']);
+				}
 			}
 		}
 
@@ -475,10 +486,12 @@ class TodoyuFiltersetManager {
 				// Remove double tables
 			$tables	= array_unique($tables);
 			$where	= '(' . implode(' AND ', $wheres) . ')';
+			$joins	= array_unique($joins);
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> $where
+				'where'	=> $where,
+				'join'	=> $joins
 			);
 		}
 

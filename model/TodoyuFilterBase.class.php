@@ -94,6 +94,16 @@ abstract class TodoyuFilterBase {
 	}
 
 
+	/**
+	 * Get conjunction of the filterset
+	 *
+	 * @return	String
+	 */
+	public function getConjunction() {
+		return $this->conjunction;
+	}
+
+
 
 	/**
 	 * Add an extra table for the request query
@@ -322,6 +332,7 @@ abstract class TodoyuFilterBase {
 	 * Gets the query array which is merged from all filters
 	 * Array contains the strings for the following parts:
 	 * fields, tables, where, group, order, limit
+	 * Extra fields for internal use: whereNoJoin, join
 	 *
 	 * @param	String		$orderBy					Optional order by for query
 	 * @param	String		$limit						Optional limit for query
@@ -360,11 +371,6 @@ abstract class TodoyuFilterBase {
 
 		$whereParts	= array();
 
-			// Join
-		if( sizeof($join) > 0 ) {
-			$whereParts[] = implode(' AND ', $join);
-		}
-
 			// Filter
 		if( sizeof($queryParts['where']) > 0 ) {
 			$whereParts[] = implode(' ' . $connection . ' ', $queryParts['where']);
@@ -378,6 +384,16 @@ abstract class TodoyuFilterBase {
 			// Rights
 		if( $rightsParts !== false && !empty($rightsParts['where']) ) {
 			$whereParts[] = $rightsParts['where'];
+		}
+
+			// Save backup for where clauses for further use
+		$queryArray['whereNoJoin'] = $whereParts;
+
+			// Join
+		if( sizeof($join) > 0 ) {
+			$whereParts[] = implode(' AND ', $join);
+				// Save joins for further use
+			$queryArray['join'] = $join;
 		}
 
 		if( sizeof($whereParts) > 0 ) {
