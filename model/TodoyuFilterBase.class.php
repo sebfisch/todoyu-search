@@ -371,11 +371,6 @@ abstract class TodoyuFilterBase {
 
 		$whereParts	= array();
 
-			// Filter
-		if( sizeof($queryParts['where']) > 0 ) {
-			$whereParts[] = implode(' ' . $connection . ' ', $queryParts['where']);
-		}
-
 			// Deleted
 		if( $showDeleted === false ) {
 			$whereParts[] = $this->defaultTable . '.deleted = 0';
@@ -386,8 +381,16 @@ abstract class TodoyuFilterBase {
 			$whereParts[] = $rightsParts['where'];
 		}
 
-			// Save backup for where clauses for further use
-		$queryArray['whereNoJoin'] = $whereParts;
+			// Make a backup of the where parts which are required to be AND
+		$queryArray['whereAND']	= $whereParts;
+
+			// Filter
+		if( sizeof($queryParts['where']) > 0 ) {
+			$basicFilterWhere			= implode(' ' . $connection . ' ', $queryParts['where']);
+			$whereParts[] 				= $basicFilterWhere;
+				// Make a backup of the basic filters which are combined by the conjunction of the filterset
+			$queryArray['whereBasic'] 	= $basicFilterWhere;
+		}
 
 			// Join
 		if( sizeof($join) > 0 ) {
@@ -467,6 +470,8 @@ abstract class TodoyuFilterBase {
 			$queryArray['limit'],
 			'id'
 		);
+
+		TodoyuDebug::printLastQueryInFirebug();
 
 		return $ids;
 	}

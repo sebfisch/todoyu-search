@@ -470,8 +470,25 @@ class TodoyuFiltersetManager {
 
 				// If filterset is active
 			if( $queryArray !== false ) {
-					// Add where part (without join)
-				$wheres[] 	= '(' . implode(') ' . $filterSet->getConjunction() . ' (', $queryArray['whereNoJoin']) . ')';
+				if( is_array($queryArray['whereAND']) ) {
+					$whereAND	= '(' . implode(') AND (', $queryArray['whereAND']) . ')';
+				}
+
+					// If both are set, concatenate with AND
+				if( $queryArray['whereBasic'] && $whereAND ) {
+					$where	= $queryArray['whereBasic'] . ' AND ' . $whereAND;
+				} else {
+						// If not both are set, combine to one string
+					$where = trim($queryArray['whereBasic'] . $whereAND);
+				}
+
+					// If no where statement available, go to next filterset
+				if( $where === '' ) {
+					continue;
+				}
+
+					// Add where statement to list
+				$wheres[] = $where;
 					// Add tables (they are already concatenated as string, so explode)
 				$tables	= array_merge($tables, explode(',', $queryArray['tables']));
 					// Add joins
