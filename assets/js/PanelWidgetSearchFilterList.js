@@ -43,7 +43,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	initSortableList: function() {
-		Todoyu.SortablePanelList.init('filterset-list', this.toggleList.bind(this), this.saveFiltersetOrder.bind(this));
+		new Todoyu.SortablePanelList('filterset-list', this.toggleList.bind(this), this.saveFiltersetOrder.bind(this));
 	},
 
 
@@ -60,7 +60,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			'onComplete': this.initSortableList.bind(this)
 		};
 		var target	= 'panelwidget-searchfilterlist-content';
-		this.disableSortable();
+
 		Todoyu.Ui.update(target, url, options);
 	},
 
@@ -211,8 +211,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param	{Number}	idFilterSet
 	 */
 	markActiveFilterset: function(idFilterSet) {
-		$('filterset_' + idFilterSet).up('div').select('.filterset').invoke('removeClassName', 'current');
-		$('filterset_' + idFilterSet).addClassName('current');
+		//$('filterset_' + idFilterSet).up('div').select('.filterset').invoke('removeClassName', 'current');
+		//$('filterset_' + idFilterSet).addClassName('current');
 	},
 
 
