@@ -471,8 +471,6 @@ abstract class TodoyuFilterBase {
 			'id'
 		);
 
-		TodoyuDebug::printLastQueryInFirebug();
-
 		return $ids;
 	}
 }
