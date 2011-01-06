@@ -176,20 +176,14 @@ class TodoyuFilterWidgetManager	{
 		$funcRefString = $definitions['wConf']['FuncRef'];
 		$funcRefParams = TodoyuArray::assure($definitions['wConf']['FuncParams']);
 
-		TodoyuDebug::printInFireBug($funcRefString);
-
-
 		if( TodoyuFunction::isFunctionReference($funcRefString) ) {
-			$data = TodoyuFunction::callUserFunction($funcRefString, $sword, $funcRefParams);
+			$results = TodoyuFunction::callUserFunction($funcRefString, $sword, $funcRefParams);
 		} else {
 			Todoyu::log('Invalid AC-callback function', TodoyuLogger::LEVEL_ERROR, array('widget'=>$widgetName, 'acFunc'=>$funcRefString));
-			$data = array();
+			$results = array();
 		}
 
-		return array(
-			'widgetID'	=> $widgetKey,
-			'results' 	=> $data
-		);
+		return $results;
 	}
 
 

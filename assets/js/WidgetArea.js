@@ -42,7 +42,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Add given filter widget to search page widget area 
+	 * Add given filter widget to search page widget area
 	 *
 	 * @param	{String}	name
 	 * @param	{String}	type
@@ -118,7 +118,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Install autoCompleter to ('textAC' input field of) given filter widget 
+	 * Install autoCompleter to ('textAC' input field of) given filter widget
 	 *
 	 * @param	{String}	name
 	 */
@@ -151,7 +151,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 					}
 				}
 
-				this.autocompleters[name] = new Todoyu.Autocompleter(acField.id, suggestID, acUrl, options);
+				this.autocompleters[name] = new Todoyu.Autocompleter(acField, suggestID, acUrl, options);
 			}
 		}
 	},
@@ -159,7 +159,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Handle selection of autoCompleter suggestion: send value to condition of widget 
+	 * Handle selection of autoCompleter suggestion: send value to condition of widget
 	 *
 	 * @param	{String}	name
 	 * @param	{Element}	textInput
@@ -174,7 +174,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Install widget negating option click observer 
+	 * Install widget negating option click observer
 	 *
 	 * @param	{String}	name
 	 */

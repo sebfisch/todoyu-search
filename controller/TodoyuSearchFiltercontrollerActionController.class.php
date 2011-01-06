@@ -38,9 +38,9 @@ class TodoyuSearchFiltercontrollerActionController extends TodoyuActionControlle
 		$filterType	= $params['filtertype'];
 		$searchWord	= $params['sword'];
 
-		$data = TodoyuFilterWidgetManager::getAutocompletionResults($filterType, $searchWord, $widgetKey);
+		$results = TodoyuFilterWidgetManager::getAutocompletionResults($filterType, $searchWord, $widgetKey);
 
-		return TodoyuFilterWidgetRenderer::renderAutocompletion($data);
+		return TodoyuRenderer::renderAutocompleteResults($results);
 	}
 
 }

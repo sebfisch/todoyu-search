@@ -52,25 +52,6 @@ class TodoyuFilterWidgetRenderer {
 		return render($tmpl, $data);
 	}
 
-
-
-	/**
-	 * Render suggestions of the autocompleter
-	 *
-	 * @param	Array	$results
-	 * @return	String
-	 */
-	public static function renderAutocompletion($results)	{
-		$tmpl = 'ext/search/view/filterwidget-suggest.tmpl';
-
-		$empty = count($results) > 0 ? false:true;
-		$data = array('results'		=> $results['results'],
-					  'widgetID'	=> $results['widgetID'],
-					  'empty'		=> $empty);
-
-		return render($tmpl, $data);
-	}
-
 }
 
 ?>
