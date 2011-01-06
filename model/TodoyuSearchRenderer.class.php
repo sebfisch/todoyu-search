@@ -90,9 +90,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			);
 		}
 
-//		$tabs[0]['position'] = 'first';
-//		$tabs[sizeof($tabs)-1]['position'] = 'last';
-
 		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
 	}
 

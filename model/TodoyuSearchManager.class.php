@@ -59,7 +59,7 @@ class TodoyuSearchManager {
 		$filters= self::getFilters();
 		$config	= array();
 
-			// Check all filtertypes
+			// Check all filter types
 		foreach($filters as $type => $data) {
 			$require	= explode('.', $data['config']['require']);
 
