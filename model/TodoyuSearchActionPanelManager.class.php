@@ -94,11 +94,15 @@ class TodoyuSearchActionPanelManager {
 	 * @param  $method
 	 * @return void
 	 */
-	public static function addExport($type, $name, $method, $label, $htmlClass = '')	{
+	public static function addExport($type, $name, $method, $label, $htmlClass = '', $right = '')	{
+		$rightArray = explode(':', $right);
+
 		Todoyu::$CONFIG['EXT']['search']['filter'][$type]['actionpanel']['export'][$name] = array(
 			'method'	=> $method,
 			'htmlClass'	=> ($htmlClass ? $htmlClass : $name),
-			'label'		=> $label
+			'label'		=> $label,
+			'right'		=> array('ext'	=> $rightArray[0],
+								 'right'=> $rightArray[1])
 		);
 	}
 

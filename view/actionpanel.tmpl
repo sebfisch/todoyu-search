@@ -5,6 +5,8 @@
 {/restrict}
 
 	{foreach $exports name data}
-		{Button label="$data.label"  onclick="Todoyu.Ext.search.ActionPanel.export('$name')" class="searchExportButton $data.htmlClass" id="export-$name"}
+		{if allowed($data.right.ext, $data.right.right)}
+			{Button label="$data.label"  onclick="Todoyu.Ext.search.ActionPanel.export('$name')" class="searchExportButton $data.htmlClass" id="export-$name"}
+		{/if}
 	{/foreach}
 </div>
