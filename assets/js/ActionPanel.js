@@ -27,7 +27,7 @@ Todoyu.Ext.search.ActionPanel = {
 	 * 
 	 * @param name
 	 */
-	export: function(name)	{
+	export: function(name) {
 		var idFilterSet = this.filter.getFiltersetID();
 		var conditions	= this.filter.Conditions.getAll(true);
 		var conjunction	= this.filter.getConjunction();

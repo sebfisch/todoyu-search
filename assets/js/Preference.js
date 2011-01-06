@@ -47,7 +47,7 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 * @param	{String}	tab
 	 */
-	saveActiveTab: function(tab)	{
+	saveActiveTab: function(tab) {
 		var action = 'saveActiveTab';
 		this.sendAction(action, tab);
 	},
@@ -57,7 +57,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save preference: current filter set
 	 */
-	saveCurrentFilter: function()	{
+	saveCurrentFilter: function() {
 		var action	= 'saveCurrentFilterSet';
 		var currentFilterSet = Todoyu.Ext.search.Filter.FilterID;
 
@@ -69,7 +69,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Remove current filter set
 	 */
-	removeCurrentFilter: function()	{
+	removeCurrentFilter: function() {
 		var action	= 'removeCurrentFilterSet';
 		this.sendAction(action, '');
 	},
@@ -82,7 +82,7 @@ Todoyu.Ext.search.Preference = {
 	 * @param	{String}	elementID
 	 * @param	{Boolean}	elementDisplay
 	 */
-	saveToggeling: function(elementID, elementDisplay)	{
+	saveToggeling: function(elementID, elementDisplay) {
 		var action = 'saveToggleStatus';
 
 		var value = Object.toJSON({
@@ -100,7 +100,7 @@ Todoyu.Ext.search.Preference = {
 	 *
 	 * @param	{String}	value
 	 */
-	saveOrder: function(value)	{
+	saveOrder: function(value) {
 		var action = 'saveOrder';
 		this.sendAction(action, value);
 	},
@@ -113,7 +113,7 @@ Todoyu.Ext.search.Preference = {
 	 * @param	{String}	action
 	 * @param	{String}	value
 	 */
-	sendAction: function(action, value)	{
+	sendAction: function(action, value) {
 		var url = Todoyu.getUrl('search', 'preference');
 		var options = {
 			'parameters': {

@@ -56,7 +56,7 @@ Todoyu.Ext.search.Filter = {
 
 		this.initConditions(activeTab, conditions);
 
-		if( updateResults === true )	{
+		if( updateResults === true ) {
 			this.updateResults();
 		}
 	},
@@ -91,7 +91,7 @@ Todoyu.Ext.search.Filter = {
 	 *
 	 * @param	{String}	tab
 	 */
-	setActiveTab: function(tab)	{
+	setActiveTab: function(tab) {
 		this.activeTab = tab;
 
 		Todoyu.Tabs.setActive('search', tab);
@@ -149,7 +149,7 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{Object}	event
 	 * @param	{String}	tab
 	 */
-	onTabClick: function(event, tab)	{
+	onTabClick: function(event, tab) {
 		if( tab !== this.getActiveTab() ) {
 			this.setActiveTab(tab);
 			this.ext.Preference.saveActiveTab(tab);

@@ -35,7 +35,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Initialize filter list sortable
 	 */
-	init: function()	{
+	init: function() {
 		//this.initSortable();
 
 		this.initSortableList();
@@ -51,7 +51,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Refresh filter list
 	 */
-	refresh: function()	{
+	refresh: function() {
 		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
 		var options = {
 			'parameters': {
@@ -82,7 +82,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *
 	 * @param {Number} idFilterSet
 	 */
-	renameFilterset: function(idFilterSet)	{
+	renameFilterset: function(idFilterSet) {
 		var currentName	= $('filterset-' + idFilterSet + '-label').title.stripScripts().strip();
 		var newName		= prompt('[LLL:search.filterset.rename]', currentName);
 
@@ -102,14 +102,14 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *
 	 * @param {Number} idFilterSet
 	 */
-	hideFilterset: function(idFilterSet)	{
+	hideFilterset: function(idFilterSet) {
 		var element = $('filterset-' + idFilterSet + '-control-visibility');
 		var isHidden= element.hasClassName('hidden');
 
 		element.toggleClassName('hidden');
 		element.up('li').toggleClassName('hidden');
 
-		if( isHidden === false )	{
+		if( isHidden === false ) {
 			element.title		= '[LLL:core.unhide]';
 			element.update('[LLL:core.unhide]');
 		} else {
@@ -130,7 +130,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	saveFilterset: function(idFilterSet, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
-			if(confirm('[LLL:search.filterset.confirm.overwrite]'))	{
+			if( confirm('[LLL:search.filterset.confirm.overwrite]') ) {
 				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
 			}
 		} else {
@@ -170,7 +170,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Saves a new filter
 	 */
-	saveCurrentAreaAsNewFilterset: function()	{
+	saveCurrentAreaAsNewFilterset: function() {
 		this.ext.Filter.saveCurrentAreaAsNewFilterset(this.onNewFiltersetSaved.bind(this));
 	},
 
@@ -220,7 +220,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Remove current from active filterSet (called on reset)
 	 */
-	unmarkActiveFilterset: function()	{
+	unmarkActiveFilterset: function() {
 		$('panelwidget-searchfilterlist').select('.filterset').invoke('removeClassName', 'current');
 	},
 

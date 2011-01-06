@@ -41,7 +41,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * 
 	 * @param	{Element}		select			The select element where the new widget has ben chosen
 	 */
-	addWidgetToFilterArea: function(select)	{
+	addWidgetToFilterArea: function(select) {
 		var chosenWidget = $(select).getValue();
 
 			// Reset selector
@@ -58,9 +58,9 @@ Todoyu.Ext.search.FilterWidget = {
 				'action':			'addfilterwidget',
 				'filterID':			Todoyu.Ext.search.Filter.FilterID
 			},
-			'onComplete': function(response)	{
+			'onComplete': function(response) {
 				var widgetID = chosenWidget.split('_')[1] + '-new' + numOfWidget;
-				if( $(widgetID) )	{
+				if( $(widgetID) ) {
 					Todoyu.Ext.search.Filter.addFilterWidgetToList($(widgetID));
 					this.initAutocompletionSingle(widgetID);
 					this.initNegationSingle(widgetID);
@@ -78,7 +78,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 *
 	 * @param	{String}	widgetID
 	 */
-	removeWidgetFromFilterArea: function(widgetID)	{
+	removeWidgetFromFilterArea: function(widgetID) {
 		$(widgetID).remove();
 		this.ext.Filter.removeConditionFromFilter(widgetID);
 	},
@@ -91,7 +91,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * @param	{String}	classNameOfWidget
 	 * @return	{Number}
 	 */
-	detectNumOfWidget: function(classNameOfWidget)	{
+	detectNumOfWidget: function(classNameOfWidget) {
 		var className = classNameOfWidget.split('_');
 		if( $('widget-area').select('.' + className[1]) ){
 			return $('widget-area').select('.' + className[1]).length;
@@ -105,11 +105,11 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Autocompletion Part
 	 */
-	initAutocompletion: function()	{
+	initAutocompletion: function() {
 		var foundAutocompleter = $('widget-area').select('.autocomplete');
-		if( foundAutocompleter.length > 0 )	{
+		if( foundAutocompleter.length > 0 ) {
 			foundAutocompleter.each(
-				function(autocompleter)	{
+				function(autocompleter) {
 					this.setUpAutocompleter(autocompleter.id);
 				}.bind(this)
 			);
@@ -123,9 +123,9 @@ Todoyu.Ext.search.FilterWidget = {
 	 *
 	 * @param {String}	elementID
 	 */
-	initAutocompletionSingle: function(elementID)	{
+	initAutocompletionSingle: function(elementID) {
 		var autocompletion = $(elementID).select('.autocomplete');
-		if( autocompletion.length > 0 )	{
+		if( autocompletion.length > 0 ) {
 			this.setUpAutocompleter(autocompletion[0].id);
 		}
 	},
@@ -135,11 +135,11 @@ Todoyu.Ext.search.FilterWidget = {
 	/**
 	 * Init widget negation: find and start observing all negation buttons
 	 */
-	initNegation: function()	{
+	initNegation: function() {
 		var foundNegations = $('widget-area').select('.negation');
-		if( foundNegations.length > 0 )	{
+		if( foundNegations.length > 0 ) {
 			foundNegations.each(
-				function(negation)	{
+				function(negation) {
 					this.setUpNegation(negation.id);
 				}.bind(this)
 			);
@@ -153,9 +153,9 @@ Todoyu.Ext.search.FilterWidget = {
 	 *
 	 * @param	{String}	elementID
 	 */
-	initNegationSingle: function(elementID)	{
+	initNegationSingle: function(elementID) {
 		var negation = $(elementID).select('.negation');
-		if( negation.length > 0 )	{
+		if( negation.length > 0 ) {
 			this.setUpNegation(negation[0].id);
 		}
 	},
@@ -167,7 +167,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 *
 	 * @param {String}	autoCompleterID
 	 */
-	setUpAutocompleter: function(autoCompleterID)	{
+	setUpAutocompleter: function(autoCompleterID) {
 		var url = Todoyu.getUrl('search', 'filtercontroller');
 
 		widgetID = this.filterWidgetIDFromAutoCompleterID(autoCompleterID);
@@ -189,7 +189,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 *
 	 * @param	{String}	negationID
 	 */
-	setUpNegation: function(negationID)	{
+	setUpNegation: function(negationID) {
 		$(negationID).observe('click', 
 			Todoyu.Ext.search.Filter.setNegation.bind(Todoyu.Ext.search.Filter, negationID)
 		);
@@ -203,7 +203,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * @param	{String}	autocompleterID
 	 * @return	{String}
 	 */
-	filterWidgetIDFromAutoCompleterID: function(autocompleterID)	{
+	filterWidgetIDFromAutoCompleterID: function(autocompleterID) {
 		splittedID = autocompleterID.split('-');
 
 		return splittedID[2] + '-' + splittedID[3];
@@ -217,7 +217,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * @param	{String}	elementText
 	 * @param	{String}	elementLi
 	 */
-	handleAutocompleteInput: function(elementText, elementLi)	{
+	handleAutocompleteInput: function(elementText, elementLi) {
 		var hiddenElement = $('widget-autocompleter-' + elementLi.parentNode.id.replace(/ul/, 'hidden'));
 		hiddenElement.setValue(elementLi.id);
 		Todoyu.Ext.search.Filter.setValueToCondition(hiddenElement, elementLi.parentNode.id.replace(/-ul/, ''));
