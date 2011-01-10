@@ -21,7 +21,8 @@
 class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 	/**
-	 * @todo	comment
+	 * Save currently active filter
+	 *
 	 * @param	Array	$params
 	 */
 	public function saveCurrentFilterSetAction(array $params) {
@@ -32,7 +33,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Remove given one from currently active filters 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
@@ -61,7 +63,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Save preference of active search tab
+	 *
 	 * @param	Array	$params
 	 */
 	public function saveActiveTabAction(array $params) {
@@ -73,7 +76,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Save active filterset preference
+	 *
 	 * @param	Array	$params
 	 */
 	public function activeFiltersetAction(array $params) {

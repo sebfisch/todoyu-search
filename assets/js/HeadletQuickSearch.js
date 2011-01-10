@@ -70,7 +70,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * @todo	comment
+	 * Callback for quicksearch headlet content click
+	 *
+	 * @param	{Object}	event
 	 */
 	onContentClick: function(event) {
 		if( this.isEventInOwnContent(event) ) {

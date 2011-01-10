@@ -205,7 +205,8 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * @todo	comment
+	 * Add given "special" configuration to widget area
+	 *
 	 * @param	{String}		name
 	 * @param	{unknown_type}	config
 	 */
