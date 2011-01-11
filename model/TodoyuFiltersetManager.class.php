@@ -287,7 +287,7 @@ class TodoyuFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '		type 		= ' . Todoyu::db()->quote($type, true) .
 				  ' AND	deleted		= 0
-				    AND ' .	($showHidden ? '' : 'is_hidden 	= 0 AND') .
+					AND ' .	($showHidden ? '' : 'is_hidden 	= 0 AND') .
 					' ( id_person_create	= ' . $idPerson . '	)';
 		$order	= 'sorting';
 
@@ -314,7 +314,7 @@ class TodoyuFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '		id_person_create= ' . $idPerson .
 				  ' AND	deleted			= 0
-				    AND	type IN(' . $typeList . ')';
+					AND	type IN(' . $typeList . ')';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {

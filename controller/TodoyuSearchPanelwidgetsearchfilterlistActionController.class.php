@@ -29,7 +29,7 @@ class TodoyuSearchPanelwidgetSearchfilterlistActionController extends TodoyuActi
 	/**
 	 * Update search widget filter list
 	 *
-	 * @param	Array    $params
+	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function updateAction(array $params) {
