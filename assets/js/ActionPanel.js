@@ -24,14 +24,14 @@ Todoyu.Ext.search.ActionPanel = {
 
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 */
-	export: function(name) {
+	exportResults: function(name) {
 		var idFilterSet = this.filter.getFiltersetID();
 		var conditions	= this.filter.Conditions.getAll(true);
 		var conjunction	= this.filter.getConjunction();
-		
+
 		var options = {
 				'action':		'export',
 				'tab':			this.filter.getActiveTab(),
