@@ -39,11 +39,26 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 		return render($tmpl, $data);
 	}
 
-	public function searchAction(array $params) {
 
+
+	/**
+	 * @todo	implement or remove
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function searchAction(array $params) {
 		return 'test 123';
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Array	$params
+	 * @return	String				JSON encoded suggestions to query
+	 */
 	public function suggestAction(array $params) {
 		$q			= trim($params['q']);
 		$keywords	= TodoyuArray::trimExplode(' ', $q, true);

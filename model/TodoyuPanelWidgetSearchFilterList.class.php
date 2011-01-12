@@ -117,6 +117,12 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	}
 
 
+
+	/**
+	 * Shortcut for check whether search 'general:use' right is allowed
+	 *
+	 * @return	Boolean
+	 */
 	public static function isAllowed() {
 		return allowed('search', 'general:use');
 	}
