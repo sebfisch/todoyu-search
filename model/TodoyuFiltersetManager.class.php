@@ -143,20 +143,9 @@ class TodoyuFiltersetManager {
 	 */
 	public static function getFiltersetResultItemIDs($idFilterset) {
 		$idFilterset	= intval($idFilterset);
+		$filterset		= TodoyuFiltersetManager::getFilterset($idFilterset);
 
-		$typeKey		= self::getFiltersetType($idFilterset);
-		$filterClass	= TodoyuFilterManager::getFilterTypeClass($typeKey);
-		$sorting		= TodoyuFilterManager::getFilterDefaultSorting($typeKey);
-
-		if( $filterClass !== false ) {
-			$conditions		= self::getFiltersetConditions($idFilterset);
-
-			$typeFilter	= new $filterClass($conditions);
-
-			return $typeFilter->getItemIDs($sorting);
-		} else {
-			return array();
-		}
+		return $filterset->getItemIDs();
 	}
 
 

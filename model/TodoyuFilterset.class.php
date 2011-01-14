@@ -68,6 +68,52 @@ class TodoyuFilterset extends TodoyuBaseObject {
 		return $this->get('conjunction');
 	}
 
+
+
+	/**
+	 * Get filterset title
+	 *
+	 * @return	String
+	 */
+	public function getTitle() {
+		return $this->get('title');
+	}
+
+
+
+	/**
+	 * Get filterset type
+	 *
+	 * @return	String
+	 */
+	public function getType() {
+		return $this->get('type');
+	}
+
+
+
+	/**
+	 * Get matching item IDs
+	 *
+	 * @return	Array
+	 */
+	public function getItemIDs() {
+		$class	= TodoyuFilterManager::getFilterTypeClass($this->getType());
+		$sorting= TodoyuFilterManager::getFilterDefaultSorting($this->getType());
+
+		if( $class !== false ) {
+			$conditions	= $this->getConditions();
+			$conjunction= $this->getConjunction();
+
+			$filter	= new $class($conditions, $conjunction);
+
+			return $filter->getItemIDs($sorting);
+		} else {
+			return array();
+		}
+	}
+
+
 }
 
 ?>
