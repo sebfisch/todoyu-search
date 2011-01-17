@@ -146,7 +146,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Handle tab click: activate, save pref, evoke content update
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	tab
 	 */
 	onTabClick: function(event, tab) {

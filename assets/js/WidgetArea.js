@@ -193,7 +193,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Handle filter widget negation: invoke toggle of child elements' conditions
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	name
 	 */
 	onNegation: function(event, name) {

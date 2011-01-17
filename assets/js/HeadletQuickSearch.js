@@ -53,7 +53,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Handle headlet button clicks: toggle headlet content visibility
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
 		if( this.isContentVisible() ) {
@@ -72,7 +72,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Callback for quicksearch headlet content click
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onContentClick: function(event) {
 		if( this.isEventInOwnContent(event) ) {
@@ -85,7 +85,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Upon clicking search query input: hide modes selection
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onQueryClick: function(event) {
 		this.Mode.hideModes();
@@ -100,7 +100,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	/**
 	 * Upon click: hide mode selector and result suggestions. 
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
 		this.hideExtras();

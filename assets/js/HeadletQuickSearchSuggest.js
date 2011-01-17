@@ -60,7 +60,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onQueryChange: function(event) {
 		window.clearTimeout(this.timeout);
