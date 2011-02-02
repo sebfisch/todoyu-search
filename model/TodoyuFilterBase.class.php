@@ -94,6 +94,7 @@ abstract class TodoyuFilterBase {
 	}
 
 
+
 	/**
 	 * Get conjunction of the filterset
 	 *

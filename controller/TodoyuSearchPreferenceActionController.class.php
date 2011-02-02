@@ -32,6 +32,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	}
 
 
+
 	/**
 	 * Remove given one from currently active filters 
 	 *

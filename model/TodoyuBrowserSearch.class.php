@@ -35,6 +35,7 @@ class TodoyuBrowserSearch {
 	}
 
 
+
 	/**
 	 * Hook
 	 * If not logged in and request is a browser search, send back an empty json array to prevent errors in the browser

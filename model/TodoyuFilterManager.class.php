@@ -111,6 +111,7 @@ class TodoyuFilterManager {
 	}
 
 
+
 	/**
 	 * Get filter sorting for type
 	 *
