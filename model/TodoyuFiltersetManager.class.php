@@ -524,7 +524,7 @@ class TodoyuFiltersetManager {
 		foreach($filtersetIDs as $idFilterset) {
 			$filterSet		= self::getFilterset($idFilterset);
 			$className		= 'Todoyu'.ucfirst($filterSet['type']).'Filter';
-			if(class_exists($className))	{
+			if( class_exists($className) ) {
 				$filter[] = new $className($filterSet->getConditions(), $filterSet->getConjunction());
 			}
 		}
