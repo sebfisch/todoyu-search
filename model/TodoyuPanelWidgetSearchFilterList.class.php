@@ -32,7 +32,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 * - intitializes the filters
 	 * - modifies the filters
 	 */
-	public function __construct(array $config, array $params = array(), $idArea = 0)	{
+	public function __construct(array $config, array $params = array(), $idArea = 0) {
 		TodoyuExtensions::loadAllFilters();
 
 		parent::__construct(
@@ -64,7 +64,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 		$activeFiltersets	= array();
 
 		foreach($filtersetTypes as $filtersetType) {
-			if( $filtersetType == TodoyuSearchPreferences::getActiveTab() )	{
+			if( $filtersetType == TodoyuSearchPreferences::getActiveTab() ) {
 				$activeFiltersets[] = TodoyuSearchPreferences::getActiveFilterset($filtersetType);
 			}
 		}
@@ -91,7 +91,7 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 *
 	 * @return	String
 	 */
-	public function render()	{
+	public function render() {
 		$this->renderContent();
 
 		return parent::render();

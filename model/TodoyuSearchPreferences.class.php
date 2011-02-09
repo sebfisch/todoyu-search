@@ -78,7 +78,7 @@ class TodoyuSearchPreferences {
 	 *
 	 * @param	String	$currentTab
 	 */
-	public static function saveActiveTab($currentTab)	{
+	public static function saveActiveTab($currentTab) {
 		self::savePref('tab', $currentTab, 0, true);
 	}
 
@@ -89,7 +89,7 @@ class TodoyuSearchPreferences {
 	 *
 	 * @return	String
 	 */
-	public static function getActiveTab()	{
+	public static function getActiveTab() {
 		$tab = self::getPref('tab');
 		
 		if( empty($tab) ) {
@@ -137,7 +137,7 @@ class TodoyuSearchPreferences {
 	 * @param	String		$type
 	 * @param	Boolean		$expanded
 	 */
-	public static function saveFiltersetListToggle($type, $expanded = true)	{
+	public static function saveFiltersetListToggle($type, $expanded = true) {
 		$preference	= self::getFiltersetListToggle();
 
 		if( $expanded ) {
@@ -158,7 +158,7 @@ class TodoyuSearchPreferences {
 	 *
 	 * @return	Array
 	 */
-	public static function getFiltersetListToggle()	{
+	public static function getFiltersetListToggle() {
 		$pref	= self::getPref('filtersetListToggle', 0, 0, true);
 
 		if( $pref === false ) {
@@ -191,7 +191,7 @@ class TodoyuSearchPreferences {
 	 *
 	 * @return	Integer
 	 */
-	public static function getCurrentFilter()	{
+	public static function getCurrentFilter() {
 		$activeFilter	= TodoyuPreferenceManager::getPreference(EXTID_SEARCH, 'searchcurrentfilter');
 
 		return intval($activeFilter);
@@ -204,7 +204,7 @@ class TodoyuSearchPreferences {
 	 *
 	 * @return	Boolean
 	 */
-	public static function removeCurrentFilter()	{
+	public static function removeCurrentFilter() {
 		$extID 		= EXTID_SEARCH;
 		$preference = 'searchcurrentfilter';
 
@@ -220,7 +220,7 @@ class TodoyuSearchPreferences {
 	 * @param	Mixed	$newArrayValue
 	 * @return	String
 	 */
-	protected static function checkToggleStatus($newArrayKey, $newArrayValue)	{
+	protected static function checkToggleStatus($newArrayKey, $newArrayValue) {
 		$toggleStatusArray = self::getToggleStatus();
 
 		$newArrayValue = $newArrayValue == 'none' ? true:false;
@@ -228,7 +228,7 @@ class TodoyuSearchPreferences {
 		$newArrayKeyArray = explode('-', $newArrayKey);
 		$newArrayKey = array_pop($newArrayKeyArray);
 
-		if( is_array($toggleStatusArray) )	{
+		if( is_array($toggleStatusArray) ) {
 			$toggleStatusArray[$newArrayKey] = $newArrayValue;
 		} else {
 			$toggleStatusArray = array();

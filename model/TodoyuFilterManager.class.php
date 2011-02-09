@@ -119,7 +119,7 @@ class TodoyuFilterManager {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getFilterDefaultSorting($type)	{
+	public static function getFilterDefaultSorting($type) {
 		TodoyuExtensions::loadAllFilters();
 
 		$sorting	= Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['defaultSorting'];

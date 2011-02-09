@@ -94,7 +94,7 @@ class TodoyuFiltersetManager {
 	 * @param	Integer		$idFilterset			ID of the filterset
 	 * @param	Boolean		$deleteConditions		Delete linked conditions too
 	 */
-	public static function deleteFilterset($idFilterset, $deleteConditions = true)	{
+	public static function deleteFilterset($idFilterset, $deleteConditions = true) {
 		$idFilterset	= intval($idFilterset);
 
 		Todoyu::db()->deleteRecord(self::TABLE, $idFilterset);
@@ -393,7 +393,7 @@ class TodoyuFiltersetManager {
 	 * @param	Array		$filterData
 	 * @return	Integer
 	 */
-	public static function saveFilterset(array $filterData)	{
+	public static function saveFilterset(array $filterData) {
 		$idFilterset= intval($filterData['filterset']);
 
 		$filtersetData	= array(
@@ -444,7 +444,7 @@ class TodoyuFiltersetManager {
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_filterObject(array $value, $negate = false)	{
+	public static function Filter_filterObject(array $value, $negate = false) {
 		$queryParts		= false;
 
 		$tables		= array();
@@ -545,15 +545,15 @@ class TodoyuFiltersetManager {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getFilterSetSelectionOptions($definitions)	{
+	public static function getFilterSetSelectionOptions($definitions) {
 		$allFiltersets	= self::getTypeFiltersets('TASK', personid(), true);
 
 		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
 
-		foreach($allFiltersets as $filterset)	{
+		foreach($allFiltersets as $filterset) {
 				// Prevent adding the filterset to itself
 			if( $filterset['id'] != $activeFilterset ) {
-				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) )	{
+				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) ) {
 					$definitions['options'][] = array(
 						'value'		=> $filterset['id'],
 						'label'		=> $filterset['title']
@@ -574,10 +574,10 @@ class TodoyuFiltersetManager {
 	 * @param	Integer		$idFiltersetToCheck
 	 * @return	Boolean
 	 */
-	protected static function isFiltersetUsed($idFilterset, $idFiltersetToCheck)	{
+	protected static function isFiltersetUsed($idFilterset, $idFiltersetToCheck) {
 		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
 
-		foreach($conditions as $condition)	{
+		foreach($conditions as $condition) {
 			if( $condition['filter'] === 'filterSet' ) {
 				$subFiltersetIDs	= explode(',', $condition['value']);
 

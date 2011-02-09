@@ -70,7 +70,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderInlineTabHead($activeTab = null)	{
+	public static function renderInlineTabHead($activeTab = null) {
 		$tabs 		= array();
 
 			// If no tab forced, get preferenced tab
@@ -121,7 +121,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 * @param	String		$conjunction			AND / OR
 	 * @return	String
 	 */
-	public static function renderSearchResults($activeTab = null, $idFilterset = 0, $useConditions = true, array $filterConditions = array(), $conjunction = 'AND')	{
+	public static function renderSearchResults($activeTab = null, $idFilterset = 0, $useConditions = true, array $filterConditions = array(), $conjunction = 'AND') {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 

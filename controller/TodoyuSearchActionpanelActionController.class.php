@@ -24,7 +24,7 @@ class TodoyuSearchActionpanelActionController extends TodoyuActionController	{
 
 
 
-	public function exportAction($params)	{
+	public function exportAction($params) {
 		$exportName	= $params['exportname'];
 		$type		= $params['tab'];
 		$idFilterset= intval($params['idFilterSet']);

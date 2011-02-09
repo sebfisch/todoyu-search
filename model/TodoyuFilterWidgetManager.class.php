@@ -117,7 +117,7 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Mixed	$value
 	 * @return	Array
 	 */
-	public static function getFilterWidgetDefinitions($filterType, $widgetName, $numOfWidget, $value = '', $negate = false)	{
+	public static function getFilterWidgetDefinitions($filterType, $widgetName, $numOfWidget, $value = '', $negate = false) {
 		$definitions = self::getFilterDefinitionsArray($filterType, $widgetName);
 
 		$definitions['widgetDefinitions'] = self::getWidgetTypeConfig($definitions['widget']);
@@ -149,7 +149,7 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Array	$widgetDefinitions
 	 * @return	Mixed	String / Boolean
 	 */
-	public static function checkOnWidgetTemplate($widgetDefinitions)	{
+	public static function checkOnWidgetTemplate($widgetDefinitions) {
 		$file = $widgetDefinitions['widgetDefinitions']['tmpl'];
 
 		return is_file($file) ? $file : false;
@@ -195,10 +195,10 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public function prepareSelectionOptions($definitions)	{
+	public function prepareSelectionOptions($definitions) {
 		$optionMethod = $definitions['wConf']['FuncRef'];
 
-		if( TodoyuFunction::isFunctionReference($optionMethod) )	{
+		if( TodoyuFunction::isFunctionReference($optionMethod) ) {
 			$definitions = TodoyuFunction::callUserFunction($optionMethod, $definitions);
 		}
 
@@ -215,11 +215,11 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public function manipulateAutocompleteDefinitions($definitions)	{
+	public function manipulateAutocompleteDefinitions($definitions) {
 		$optionMethod = $definitions['wConf']['LabelFuncRef'];
 
-		if( $definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0 )	{
-			if( TodoyuFunction::isFunctionReference($optionMethod) )	{
+		if( $definitions['wConf']['autocomplete'] == true && intval($definitions['value']) > 0 ) {
+			if( TodoyuFunction::isFunctionReference($optionMethod) ) {
 				$definitions = TodoyuFunction::callUserFunction($optionMethod, $definitions);
 //				self::proceedLabelFunc($definitions);
 			}
@@ -237,7 +237,7 @@ class TodoyuFilterWidgetManager	{
 	 * @param	String	$label
 	 * @return string
 	 */
-	public static function getFilterWidgetNegationLabel($widgetName, $label)	{
+	public static function getFilterWidgetNegationLabel($widgetName, $label) {
 		$filterType = TodoyuSearchPreferences::getCurrentTab();
 
 		return Todoyu::$CONFIG['FILTERS'][strtoupper($filterType)]['widgets'][$widgetName]['wConf']['negation'][$label];
@@ -251,10 +251,10 @@ class TodoyuFilterWidgetManager	{
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	protected static function proceedLabelFunc($definitions)	{
+	protected static function proceedLabelFunc($definitions) {
 		$methodString = $definitions['wConf']['LabelFuncRef'];
 
-		if( TodoyuFunction::isFunctionReference($methodString) )	{
+		if( TodoyuFunction::isFunctionReference($methodString) ) {
 			$definitions = TodoyuFunction::callUserFunction($methodString, $definitions);
 		}
 

@@ -127,7 +127,7 @@ class TodoyuFilterAreaRenderer {
 	 * @param	Integer		$idFilterset
 	 * @return	String
 	 */
-	public static function renderControls($tab, $idFilterset = 0)	{
+	public static function renderControls($tab, $idFilterset = 0) {
 		$idFilterset = intval($idFilterset);
 
 			// Find filterset ID if not given

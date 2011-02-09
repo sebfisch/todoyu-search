@@ -59,7 +59,7 @@ class TodoyuFilterHelper {
 	 * @param	Boolean		$negate
 	 * @return	Array		[timestamp,logic]
 	 */
-	public static function getTimeAndLogicForDate($timestamp, $negate = false)	{
+	public static function getTimeAndLogicForDate($timestamp, $negate = false) {
 		$timestamp	= intval($timestamp);
 
 		if( $negate ) {

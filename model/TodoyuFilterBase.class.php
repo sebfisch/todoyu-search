@@ -211,7 +211,7 @@ abstract class TodoyuFilterBase {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getFilterRenderFunction($type = 'task')	{
+	public static function getFilterRenderFunction($type = 'task') {
 		return TodoyuFilterManager::getFilterTypeResultsRenderer($type);
 	}
 

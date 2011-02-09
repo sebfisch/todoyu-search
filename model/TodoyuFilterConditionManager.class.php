@@ -80,8 +80,8 @@ class TodoyuFilterConditionManager {
 			// Get conditions to type of filter set
 		$config = self::getTypeConditions(TodoyuFiltersetManager::getFiltersetType($idFilterset));
 			// Remove conditions without configuration
-		foreach($conditions as $key => $condition)	 {
-			if( ! $config[$condition['filter']] )	{
+		foreach($conditions as $key => $condition) {
+			if( ! $config[$condition['filter']] ) {
 				unset($conditions[$key]);
 			}
 		}
@@ -120,7 +120,7 @@ class TodoyuFilterConditionManager {
 	 * @param	Array	$filters
 	 * @return	Array
 	 */
-	public static function groupConditionsByType(array $conditions)	{
+	public static function groupConditionsByType(array $conditions) {
 		$grouped = array();
 
 		foreach($conditions as $name => $condition) {
