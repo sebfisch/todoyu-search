@@ -22,8 +22,21 @@
 
 class TodoyuSearchActionpanelActionController extends TodoyuActionController	{
 
+	/**
+	 * @param array $params
+	 * @return void
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:area');
+	}
 
 
+	/**
+	 * Controller to catch export from the search area
+	 *
+	 * @param  $params
+	 * @return void
+	 */
 	public function exportAction($params) {
 		$exportName	= $params['exportname'];
 		$type		= $params['tab'];

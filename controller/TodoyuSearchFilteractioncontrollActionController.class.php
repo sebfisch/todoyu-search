@@ -21,6 +21,15 @@
 class TodoyuSearchFilteractioncontrollActionController extends TodoyuActionController {
 
 	/**
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:use');
+	}
+
+
+
+	/**
 	 * Load filter type controls
 	 *
 	 * @param	Array	$params

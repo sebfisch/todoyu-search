@@ -27,6 +27,17 @@
 class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 
 	/**
+	 * Restrict access
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:use');
+	}
+
+
+
+	/**
 	 * Update search result for the submitted conditions
 	 *
 	 * @param	Array	$params

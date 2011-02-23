@@ -27,6 +27,17 @@
 class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 	/**
+	 * Restrict access
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:use');
+	}
+
+
+
+	/**
 	 * (Render and) add given search widget
 	 *
 	 * @param	Array	$params

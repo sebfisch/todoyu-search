@@ -21,6 +21,17 @@
 class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 	/**
+	 * Restrict access
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:use');
+	}
+
+
+
+	/**
 	 * Save currently active filter
 	 *
 	 * @param	Array	$params
@@ -96,6 +107,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function renameFiltersetAction(array $params) {
+		restrict('search', 'filtersets:renameAll');
+
 		$idFilterset= intval($params['item']);
 		$title		= trim($params['value']);
 
@@ -110,6 +123,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function toggleFiltersetVisibilityAction(array $params) {
+		restrict('search', 'filtersets:hideAll');
+
 		$idFilterset= intval($params['item']);
 		$visible	= intval($params['value']) === 1;
 
@@ -124,6 +139,8 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function deleteFiltersetAction(array $params) {
+		restrict('search', 'filtersets:deleteAll');
+
 		$idFilterset	= intval($params['item']);
 
 		TodoyuFiltersetManager::deleteFilterset($idFilterset, true);

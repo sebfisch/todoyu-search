@@ -27,6 +27,15 @@
 class TodoyuSearchFilterareaActionController extends TodoyuActionController {
 
 	/**
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:area');
+	}
+
+
+
+	/**
 	 * Load whole filter area.
 	 * Needs a tab and a filterset
 	 *

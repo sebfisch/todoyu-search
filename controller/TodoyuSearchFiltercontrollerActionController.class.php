@@ -28,6 +28,15 @@
 class TodoyuSearchFiltercontrollerActionController extends TodoyuActionController {
 
 	/**
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('search', 'general:area');
+	}
+
+
+	
+	/**
 	 * Autocomplete filter widget input (configuration is stored in filter config)
 	 *
 	 * @param	Array		$params
