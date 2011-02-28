@@ -39,6 +39,7 @@ Todoyu.Ext.search.FilterWidget = {
 	 * Handler when text in a text-widget is entered
 	 * The update is delayed, so no every key will force a result update
 	 *
+	 * @method	onTextEntered
 	 * @param	{Element}	input	The textinput
 	 */
 	onTextEntered: function(input) {

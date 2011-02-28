@@ -26,6 +26,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Add condition
 	 *
+	 * @method	add
 	 * @param	{String}	name
 	 * @param	{String}	type
 	 * @param	{String}	condition
@@ -49,6 +50,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Update value of given filter condition to given value 
 	 *
+	 * @method	updateValue
 	 * @param	{String}	conditionName
 	 * @param	{String}	value
 	 */
@@ -61,6 +63,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Update negation of given search filter condition
 	 *
+	 * @method	updateNegation
 	 * @param	{String}	conditionName
 	 * @param	{Boolean}	negate
 	 */
@@ -73,6 +76,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Check whether given search filter condition is currently negated
 	 *
+	 * @method	isNegated
 	 * @param	{String}	conditionName
 	 * @return	{Boolean}
 	 */
@@ -85,6 +89,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Toggle negation flag of given condition
 	 *
+	 * @method	toggleNegated
 	 * @param	{String}	conditionName
 	 */
 	toggleNegated: function(conditionName) {
@@ -96,6 +101,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Remove given condition from current search filter conditions
 	 *
+	 * @method	remove
 	 * @param	{String}	conditionName
 	 */
 	remove: function(conditionName) {
@@ -106,6 +112,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 	/**
 	 * Clear current search filter conditions
+	 *
+	 * @method	clear
 	 */
 	clear: function() {
 		this.conditions = {};
@@ -116,6 +124,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 	/**
 	 * Get all current search filter conditions, optionally as JSON
 	 *
+	 * @method	getAll
 	 * @param	{Boolean}	asJSON
 	 * @return	{Mixed}
 	 */
@@ -131,7 +140,8 @@ Todoyu.Ext.search.Filter.Conditions = {
 
 	/**
 	 * Get amount of current set search filter conditions
-	 * 
+	 *
+	 * @method	size
 	 * @return	{Number}
 	 */
 	size: function() {

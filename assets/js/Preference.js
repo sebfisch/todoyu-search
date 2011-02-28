@@ -31,6 +31,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save given preference of search extension 
 	 *
+	 * @method	save
 	 * @param	{String}	action
 	 * @param	{String}	value
 	 * @param	{String}	idItem
@@ -45,6 +46,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save preference: current active tab
 	 *
+	 * @method	saveActiveTab
 	 * @param	{String}	tab
 	 */
 	saveActiveTab: function(tab) {
@@ -56,6 +58,8 @@ Todoyu.Ext.search.Preference = {
 
 	/**
 	 * Save preference: current filter set
+	 *
+	 * @method	saveCurrentFilter
 	 */
 	saveCurrentFilter: function() {
 		var action	= 'saveCurrentFilterSet';
@@ -68,6 +72,8 @@ Todoyu.Ext.search.Preference = {
 
 	/**
 	 * Remove current filter set
+	 *
+	 * @method	removeCurrentFilter
 	 */
 	removeCurrentFilter: function() {
 		var action	= 'removeCurrentFilterSet';
@@ -79,6 +85,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save preference: collapsed-state of given element
 	 *
+	 * @method	saveToggeling
 	 * @param	{String}	elementID
 	 * @param	{Boolean}	elementDisplay
 	 */
@@ -98,6 +105,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save preference: current order of search filters
 	 *
+	 * @method	saveOrder
 	 * @param	{String}	value
 	 */
 	saveOrder: function(value) {
@@ -110,6 +118,7 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Wrapper method to evoke given search action with given value
 	 *
+	 * @method	sendAction
 	 * @param	{String}	action
 	 * @param	{String}	value
 	 */

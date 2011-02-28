@@ -30,11 +30,16 @@ Todoyu.Ext.search.Filter = {
 	 */
 	ext:		Todoyu.Ext.search,
 
+	/**
+	 * @property	activeTab
+	 * @type		String
+	 */
 	activeTab:	null,
 
 	/**
 	 * Counter for new names "new1, new2, etc.
-	 * @var	{Number}	nameCounter
+	 * @property	nameCounter
+	 * @type		Number
 	 */
 	nameCounter: 0,
 
@@ -43,6 +48,7 @@ Todoyu.Ext.search.Filter = {
 	 * Initialize search filters: inits active tab, active filterset + control + conditions
 	 * and updates to show the resp. results
 	 *
+	 * @method	init
 	 * @param	{String}	activeTab
 	 * @param	{Number}	idFilterset
 	 * @param	{Array}		conditions			List of conditions saved in active filterset
@@ -66,6 +72,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Init search conditions as given for given tab, install filters and consequent autocompleter, negations to given tab
 	 *
+	 * @method	initConditions
 	 * @param	{String}	tab
 	 * @param	{Array}		conditions
 	 */
@@ -89,6 +96,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Set active tab to given tab
 	 *
+	 * @method	setActiveTab
 	 * @param	{String}	tab
 	 */
 	setActiveTab: function(tab) {
@@ -102,6 +110,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Get currently active tab
 	 *
+	 * @method	getActiveTab
 	 * @return	{String}
 	 */
 	getActiveTab: function() {
@@ -113,7 +122,8 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Set current search filter to given ID
 	 *
-	 * @param {Number} idFilterset
+	 * @method	setFiltersetID
+	 * @param	{Number}	idFilterset
 	 */
 	setFiltersetID: function(idFilterset) {
 		this.FilterID = idFilterset;
@@ -124,6 +134,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Get ID of current search filter
 	 *
+	 * @method	getFiltersetID
 	 * @return	{Number}
 	 */
 	getFiltersetID: function() {
@@ -135,6 +146,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Get logical filters conjunction (AND / OR)
 	 *
+	 * @method	getConjunction
 	 * @return	{String}
 	 */
 	getConjunction: function() {
@@ -146,6 +158,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Handle tab click: activate, save pref, evoke content update
 	 *
+	 * @method	onTabClick
 	 * @param	{Event}		event
 	 * @param	{String}	tab
 	 */
@@ -160,6 +173,8 @@ Todoyu.Ext.search.Filter = {
 
 	/**
 	 * Reset filters
+	 *
+	 * @method	reset
 	 */
 	reset: function() {
 		this.Conditions.clear();
@@ -176,6 +191,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
+	 * @method	updateControll
 	 * @param	{String}	tab
 	 */
 	updateControll: function(tab) {
@@ -196,6 +212,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Enter description here...
 	 *
+	 * @method	addNewCondition
 	 * @param	{String}	type
 	 * @param	{String}	condition
 	 * @param	{String}	value
@@ -215,6 +232,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Remove given condition from current search filter conditions and evoke refresh of results
 	 *
+	 * @method	removeCondition
 	 * @param	{String}	conditionName
 	 */
 	removeCondition: function(conditionName) {
@@ -229,6 +247,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Build a new name for a new added widget
 	 *
+	 * @method	makeNewWidgetName
 	 * @param	{String}	condition
 	 * @return	{String}	new + counter number
 	 */
@@ -243,6 +262,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Load a filterSet by ID, update the widget area and the result list
 	 *
+	 * @method	loadFilterset
 	 * @param	{String}	tab
 	 * @param	{Number}	idFilterSet
 	 */
@@ -259,6 +279,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Update the filter area for a filterSet, update tab, widgets and results
 	 *
+	 * @method	updateFilterArea
 	 * @param	{String}	tab
 	 * @param	{Number}	idFilterSet
 	 */
@@ -283,6 +304,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Update the widget area with the widget of the selected filterSet
 	 *
+	 * @method	updateWidgetArea
 	 * @param	{String}	tab
 	 * @param	{Number}	idFilterSet
 	 */
@@ -305,6 +327,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Handler when widget area was updated
 	 *
+	 * @method	onWidgetAreaUpdated
 	 * @param	{String}		tab
 	 * @param	{Number}		idFilterSet
 	 * @param	{Ajax.Response}	response
@@ -323,6 +346,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Replace search results by result of current filter
 	 *
+	 * @method	updateResults
 	 * @param	{Number}		idFilterSet
 	 * @param	{Array}			conditions
 	 * @param	{String}		conjunction
@@ -357,7 +381,10 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Handler when search results are updated
 	 *
-	 * @param	{String}	tab
+	 * @method	onResultsUpdated
+	 * @param	{String}			tab
+	 * @param	{Number}			idFilterSet
+	 * @param	{Ajax.Response}		response
 	 */
 	onResultsUpdated: function(tab, idFilterSet, response) {
 		Todoyu.Hook.exec('search.results.updated', tab, idFilterSet);
@@ -368,6 +395,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Update the value of a condition
 	 *
+	 * @method	updateConditionValue
 	 * @param	{String}	name
 	 * @param	{String}	value
 	 */
@@ -381,6 +409,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Set the new value of a condition without updating the results
 	 *
+	 * @method	setConditionValue
 	 * @param	{String}		name		Name of the condition/widget
 	 * @param	{String}		value		New value
 	 */
@@ -391,8 +420,9 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Update negation of conditon with given state
+	 * Update negation of condition with given state
 	 *
+	 * @method	updateConditionNegation
 	 * @param	{String}	name
 	 * @param	{Boolean}	negate
 	 */
@@ -406,6 +436,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Change the negation of a condition
 	 *
+	 * @method	toggleConditionNegation
 	 * @param	{String}	 name
 	 */
 	toggleConditionNegation: function(name) {
@@ -418,6 +449,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Save the current widget collection as a new filterset
 	 *
+	 * @method	saveCurrentAreaAsNewFilterset
 	 * @param	{Function}		onComplete
 	 */
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
@@ -462,6 +494,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Save current collection of filters as filterSet
 	 *
+	 * @method	saveCurrentAreaAsFilterset
 	 * @param	{Number}	idFilterSet
 	 * @param	{Function}	 onComplete
 	 */
@@ -489,8 +522,9 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Save pref: currently active filterSet ID
 	 *
-	 * @param {String}	tab
-	 * @param {Number}	idFilterSet
+	 * @method	saveActiveFilterset
+	 * @param	{String}	tab
+	 * @param	{Number}	idFilterSet
 	 */
 	saveActiveFilterset: function(tab, idFilterSet) {
 		var action		= 'activeFilterset';

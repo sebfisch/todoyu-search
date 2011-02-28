@@ -33,6 +33,8 @@ Todoyu.Ext.search.FilterControl = {
 
 	/**
 	 * Initialize search filter controls: install observers
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.installObservers();
@@ -42,6 +44,8 @@ Todoyu.Ext.search.FilterControl = {
 
 	/**
 	 * Install observers
+	 *
+	 * @method	installObservers
 	 */
 	installObservers: function() {
 		this.conditionsObserver = this.onConditionsChange.bindAsEventListener(this);
@@ -55,6 +59,8 @@ Todoyu.Ext.search.FilterControl = {
 
 	/**
 	 * Uninstall observers
+	 *
+	 * @method	uninstallObservers
 	 */
 	uninstallObservers: function() {
 		$('filtercontrol-conditions').stopObserving('change', this.conditionsObserver);
@@ -69,6 +75,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Handler when condition changes
 	 *
+	 * @method	onConditionsChange
 	 * @param	{Event}		event
 	 */
 	onConditionsChange: function(event) {
@@ -88,6 +95,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
+	 * @method	onConjunctionChange
 	 * @param	{Event}	event
 	 */
 	onConjunctionChange: function(event) {
@@ -99,6 +107,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Enter description here...
 	 *
+	 * @method	getConjunction
 	 * @return	{String}
 	 */
 	getConjunction: function() {
@@ -110,6 +119,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Set conjunction value
 	 *
+	 * @method	setConjunction
 	 * @param	{String}	conjunction		AND or OR
 	 */
 	setConjunction: function(conjunction) {

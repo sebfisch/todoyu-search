@@ -44,6 +44,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Add given filter widget to search page widget area
 	 *
+	 * @method	add
 	 * @param	{String}	name
 	 * @param	{String}	type
 	 * @param	{String}	condition
@@ -73,6 +74,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Evoked after adding filter widget. Installs widget autoCompleter and negation handling
 	 *
+	 * @method	onAdded
 	 * @param	{String}			name
 	 * @param	{String}			condition
 	 * @param	{Ajax.Response}		response
@@ -89,6 +91,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Remove given widget from widget area
 	 *
+	 * @method	remove
 	 * @param	{String}	name
 	 */
 	remove: function(name) {
@@ -99,6 +102,8 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 	/**
 	 * Clear widget area (refresh)
+	 *
+	 * @method	clear
 	 */
 	clear: function() {
 		$(this.areaID).update('');
@@ -109,6 +114,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Get amount of filter widgets in widget area
 	 *
+	 * @method	getNumOfWidgets
 	 * @return	{Number}
 	 */
 	getNumOfWidgets: function() {
@@ -120,6 +126,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Install autoCompleter to ('textAC' input field of) given filter widget
 	 *
+	 * @method	installAutocomplete
 	 * @param	{String}	name
 	 */
 	installAutocomplete: function(name) {
@@ -161,6 +168,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Handle selection of autoCompleter suggestion: send value to condition of widget
 	 *
+	 * @method	onAutocompleteSelect
 	 * @param	{String}	name
 	 * @param	{Element}	textInput
 	 * @param	{Element} 	listElement
@@ -176,6 +184,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Install widget negating option click observer
 	 *
+	 * @method	installNegation
 	 * @param	{String}	name
 	 */
 	installNegation: function(name) {
@@ -193,6 +202,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Handle filter widget negation: invoke toggle of child elements' conditions
 	 *
+	 * @method	onNegation
 	 * @param	{Event}		event
 	 * @param	{String}	name
 	 */
@@ -207,6 +217,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Add given "special" configuration to widget area
 	 *
+	 * @method	addSpecialConfig
 	 * @param	{String}		name
 	 * @param	{unknown_type}	config
 	 */

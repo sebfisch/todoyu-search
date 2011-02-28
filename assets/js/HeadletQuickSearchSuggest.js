@@ -45,6 +45,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
 	 * Initialize quick search query input suggesting
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.headlet	= this.ext.Headlet.QuickSearch;
@@ -60,6 +62,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Enter description here...
 	 *
+	 * @method	onQueryChange
 	 * @param	{Event}		event
 	 */
 	onQueryChange: function(event) {
@@ -106,6 +109,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Check if user is navigating in result list (up and down)
 	 *
+	 * @method	isNavigating
 	 * @return	{Boolean}
 	 */
 	isNavigating: function() {
@@ -116,6 +120,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
 	 * Enter description here...
+	 *
+	 * @method	goToActiveElement
 	 */
 	goToActiveElement: function() {
 		eval(this.navigateActive.down().readAttribute('onclick'));
@@ -127,6 +133,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Navigate in result list (up and down)
 	 *
+	 * @method	navigate
 	 * @param	{Boolean}	down		Navigate down. Yes or No?
 	 */
 	navigate: function(down) {
@@ -165,6 +172,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
 	 * Update suggestion container with new results
+	 *
+	 * @method	updateResults
 	 */
 	updateResults: function() {
 		if( this.headlet.isEmpty() ) {
@@ -189,6 +198,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Handler when results have been updated
 	 *
+	 * @method	onResultsUpdated
 	 * @param	{Ajax.Response}		response
 	 */
 	onResultsUpdated: function(response) {
@@ -202,6 +212,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
 	 * Show suggested results container on right position
+	 *
+	 * @method	showResults
 	 */
 	showResults: function() {
 		var contentDim		= this.headlet.content.getDimensions();
@@ -221,6 +233,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 
 	/**
 	 * Hide suggested results
+	 *
+	 * @method	hideResults
 	 */
 	hideResults: function() {
 		this.suggest.hide();
@@ -231,6 +245,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	/**
 	 * Check whether results are visible
 	 *
+	 * @method	isResultsVisible
 	 * @return  {Boolean}
 	 */
 	isResultsVisible: function() {

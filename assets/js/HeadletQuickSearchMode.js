@@ -40,6 +40,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 	/**
 	 * Initialize quick search modes option: declare properties, setup click observer
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.headlet = this.ext.Headlet.QuickSearch;
@@ -55,6 +57,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 	/**
 	 * Show quick search modes selector
 	 *
+	 * @method	showModes
 	 * @param	{Event}		event
 	 */
 	showModes: function(event) {
@@ -78,6 +81,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 	/**
 	 * Hide quick search modes selector
+	 *
+	 * @method	hideModes
 	 */
 	hideModes: function() {
 		this.modes.hide();
@@ -89,6 +94,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 	/**
 	 * Activate given quick search mode
 	 *
+	 * @method	setMode
 	 * @param	{String}	mode
 	 */
 	setMode: function(mode) {
@@ -105,6 +111,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 	/**
 	 * Get currently active quick search mode
 	 *
+	 * @method	getMode
 	 * @return	{String}
 	 */
 	getMode: function() {
@@ -115,6 +122,8 @@ Todoyu.Ext.search.Headlet.QuickSearch.Mode = {
 
 	/**
 	 * Set search modes sub menu position
+	 *
+	 * @method	positionModes
 	 */
 	positionModes: function() {
 		var contentDim		= this.headlet.content.getDimensions();

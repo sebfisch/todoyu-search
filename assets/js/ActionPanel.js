@@ -17,15 +17,27 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Search
+ */
+
+/**
+ * @class		search.ActionPanel
+ * @namespace	Todoyu.Ext
+ */
 Todoyu.Ext.search.ActionPanel = {
 
+	/**
+	 * @property	filter
+	 * @type		Object
+	 */
 	filter: Todoyu.Ext.search.Filter,
 
 
 
 	/**
-	 *
-	 * @param name
+	 * @method	exportResults
+	 * @param	{String}	name
 	 */
 	exportResults: function(name) {
 		var idFilterSet = this.filter.getFiltersetID();
@@ -43,4 +55,5 @@ Todoyu.Ext.search.ActionPanel = {
 
 		Todoyu.goTo('search', 'actionpanel',options , '', false);
 	}
+
 };
