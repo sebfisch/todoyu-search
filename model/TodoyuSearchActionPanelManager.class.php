@@ -66,10 +66,6 @@ class TodoyuSearchActionPanelManager {
 
 			// Build filter
 		$typeClass	= TodoyuSearchFilterManager::getFilterTypeClass($type);
-
-		/**
-		 * @var	TodoyuSearchFilterBase	$typeFilter
-		 */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
 		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
