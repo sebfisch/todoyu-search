@@ -17,7 +17,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu.Ext.search.Headlet.QuickSearch = {
+Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * Ext namespace shortcut
@@ -41,15 +41,17 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 *
 	 * @method	init
 	 */
-	init: function() {
+	initialize: function($super, name) {
+		$super(name);
+
 		this.query	= $('todoyusearchheadletquicksearch-query');
 		this.button	= this.getButton();
 		this.content= this.getContent();
 
 		this.query.observe('click', this.onQueryClick.bindAsEventListener(this));
 
-		this.Suggest.init();
-		this.Mode.init();
+		this.Suggest.init(this);
+		this.Mode.init(this);
 	},
 
 
@@ -60,30 +62,14 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
-	onButtonClick: function(event) {
-		if( this.isContentVisible() ) {
-			this.hide();
-		} else {
-			this.hideOthers();
-			this.showContent();
+	onButtonClick: function($super, event) {
+		$super(event);
+
+		if( this.isVisible() ) {
 			this.focus();
-
-			this.saveOpenStatus();
 		}
-	},
 
-
-
-	/**
-	 * Callback for quicksearch headlet content click
-	 *
-	 * @method	onContentClick
-	 * @param	{Event}		event
-	 */
-	onContentClick: function(event) {
-		if( this.isEventInOwnContent(event) ) {
-			event.stop();
-		}
+		this.saveOpenStatus();
 	},
 
 
@@ -96,10 +82,6 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	onQueryClick: function(event) {
 		this.Mode.hideModes();
-
-		if( this.isEventInOwnContent(event) ) {
-			event.stop();
-		}
 	},
 
 
@@ -110,12 +92,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * @method	onBodyClick
 	 * @param	{Event}		event
 	 */
-	onBodyClick: function(event) {
+	onBodyClick: function($super, event) {
 		this.hideExtras();
-
-		if( this.isEventInOwnContent(event) ) {
-			event.stop();
-		}
 	},
 
 
@@ -125,8 +103,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 *
 	 * @method	hide
 	 */
-	hide: function() {
-		this.hideContent();
+	hide: function($super) {
+		$super();
+
 		this.hideExtras();
 		this.saveOpenStatus();
 	},
@@ -203,6 +182,390 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 */
 	isEmpty: function() {
 		return this.getValue() === '';
+	},
+
+
+	Mode: {
+
+		/**
+		 * Ext shortcut
+		 *
+		 * @var	{Object}	ext
+		 */
+		ext: Todoyu.Ext.search,
+
+		headlet: null,
+
+		mode: 0,
+
+		button: null,
+
+		modes: null,
+
+		positioned: false,
+
+
+
+		/**
+		 * Initialize quick search modes option: declare properties, setup click observer
+		 *
+		 * @method	init
+		 */
+		init: function(headlet) {
+			this.headlet = headlet;
+
+			this.button = $('todoyusearchheadletquicksearch-mode-button');
+			this.modes	= $('todoyusearchheadletquicksearch-modes');
+
+			this.button.on('click', this.onModeButtonClick.bind(this));
+			this.modes.on('click', 'li', this.onModeListClick.bind(this));
+		},
+
+
+
+		/**
+		 * Show quick search modes selector
+		 *
+		 * @method	showModes
+		 * @param	{Event}		event
+		 */
+		onModeButtonClick: function(event) {
+			event.stop();
+
+			if( this.modes.visible() ) {
+				this.hideModes();
+			} else {
+				this.modes.show();
+
+				if( ! this.positioned ) {
+					this.positionModes();
+				}
+
+				var numModes = $('todoyusearchheadletquicksearch-modes').select('li').size();
+				var newHeight= numModes * 21 + 18;
+				$('todoyusearchheadletquicksearch-form').setStyle({
+					height: newHeight + 'px'
+				});
+
+				this.headlet.Suggest.hideResults();
+			}
+		},
+
+
+
+		/**
+		 * Handler when clicked on mode list
+		 *
+		 * @param	{Event}		event
+		 * @param	{Element}	element
+		 */
+		onModeListClick: function(event, element) {
+			event.stop();
+
+			var mode	= element.className.replace('searchmode', '').toLowerCase();
+
+			this.setMode(mode);
+		},
+
+
+
+		/**
+		 * Hide quick search modes selector
+		 *
+		 * @method	hideModes
+		 */
+		hideModes: function() {
+			this.modes.hide();
+			$('todoyusearchheadletquicksearch-form').style.height='16px';
+		},
+
+
+
+		/**
+		 * Activate given quick search mode
+		 *
+		 * @method	setMode
+		 * @param	{String}	mode
+		 */
+		setMode: function(mode) {
+			$('todoyusearchheadletquicksearch-mode').value = mode;
+			$('todoyusearchheadletquicksearch-form').writeAttribute('class', 'icon searchmode' + mode.capitalize());
+
+			this.hideModes();
+			this.headlet.focus();
+			this.headlet.Suggest.updateResults();
+		},
+
+
+
+		/**
+		 * Get currently active quick search mode
+		 *
+		 * @method	getMode
+		 * @return	{String}
+		 */
+		getMode: function() {
+			return $F('todoyusearchheadletquicksearch-mode');
+		},
+
+
+
+		/**
+		 * Set search modes sub menu position
+		 *
+		 * @method	positionModes
+		 */
+		positionModes: function() {
+			var contentDim		= this.headlet.content.getDimensions();
+			var modeWidth		= this.modes.getWidth();
+
+			var top		= contentDim.height - 24;
+			var left	= contentDim.width - modeWidth + 1;
+
+			this.modes.setStyle({
+				'position':	'absolute',
+				'left':		left + 'px',
+				'top':		top + 'px'
+			});
+
+			this.positioned = true;
+		}
+
+
+
+	},
+
+	Suggest: {
+
+		/**
+		 * Ext shortcut
+		 */
+		ext:			Todoyu.Ext.search,
+
+		headlet:		null,
+
+		suggest:		null,
+
+		delay:			0.5,
+
+		navigatePos:	-1,
+
+		navigateActive:	null,
+
+		numElements:	0,
+
+		timeout:		null,
+
+
+
+		/**
+		 * Initialize quick search query input suggesting
+		 *
+		 * @method	init
+		 */
+		init: function(headlet) {
+			this.headlet	= headlet;
+			this.suggest	= $('todoyusearchheadletquicksearch-suggest');
+
+				// Move suggest to body (to scroll)
+			document.body.appendChild(this.suggest);
+			this.headlet.query.observe('keyup', this.onQueryChange.bind(this));
+		},
+
+
+
+		/**
+		 * Enter description here...
+		 *
+		 * @method	onQueryChange
+		 * @param	{Event}		event
+		 */
+		onQueryChange: function(event) {
+			window.clearTimeout(this.timeout);
+
+				// Pressed [ENTER]
+			if( event.keyCode === Event.KEY_RETURN ) {
+				if( this.isNavigating() ) {
+					this.goToActiveElement();
+				} else {
+					this.timeout = this.updateResults.bind(this).delay(this.delay);
+				}
+				return;
+			}
+
+				// Pressed navigation arrows
+			if( event.keyCode === Event.KEY_DOWN || event.keyCode === Event.KEY_UP ) {
+				if( this.suggest.visible() ) {
+					var down = event.keyCode === Event.KEY_DOWN;
+					this.navigate(down);
+				}
+				return;
+			}
+
+				// Pressed [ESC] (hide results or whole headlet)
+			if( event.keyCode === Event.KEY_ESC ) {
+				if( this.isResultsVisible() ) {
+					this.hideResults();
+				} else {
+					this.headlet.toggleContent();
+				}
+				return;
+			}
+
+			if( this.headlet.isEmpty() ) {
+				this.hideResults();
+			} else {
+				this.timeout = this.updateResults.bind(this).delay(this.delay);
+			}
+		},
+
+
+
+		/**
+		 * Check if user is navigating in result list (up and down)
+		 *
+		 * @method	isNavigating
+		 * @return	{Boolean}
+		 */
+		isNavigating: function() {
+			return this.navigatePos > -1;
+		},
+
+
+
+		/**
+		 * Enter description here...
+		 *
+		 * @method	goToActiveElement
+		 */
+		goToActiveElement: function() {
+			eval(this.navigateActive.down().readAttribute('onclick'));
+			this.hide();
+		},
+
+
+
+		/**
+		 * Navigate in result list (up and down)
+		 *
+		 * @method	navigate
+		 * @param	{Boolean}	down		Navigate down. Yes or No?
+		 */
+		navigate: function(down) {
+				// Deactivate selection
+			if( this.navigateActive !== null ) {
+				this.navigateActive.removeClassName('active');
+			}
+
+				// Increment or decrement to new position
+			if( down ) {
+				this.navigatePos++;
+			} else {
+				this.navigatePos--;
+			}
+
+				// If navigating over the top, stop walking upwards and do nothing
+			if( this.navigatePos <= -1 ) {
+				this.navigatePos = -1;
+				this.navigateActive = null;
+				return;
+			}
+
+				// If navigating over the last element, set position to last element (stay on last element)
+			if( this.navigatePos >= this.numElements ) {
+				this.navigatePos = this.numElements-1;
+			}
+
+				// Select active element
+			this.navigateActive = this.suggest.down('li li', this.navigatePos);
+
+				// Set element active
+			this.navigateActive.addClassName('active');
+		},
+
+
+
+		/**
+		 * Update suggestion container with new results
+		 *
+		 * @method	updateResults
+		 */
+		updateResults: function() {
+			if( this.headlet.isEmpty() ) {
+				return;
+			}
+
+			var url		= Todoyu.getUrl('search', 'suggest');
+			var options	= {
+				'parameters': {
+					'action':	'suggest',
+					'query':	this.headlet.getValue(),
+					'mode':		this.headlet.Mode.getMode()
+				},
+				'onComplete':	this.onResultsUpdated.bind(this)
+			};
+
+			Todoyu.Ui.update(this.suggest, url, options);
+		},
+
+
+
+		/**
+		 * Handler when results have been updated
+		 *
+		 * @method	onResultsUpdated
+		 * @param	{Ajax.Response}		response
+		 */
+		onResultsUpdated: function(response) {
+			this.navigatePos = -1;
+			this.numElements = this.suggest.select('li li').size();
+
+			this.showResults();
+		},
+
+
+
+		/**
+		 * Show suggested results container on right position
+		 *
+		 * @method	showResults
+		 */
+		showResults: function() {
+			var contentDim		= this.headlet.content.getDimensions();
+			var contentOffset	= this.headlet.content.cumulativeOffset();
+			var suggestDim		= this.suggest.getDimensions();
+
+			this.suggest.setStyle({
+				'left':	contentOffset.left - suggestDim.width + contentDim.width - 1 + 'px',
+				'top':	contentOffset.top + contentDim.height + 'px'
+			});
+
+			Todoyu.Ui.scrollToTop();
+			this.suggest.show();
+		},
+
+
+
+		/**
+		 * Hide suggested results
+		 *
+		 * @method	hideResults
+		 */
+		hideResults: function() {
+			this.suggest.hide();
+		},
+
+
+
+		/**
+		 * Check whether results are visible
+		 *
+		 * @method	isResultsVisible
+		 * @return  {Boolean}
+		 */
+		isResultsVisible: function() {
+			return this.suggest.visible();
+		}
 	}
 
-};
+});

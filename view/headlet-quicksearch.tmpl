@@ -13,7 +13,7 @@
 			<ul>
 				{foreach $searchModes searchMode}
 					<li class="searchmode{ucfirst($searchMode.type)}">
-						<a href="javascript:void(0)" onclick="Todoyu.Ext.search.Headlet.QuickSearch.Mode.setMode('{$searchMode.type}')">
+						<a href="javascript:void(0)">
 							{Label $searchMode.labelMode}
 						</a>
 					</li>
