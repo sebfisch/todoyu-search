@@ -43,7 +43,7 @@ class TodoyuSearchFilterConditionManager {
 	public static function getFilterCondition($idFilterCondition) {
 		$idFilterCondition	= intval($idFilterCondition);
 
-		return TodoyuRecordManager::getRecord('TodoyuFilterCondition', $idFilterCondition);
+		return TodoyuRecordManager::getRecord('TodoyuSearchFilterCondition', $idFilterCondition);
 	}
 
 

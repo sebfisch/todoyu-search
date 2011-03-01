@@ -20,7 +20,7 @@
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['text'] = array(
 	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-text.tmpl',
-	'configFunc'	=> 'TodoyuFilterWidgetManager::manipulateAutocompleteDefinitions'
+	'configFunc'	=> 'TodoyuSearchFilterWidgetManager::manipulateAutocompleteDefinitions'
 );
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['date'] = array(
@@ -33,7 +33,7 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['checkbox'] = array(
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['select'] = array(
 	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-select.tmpl',
-	'configFunc'	=> 'TodoyuFilterWidgetManager::prepareSelectionOptions'
+	'configFunc'	=> 'TodoyuSearchFilterWidgetManager::prepareSelectionOptions'
 );
 
 ?>
