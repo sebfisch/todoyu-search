@@ -19,14 +19,18 @@
 *****************************************************************************/
 
 
-
+/**
+ * @todo		comment
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchActionPanelManager {
 
-
-
 	/**
-	 * @static
-	 * @return String
+	 * @todo	comment
+	 *
+	 * @return	String
 	 */
 	public static function renderActionPanel($activeTab) {
 		$tmpl = 'ext/search/view/actionpanel.tmpl';
@@ -41,11 +45,11 @@ class TodoyuSearchActionPanelManager {
 
 
 	/**
-	 * @static
-	 * @param  $name
-	 * @param  $tab
-	 * @param  $params
-	 * @return void
+	 * @todo	comment
+	 *
+	 * @param	$name
+	 * @param	$tab
+	 * @param	$params
 	 */
 	public static function dispatchExport($name, $type, $idFilterset, $conditions, $conjunction = array()) {
 		$export	= self::getExport($type, $name);
@@ -88,11 +92,11 @@ class TodoyuSearchActionPanelManager {
 
 
 	/**
-	 * @static
-	 * @param  $type
-	 * @param  $name
-	 * @param  $method
-	 * @return void
+	 * @todo	comment
+	 *
+	 * @param	$type
+	 * @param	$name
+	 * @param	$method
 	 */
 	public static function addExport($type, $name, $method, $label, $htmlClass = '', $right = '') {
 		$rightArray = explode(':', $right);
@@ -109,10 +113,11 @@ class TodoyuSearchActionPanelManager {
 
 
 	/**
-	 * @static
-	 * @param  $type
-	 * @param  $name
-	 * @return
+	 * @todo	comment
+	 *
+	 * @param	$type
+	 * @param	$name
+	 * @return	String
 	 */
 	public static function getExport($type, $name) {
 		return Todoyu::$CONFIG['EXT']['search']['filter'][$type]['actionpanel']['export'][$name];
@@ -121,9 +126,10 @@ class TodoyuSearchActionPanelManager {
 
 
 	/**
-	 * @static
-	 * @param  $type
-	 * @return
+	 * @todo	comment
+	 *
+	 * @param	String	$type
+	 * @return	String
 	 */
 	public static function getExportOfType($type) {
 		return Todoyu::$CONFIG['EXT']['search']['filter'][$type]['actionpanel']['export'];
