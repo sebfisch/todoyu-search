@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFilterAreaRenderer {
+class TodoyuSearchFilterAreaRenderer {
 
 	/**
 	 * Render whole filter area: contains tabs, control, widget area and search results
@@ -45,9 +45,9 @@ class TodoyuFilterAreaRenderer {
 
 			// If filterset is set, get filterset conjunction
 		if( $idFilterset !== 0 ) {
-			$filterset	= TodoyuFiltersetManager::getFiltersetRecord($idFilterset);
+			$filterset	= TodoyuSearchFiltersetManager::getFiltersetRecord($idFilterset);
 			$conjunction= $filterset['conjunction'];
-			$conditions	= TodoyuFilterConditionManager::getFiltersetConditions($idFilterset);
+			$conditions	= TodoyuSearchFilterConditionManager::getFiltersetConditions($idFilterset);
 		} else {
 			$conjunction= 'AND';
 		}
@@ -137,14 +137,14 @@ class TodoyuFilterAreaRenderer {
 
 			// Get conjunction from filterset if available
 		if( $idFilterset !== 0 ) {
-			$filterset	= TodoyuFiltersetManager::getFiltersetRecord($idFilterset);
+			$filterset	= TodoyuSearchFiltersetManager::getFiltersetRecord($idFilterset);
 			$conjunction= $filterset['conjunction'];
 		} else {
 			$conjunction= 'AND';
 		}
 
 			// Get grouped type conditions
-		$groupedConditions	= TodoyuFilterConditionManager::getGroupedTypeConditions($tab);
+		$groupedConditions	= TodoyuSearchFilterConditionManager::getGroupedTypeConditions($tab);
 
 		$tmpl	= 'ext/search/view/filter-action-controls.tmpl';
 		$data 	= array(
@@ -176,13 +176,13 @@ class TodoyuFilterAreaRenderer {
 	 */
 	public static function renderWidgetArea($idFilterset) {
 		$idFilterset= intval($idFilterset);
-		$filterset	= TodoyuFiltersetManager::getFiltersetRecord($idFilterset);
-		$conditions	= TodoyuFilterConditionManager::getFiltersetConditions($idFilterset);
+		$filterset	= TodoyuSearchFiltersetManager::getFiltersetRecord($idFilterset);
+		$conditions	= TodoyuSearchFilterConditionManager::getFiltersetConditions($idFilterset);
 
 		$content	= '';
 
 		foreach($conditions as $condition) {
-			$content .= TodoyuFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['negate']==1);
+			$content .= TodoyuSearchFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['negate']==1);
 		}
 
 		return $content;
@@ -205,26 +205,26 @@ class TodoyuFilterAreaRenderer {
 
 			// If filterset is given, use its conditions
 		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
+			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterset);
 		} else {
-			$conditions = TodoyuFilterConditionManager::buildFilterConditionArray($conditions);
+			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
 		}
 
 			// Build filter
-		$typeClass	= TodoyuFilterManager::getFilterTypeClass($type);
+		$typeClass	= TodoyuSearchFilterManager::getFilterTypeClass($type);
 
 		/**
-		 * @var	TodoyuFilterBase	$typeFilter
+		 * @var	TodoyuProjectTaskFilter	$typeFilter
 		 */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
-		$sorting	= TodoyuFilterManager::getFilterDefaultSorting($type);
+		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
 
 		if( $typeFilter->hasActiveFilters() ) {
 			$itemIDs	= $typeFilter->getItemIDs($sorting);
 		} else {
 			$itemIDs	= array();
-		}		
+		}
 
 		return TodoyuSearchRenderer::renderResultsListing($type, $itemIDs);
 	}

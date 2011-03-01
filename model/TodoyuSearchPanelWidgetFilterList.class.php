@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
 	 * Constructor of the class
@@ -57,8 +57,8 @@ class TodoyuPanelWidgetSearchFilterList extends TodoyuPanelWidget implements Tod
 	 * @return	String
 	 */
 	public function renderContent() {
-		$filtersetTypes		= TodoyuFiltersetManager::getFiltersetTypes();
-		$filters			= TodoyuFiltersetManager::getFiltersets();
+		$filtersetTypes		= TodoyuSearchFiltersetManager::getFiltersetTypes();
+		$filters			= TodoyuSearchFiltersetManager::getFiltersets();
 		$groupedFiltersets	= $this->groupFiltersets($filters);
 		$toggleStatus		= TodoyuSearchPreferences::getFiltersetListToggle();
 		$activeFiltersets	= array();

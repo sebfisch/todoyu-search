@@ -19,37 +19,20 @@
 *****************************************************************************/
 
 /**
- * Filter widget renderer
+ * Filter condition
  *
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFilterWidgetRenderer {
+class TodoyuSearchFilterCondition extends TodoyuBaseObject {
 
 	/**
-	 * Render a filter widget
+	 * Initialize filter condition
 	 *
-	 * @param	String		$type
-	 * @param	String		$widgetKey
-	 * @param	String		$widgetName
-	 * @param	Mixed		$value
-	 * @param	Boolean		$negate
-	 * @return	String
+	 * @param	Integer		$idCondition
 	 */
-	public static function renderWidget($type, $widgetKey, $widgetName = 'new1', $value = '', $negate = false) {
-		$config	= TodoyuFilterWidgetManager::getExtendedWidgetConfig($type, $widgetKey, $widgetName, $value, $negate);
-
-		$tmpl	= $config['widgetDefinitions']['tmpl'];
-		$data	= array(
-			'definitions' => $config
-		);
-
-		if( is_null($tmpl) ) {
-			Todoyu::log('Missing widget template (' . $type . '/' . $widgetKey . ')');
-			return '';
-		}
-
-		return render($tmpl, $data);
+	public function __construct($idCondition) {
+		parent::__construct($idCondition, 'ext_search_filtercondition');
 	}
 
 }

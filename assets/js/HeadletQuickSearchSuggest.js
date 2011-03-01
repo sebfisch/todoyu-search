@@ -50,7 +50,7 @@ Todoyu.Ext.search.Headlet.QuickSearch.Suggest = {
 	 */
 	init: function() {
 		this.headlet	= this.ext.Headlet.QuickSearch;
-		this.suggest	= $('headlet-quicksearch-suggest');
+		this.suggest	= $('todoyusearchheadletquicksearch-suggest');
 
 			// Move suggest to body (to scroll)
 		document.body.appendChild(this.suggest);

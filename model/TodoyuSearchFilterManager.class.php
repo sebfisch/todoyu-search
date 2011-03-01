@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFilterManager {
+class TodoyuSearchFilterManager {
 
 	/**
 	 * Get configuration of a filter (or a widget)

@@ -45,7 +45,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Remove given one from currently active filters 
+	 * Remove given one from currently active filters
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -59,10 +59,10 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		}
 
 		if( $idFilterset !== 0 ) {
-			$conditions	= TodoyuFiltersetManager::getFiltersetConditions($idFilterset);
+			$conditions	= TodoyuSearchFiltersetManager::getFiltersetConditions($idFilterset);
 
 				// Send widgets
-			$content	= TodoyuFilterAreaRenderer::renderWidgetArea($idFilterset);
+			$content	= TodoyuSearchFilterAreaRenderer::renderWidgetArea($idFilterset);
 				// Add JS init for loaded widgets
 			$content 	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
 		} else {
@@ -112,7 +112,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		$idFilterset= intval($params['item']);
 		$title		= trim($params['value']);
 
-		TodoyuFiltersetManager::renameFilterset($idFilterset, $title);
+		TodoyuSearchFiltersetManager::renameFilterset($idFilterset, $title);
 	}
 
 
@@ -128,7 +128,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		$idFilterset= intval($params['item']);
 		$visible	= intval($params['value']) === 1;
 
-		TodoyuFiltersetManager::updateFiltersetVisibility($idFilterset, $visible);
+		TodoyuSearchFiltersetManager::updateFiltersetVisibility($idFilterset, $visible);
 	}
 
 
@@ -143,7 +143,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 		$idFilterset	= intval($params['item']);
 
-		TodoyuFiltersetManager::deleteFilterset($idFilterset, true);
+		TodoyuSearchFiltersetManager::deleteFilterset($idFilterset, true);
 	}
 
 
@@ -156,7 +156,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	public function filtersetOrderAction(array $params) {
 		$orderData	= json_decode($params['value'], true);
 
-		TodoyuFiltersetManager::updateOrder($orderData['items']);
+		TodoyuSearchFiltersetManager::updateOrder($orderData['items']);
 	}
 
 

@@ -25,7 +25,7 @@
  * @subpackage	Filter
  */
 
-abstract class TodoyuFilterBase {
+abstract class TodoyuSearchFilterBase {
 
 	/**
 	 * All active filters
@@ -190,7 +190,7 @@ abstract class TodoyuFilterBase {
 		if( method_exists($this, $method) ) {
 			return array($this, $method);
 		} else {
-			$config	= TodoyuFilterManager::getFilterConfig($this->type, $filter);
+			$config	= TodoyuSearchFilterManager::getFilterConfig($this->type, $filter);
 
 			if( $config !== false ) {
 				return explode('::', $config['funcRef']);
@@ -212,7 +212,7 @@ abstract class TodoyuFilterBase {
 	 * @return	String
 	 */
 	public static function getFilterRenderFunction($type = 'task') {
-		return TodoyuFilterManager::getFilterTypeResultsRenderer($type);
+		return TodoyuSearchFilterManager::getFilterTypeResultsRenderer($type);
 	}
 
 

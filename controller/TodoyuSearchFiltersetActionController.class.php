@@ -47,12 +47,12 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 		$data = array(
 			'filterset'	=> 0,
 			'type'		=> $type,
-			'title'		=> TodoyuFiltersetManager::validateTitle($type, $title),
+			'title'		=> TodoyuSearchFiltersetManager::validateTitle($type, $title),
 			'conjunction'=> $conjunction,
 			'conditions'=> $conditions
 		);
 
-		$idFilterset = TodoyuFiltersetManager::saveFilterset($data);
+		$idFilterset = TodoyuSearchFiltersetManager::saveFilterset($data);
 
 		TodoyuSearchPreferences::saveActiveFilterset($type, $idFilterset);
 
@@ -76,8 +76,8 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 		$data = array(
 			'conjunction'=> $conjunction,
 		);
-		TodoyuFiltersetManager::updateFilterset($idFilterset, $data);
-		TodoyuFilterConditionManager::saveFilterConditions($idFilterset, $conditions);
+		TodoyuSearchFiltersetManager::updateFilterset($idFilterset, $data);
+		TodoyuSearchFilterConditionManager::saveFilterConditions($idFilterset, $conditions);
 
 		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 

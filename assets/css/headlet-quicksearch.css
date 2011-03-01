@@ -1,17 +1,17 @@
-#headlet-quicksearch-button {
+#todoyusearchheadletquicksearch-button {
 	background:url(../img/icons.png) no-repeat 5px 5px;
 }
 
-#headlet-quicksearch-content {
+#todoyusearchheadletquicksearch .content {
 	width:200px;
 }
 
-#headlet-quicksearch-form {
+#todoyusearchheadletquicksearch form {
 	position:relative;
 	padding:5px 38px 5px 5px;
 }
 
-#headlets #headlet-quicksearch-mode-button {
+#headlets #todoyusearchheadletquicksearch-mode-button {
 	position:absolute;
 	top:0;
 	right:0;
@@ -27,7 +27,7 @@
 /* -------------------
 	Modes sub menu
    ------------------- */
-#headlet-quicksearch-modes {
+#todoyusearchheadletquicksearch-modes {
 	width:198px;
 	margin-left:-3px;
 	margin-top:-2px;
@@ -35,23 +35,23 @@
 	-moz-box-shadow:2px 2px 7px #999;
 	box-shadow:2px 2px 7px #999;
 }
-	#headlet-quicksearch-modes ul {
+	#todoyusearchheadletquicksearch-modes ul {
 		width:198px;
 		border:none !important;
 	}
 
-	#headlet-quicksearch-modes li:hover {
+	#todoyusearchheadletquicksearch-modes li:hover {
 		border:none;
 		background-color:#edf0df;
 	}
 
 
 
-#headlet-quicksearch li.searchmodeAll a {
+#todoyusearchheadletquicksearch li.searchmodeAll a {
 	background:url(../img/icons.png) no-repeat 2px -27px;
 }
 
-#headlet-quicksearch-suggest {
+#todoyusearchheadletquicksearch-suggest {
 	position:absolute;
 	width:350px;
 	text-align:left;
@@ -59,25 +59,25 @@
 	padding-bottom:20px;
 }
 
-	#headlet-quicksearch-suggest ul {
+	#todoyusearchheadletquicksearch-suggest ul {
 		background-color:#fff;
 		border-top:none;
 		border:1px solid #ddd;
 		border-bottom:none;
 	}
 
-	#headlet-quicksearch-suggest .quicksearch-suggest {
+	#todoyusearchheadletquicksearch-suggest .quicksearch-suggest {
 		-webkit-box-shadow:2px 2px 5px #999;
 		-moz-box-shadow:2px 2px 5px #999;
 		box-shadow:2px 2px 5px #999;
 	}
 
-	#headlet-quicksearch-suggest ul ul {
+	#todoyusearchheadletquicksearch-suggest ul ul {
 		background-color:transparent;
 		border:none;
 	}
 
-	#headlet-quicksearch-suggest ul .type {
+	#todoyusearchheadletquicksearch-suggest ul .type {
 		display:block;
 		font-weight:bold;
 		text-transform:uppercase;
@@ -87,24 +87,24 @@
 		border-bottom:1px solid #ccc;
 	}
 
-	#headlet-quicksearch-suggest ul li ul li a {
+	#todoyusearchheadletquicksearch-suggest ul li ul li a {
 		display:block;
 		padding:2px;
 		padding-left:10px;
 		border-bottom:1px solid #ccc;
 	}
 
-	#headlet-quicksearch-suggest ul li ul li.active a,
-	#headlet-quicksearch-suggest ul li ul li a:hover {
+	#todoyusearchheadletquicksearch-suggest ul li ul li.active a,
+	#todoyusearchheadletquicksearch-suggest ul li ul li a:hover {
 		background-color:#f2f2d2;
 	}
 
-	#headlet-quicksearch-suggest a span.title {
+	#todoyusearchheadletquicksearch-suggest a span.title {
 		font-weight:bold;
 		padding-left:10px;
 	}
 
-	#headlet-quicksearch-suggest a span.info {
+	#todoyusearchheadletquicksearch-suggest a span.info {
 		color:#aaa;
 		display:block;
 		padding-left:10px;

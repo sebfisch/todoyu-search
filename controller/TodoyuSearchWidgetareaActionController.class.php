@@ -49,7 +49,7 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 		$value		= $params['value'];
 		$negate		= intval($params['negate']) === 1;
 
-		echo TodoyuFilterWidgetRenderer::renderWidget($type, $condition, $widgetName, $value, $negate);
+		echo TodoyuSearchFilterWidgetRenderer::renderWidget($type, $condition, $widgetName, $value, $negate);
 	}
 
 
@@ -74,14 +74,14 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 
 			// Filterset given? get rel. conditions, render and init widget area
 		if( $idFilterset !== 0 ) {
-			$filterSet	= TodoyuFiltersetManager::getFilterset($idFilterset);
+			$filterSet	= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
 			$conditions	= $filterSet->getConditions();
-//			$conditions	= TodoyuFiltersetManager::getFiltersetConditions($idFilterset);
+//			$conditions	= TodoyuSearchFiltersetManager::getFiltersetConditions($idFilterset);
 
 			TodoyuHeader::sendTodoyuHeader('conjunction', $filterSet->getConjunction());
 
 				// Send widgets
-			$content	= TodoyuFilterAreaRenderer::renderWidgetArea($idFilterset);
+			$content	= TodoyuSearchFilterAreaRenderer::renderWidgetArea($idFilterset);
 				// Add JS init for loaded widgets
 			$content 	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
 		} else {

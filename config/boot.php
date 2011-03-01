@@ -26,6 +26,6 @@ define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 TodoyuLabelManager::register('search', 'search', 'ext.xml');
 TodoyuLabelManager::register('panelwidget-searchfilterlist', 'search', 'panelwidget-searchfilterlist.xml');
 
-TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuBrowserSearch::hookNotLoggedIn', 980);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuSearchBrowserSearch::hookNotLoggedIn', 980);
 
 ?>

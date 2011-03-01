@@ -42,7 +42,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 	 * @method	init
 	 */
 	init: function() {
-		this.query	= $('headlet-quicksearch-query');
+		this.query	= $('todoyusearchheadletquicksearch-query');
 		this.button	= this.getButton();
 		this.content= this.getContent();
 
@@ -105,7 +105,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = {
 
 
 	/**
-	 * Upon click: hide mode selector and result suggestions. 
+	 * Upon click: hide mode selector and result suggestions.
 	 *
 	 * @method	onBodyClick
 	 * @param	{Event}		event

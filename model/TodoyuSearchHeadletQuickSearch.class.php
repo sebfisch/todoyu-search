@@ -18,7 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
+class TodoyuSearchHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 
 	/**
 	 * Initialize quick search headlet (set template, set initial data)
@@ -37,7 +37,7 @@ class TodoyuHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	protected function renderOverlayContent() {
 		$tmpl	= 'ext/search/view/headlet-quicksearch.tmpl';
 		$data	= array(
-			'id'			=> $this->getID(),
+			'name'			=> $this->getName(),
 			'searchModes'	=> TodoyuSearchManager::getEngines(),
 			'query'			=> $this->params['query']
 		);

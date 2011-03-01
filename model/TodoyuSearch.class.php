@@ -76,18 +76,6 @@ class TodoyuSearch {
 
 
 	/**
-	 * Get results
-	 *
-	 * @param	String	$query
-	 * @todo 	Check / remove?
-	 */
-	public static function getResults($query) {
-
-	}
-
-
-
-	/**
 	 * Get search modes
 	 *
 	 * @return	Array

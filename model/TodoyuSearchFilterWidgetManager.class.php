@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFilterWidgetManager	{
+class TodoyuSearchFilterWidgetManager	{
 
 	/**
 	 * Get configuration array for a widget
@@ -39,7 +39,7 @@ class TodoyuFilterWidgetManager	{
 		$type		= strtoupper(trim($type));
 		$widgetName	= trim($widgetName);
 
-		$config		= TodoyuFilterManager::getFilterConfig($type, $widgetName);
+		$config		= TodoyuSearchFilterManager::getFilterConfig($type, $widgetName);
 
 		if( $config === false ) {
 			return array();

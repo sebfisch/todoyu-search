@@ -39,7 +39,7 @@ class TodoyuSearchFilteractioncontrollActionController extends TodoyuActionContr
 		$tab		= $params['tab'];
 		$idFilterset= 0; // Where does it come from?
 
-		return TodoyuFilterAreaRenderer::renderControls($tab, $idFilterset);
+		return TodoyuSearchFilterAreaRenderer::renderControls($tab, $idFilterset);
 	}
 
 }

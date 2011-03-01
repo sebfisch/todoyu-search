@@ -67,7 +67,7 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 		$q			= trim($params['q']);
 		$keywords	= TodoyuArray::trimExplode(' ', $q, true);
 
-		$results	= TodoyuTaskSearch::getSuggestions($keywords);
+		$results	= TodoyuProjectTaskSearch::getSuggestions($keywords);
 		$suggestions= array();
 
 		foreach($results as $result) {

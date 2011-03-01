@@ -19,12 +19,12 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Handle opensearch plugin for direct browser search
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Search
  */
-class TodoyuBrowserSearch {
+class TodoyuSearchBrowserSearch {
 
 	public static function addPageLinkTag() {
 		$title		= 'todoyu';

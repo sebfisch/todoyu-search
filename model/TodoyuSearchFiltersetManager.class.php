@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFiltersetManager {
+class TodoyuSearchFiltersetManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -37,12 +37,12 @@ class TodoyuFiltersetManager {
 	 * Get filter
 	 *
 	 * @param	Integer		$idFilter
-	 * @return	TodoyuFilterset
+	 * @return	TodoyuSearchFilterset
 	 */
 	public static function getFilterset($idFilterset) {
 		$idFilterset	= intval($idFilterset);
 
-		return TodoyuRecordManager::getRecord('TodoyuFilterset', $idFilterset);
+		return TodoyuRecordManager::getRecord('TodoyuSearchFilterset', $idFilterset);
 	}
 
 
@@ -100,7 +100,7 @@ class TodoyuFiltersetManager {
 		Todoyu::db()->deleteRecord(self::TABLE, $idFilterset);
 
 		if( $deleteConditions ) {
-			TodoyuFilterConditionManager::deleteFiltersetConditions($idFilterset);
+			TodoyuSearchFilterConditionManager::deleteFiltersetConditions($idFilterset);
 		}
 	}
 
@@ -115,7 +115,7 @@ class TodoyuFiltersetManager {
 	public static function getFiltersetConditions($idFilterset) {
 		$idFilterset= intval($idFilterset);
 
-		return TodoyuFilterConditionManager::getFiltersetConditions($idFilterset);
+		return TodoyuSearchFilterConditionManager::getFiltersetConditions($idFilterset);
 	}
 
 
@@ -143,7 +143,7 @@ class TodoyuFiltersetManager {
 	 */
 	public static function getFiltersetResultItemIDs($idFilterset) {
 		$idFilterset	= intval($idFilterset);
-		$filterset		= TodoyuFiltersetManager::getFilterset($idFilterset);
+		$filterset		= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
 
 		return $filterset->getItemIDs();
 	}
@@ -296,7 +296,7 @@ class TodoyuFiltersetManager {
 	 */
 	public static function getFiltersets($idPerson = 0, $type = null) {
 		$idPerson		= personid($idPerson);
-		$filtersetTypes	= TodoyuFiltersetManager::getFiltersetTypes();
+		$filtersetTypes	= TodoyuSearchFiltersetManager::getFiltersetTypes();
 		$typeList		= TodoyuArray::implodeQuoted($filtersetTypes);
 
 		$fields	= '*';
@@ -410,7 +410,7 @@ class TodoyuFiltersetManager {
 		}
 
 			// Save conditions
-		TodoyuFilterConditionManager::saveFilterConditions($idFilterset, $filterData['conditions']);
+		TodoyuSearchFilterConditionManager::saveFilterConditions($idFilterset, $filterData['conditions']);
 
 		return $idFilterset;
 	}
@@ -453,7 +453,7 @@ class TodoyuFiltersetManager {
 
 		foreach($value as $filterSet) {
 			/**
-			 * @var	TodoyuFilterBase	$filterSet
+			 * @var	TodoyuSearchFilterBase	$filterSet
 			 */
 			$queryArray = $filterSet->getQueryArray('', '', false, true);
 
@@ -575,7 +575,7 @@ class TodoyuFiltersetManager {
 	 * @return	Boolean
 	 */
 	protected static function isFiltersetUsed($idFilterset, $idFiltersetToCheck) {
-		$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
+		$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterset);
 
 		foreach($conditions as $condition) {
 			if( $condition['filter'] === 'filterSet' ) {

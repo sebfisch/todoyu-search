@@ -55,20 +55,20 @@ class TodoyuSearchActionPanelManager {
 
 			// If filterset is given, use its conditions
 		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
+			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterset);
 		} else {
-			$conditions = TodoyuFilterConditionManager::buildFilterConditionArray($conditions);
+			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
 		}
 
 			// Build filter
-		$typeClass	= TodoyuFilterManager::getFilterTypeClass($type);
+		$typeClass	= TodoyuSearchFilterManager::getFilterTypeClass($type);
 
 		/**
-		 * @var	TodoyuFilterBase	$typeFilter
+		 * @var	TodoyuSearchFilterBase	$typeFilter
 		 */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
-		$sorting	= TodoyuFilterManager::getFilterDefaultSorting($type);
+		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
 
 		if( $typeFilter->hasActiveFilters() ) {
 			$itemIDs	= $typeFilter->getItemIDs($sorting);
@@ -112,7 +112,7 @@ class TodoyuSearchActionPanelManager {
 	 * @static
 	 * @param  $type
 	 * @param  $name
-	 * @return 
+	 * @return
 	 */
 	public static function getExport($type, $name) {
 		return Todoyu::$CONFIG['EXT']['search']['filter'][$type]['actionpanel']['export'][$name];
@@ -123,7 +123,7 @@ class TodoyuSearchActionPanelManager {
 	/**
 	 * @static
 	 * @param  $type
-	 * @return 
+	 * @return
 	 */
 	public static function getExportOfType($type) {
 		return Todoyu::$CONFIG['EXT']['search']['filter'][$type]['actionpanel']['export'];

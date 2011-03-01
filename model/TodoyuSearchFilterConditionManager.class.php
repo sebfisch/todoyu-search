@@ -23,9 +23,9 @@
  * Add, remove and get filter conditions of filtersets
  *
  * @package		Todoyu
- * @subpackage	Filter
+ * @subpackage	Search
  */
-class TodoyuFilterConditionManager {
+class TodoyuSearchFilterConditionManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -38,7 +38,7 @@ class TodoyuFilterConditionManager {
 	 * Get filter condition
 	 *
 	 * @param	Integer			$idFilterCondition
-	 * @return	TodoyuFilterCondition
+	 * @return	TodoyuSearchFilterCondition
 	 */
 	public static function getFilterCondition($idFilterCondition) {
 		$idFilterCondition	= intval($idFilterCondition);
@@ -78,7 +78,7 @@ class TodoyuFilterConditionManager {
 		$conditions = TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 
 			// Get conditions to type of filter set
-		$config = self::getTypeConditions(TodoyuFiltersetManager::getFiltersetType($idFilterset));
+		$config = self::getTypeConditions(TodoyuSearchFiltersetManager::getFiltersetType($idFilterset));
 			// Remove conditions without configuration
 		foreach($conditions as $key => $condition) {
 			if( ! $config[$condition['filter']] ) {

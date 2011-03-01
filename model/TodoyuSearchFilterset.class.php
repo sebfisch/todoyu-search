@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuFilterset extends TodoyuBaseObject {
+class TodoyuSearchFilterset extends TodoyuBaseObject {
 
 	/**
 	 * Initialize filterset
@@ -40,7 +40,7 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	/**
 	 * Get owner of the filterset
 	 *
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public function getPerson() {
 		return $this->getPerson('create');
@@ -54,7 +54,7 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getConditions() {
-		return TodoyuFiltersetManager::getFiltersetConditions($this->getID());
+		return TodoyuSearchFiltersetManager::getFiltersetConditions($this->getID());
 	}
 
 
@@ -98,8 +98,8 @@ class TodoyuFilterset extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getItemIDs() {
-		$class	= TodoyuFilterManager::getFilterTypeClass($this->getType());
-		$sorting= TodoyuFilterManager::getFilterDefaultSorting($this->getType());
+		$class	= TodoyuSearchFilterManager::getFilterTypeClass($this->getType());
+		$sorting= TodoyuSearchFilterManager::getFilterDefaultSorting($this->getType());
 
 		if( $class !== false ) {
 			$conditions	= $this->getConditions();

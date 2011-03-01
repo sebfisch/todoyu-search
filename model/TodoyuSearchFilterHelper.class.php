@@ -22,9 +22,9 @@
  * Various filter helper functions
  *
  * @package		Todoyu
- * @subpackage	Core
+ * @subpackage	Search
  */
-class TodoyuFilterHelper {
+class TodoyuSearchFilterHelper {
 
 	/**
 	 * Get query parts for date field filtering

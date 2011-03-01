@@ -42,9 +42,9 @@ if( allowed('search', 'general:use') ) {
 	}
 
 		// Add quick search headlet
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickSearch');
+	TodoyuHeadManager::addHeadlet('TodoyuSearchHeadletQuickSearch');
 
-	TodoyuBrowserSearch::addPageLinkTag();
+	TodoyuSearchBrowserSearch::addPageLinkTag();
 }
 
 ?>
