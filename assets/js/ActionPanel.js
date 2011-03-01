@@ -36,6 +36,8 @@ Todoyu.Ext.search.ActionPanel = {
 
 
 	/**
+	 * Evoke results CSV export
+	 *
 	 * @method	exportResults
 	 * @param	{String}	name
 	 */
@@ -53,7 +55,7 @@ Todoyu.Ext.search.ActionPanel = {
 				'conjunction':	conjunction
 		};
 
-		Todoyu.goTo('search', 'actionpanel',options , '', false);
+		Todoyu.goTo('search', 'actionpanel', options , '', false);
 	}
 
 };

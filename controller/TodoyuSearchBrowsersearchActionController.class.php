@@ -19,13 +19,17 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Search browsersearch action controller
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Search
  */
 class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 
+	/**
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function xmlAction(array $params) {
 		$tmpl	= 'ext/search/view/opensearch.tmpl';
 		$data	= array(

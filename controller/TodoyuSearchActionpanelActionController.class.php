@@ -18,24 +18,29 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
+/**
+ * Search actionpanel action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Search
+ */
 class TodoyuSearchActionpanelActionController extends TodoyuActionController	{
 
 	/**
-	 * @param array $params
-	 * @return void
+	 * Initialize controller: restrict access
+	 *
+	 * @param	Array	$params
 	 */
 	public function init(array $params) {
 		restrict('search', 'general:area');
 	}
 
 
+
 	/**
 	 * Controller to catch export from the search area
 	 *
-	 * @param  $params
-	 * @return void
+	 * @param	Array	$params
 	 */
 	public function exportAction($params) {
 		$exportName	= $params['exportname'];
@@ -46,6 +51,7 @@ class TodoyuSearchActionpanelActionController extends TodoyuActionController	{
 
 		TodoyuSearchActionPanelManager::dispatchExport($exportName, $type, $idFilterset, $conditions, $conjunction);
 	}
+
 }
 
 ?>
