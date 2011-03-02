@@ -48,8 +48,8 @@ class TodoyuSearchFilterWidgetManager	{
 			// Add default negation labels if negation is just true
 		if( gettype($config['wConf']['negation']) === 'string' ) {
 			$config['wConf']['negation'] = array(
-				'labelTrue'	=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.true',
-				'labelFalse'=> 'LLL:search.negation.' . $config['wConf']['negation'] . '.false'
+				'labelTrue'	=> 'LLL:search.ext.negation.' . $config['wConf']['negation'] . '.true',
+				'labelFalse'=> 'LLL:search.ext.negation.' . $config['wConf']['negation'] . '.false'
 			);
 		}
 

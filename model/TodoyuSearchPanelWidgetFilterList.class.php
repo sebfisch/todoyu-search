@@ -38,7 +38,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget implements Tod
 		parent::__construct(
 			'search',
 			'searchfilterlist',
-			'LLL:panelwidget-searchfilterlist.title',
+			'LLL:search.panelwidget-searchfilterlist.title',
 			$config,
 			$params,
 			$idArea

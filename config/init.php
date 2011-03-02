@@ -21,7 +21,7 @@
 require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
 
 if( allowed('search', 'general:use') ) {
-	TodoyuSearchManager::addEngine('all', null, '', 'search.search.label', 0);
+	TodoyuSearchManager::addEngine('all', null, '', 'search.ext.search.label', 0);
 }
 
 Todoyu::$CONFIG['EXT']['search']['suggestLimitAll']= 5;

@@ -14,23 +14,23 @@
 				</a>
 				<span class="actions">
 					{restrictOrOwn 'search' 'filtersets.renameAll' $filterset.id_person_create}
-					<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.rename}" href="javascript:void(0)">
-						{Label core.rename}
+					<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.global.rename}" href="javascript:void(0)">
+						{Label core.global.rename}
 					</a>
 					{/restrictOrOwn}
 					{restrictOrOwn 'search' 'filtersets.hideAll' $filterset.id_person_create}
-					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}invisible{/if}"  title="{if $filterset.is_hidden == 0}{Label core.hide}{else}{Label core.unhide}{/if}">
-						{if $filterset.is_hidden == 0}{Label panelwidget-searchfilterlist.hide}{else}{Label core.unhide}{/if}
+					<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}invisible{/if}"  title="{if $filterset.is_hidden == 0}{Label core.global.hide}{else}{Label core.global.unhide}{/if}">
+						{if $filterset.is_hidden == 0}{Label search.panelwidget-searchfilterlist.hide}{else}{Label core.global.unhide}{/if}
 					</a>
 					{/restrictOrOwn}
 					{restrictOrOwn 'search' 'filtersets.save' $filterset.id_person_create}
-					<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label core.save}" href="javascript:void(0)">
-						{Label core.save}
+					<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label core.global.save}" href="javascript:void(0)">
+						{Label core.global.save}
 					</a>
 					{/restrictOrOwn}
 					{restrictOrOwn 'search' 'filtersets.deleteAll' $filterset.id_person_create}
-					<a id="filterset-{$filterset.id}-control-delete" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.deleteFilterset({$filterset.id})" class="delete" title="{Label core.delete}" href="javascript:void(0)">
-						{Label core.delete}
+					<a id="filterset-{$filterset.id}-control-delete" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.deleteFilterset({$filterset.id})" class="delete" title="{Label core.global.delete}" href="javascript:void(0)">
+						{Label core.global.delete}
 					</a>
 					{/restrictOrOwn}
 				</span>

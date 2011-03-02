@@ -96,7 +96,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	renameFilterset: function(idFilterSet) {
 		var currentName	= $('filterset-' + idFilterSet + '-label').title.stripScripts().strip();
-		var newName		= prompt('[LLL:search.filterset.rename]', currentName);
+		var newName		= prompt('[LLL:search.ext.filterset.rename]', currentName);
 
 		if( newName !== null && newName.strip() !== '' ) {
 			newName = newName.stripScripts().strip();
@@ -123,11 +123,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		element.up('li').toggleClassName('hidden');
 
 		if( isHidden === false ) {
-			element.title		= '[LLL:core.unhide]';
-			element.update('[LLL:core.unhide]');
+			element.title		= '[LLL:core.global.unhide]';
+			element.update('[LLL:core.global.unhide]');
 		} else {
-			element.title		= '[LLL:core.hide]';
-			element.update('[LLL:core.hide]');
+			element.title		= '[LLL:core.global.hide]';
+			element.update('[LLL:core.global.hide]');
 		}
 
 		this.saveFiltersetVisibility(idFilterSet, isHidden);
@@ -144,11 +144,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	saveFilterset: function(idFilterSet, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
-			if( confirm('[LLL:search.filterset.confirm.overwrite]') ) {
+			if( confirm('[LLL:search.ext.filterset.confirm.overwrite]') ) {
 				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
 			}
 		} else {
-			alert('[LLL:search.filterset.error.saveWrongType]');
+			alert('[LLL:search.ext.filterset.error.saveWrongType]');
 		}
 	},
 
@@ -175,7 +175,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param	{Number}	idFilterSet
 	 */
 	deleteFilterset: function(idFilterSet) {
-		if( confirm('[LLL:search.filterset.confirm.delete]') ) {
+		if( confirm('[LLL:search.ext.filterset.confirm.delete]') ) {
 			$('filterset_' + idFilterSet).remove();
 			this.saveFiltersetDelete(idFilterSet);
 		}

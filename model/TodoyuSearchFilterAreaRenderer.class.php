@@ -153,11 +153,11 @@ class TodoyuSearchFilterAreaRenderer {
 			'conjunctions'		=> array(
 				array(
 					'key'	=> 'AND',
-					'label'	=> 'search.and'
+					'label'	=> 'search.ext.and'
 				),
 				array(
 					'key'	=> 'OR',
-					'label'	=> 'search.or'
+					'label'	=> 'search.ext.or'
 				)
 			),
 			'activeConjunction'	=> $conjunction

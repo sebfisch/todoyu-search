@@ -455,7 +455,7 @@ Todoyu.Ext.search.Filter = {
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
 				// Get name for new filter
-			var title 	= prompt('[LLL:search.newFilterLabel]', '[LLL:search.newFilterLabel.preset]');
+			var title 	= prompt('[LLL:search.ext.newFilterLabel]', '[LLL:search.ext.ext.newFilterLabel.preset]');
 
 				// Canceled saving
 			if( title === null ) {
@@ -463,7 +463,7 @@ Todoyu.Ext.search.Filter = {
 			}
 				// No name entered
 			if( title.strip() === '' ) {
-				alert('[LLL:search.filterset.error.saveEmptyName]');
+				alert('[LLL:search.ext.filterset.error.saveEmptyName]');
 				return;
 			}
 
@@ -485,7 +485,7 @@ Todoyu.Ext.search.Filter = {
 
 			Todoyu.send(url, options);
 		} else {
-			alert('[LLL:search.filterset.error.saveNoConditions]');
+			alert('[LLL:search.ext.filterset.error.saveNoConditions]');
 		}
 	},
 

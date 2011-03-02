@@ -4,7 +4,7 @@
 	{$selected = explode(',', $definitions.value)}
 	<select class="select value" {if $definitions.wConf.multiple == true}multiple="multiple"{/if} size="{$definitions.wConf.size}" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))">
 		{if $definitions.wConf.size === 1}
-			<option value="0">{Label form.select.pleaseSelect}</option>
+			<option value="0">{Label core.form.select.pleaseSelect}</option>
 		{/if}
 
 		{foreach $definitions.options option}

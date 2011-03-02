@@ -23,8 +23,8 @@ define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 
 // Register module locales
-TodoyuLabelManager::register('search', 'search', 'ext.xml');
-TodoyuLabelManager::register('panelwidget-searchfilterlist', 'search', 'panelwidget-searchfilterlist.xml');
+//TodoyuLabelManager::register('search', 'search', 'ext.xml');
+//TodoyuLabelManager::register('panelwidget-searchfilterlist', 'search', 'panelwidget-searchfilterlist.xml');
 
 TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuSearchBrowserSearch::hookNotLoggedIn', 980);
 
