@@ -15,8 +15,8 @@
 	<label index="filterset.error.saveEmptyName">Please enter a name for the filter set</label>
 	<label index="negation.default.true">Is Not</label>
 	<label index="negation.default.false">Is</label>
-	<label index="negation.datetime.true">From</label>
-	<label index="negation.datetime.false">To</label>
+	<label index="negation.datetime.true">After</label>
+	<label index="negation.datetime.false">Before</label>
 	<label index="negation.numbercompare.true">smaller than</label>
 	<label index="negation.numbercompare.false">bigger than</label>
 	<label index="newFilterLabel">Enter a name for the new filter</label>
