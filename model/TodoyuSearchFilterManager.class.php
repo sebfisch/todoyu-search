@@ -97,22 +97,6 @@ class TodoyuSearchFilterManager {
 
 
 	/**
-	 * Get filter class for a type
-	 *
-	 * @param	String		$type
-	 * @return	String
-	 */
-	public static function getFilterTypeClass($type) {
-		TodoyuExtensions::loadAllFilters();
-
-		$class	= Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['class'];
-
-		return is_null($class) ? false : $class;
-	}
-
-
-
-	/**
 	 * Get filter sorting for type
 	 *
 	 * @static

@@ -514,7 +514,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 * @todo 	Implement negation?
 	 */
-	public static function Filter_filterset($value, $negate = false) {
+	public static function Filter_filterSet($value, $negate = false) {
 		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
 			// Prepare return values
@@ -522,13 +522,13 @@ class TodoyuSearchFiltersetManager {
 
 			// Process all filtersets
 		foreach($filtersetIDs as $idFilterset) {
-			$filterSet		= self::getFilterset($idFilterset);
-			$className		= 'Todoyu'.ucfirst($filterSet['type']).'Filter';
+			$filterSet	= self::getFilterset($idFilterset);
+			$className	= $filterSet->getClass();
+
 			if( class_exists($className) ) {
 				$filter[] = new $className($filterSet->getConditions(), $filterSet->getConjunction());
 			}
 		}
-
 
 		return (sizeof($filter) > 0) ? self::Filter_filterObject($filter, $negate) : array();
 	}
@@ -596,6 +596,22 @@ class TodoyuSearchFiltersetManager {
 		}
 
 		return false;
+	}
+
+
+
+	/**
+	 * Get filter class for a type
+	 *
+	 * @param	String		$type
+	 * @return	String
+	 */
+	public static function getFiltersetTypeClass($type) {
+		TodoyuExtensions::loadAllFilters();
+
+		$class	= Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['class'];
+
+		return is_null($class) ? false : $class;
 	}
 
 }

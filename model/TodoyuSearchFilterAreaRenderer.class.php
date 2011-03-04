@@ -211,7 +211,7 @@ class TodoyuSearchFilterAreaRenderer {
 		}
 
 			// Build filter
-		$typeClass	= TodoyuSearchFilterManager::getFilterTypeClass($type);
+		$typeClass	= TodoyuSearchFiltersetManager::getFiltersetTypeClass($type);
 
 		/**
 		 * @var	TodoyuProjectTaskFilter	$typeFilter

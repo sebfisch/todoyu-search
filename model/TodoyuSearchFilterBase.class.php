@@ -192,6 +192,8 @@ abstract class TodoyuSearchFilterBase {
 		} else {
 			$config	= TodoyuSearchFilterManager::getFilterConfig($this->type, $filter);
 
+			TodoyuDebug::printInFireBug($config, 'config');
+
 			if( $config !== false ) {
 				return explode('::', $config['funcRef']);
 			}
@@ -249,6 +251,8 @@ abstract class TodoyuSearchFilterBase {
 
 					// Call filter function to get query parts for filter
 				$filterQueryParts = call_user_func_array($funcRef, $params);
+
+				TodoyuDebug::printInFireBug($filterQueryParts, 'parts');
 
 					// Check if return value is an array
 				if( ! is_array($filterQueryParts) ) {
@@ -353,7 +357,6 @@ abstract class TodoyuSearchFilterBase {
 			// Get rights query parts
 		$rightsParts= $this->fetchRightsQueryParts();
 
-
 			// Combine join from filter and rights
 		$join	= array_unique(TodoyuArray::merge($queryParts['join'], $rightsParts['join']));
 		$tables	= array_unique(TodoyuArray::merge($queryParts['tables'], $rightsParts['tables']));
@@ -455,6 +458,8 @@ abstract class TodoyuSearchFilterBase {
 	 */
 	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
 		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted, false);
+
+
 
 			// If query was not built, return an empty array
 //		if( $queryArray === false ) {
