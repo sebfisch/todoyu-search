@@ -455,7 +455,7 @@ Todoyu.Ext.search.Filter = {
 	saveCurrentAreaAsNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
 				// Get name for new filter
-			var title 	= prompt('[LLL:search.ext.newFilterLabel]', '[LLL:search.ext.ext.newFilterLabel.preset]');
+			var title 	= prompt('[LLL:search.ext.newFilterLabel]', '[LLL:search.ext.newFilterLabel.preset]');
 
 				// Canceled saving
 			if( title === null ) {
