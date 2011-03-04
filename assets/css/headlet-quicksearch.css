@@ -59,8 +59,9 @@
 
 	#todoyusearchheadletquicksearch-suggest ul {
 		background-color:#fff;
+		border-top:none;
 		border:1px solid #ddd;
-		border-bottom-style:none;
+		border-bottom:none;
 	}
 
 	#todoyusearchheadletquicksearch-suggest .quicksearch-suggest {
