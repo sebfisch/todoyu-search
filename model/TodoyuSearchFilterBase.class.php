@@ -252,8 +252,6 @@ abstract class TodoyuSearchFilterBase {
 					// Call filter function to get query parts for filter
 				$filterQueryParts = call_user_func_array($funcRef, $params);
 
-				TodoyuDebug::printInFireBug($filterQueryParts, 'parts');
-
 					// Check if return value is an array
 				if( ! is_array($filterQueryParts) ) {
 					continue;
