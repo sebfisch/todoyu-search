@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Search
  */
-class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 
 	/**
 	 * Constructor of the class
@@ -77,24 +77,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget implements Tod
 			'toggleStatus' 		=> $toggleStatus
 		);
 
-		$content = render($tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Renders the Panel Widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
+		return render($tmpl, $data);
 	}
 
 
