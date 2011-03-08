@@ -248,15 +248,7 @@ class TodoyuSearchFiltersetManager {
 			$keys	= array();
 		}
 
-
 		return array_map('strtolower', $keys);
-
-//		$field	= 'type';
-//		$table	= self::TABLE;
-//		$where	= '';
-//		$group	= 'type';
-//
-//		return Todoyu::db()->getColumn($field, $table, $where, $group);
 	}
 
 
