@@ -155,7 +155,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	/**
 	 * Render listing of search results
 	 *
-	 * @param 	String	$type
+	 * @param	String	$type
 	 * @param	Array	$itemIDs
 	 * @return	String
 	 */

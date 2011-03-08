@@ -413,7 +413,7 @@ abstract class TodoyuSearchFilterBase {
 	 *
 	 * @param	String		$orderBy	Optional order by for query
 	 * @param	String		$limit		Optional limit for query
-	 * @param 	Boolean		$showDeleted
+	 * @param	Boolean		$showDeleted
 	 * @return	String
 	 */
 	public function getQuery($orderBy = '', $limit = '', $showDeleted = false) {
@@ -449,7 +449,7 @@ abstract class TodoyuSearchFilterBase {
 	 *
 	 * @param	String		$orderBy					Optional order by for query
 	 * @param	String		$limit						Optional limit for query
-	 * @param 	Boolean		$showDeleted				Show deleted records
+	 * @param	Boolean		$showDeleted				Show deleted records
 	 * @return	Array		List of IDs of matching records
 	 */
 	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {

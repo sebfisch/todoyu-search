@@ -187,11 +187,10 @@ class TodoyuSearchFiltersetManager {
 
 
 	/**
-	 * Get result items count for the combination of all filtersets
+	 * Get amount of result items for the combination of all filtersets
 	 *
-	 *
-	 * @param array $filtersetIDs
-	 * @return unknown
+	 * @param	Array	$filtersetIDs
+	 * @return	Integer
 	 */
 	public static function getFiltersetsCount(array $filtersetIDs) {
 		$resultItems	= self::getFiltersetsResultItemIDs($filtersetIDs);
