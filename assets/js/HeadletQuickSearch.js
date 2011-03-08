@@ -90,6 +90,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Upon click: hide mode selector and result suggestions.
 	 *
 	 * @method	onBodyClick
+	 * @param	{Object}	$super
 	 * @param	{Event}		event
 	 */
 	onBodyClick: function($super, event) {
@@ -210,6 +211,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		 * Initialize quick search modes option: declare properties, setup click observer
 		 *
 		 * @method	init
+		 * @param	{Object}	headlet
 		 */
 		init: function(headlet) {
 			this.headlet = headlet;
@@ -331,9 +333,9 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			this.positioned = true;
 		}
 
-
-
 	},
+
+
 
 	Suggest: {
 
@@ -362,6 +364,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		 * Initialize quick search query input suggesting
 		 *
 		 * @method	init
+		 * @param	{Object}	headlet
 		 */
 		init: function(headlet) {
 			this.headlet	= headlet;
