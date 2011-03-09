@@ -23,16 +23,21 @@
 Todoyu.Ext.search.FilterWidget = {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:		Todoyu.Ext.search,
 
 	/**
 	 * Timeouts of widgets
+	 *
+	 * @property	timeout
+	 * @type		Object
 	 */
 	timeout:	{},
+
 
 
 	/**

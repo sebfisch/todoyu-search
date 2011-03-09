@@ -20,18 +20,35 @@
 Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 
 	/**
-	 * Ext namespace shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:		Todoyu.Ext.search,
 
+	/**
+	 * @property	query
+	 * @type		Element
+	 */
 	query:		null,
 
+	/**
+	 * @property	button
+	 * @type		Element
+	 */
 	button:		null,
 
+	/**
+	 * @property	content
+	 * @type		Element
+	 */
 	content:	null,
 
+	/**
+	 * @property	bodyClickObserver
+	 * @type		Object
+	 */
 	bodyClickObserver: null,
 
 
@@ -186,13 +203,15 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	},
 
 
+
 	Mode: {
 
 		/**
-		 * Ext shortcut
-		 *
-		 * @var	{Object}	ext
-		 */
+	 	 * Reference to extension
+	 	 *
+	 	 * @property	ext
+	 	 * @type		Object
+	 	 */
 		ext: Todoyu.Ext.search,
 
 		headlet: null,
@@ -340,7 +359,10 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	Suggest: {
 
 		/**
-		 * Ext shortcut
+		 * Reference to extension
+		 *
+		 * @property	ext
+		 * @type		Object
 		 */
 		ext:			Todoyu.Ext.search,
 

@@ -24,18 +24,30 @@
 Todoyu.Ext.search.Filter.WidgetArea = {
 
 	/**
-	 * Extension backlink
-	 * @var	{Object}	ext
+	 * Reference to extension
+	 *
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.search,
 
+	/**
+	 * @property	areaID
+	 * @type		String
+	 */
 	areaID: 'widget-area',
 
+	/**
+	 * @property	autocompleters
+	 * @type		Object
+	 */
 	autocompleters: {},
 
 	/**
-	 * Special configuration added by some widgets
-	 * This is a temporary container for widget config
+	 * Special configuration added by some widgets, this is a temporary container for widget config
+	 *
+	 * @property	specialConfig
+	 * @type		Object
 	 */
 	specialConfig: {},
 

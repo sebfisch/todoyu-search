@@ -20,13 +20,23 @@
 Todoyu.Ext.search.FilterControl = {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:					Todoyu.Ext.search,
 
+	/**
+	 * @property	conditionsObserver
+	 * @type		Observer
+	 */
 	conditionsObserver:		null,
+
+	/**
+	 * @property	conjunctionObserver
+	 * @type		Observer
+	 */
 	conjunctionObserver:	null,
 
 

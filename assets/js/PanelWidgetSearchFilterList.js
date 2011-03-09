@@ -20,14 +20,23 @@
 Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:		Todoyu.Ext.search,
 
+	/**
+	 * @property	key
+	 * @type		String
+	 */
 	key:		'searchfilterlist',
 
+	/**
+	 * @property	sortables
+	 * @type		Array
+	 */
 	sortables:	[],
 
 

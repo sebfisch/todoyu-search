@@ -24,9 +24,10 @@
 Todoyu.Ext.search.Filter = {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:		Todoyu.Ext.search,
 
@@ -42,6 +43,7 @@ Todoyu.Ext.search.Filter = {
 	 * @type		Number
 	 */
 	nameCounter: 0,
+
 
 
 	/**
