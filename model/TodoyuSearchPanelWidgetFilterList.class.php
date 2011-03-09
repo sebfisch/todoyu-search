@@ -32,7 +32,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 	 * - intitializes the filters
 	 * - modifies the filters
 	 */
-	public function __construct(array $config, array $params = array(), $idArea = 0) {
+	public function __construct(array $config, array $params = array()) {
 		TodoyuExtensions::loadAllFilters();
 
 		parent::__construct(
@@ -40,8 +40,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 			'searchfilterlist',
 			'LLL:search.panelwidget-searchfilterlist.title',
 			$config,
-			$params,
-			$idArea
+			$params
 		);
 
 		$this->addHasIconClass();
