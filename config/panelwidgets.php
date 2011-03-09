@@ -22,6 +22,6 @@
  * Configure panel widgets to be shown in Search area
  */
 
-TodoyuPanelWidgetManager::addDefaultPanelWidget('search', 'TodoyuSearchPanelWidgetFilterList', 10);
+TodoyuPanelWidgetManager::addPanelWidget('search', 'search', 'FilterList', 10);
 
 ?>
