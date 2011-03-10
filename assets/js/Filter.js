@@ -19,6 +19,8 @@
 
 /**
  * Handles the filter
+ *
+ * @module	Search
  */
 
 Todoyu.Ext.search.Filter = {

@@ -19,6 +19,8 @@
 
 /**
  * Filter widget in search area
+ *
+ * @module	Search
  */
 Todoyu.Ext.search.FilterWidget = {
 

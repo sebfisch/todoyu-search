@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 /**
- *	Ext: search
+ * @module	Search
  */
 
 Todoyu.Ext.search.Filter.WidgetArea = {
