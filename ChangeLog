@@ -1,7 +1,12 @@
 todoyu search changelog
 
-search 1.1.0
-	* 2.1 dev version
+search 1.1.0 (requires core >= 2.1) - not released yet
+	* Feature: Added display of result items amount to search results in search area
+	* Bugfix: Dynamic foreign filtersets are not found anymore after big class rename session
+	* Bugfix: Fixed date-time negation labels (renamed From/To => Before/After)
+	* Changed: Added extkey prefix to all PHP classes
+	* Added: commented search actionpanel controller methods
+	* Bugfix: Fixed missing rights init/check methods in controllers
 
 search 1.0.7
  	* Start changelog

@@ -191,7 +191,7 @@ class TodoyuSearchFilterAreaRenderer {
 
 
 	/**
-	 * Render
+	 * Render search results for search area
 	 *
 	 * @param	String		$type
 	 * @param	Integer		$idFilterset
@@ -226,7 +226,14 @@ class TodoyuSearchFilterAreaRenderer {
 			$itemIDs	= array();
 		}
 
-		return TodoyuSearchRenderer::renderResultsListing($type, $itemIDs);
+		$tmpl	= 'ext/search/view/search-results.tmpl';
+		$data	= array(
+			'itemsAmount'	=> sizeof($itemIDs),
+			'itemsLabel'	=> TodoyuLabelManager::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
+			'itemsList'		=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
+		);
+
+		return render($tmpl, $data);
 	}
 
 }

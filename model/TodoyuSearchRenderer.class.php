@@ -48,7 +48,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 
 	/**
-	 * Render headlet searchbox in the toppanel
+	 * Render headlet search box in the top panel
 	 *
 	 * @return	String
 	 */
@@ -73,7 +73,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	public static function renderInlineTabHead($activeTab = null) {
 		$tabs 		= array();
 
-			// If no tab forced, get preferenced tab
+			// If no tab forced, get preferrenced tab
 		if( is_null($activeTab) ) {
 			$activeTab = TodoyuSearchPreferences::getActiveTab();
 		}
@@ -108,51 +108,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 
 	/**
-	 * Renders the search results.
-	 *
-	 * - reads the active filter by url-parameter or preset
-	 * - reads the active tab (filtertype) by url-parameter or preset
-	 * - renders the filtered results by defined render function
-	 *
-	 * @param	String		$activeTab
-	 * @param	Integer		$idFilterset
-	 * @param	Boolean		$useConditions
-	 * @param	Array		$filterConditions
-	 * @param	String		$conjunction			AND / OR
-	 * @return	String
-	 */
-	public static function renderSearchResults($activeTab = null, $idFilterset = 0, $useConditions = true, array $filterConditions = array(), $conjunction = 'AND') {
-		$idFilterset	= intval($idFilterset);
-		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
-
-			// Find current tab if not given as parameter
-		if( is_null($activeTab) ) {
-			$activeTab = TodoyuSearchPreferences::getActiveTab();
-		}
-			// Get active filter if not given as parameter
-		if( $idFilterset === 0 ) {
-			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($activeTab);
-		}
-
-			// Get render function
-		$renderFunction	= TodoyuSearchFilterBase::getFilterRenderFunction($activeTab);
-
-		if( TodoyuFunction::isFunctionReference($renderFunction) ) {
-			$content	= TodoyuFunction::callUserFunction($renderFunction, $idFilterset, $useConditions, $filterConditions, $conjunction);
-		}
-
-		$tmpl	= 'ext/search/view/search-results.tmpl';
-		$data 	= array(
-			'activeTab'		=> $activeTab,
-			'searchResults'	=> $content
-		);
-
-		return render($tmpl, $data);
-	}
-
-
-
-	/**
 	 * Render listing of search results
 	 *
 	 * @param	String	$type
@@ -160,10 +115,11 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 * @return	String
 	 */
 	public static function renderResultsListing($type, array $itemIDs) {
-		$renderFunc		= TodoyuSearchFilterManager::getFilterTypeResultsRenderer($type);
+		$listRenderFunc	= TodoyuSearchFilterManager::getFilterTypeResultsRenderer($type);
 
-		return TodoyuFunction::callUserFunction($renderFunc, $itemIDs);
+		return TodoyuFunction::callUserFunction($listRenderFunc, $itemIDs);
 	}
 
 }
+
 ?>
