@@ -436,7 +436,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 				if( this.isResultsVisible() ) {
 					this.hideResults();
 				} else {
-					this.headlet.toggleContent();
+					this.headlet.hide();
 				}
 				return;
 			}
