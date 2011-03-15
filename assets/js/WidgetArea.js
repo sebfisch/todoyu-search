@@ -148,16 +148,15 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 			if( Object.isElement(acField) ) {
 				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
 				var widgetID= acField.id.split('-').slice(2, 4).join('-');
-				var params	= Object.toQueryString({
-					'action':				'autocompletion',
-					'completionID':			name,
-					'filtertype':			this.ext.Filter.getActiveTab()
-				});
 				var options	= {
-					'parameters':			params,
-					'paramName':			'sword',
-					'minChars':				2,
-					'afterUpdateElement':	this.onAutocompleteSelect.bind(this, name)
+					parameters:			Object.toQueryString({
+											action:			'autocompletion',
+											completionID:	name,
+											filtertype:		this.ext.Filter.getActiveTab()
+										}),
+					paramName:			'sword',
+					minChars:			2,
+					afterUpdateElement:	this.onAutocompleteSelect.bind(this, name)
 				};
 				var suggestID= acField.id + '-suggestions';
 
