@@ -10,6 +10,8 @@
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="../../../loginpage/test/selenium/loginpage_login-to-portal">loginpage > login to portal</a></td></tr>
 <tr><td><a href="portal_headlet-quicksearch">portal > headlet: quicksearch</a></td></tr>
+<tr><td><a href="go-to-search-area">go to search-area</a></td></tr>
+<tr><td><a href="search_main-tab-activated">search > main-tab activated?</a></td></tr>
 <tr><td><a href="../../../loginpage/test/selenium/headlet_logout">headlet: logout</a></td></tr>
 </tbody></table>
 </body>
