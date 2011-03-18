@@ -1,0 +1,1 @@
+todoyu selenium testsuite steps: search extension-------------------------------------------------* quicksearch headlet (in portal)	present, elements/options available	search engines menu available, all modes present	search for "demo" > check results list, click 1st found task > jump to project area, return	quicksearch content preference		still open after area changes?
