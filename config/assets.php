@@ -28,64 +28,64 @@
 Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 	'js' => array(
 		array(
-			'file'		=> 'ext/search/assets/js/Ext.js',
+			'file'		=> 'ext/search/asset/js/Ext.js',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/search/assets/js/HeadletQuickSearch.js',
+			'file'		=> 'ext/search/asset/js/HeadletQuickSearch.js',
 			'position'	=> 110
 		),
 		array(
-			'file' => 'ext/search/assets/js/Preference.js',
+			'file' => 'ext/search/asset/js/Preference.js',
 			'position' => 102
 		),
 		array(
-			'file' => 'ext/search/assets/js/FilterWidget.js',
+			'file' => 'ext/search/asset/js/FilterWidget.js',
 			'position' => 101
 		),
 		array(
-			'file' => 'ext/search/assets/js/Filter.js',
+			'file' => 'ext/search/asset/js/Filter.js',
 			'position' => 102
 		),
 		array(
-			'file' => 'ext/search/assets/js/FilterControl.js',
+			'file' => 'ext/search/asset/js/FilterControl.js',
 			'position' => 103
 		),
 		array(
-			'file' => 'ext/search/assets/js/FilterConditions.js',
+			'file' => 'ext/search/asset/js/FilterConditions.js',
 			'position' => 104
 		),
 		array(
-			'file' => 'ext/search/assets/js/WidgetArea.js',
+			'file' => 'ext/search/asset/js/WidgetArea.js',
 			'position' => 105
 		),
 		array(
-			'file' => 'ext/search/assets/js/PanelWidgetSearchFilterList.js',
+			'file' => 'ext/search/asset/js/PanelWidgetSearchFilterList.js',
 			'position' => 110
 		),
 		array(
-			'file' => 'ext/search/assets/js/ActionPanel.js',
+			'file' => 'ext/search/asset/js/ActionPanel.js',
 			'position' => 111
 		)
 	),
 	'css' => array(
 		array(
-			'file'		=> 'ext/search/assets/css/ext.css',
+			'file'		=> 'ext/search/asset/css/ext.css',
 			'media'		=> 'all',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/search/assets/css/headlet-quicksearch.css',
+			'file'		=> 'ext/search/asset/css/headlet-quicksearch.css',
 			'media'		=> 'all',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/search/assets/css/filterwidgets.css',
+			'file'		=> 'ext/search/asset/css/filterwidgets.css',
 			'media'		=> 'all',
 			'position'	=> 101
 		),
 		array(
-			'file'		=> 'ext/search/assets/css/panelwidget-searchfilterlist.css',
+			'file'		=> 'ext/search/asset/css/panelwidget-searchfilterlist.css',
 			'media'		=> 'all',
 			'position'	=> 110
 		)

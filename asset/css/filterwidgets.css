@@ -66,12 +66,12 @@ select#filtercontrol-conjunction {
 
 #widget-area .filterWidget span.negation {
 	padding:0 0 0 6px;
-	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll 2px 4px;
+	background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll 2px 4px;
 }
 
 #widget-area .filterWidget span.negationRgt {
 	height:10px;
-	background:url(../../../../core/assets/img/bg-button-small.png) no-repeat scroll -280px 4px;
+	background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll -280px 4px;
 }
 
 #widget-area .filterWidget .negation span {
@@ -94,7 +94,7 @@ select#filtercontrol-conjunction {
 
 #widget-area .filterWidget .widgetheader span.widgetClose a {
 	display:block;
-	background: url(../../../../core/assets/img/icons.png) no-repeat scroll 0 -360px transparent;
+	background: url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
 	height:14px;
 	width:14px;
 	text-indent:-9999px;
