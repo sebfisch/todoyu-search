@@ -91,8 +91,8 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 		$groups = array();
 
 		foreach($filtersets as $filterset) {
-			$groups[ $filterset['type'] ]['label']	= TodoyuString::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
-			$groups[ $filterset['type'] ]['filtersets'][]					= $filterset;
+			$groups[ $filterset['type'] ]['label']			= Label(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
+			$groups[ $filterset['type'] ]['filtersets'][]	= $filterset;
 		}
 
 		return $groups;
