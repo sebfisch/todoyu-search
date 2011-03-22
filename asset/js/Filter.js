@@ -500,7 +500,7 @@ Todoyu.Ext.search.Filter = {
 	 *
 	 * @method	saveCurrentAreaAsFilterset
 	 * @param	{Number}	idFilterSet
-	 * @param	{Function}	 onComplete
+	 * @param	{Function}	onComplete
 	 */
 	saveCurrentAreaAsFilterset: function(idFilterSet, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');

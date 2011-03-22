@@ -42,20 +42,24 @@ Todoyu.Ext.search.ActionPanel = {
 	 * @param	{String}	name
 	 */
 	exportResults: function(name) {
-		var idFilterSet = this.filter.getFiltersetID();
-		var conditions	= this.filter.Conditions.getAll(true);
-		var conjunction	= this.filter.getConjunction();
+		if( Todoyu.Ext.search.Filter.Conditions.size() > 0 ) {
+			var idFilterSet = this.filter.getFiltersetID();
+			var conditions	= this.filter.Conditions.getAll(true);
+			var conjunction	= this.filter.getConjunction();
 
-		var options = {
-				'action':		'export',
-				'tab':			this.filter.getActiveTab(),
-				'exportname':	name,
-				'idFilterSet':	idFilterSet,
-				'conditions':	conditions,
-				'conjunction':	conjunction
-		};
+			var options = {
+					'action':		'export',
+					'tab':			this.filter.getActiveTab(),
+					'exportname':	name,
+					'idFilterSet':	idFilterSet,
+					'conditions':	conditions,
+					'conjunction':	conjunction
+			};
 
-		Todoyu.goTo('search', 'actionpanel', options , '', false);
+			Todoyu.goTo('search', 'actionpanel', options , '', false);
+		} else {
+			alert('[LLL:search.ext.export.error.saveEmpty]');
+		}
 	}
 
 };
