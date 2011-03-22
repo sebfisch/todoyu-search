@@ -11,7 +11,7 @@ CREATE TABLE `ext_search_filtercondition` (
 	`id_set` int(10) unsigned NOT NULL,
 	`filter` varchar(64) NOT NULL,
 	`value` varchar(100) NOT NULL,
-	`negate` tinyint(1) NOT NULL DEFAULT '0',
+	`is_negated` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`),
 	KEY `id_set` (`id_set`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;

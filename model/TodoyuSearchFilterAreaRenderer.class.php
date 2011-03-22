@@ -182,7 +182,7 @@ class TodoyuSearchFilterAreaRenderer {
 		$content	= '';
 
 		foreach($conditions as $condition) {
-			$content .= TodoyuSearchFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['negate']==1);
+			$content .= TodoyuSearchFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['is_negated']==1);
 		}
 
 		return $content;

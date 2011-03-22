@@ -90,11 +90,11 @@ class TodoyuSearchFilterWidgetManager	{
 		$config		= self::getWidgetConfig($type, $widgetKey);
 
 		$extend		= array(
-			'widgetID'				=> $widgetKey . '-' . $widgetName,
-			'widgetDefinitions'		=> self::getWidgetTypeConfig($config['widget']),
-			'widgetFilterName'		=> $widgetKey,
-			'value'					=> $value,
-			'negate'				=> $negate
+			'widgetID'			=> $widgetKey . '-' . $widgetName,
+			'widgetDefinitions'	=> self::getWidgetTypeConfig($config['widget']),
+			'widgetFilterName'	=> $widgetKey,
+			'value'				=> $value,
+			'negate'			=> $negate
 		);
 
 		$config = array_merge($config, $extend);

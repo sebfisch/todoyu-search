@@ -191,7 +191,7 @@ class TodoyuSearchFilterConditionManager {
 			'id_set'		=> $idFilterset,
 			'filter'		=> $filterName,
 			'value'			=> $value,
-			'negate'		=> $negate
+			'is_negated'	=> $negate
 		);
 
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
