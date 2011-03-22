@@ -28,4 +28,5 @@
 	<label index="search.noResultsForActiveFilters">No results found for currently selected filters</label>
 	<label index="contextmenu.project.showinproject">Open in project view</label>
 	<label index="headlet.label">Search In todoyu</label>
+	<label index="export.error.saveEmpty">There are no results to be exported.</label>
 </labels>
