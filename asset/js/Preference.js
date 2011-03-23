@@ -34,7 +34,7 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Save given preference of search extension 
+	 * Save given preference of search extension
 	 *
 	 * @method	save
 	 * @param	{String}	action
@@ -130,8 +130,8 @@ Todoyu.Ext.search.Preference = {
 	sendAction: function(action, value) {
 		var url = Todoyu.getUrl('search', 'preference');
 		var options = {
-			'parameters': {
-				'action':	action,
+			parameters: {
+				action:	action,
 				'value':	value
 			}
 		};

@@ -77,10 +77,10 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	refresh: function() {
 		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
 		var options = {
-			'parameters': {
-				'action':	'update'
+			parameters: {
+				action:	'update'
 			},
-			'onComplete': this.initSortableList.bind(this)
+			onComplete: this.initSortableList.bind(this)
 		};
 		var target	= 'panelwidget-searchfilterlist-content';
 

@@ -66,15 +66,15 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	add: function(name, type, condition, value, negate) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
-			'parameters': {
-				'action':		'add',
+			parameters: {
+				action:		'add',
 				'name':			name,
 				'type':			type,
 				'condition':	condition,
 				'value':		value,
 				'negate':		negate ? 1 : 0
 			},
-			'onComplete':	this.onAdded.bind(this, name, condition)
+			onComplete:	this.onAdded.bind(this, name, condition)
 		};
 		var target	= this.areaID;
 

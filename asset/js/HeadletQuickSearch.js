@@ -526,12 +526,12 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 
 			var url		= Todoyu.getUrl('search', 'suggest');
 			var options	= {
-				'parameters': {
-					'action':	'suggest',
+				parameters: {
+					action:	'suggest',
 					'query':	this.headlet.getValue(),
 					'mode':		this.headlet.Mode.getMode()
 				},
-				'onComplete':	this.onResultsUpdated.bind(this)
+				onComplete:	this.onResultsUpdated.bind(this)
 			};
 
 			Todoyu.Ui.update(this.suggest, url, options);

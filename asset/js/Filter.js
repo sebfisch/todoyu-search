@@ -201,8 +201,8 @@ Todoyu.Ext.search.Filter = {
 	updateControll: function(tab) {
 		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
 		var options = {
-			'parameters': {
-				'action':	'load',
+			parameters: {
+				action:	'load',
 				'tab':		tab
 			}
 		};
@@ -290,12 +290,12 @@ Todoyu.Ext.search.Filter = {
 	updateFilterArea: function(tab, idFilterSet) {
 		var url		= Todoyu.getUrl('search', 'filterarea');
 		var options	= {
-			'parameters': {
-				'action':		'load',
+			parameters: {
+				action:		'load',
 				'tab':			tab,
 				'filterset':	idFilterSet
 			},
-			'onComplete': 	this.onResultsUpdated.bind(this, tab)
+			onComplete: 	this.onResultsUpdated.bind(this, tab)
 		};
 
 		this.setActiveTab(tab);
@@ -363,14 +363,14 @@ Todoyu.Ext.search.Filter = {
 
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
-			'parameters': {
-				'action':		'update',
+			parameters: {
+				action:		'update',
 				'tab':			tab,
 				'filterset':	idFilterSet,
 				'conditions':	Object.toJSON(conditions),
 				'conjunction':	conjunction
 			},
-			'onComplete': 	this.onResultsUpdated.bind(this, tab, idFilterSet)
+			onComplete: 	this.onResultsUpdated.bind(this, tab, idFilterSet)
 		};
 		var target	= 'search-results';
 
@@ -474,8 +474,8 @@ Todoyu.Ext.search.Filter = {
 				// Save filterSet
 			var url		= Todoyu.getUrl('search', 'filterset');
 			var options	= {
-				'parameters': {
-					'action':		'saveAsNew',
+				parameters: {
+					action:		'saveAsNew',
 					'title':		title,
 					'type':			this.getActiveTab(),
 					'conditions':	this.Conditions.getAll(true),
@@ -505,8 +505,8 @@ Todoyu.Ext.search.Filter = {
 	saveCurrentAreaAsFilterset: function(idFilterSet, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');
 		var options	= {
-			'parameters': {
-				'action':		'save',
+			parameters: {
+				action:		'save',
 				'filterset':	idFilterSet,
 				'tab':			this.getActiveTab(),
 				'conditions':	this.Conditions.getAll(true),
