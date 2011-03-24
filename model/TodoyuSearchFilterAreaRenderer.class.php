@@ -221,7 +221,7 @@ class TodoyuSearchFilterAreaRenderer {
 		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
 
 		if( $typeFilter->hasActiveFilters() ) {
-			$itemIDs	= $typeFilter->getItemIDs($sorting);
+			$itemIDs	= $typeFilter->getItemIDs($sorting, 200);
 		} else {
 			$itemIDs	= array();
 		}
