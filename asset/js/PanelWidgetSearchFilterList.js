@@ -129,21 +129,20 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param	{Number}	idFilterSet
 	 */
 	hideFilterset: function(idFilterSet) {
-		var element = $('filterset-' + idFilterSet + '-control-visibility');
-		var isHidden= element.hasClassName('hidden');
+		var className	= 'invisible';
+		var element 	= $('filterset_' + idFilterSet).down('.visibility');
+		var isVisible	= !element.hasClassName(className);
+		var label		= '';
 
-		element.toggleClassName('hidden');
-		element.up('li').toggleClassName('hidden');
+		element.toggleClassName(className);
+		element.up('li').toggleClassName(className);
 
-		if( isHidden === false ) {
-			element.title		= '[LLL:core.global.unhide]';
-			element.update('[LLL:core.global.unhide]');
-		} else {
-			element.title		= '[LLL:core.global.hide]';
-			element.update('[LLL:core.global.hide]');
-		}
+		label	= isVisible ? '[LLL:core.global.hide]' : '[LLL:core.global.unhide]' ;
 
-		this.saveFiltersetVisibility(idFilterSet, isHidden);
+		element.title	= label;
+		element.update(label);
+
+		this.saveFiltersetVisibility(idFilterSet, isVisible);
 	},
 
 
@@ -348,11 +347,11 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 *
 	 * @method	saveFiltersetVisibility
 	 * @param	{Number}	idFilterSet
-	 * @param	{Boolean}	visible
+	 * @param	{Boolean}	isVisible
 	 */
-	saveFiltersetVisibility: function(idFilterSet, visible) {
+	saveFiltersetVisibility: function(idFilterSet, isVisible) {
 		var action	= 'toggleFiltersetVisibility';
-		var value	= visible ? 1 : 0;
+		var value	= isVisible ? 1 : 0;
 
 		this.ext.Preference.save(action, value, idFilterSet);
 	},
