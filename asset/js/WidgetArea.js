@@ -149,14 +149,15 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
 				var widgetID= acField.id.split('-').slice(2, 4).join('-');
 				var options	= {
-					parameters:			Object.toQueryString({
-											action:			'autocompletion',
-											completionID:	name,
-											filtertype:		this.ext.Filter.getActiveTab()
-										}),
+					parameters:	Object.toQueryString({
+									action:			'autocompletion',
+									completionID:	name,
+									filtertype:		this.ext.Filter.getActiveTab()
+								}),
 					paramName:			'sword',
 					minChars:			2,
-					afterUpdateElement:	this.onAutocompleteSelect.bind(this, name)
+					afterUpdateElement:	this.onAutocompleteSelect.bind(this, name),
+					onCleared:			this.onAutocompleteCleared.bind(this, name)
 				};
 				var suggestID= acField.id + '-suggestions';
 
@@ -188,6 +189,18 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 		var idItem	= listElement.id;
 
 		this.ext.Filter.updateConditionValue(name, idItem);
+	},
+
+
+
+	/**
+	 * Handler when autocompleter was cleared because of invalid value
+	 *
+	 * @param	{String}				name		Name of the filter
+	 * @param	{Todoyu.Autocompleter}	autocompleter
+	 */
+	onAutocompleteCleared: function(name, autocompleter) {
+		this.ext.Filter.updateConditionValue(name, 0);
 	},
 
 
