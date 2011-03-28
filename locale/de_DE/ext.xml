@@ -26,6 +26,7 @@
 	<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 	<label index="search.noEntryFound">Nichts gefunden</label>
 	<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
+    <label index="selection.noProjectsFound">Keine Projekte für die aktuellen Filter gefunden</label>
 	<label index="contextmenu.project.showinproject">Projekt-Ansicht öffnen</label>
 	<label index="headlet.label">In todoyu suchen</label>
 	<label index="export.error.saveEmpty">Es sind keine Ergebnisse zum Export vorhanden.</label>
