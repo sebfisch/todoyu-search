@@ -122,7 +122,7 @@ class TodoyuSearchFilterManager {
 	public static function getFilterTypeLabel($type) {
 		TodoyuExtensions::loadAllFilters();
 
-		return TodoyuLabelManager::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']);
+		return Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']);
 	}
 
 

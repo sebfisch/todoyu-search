@@ -229,7 +229,7 @@ class TodoyuSearchFilterAreaRenderer {
 		$tmpl	= 'ext/search/view/search-results.tmpl';
 		$data	= array(
 			'itemsAmount'	=> sizeof($itemIDs),
-			'itemsLabel'	=> TodoyuLabelManager::getLabel(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
+			'itemsLabel'	=> Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
 			'itemsList'		=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
 		);
 
