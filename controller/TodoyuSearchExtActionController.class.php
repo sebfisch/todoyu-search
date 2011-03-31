@@ -57,7 +57,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
 
 			$idFilterset= 0;
-			$conditions = TodoyuSearchManager::convertSimpleToFilterConditionArray($filters);
+//			$conditions = TodoyuSearchManager::convertSimpleToFilterConditionArray($filters);
 		} else {
 				// Normal preferences rendering
 			$activeTab	= TodoyuSearchPreferences::getActiveTab();
