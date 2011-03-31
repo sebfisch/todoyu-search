@@ -86,7 +86,7 @@ Todoyu.Ext.search.Filter = {
 		conditions.each(function(tab, condition) {
 			var name	= condition.filter + '-' + condition.id;
 
-			this.Conditions.add(condition.id, tab, condition.filter, condition.value, condition.negate);
+			this.Conditions.add(condition.id, tab, condition.filter, condition.value, condition.is_negated);
 
 			this.WidgetArea.installAutocomplete(name);
 			this.WidgetArea.installNegation(name);

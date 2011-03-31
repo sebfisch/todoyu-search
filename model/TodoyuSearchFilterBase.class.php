@@ -244,7 +244,7 @@ abstract class TodoyuSearchFilterBase {
 					// Filter function parameters
 				$params		= array(
 					$filter['value'],
-					$filter['negate'] == 1
+					$filter['is_negated'] == 1
 				);
 
 					// Call filter function to get query parts for filter

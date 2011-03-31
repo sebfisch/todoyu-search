@@ -230,7 +230,7 @@ class TodoyuSearchFilterConditionManager {
 			$conditions[] = array(
 				'name'		=> $condition['name'],
 				'filter'	=> $condition['condition'],
-				'negate'	=> $condition['negate'],
+				'is_negated'=> $condition['negate'],
 				'value'		=> $condition['value']
 			);
 		}

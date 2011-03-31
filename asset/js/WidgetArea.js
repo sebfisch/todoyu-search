@@ -216,7 +216,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 			var negElement = $(name).select('span.negation')[0];
 
 			if( Object.isElement(negElement) ) {
-				negElement.observe('click', this.onNegation.bindAsEventListener(this, name));
+				negElement.on('click', 'span.negation', this.onNegation.bind(this, name));
 			}
 		}
 	},
@@ -230,10 +230,10 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param	{Event}		event
 	 * @param	{String}	name
 	 */
-	onNegation: function(event, name) {
+	onNegation: function(name, event, element) {
 		this.ext.Filter.toggleConditionNegation(name);
 
-		event.findElement('span.negation').childElements().invoke('toggle');
+		element.childElements().invoke('toggle');
 	},
 
 
