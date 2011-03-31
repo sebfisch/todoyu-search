@@ -17,6 +17,8 @@
 	<label index="negation.default.false">Is</label>
 	<label index="negation.datetime.true">After</label>
 	<label index="negation.datetime.false">Before</label>
+	<label index="negation.datetimeDyn.true">From</label>
+	<label index="negation.datetimeDyn.false">Until</label>
 	<label index="negation.numbercompare.true">smaller than</label>
 	<label index="negation.numbercompare.false">bigger than</label>
 	<label index="newFilterLabel">Enter a name for the new filter</label>
