@@ -290,7 +290,7 @@ abstract class TodoyuSearchFilterBase {
 	 * @return	Array|Boolean
 	 */
 	protected function fetchRightsQueryParts() {
-		$where		= array();
+		$whereParts	= array();
 		$tables		= array();
 		$join		= array();
 
@@ -299,12 +299,12 @@ abstract class TodoyuSearchFilterBase {
 		}
 
 		foreach($this->rightsFilters as $filter) {
-			$funcRef	= $this->getFilterMethod($filter['filter']);
+			$funcRef= $this->getFilterMethod($filter['filter']);
 
-			$params		= array(
-					$filter['value'],
-					false
-				);
+			$params	= array(
+				$filter['value'],
+				false
+			);
 
 				// Call filter function to get query parts for filter
 			$filterQueryParts = call_user_func_array($funcRef, $params);
@@ -313,16 +313,23 @@ abstract class TodoyuSearchFilterBase {
 				$tables = TodoyuArray::merge($tables, $filterQueryParts['tables']);
 			}
 			if( $filterQueryParts !== false && array_key_exists('where', $filterQueryParts) ) {
-				$where[] = $filterQueryParts['where'];
+				$whereParts[] = $filterQueryParts['where'];
 			}
 			if( is_array($filterQueryParts['join']) ) {
 				$join = TodoyuArray::merge($join, $filterQueryParts['join']);
 			}
 		}
 
+			// Only add where clause
+		if( sizeof($whereParts) > 0 ) {
+			$where = '(' . implode(' AND ', $whereParts) . ')';
+		} else {
+			$where = '';
+		}
+
 		return array(
 			'tables'	=> array_unique($tables),
-			'where'		=> '(' . implode(' AND ', $where) . ')',
+			'where'		=> $where,
 			'join'		=> array_unique($join)
 		);
 	}
