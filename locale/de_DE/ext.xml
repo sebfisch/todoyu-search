@@ -15,10 +15,10 @@
 	<label index="filterset.error.saveEmptyName">Bitte geben Sie einen Namen für das Filterset ein</label>
 	<label index="negation.default.true">ist nicht</label>
 	<label index="negation.default.false">ist</label>
-	<label index="negation.datetime.true">nach</label>
-	<label index="negation.datetime.false">vor</label>
-	<label index="negation.datetimeDyn.true">Ab</label>
-	<label index="negation.datetimeDyn.false">Bis</label>
+	<label index="negation.datetime.true">ab</label>
+	<label index="negation.datetime.false">bis</label>
+	<label index="negation.datetimeDyn.true">ab</label>
+	<label index="negation.datetimeDyn.false">bis</label>
 	<label index="negation.numbercompare.true">kleiner als</label>
 	<label index="negation.numbercompare.false">grösser als</label>
 	<label index="newFilterLabel">Bitte einen Filter-Namen angeben</label>
