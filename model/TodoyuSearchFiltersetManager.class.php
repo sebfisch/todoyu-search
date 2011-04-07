@@ -543,7 +543,7 @@ class TodoyuSearchFiltersetManager {
 
 		foreach($allFiltersets as $filterset) {
 				// Prevent adding the filterset to itself
-			if( $filterset['id'] != $activeFilterset ) {
+			if( AREA !== EXTID_SEARCH || $filterset['id'] != $activeFilterset ) {
 				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) ) {
 					$definitions['options'][] = array(
 						'value'		=> $filterset['id'],
