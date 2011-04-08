@@ -442,6 +442,8 @@ class TodoyuSearchFiltersetManager {
 		$wheres		= array();
 		$joins		= array();
 
+		$whereAND	= false;
+
 		foreach($value as $filterSet) {
 			/**
 			 * @var	TodoyuSearchFilterBase	$filterSet
@@ -531,21 +533,54 @@ class TodoyuSearchFiltersetManager {
 
 
 	/**
-	 * The options of the filter selector. Used for filterWidget filterSet
+	 * Get filterset options for task
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getFilterSetSelectionOptions($definitions) {
+	public static function getTaskFilterSetSelectionOptions(array $definitions) {
 		$allFiltersets	= self::getTypeFiltersets('TASK', personid(), true);
+		$activeFilterset= TodoyuSearchPreferences::getActiveFilterset('task');
 
-		$activeFilterset = TodoyuSearchPreferences::getActiveFilterset('task');
+		$definitions['options']	= self::buildFiltersetOptions($allFiltersets, $activeFilterset);
+
+		return $definitions;
+	}
+
+
+
+	/**
+	 * Get filterset options for project
+	 *
+	 * @param	Array		$definitions
+	 * @return	Array
+	 */
+	public static function getProjectFilterSetSelectionOptions(array $definitions) {
+		$allFiltersets	= self::getTypeFiltersets('PROJECT', personid(), true);
+		$activeFilterset= TodoyuSearchPreferences::getActiveFilterset('project');
+
+		$definitions['options']	= self::buildFiltersetOptions($allFiltersets, $activeFilterset);
+
+		return $definitions;
+	}
+
+
+
+	/**
+	 * Build options from filtersets. Exclude active if in search area
+	 *
+	 * @param	Array	$allFiltersets
+	 * @param	Integer	$activeFilterset
+	 * @return	Array
+	 */
+	private static function buildFiltersetOptions(array $allFiltersets, $activeFilterset) {
+		$options	= array();
 
 		foreach($allFiltersets as $filterset) {
 				// Prevent adding the filterset to itself
 			if( AREA !== EXTID_SEARCH || $filterset['id'] != $activeFilterset ) {
 				if( ! self::isFiltersetUsed($filterset['id'], $activeFilterset) ) {
-					$definitions['options'][] = array(
+					$options[] = array(
 						'value'		=> $filterset['id'],
 						'label'		=> $filterset['title']
 					);
@@ -553,7 +588,7 @@ class TodoyuSearchFiltersetManager {
 			}
 		}
 
-		return $definitions;
+		return $options;
 	}
 
 
