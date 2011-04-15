@@ -25,6 +25,7 @@
 	<label index="newFilterLabel.preset">Neuer Filter</label>
 	<label index="subMenuEntry.task">Aufgaben</label>
 	<label index="subMenuEntry.project">Projekte</label>
+	<label index="areMatching">stimmen mit Ihren Suchkriterien überein</label>
 	<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 	<label index="search.noEntryFound">Nichts gefunden</label>
 	<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
