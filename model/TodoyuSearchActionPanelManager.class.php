@@ -47,30 +47,21 @@ class TodoyuSearchActionPanelManager {
 	 *
 	 * @param	String		$name
 	 * @param	String		$type			'task' / 'project' etc.
-	 * @param	Integer		$idFilterset
 	 * @param	Array		$conditions
 	 * @param	String		$conjunction	logical conjunction ('AND' / 'OR')
 	 */
-	public static function dispatchExport($name, $type, $idFilterset, $conditions, $conjunction) {
+	public static function dispatchExport($name, $type, $conditions, $conjunction) {
 		$export	= self::getExportOfTypeAndName($type, $name);
 
-		$idFilterset	= intval($idFilterset);
-		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
-
-			// If filterset is given, use its conditions
-		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterset);
-		} else {
-			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
-		}
+		$conjunction= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
+		$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
 
 			// Build filter
 		$typeClass	= TodoyuSearchFiltersetManager::getFiltersetTypeClass($type);
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
-		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
-
 		if( $typeFilter->hasActiveFilters() ) {
+			$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
 			$itemIDs	= $typeFilter->getItemIDs($sorting);
 		} else {
 			$itemIDs	= array();

@@ -43,7 +43,6 @@ Todoyu.Ext.search.ActionPanel = {
 	 */
 	exportResults: function(name) {
 		if( Todoyu.Ext.search.Filter.Conditions.size() > 0 ) {
-		var idFilterSet = this.filter.getFiltersetID();
 		var conditions	= this.filter.Conditions.getAll(true);
 		var conjunction	= this.filter.getConjunction();
 
@@ -51,7 +50,6 @@ Todoyu.Ext.search.ActionPanel = {
 				action:		'export',
 				'tab':			this.filter.getActiveTab(),
 				'exportname':	name,
-				'idFilterSet':	idFilterSet,
 				'conditions':	conditions,
 				'conjunction':	conjunction
 		};
