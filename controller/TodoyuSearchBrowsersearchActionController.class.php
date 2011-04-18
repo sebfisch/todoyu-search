@@ -58,16 +58,16 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Get autocompleter suggestions for tasks suiting to given search keywords
 	 *
 	 * @param	Array	$params
 	 * @return	String				JSON encoded suggestions to query
 	 */
 	public function suggestAction(array $params) {
 		$q			= trim($params['q']);
-		$keywords	= TodoyuArray::trimExplode(' ', $q, true);
+		$searchWords= TodoyuArray::trimExplode(' ', $q, true);
 
-		$results	= TodoyuProjectTaskSearch::getSuggestions($keywords);
+		$results	= TodoyuProjectTaskSearch::getSuggestions($searchWords);
 		$suggestions= array();
 
 		foreach($results as $result) {
