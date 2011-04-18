@@ -44,6 +44,9 @@ class TodoyuSearchPanelwidgetSearchfilterlistActionController extends TodoyuActi
 	 * @return	String
 	 */
 	public function updateAction(array $params) {
+		/**
+		 * @var	TodoyuSearchPanelWidgetFilterList $panelWidget
+		 */
 		$panelWidget = TodoyuPanelWidgetManager::getPanelWidget('search', 'FilterList');
 
 		return $panelWidget->renderContent();
