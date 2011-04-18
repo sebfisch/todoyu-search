@@ -464,12 +464,12 @@ class TodoyuSearchFiltersetManager {
 					$where = trim($queryArray['whereBasic'] . $whereAND);
 				}
 
-					// If no where statement available, go to next filterset
+					// If no WHERE statement available, go to next filterset
 				if( $where === '' ) {
 					continue;
 				}
 
-					// Add where statement to list
+					// Add WHERE statement to list
 				$wheres[] = $where;
 					// Add tables (they are already concatenated as string, so explode)
 				$tables	= array_merge($tables, explode(',', $queryArray['tables']));

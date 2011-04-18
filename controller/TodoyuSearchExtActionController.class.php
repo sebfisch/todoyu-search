@@ -54,9 +54,8 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 			// If tab is set manually
 		if( ! empty($activeTab) ) {
-			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
-
 			$idFilterset= 0;
+//			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
 //			$conditions = TodoyuSearchManager::convertSimpleToFilterConditionArray($filters);
 		} else {
 				// Normal preferences rendering

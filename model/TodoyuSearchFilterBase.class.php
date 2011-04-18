@@ -56,7 +56,7 @@ abstract class TodoyuSearchFilterBase {
 	protected $extraTables = array();
 
 	/**
-	 * Extra where clauses for the filter
+	 * Extra WHERE clauses for the filter
 	 *
 	 * @var	Array
 	 */
@@ -118,9 +118,9 @@ abstract class TodoyuSearchFilterBase {
 
 
 	/**
-	 * Add an extra where clause for the request query
+	 * Add an extra WHERE clause for the request query
 	 *
-	 * @param	String		$where	WHERE clause
+	 * @param	String		$where		WHERE clause
 	 */
 	public function addExtraWhere($where) {
 		$this->extraWhere[] = $where;
@@ -260,11 +260,11 @@ abstract class TodoyuSearchFilterBase {
 				if( is_array($filterQueryParts['tables']) ) {
 					$queryParts['tables'] = TodoyuArray::merge($queryParts['tables'], $filterQueryParts['tables']);
 				}
-					// Add where
+					// Add WHERE
 				if( is_string($filterQueryParts['where']) ) {
 					$queryParts['where'][] = $filterQueryParts['where'];
 				}
-					// Add join where
+					// Add JOIN WHERE
 				if( is_array($filterQueryParts['join']) ) {
 					$queryParts['join'] = TodoyuArray::merge($queryParts['join'], $filterQueryParts['join']);
 				}
@@ -320,7 +320,7 @@ abstract class TodoyuSearchFilterBase {
 			}
 		}
 
-			// Only add where clause
+			// Only add WHERE clause
 		if( sizeof($whereParts) > 0 ) {
 			$where = '(' . implode(' AND ', $whereParts) . ')';
 		} else {
@@ -342,9 +342,9 @@ abstract class TodoyuSearchFilterBase {
 	 * fields, tables, where, group, order, limit
 	 * Extra fields for internal use: whereNoJoin, join
 	 *
-	 * @param	String		$orderBy					Optional order by for query
-	 * @param	String		$limit						Optional limit for query
-	 * @param	Boolean		$showDeleted				Show deleted records
+	 * @param	String		$orderBy					Optional ORDER BY for query
+	 * @param	String		$limit						Optional LIMIT for query
+	 * @param	Boolean		$showDeleted				Show deleted records?
 	 * @param	Boolean		$noResultOnEmptyConditions	Return false if no condition is active
 	 * @return	Array|Boolean
 	 */
@@ -352,7 +352,7 @@ abstract class TodoyuSearchFilterBase {
 			// Get normal query parts
 		$queryParts	= $this->fetchFilterQueryParts();
 
-			// If no conditions in where clause and $noResultOnEmptyConditions flag set, return flag (no sql query performed)
+			// If no conditions in WHERE clause and $noResultOnEmptyConditions flag set, return flag (no sql query performed)
 		if( $noResultOnEmptyConditions === true && sizeof($queryParts['where']) === 0 ) {
 			return false;
 		}
@@ -370,7 +370,7 @@ abstract class TodoyuSearchFilterBase {
 
 		$queryArray['fields']	= $this->defaultTable . '.id';
 		$queryArray['tables']	= implode(', ', $tables);
-		$queryArray['where']	= ''; // Where clause is added later
+		$queryArray['where']	= ''; // WHERE clause is added later
 		$queryArray['group']	= $this->defaultTable . '.id';
 		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
@@ -388,7 +388,7 @@ abstract class TodoyuSearchFilterBase {
 			$whereParts[] = $rightsParts['where'];
 		}
 
-			// Make a backup of the where parts which are required to be AND
+			// Make a backup of the WHERE parts which are required to be AND
 		$queryArray['whereAND']	= $whereParts;
 
 			// Filter

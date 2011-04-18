@@ -147,7 +147,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 			if( Object.isElement(acField) ) {
 				var acUrl	= Todoyu.getUrl('search', 'filtercontroller');
-				var widgetID= acField.id.split('-').slice(2, 4).join('-');
+//				var widgetID= acField.id.split('-').slice(2, 4).join('-');
 				var options	= {
 					parameters:	Object.toQueryString({
 									action:			'autocompletion',

@@ -238,7 +238,7 @@ class TodoyuSearchFilterWidgetManager	{
 	 * @return string
 	 */
 	public static function getFilterWidgetNegationLabel($widgetName, $label) {
-		$filterType = TodoyuSearchPreferences::getCurrentTab();
+		$filterType = TodoyuSearchPreferences::getActiveTab();
 
 		return Todoyu::$CONFIG['FILTERS'][strtoupper($filterType)]['widgets'][$widgetName]['wConf']['negation'][$label];
 	}
