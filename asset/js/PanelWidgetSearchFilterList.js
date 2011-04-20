@@ -132,17 +132,16 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		var className	= 'invisible';
 		var element 	= $('filterset_' + idFilterSet).down('.visibility');
 		var isVisible	= !element.hasClassName(className);
-		var label		= '';
 
 		element.toggleClassName(className);
 		element.up('li').toggleClassName(className);
 
-		label	= isVisible ? '[LLL:core.global.hide]' : '[LLL:core.global.unhide]' ;
+		var label	= isVisible ? '[LLL:core.global.hide]' : '[LLL:core.global.unhide]' ;
 
 		element.title	= label;
 		element.update(label);
 
-		this.saveFiltersetVisibility(idFilterSet, isVisible);
+		this.saveFiltersetVisibility(idFilterSet, !isVisible);
 	},
 
 

@@ -223,9 +223,9 @@ class TodoyuSearchFiltersetManager {
 	 * @param	Integer		$idFilterset
 	 * @param	Boolean		$isHidden
 	 */
-	public static function updateFiltersetVisibility($idFilterset, $visible = true) {
+	public static function updateFiltersetVisibility($idFilterset, $isVisible = true) {
 		$data = array(
-			'is_hidden'	=> $visible ? 0 : 1
+			'is_hidden'	=> $isVisible ? 0 : 1
 		);
 
 		self::updateFilterset($idFilterset, $data);

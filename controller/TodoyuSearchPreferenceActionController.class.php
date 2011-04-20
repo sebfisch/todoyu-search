@@ -126,9 +126,9 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 		restrict('search', 'filtersets:hideAll');
 
 		$idFilterset= intval($params['item']);
-		$visible	= intval($params['value']) === 1;
+		$isVisible	= intval($params['value']) === 1;
 
-		TodoyuSearchFiltersetManager::updateFiltersetVisibility($idFilterset, $visible);
+		TodoyuSearchFiltersetManager::updateFiltersetVisibility($idFilterset, $isVisible);
 	}
 
 
