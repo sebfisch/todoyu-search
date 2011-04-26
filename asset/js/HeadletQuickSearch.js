@@ -61,6 +61,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Initialize quick search headlet: install click observer, initialize search input autoCompleter value suggestion and modes selector
 	 *
 	 * @method	init
+	 * @param	{String}	name
 	 */
 	initialize: function($super, name) {
 		$super(name);

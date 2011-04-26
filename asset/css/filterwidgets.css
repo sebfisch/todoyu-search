@@ -94,7 +94,7 @@ select#filtercontrol-conjunction {
 
 #widget-area .filterWidget .widgetheader span.widgetClose a {
 	display:block;
-	background: url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
+	background:url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
 	height:14px;
 	width:14px;
 	text-indent:-9999px;
