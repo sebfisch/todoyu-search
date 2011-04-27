@@ -14,7 +14,7 @@ h1.extIconSearch .title {
 /* --------------------------
 	Filter controls
    -------------------------- */
-#filter-controls .headerLine span{
+#filter-controls .headerLine span {
 	margin:5px 0 0 5px;
 }
 
@@ -23,7 +23,7 @@ h1.extIconSearch .title {
 }
 
 #filtercontrol-conditions option {
-	border-bottom:1px #848484 dotted;
+	border-bottom:1px solid #ddd;
 	color:#333;
 }
 
@@ -69,4 +69,11 @@ h1.extIconSearch .title {
 
 #action-panel .button.searchExportButton .icon	{
 	background:url(../img/icons.png) no-repeat 0 -567px;
+}
+
+/* --------------------------------
+	Search Results
+	------------------------------- */
+#search-results .results {
+	font-weight:bold;
 }

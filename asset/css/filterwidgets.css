@@ -102,8 +102,8 @@ select#filtercontrol-conjunction {
 
 #widget-area .widgetbody {
 	min-height:25px;
-	border:0 #ccc dotted;
-	border-width:0 1px 1px;
+	border:1px solid #ddd;
+	border-top:none;
 	padding:5px;
 }
 
