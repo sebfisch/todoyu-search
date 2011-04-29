@@ -430,7 +430,6 @@ class TodoyuSearchFiltersetManager {
 	/**
 	 * Merges FilterObjects as one query
 	 *
-	 * @static
 	 * @param	Array		$value
 	 * @param	Boolean		$negate
 	 * @return	Array

@@ -99,7 +99,6 @@ class TodoyuSearchFilterManager {
 	/**
 	 * Get filter sorting for type
 	 *
-	 * @static
 	 * @param	String	$type
 	 * @return	String
 	 */
