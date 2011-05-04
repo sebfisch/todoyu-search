@@ -90,7 +90,37 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Integer		Filterset ID
 	 */
 	public static function addFilterset(array $data) {
+		$data['sorting']= self::getNextFiltersetSortingPosition($data['type']);
+
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+	}
+
+
+
+	/**
+	 * Get next sorting position for filterset
+	 *
+	 * @param	String		$type
+	 * @return	Integer
+	 */
+	private static function getNextFiltersetSortingPosition($type) {
+		$field	= 'sorting';
+		$table	= self::TABLE;
+		$where	= '		id_person_create= ' . personid()
+				. ' AND	deleted			= 0'
+				. ' AND `type`			= ' . Todoyu::db()->quote($type, true);
+		$order	= 'sorting DESC';
+		$limit	= 1;
+
+		$value	= Todoyu::db()->getFieldValue($field, $table, $where, '', $order, $limit);
+
+		if( $value === false ) {
+			$value = 0;
+		} else {
+			$value = intval($value+1);
+		}
+
+		return $value;
 	}
 
 
