@@ -26,7 +26,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function init(array $params) {
-		restrict('search', 'filtersets:save');
+		restrict('search', 'general:area');
 	}
 
 

@@ -6,11 +6,4 @@
 		<right name="area" require="general:use" />
 	</section>
 
-	<section name="filtersets" require="general:area">
-		<right name="save" />
-		<right name="deleteAll" />
-		<right name="hideAll" />
-		<right name="renameAll" />
-	</section>
-
 </rights>

@@ -3,9 +3,4 @@
 	<label index="general">Paramètres généraux</label>
 	<label index="general.use">Utiliser/voir la fonctionnalité de recherche</label>
 	<label index="general.area">Utilisez la zone de recherche</label>
-	<label index="filtersets">Groupes de filtre</label>
-	<label index="filtersets.save">Enregistrer les conditions en tant que groupe de filtre</label>
-	<label index="filtersets.deleteAll">Supprimer tous les groupes de filtre</label>
-	<label index="filtersets.hideAll">Cacher tous les groupes de filtre</label>
-	<label index="filtersets.renameAll">Renommer tous les groupes de filtre</label>
 </labels>

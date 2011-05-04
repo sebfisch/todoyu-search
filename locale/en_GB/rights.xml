@@ -3,9 +3,4 @@
 	<label index="general">General Settings</label>
 	<label index="general.use">Use/see search functionality</label>
 	<label index="general.area">Use Search Area</label>
-	<label index="filtersets">Filter Sets</label>
-	<label index="filtersets.save">Save conditions as filter set</label>
-	<label index="filtersets.deleteAll">Delete all filter sets</label>
-	<label index="filtersets.hideAll">Hide all filter sets</label>
-	<label index="filtersets.renameAll">Rename all filter sets</label>
 </labels>

@@ -3,9 +3,4 @@
 	<label index="general">Општа подешавања</label>
 	<label index="general.use">Употреби функције претраге</label>
 	<label index="general.area">Употреби област претраге</label>
-	<label index="filtersets">Филтери</label>
-	<label index="filtersets.save">Сачувај кондиције као филтер</label>
-	<label index="filtersets.deleteAll">Избриши све филтере</label>
-	<label index="filtersets.hideAll">Сакрији све филтере</label>
-	<label index="filtersets.renameAll">Преимењуј све филтере</label>
 </labels>
