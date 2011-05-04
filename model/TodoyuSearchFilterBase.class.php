@@ -74,6 +74,13 @@ abstract class TodoyuSearchFilterBase {
 	 */
 	protected $conjunction = 'AND';
 
+	/**
+	 * Cache for result IDs
+	 *
+	 * @var	Array
+	 */
+	protected $resultIDs	= array();
+
 
 
 
@@ -460,27 +467,57 @@ abstract class TodoyuSearchFilterBase {
 	 * @return	Array		List of IDs of matching records
 	 */
 	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
-		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted, false);
+		$cacheID	= md5(serialize(func_get_args()));
+
+			// Check if results are already cached
+		if( ! array_key_exists($cacheID, $this->resultIDs) ) {
+			$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted, false);
+
+			$this->resultIDs[$cacheID] = Todoyu::db()->getColumn(
+				$queryArray['fields'],
+				$queryArray['tables'],
+				$queryArray['where'],
+				$queryArray['group'],
+				$queryArray['order'],
+				$queryArray['limit'],
+				'id'
+			);
+		}
+
+		return $this->resultIDs[$cacheID];
+	}
 
 
 
-			// If query was not built, return an empty array
-//		if( $queryArray === false ) {
-//			TodoyuDebug::printInFireBug('No filter active, no query was sent');
-//			return array();
-//		}
+	/**
+	 * Filter after filter sets
+	 *
+	 * @param	Integer		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 * @todo 	Implement negation?
+	 */
+	public function Filter_filterSet($value, $negate = false) {
+		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
-		$ids = Todoyu::db()->getColumn(
-			$queryArray['fields'],
-			$queryArray['tables'],
-			$queryArray['where'],
-			$queryArray['group'],
-			$queryArray['order'],
-			$queryArray['limit'],
-			'id'
-		);
+			// Prepare return values
+		$filterObjects	= array();
 
-		return $ids;
+			// Process all filtersets
+		foreach($filtersetIDs as $idFilterset) {
+			$filterSet		= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
+			$filterObject	= $filterSet->getFilterObject();
+
+			if( $filterObject !== false ) {
+				$filterObjects[] = $filterObject;
+			}
+		}
+
+		if( sizeof($filterObjects) > 0 ) {
+			return TodoyuSearchFiltersetManager::Filter_filterObject($filterObjects, $negate);
+		} else {
+			return false;
+		}
 	}
 }
 

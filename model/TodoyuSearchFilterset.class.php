@@ -98,19 +98,16 @@ class TodoyuSearchFilterset extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getItemIDs() {
-		$class	= $this->getClass();
-		$sorting= TodoyuSearchFilterManager::getFilterDefaultSorting($this->getType());
+		$filterObject	= $this->getFilterObject();
+		$itemIDs		= array();
 
-		if( $class !== false ) {
-			$conditions	= $this->getConditions();
-			$conjunction= $this->getConjunction();
+		if( $filterObject !== false ) {
+			$sorting= TodoyuSearchFilterManager::getFilterDefaultSorting($this->getType());
 
-			$filter	= new $class($conditions, $conjunction);
-
-			return $filter->getItemIDs($sorting);
-		} else {
-			return array();
+			return $filterObject->getItemIDs($sorting);
 		}
+
+		return $itemIDs;
 	}
 
 
@@ -124,6 +121,25 @@ class TodoyuSearchFilterset extends TodoyuBaseObject {
 		return TodoyuSearchFiltersetManager::getFiltersetTypeClass($this->getType());
 	}
 
+
+
+	/**
+	 * Get filter object from filterset
+	 *
+	 * @return	TodoyuSearchFilterBase|Boolean
+	 */
+	public function getFilterObject() {
+		$class	= $this->getClass();
+
+		if( $class !== false ) {
+			$conditions	= $this->getConditions();
+			$conjunction= $this->getConjunction();
+
+			return new $class($conditions, $conjunction);
+		} else {
+			return false;
+		}
+	}
 
 }
 

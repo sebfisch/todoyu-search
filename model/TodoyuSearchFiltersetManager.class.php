@@ -31,6 +31,28 @@ class TodoyuSearchFiltersetManager {
 	 */
 	const TABLE = 'ext_search_filterset';
 
+	/**
+	 * Cache for results of filterObjects
+	 *
+	 * @var	Array
+	 */
+	private static $filterObjectCache = array();
+
+	/**
+	 * Flags to prevent nested processing of the same filterset
+	 * Prevents recursive loops
+	 *
+	 * @var	Array
+	 */
+	private static $filterObjectProcessing = array();
+
+	/**
+	 * List of already checked filterset usages (prevents recursions)
+	 *
+	 * @var	Array
+	 */
+	private static $filtersetChecked = array();
+
 
 
 	/**
@@ -430,100 +452,93 @@ class TodoyuSearchFiltersetManager {
 	/**
 	 * Merges FilterObjects as one query
 	 *
-	 * @param	Array		$value
+	 * @param	Array		$filterObjects
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_filterObject(array $value, $negate = false) {
-		$queryParts		= false;
+	public static function Filter_filterObject(array $filterObjects, $negate = false) {
+		$cacheID	= md5(serialize(func_get_args()));
 
-		$tables		= array();
-		$wheres		= array();
-		$joins		= array();
+			// Prevent processing the same filterset in nested conditions
+		if( self::$filterObjectProcessing[$cacheID] === true ) {
+			TodoyuLogger::logFatal('Filterset was nested recursively. Skipped processing. Will cause empty result');
+			return false;
+		} else {
+			self::$filterObjectProcessing[$cacheID] = true;
+		}
 
-		$whereAND	= false;
+			// Only calculate result if not cached already
+		if( ! array_key_exists($cacheID, self::$filterObjectCache) ) {
+			$queryParts		= false;
 
-		foreach($value as $filterSet) {
-			/**
-			 * @var	TodoyuSearchFilterBase	$filterSet
-			 */
-			$queryArray = $filterSet->getQueryArray('', '', false, true);
+			$tables		= array();
+			$wheres		= array();
+			$joins		= array();
 
-				// If filterset is active
-			if( $queryArray !== false ) {
-				if( is_array($queryArray['whereAND']) ) {
-					$whereAND	= '(' . implode(') AND (', $queryArray['whereAND']) . ')';
-				}
+			$whereAND	= false;
 
-					// If both are set, concatenate with AND
-				if( $queryArray['whereBasic'] && $whereAND ) {
-					$where	= $queryArray['whereBasic'] . ' AND ' . $whereAND;
-				} else {
-						// If not both are set, combine to one string
-					$where = trim($queryArray['whereBasic'] . $whereAND);
-				}
+			foreach($filterObjects as $filterSet) {
+				/**
+				 * @var	TodoyuSearchFilterBase	$filterSet
+				 */
+				$queryArray = $filterSet->getQueryArray('', '', false, true);
 
-					// If no WHERE statement available, go to next filterset
-				if( $where === '' ) {
-					continue;
-				}
+					// If filterset is active
+				if( $queryArray !== false ) {
+					if( is_array($queryArray['whereAND']) ) {
+						$whereAND	= '(' . implode(') AND (', $queryArray['whereAND']) . ')';
+					}
 
-					// Add WHERE statement to list
-				$wheres[] = $where;
-					// Add tables (they are already concatenated as string, so explode)
-				$tables	= array_merge($tables, explode(',', $queryArray['tables']));
-					// Add joins
-				if( is_array($queryArray['join']) ) {
-					$joins	= array_merge($joins, $queryArray['join']);
+						// If both are set, concatenate with AND
+					if( $queryArray['whereBasic'] && $whereAND ) {
+						$where	= $queryArray['whereBasic'] . ' AND ' . $whereAND;
+					} else {
+							// If not both are set, combine to one string
+						$where = trim($queryArray['whereBasic'] . $whereAND);
+					}
+
+						// If no WHERE statement available, go to next filterset
+					if( $where === '' ) {
+						continue;
+					}
+
+						// Add WHERE statement to list
+					$wheres[] = $where;
+						// Add tables (they are already concatenated as string, so explode)
+					$tables	= array_merge($tables, explode(',', $queryArray['tables']));
+						// Add joins
+					if( is_array($queryArray['join']) ) {
+						$joins	= array_merge($joins, $queryArray['join']);
+					}
 				}
 			}
+
+				// If conditions found, build query parts
+			if( sizeof($wheres) > 0 ) {
+					// Remove double tables
+				$tables	= array_unique($tables);
+				$where	= '(' . implode(' AND ', $wheres) . ')';
+				$joins	= array_unique($joins);
+
+				$queryParts	= array(
+					'tables'=> $tables,
+					'where'	=> $where,
+					'join'	=> $joins
+				);
+			}
+
+			self::$filterObjectCache[$cacheID] = $queryParts;
 		}
 
-			// If conditions found, build query parts
-		if( sizeof($wheres) > 0 ) {
-				// Remove double tables
-			$tables	= array_unique($tables);
-			$where	= '(' . implode(' AND ', $wheres) . ')';
-			$joins	= array_unique($joins);
+			// Reset lock flag for processed filterset
+		self::$filterObjectProcessing[$cacheID] = false;
 
-			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where,
-				'join'	=> $joins
-			);
-		}
-
-		return $queryParts;
+		return self::$filterObjectCache[$cacheID];
 	}
 
 
 
-	/**
-	 * Filter after filter sets
-	 *
-	 * @param	Integer		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
-	 * @todo 	Implement negation?
-	 */
-	public static function Filter_filterSet($value, $negate = false) {
-		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);
 
-			// Prepare return values
-		$filter	= array();
-
-			// Process all filtersets
-		foreach($filtersetIDs as $idFilterset) {
-			$filterSet	= self::getFilterset($idFilterset);
-			$className	= $filterSet->getClass();
-
-			if( class_exists($className) ) {
-				$filter[] = new $className($filterSet->getConditions(), $filterSet->getConjunction());
-			}
-		}
-
-		return (sizeof($filter) > 0) ? self::Filter_filterObject($filter, $negate) : array();
-	}
 
 
 
@@ -606,13 +621,32 @@ class TodoyuSearchFiltersetManager {
 			if( $condition['filter'] === 'filterSet' ) {
 				$subFiltersetIDs	= explode(',', $condition['value']);
 
+					// Make sure the cache array for the filterset exists
+				if( ! array_key_exists($idFiltersetToCheck, self::$filtersetChecked) ) {
+					self::$filtersetChecked[$idFiltersetToCheck] = array();
+				}
+
+					// Check whether filterset is directly used
 				if( in_array($idFiltersetToCheck, $subFiltersetIDs) ) {
 					return true;
 				} else {
+						// Check sub filter sets
 					foreach($subFiltersetIDs as $subFiltersetID) {
-						$check = self::isFiltersetUsed($subFiltersetID, $idFiltersetToCheck);
+							// If already checked, return result of check
+						if( array_key_exists($subFiltersetID, self::$filtersetChecked[$idFiltersetToCheck]) ) {
+							return self::$filtersetChecked[$idFiltersetToCheck][$subFiltersetID];
+						} else {
+								// Simulate the be already checked to prevent loops
+							self::$filtersetChecked[$idFiltersetToCheck][$subFiltersetID] = true;
+						}
 
-						if( $check === true ) {
+							// Check usage recursively
+						$isUsed	= self::isFiltersetUsed($subFiltersetID, $idFiltersetToCheck);
+
+							// Save check to cache
+						self::$filtersetChecked[$idFiltersetToCheck][$subFiltersetID] = $isUsed;
+
+						if( $isUsed === true ) {
 							return true;
 						}
 					}
