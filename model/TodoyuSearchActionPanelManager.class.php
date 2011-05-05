@@ -72,7 +72,7 @@ class TodoyuSearchActionPanelManager {
 		if( method_exists($checkExport[0], $checkExport[1]) ) {
 			return call_user_func($export['method'], $itemIDs);
 		} else {
-			Todoyu::log("Tried to call undefined method: " . $export['method'] . ' in ' . __CLASS__ . ' on line ' . __LINE__, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError("Tried to call undefined method: " . $export['method'] . ' in ' . __CLASS__ . ' on line ' . __LINE__);
 		}
 	}
 

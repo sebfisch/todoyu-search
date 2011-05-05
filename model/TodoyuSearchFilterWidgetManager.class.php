@@ -55,7 +55,7 @@ class TodoyuSearchFilterWidgetManager	{
 
 			// If no configuration available, log
 		if( sizeof($config) === 0 ) {
-			Todoyu::log('Filter widget not found', TodoyuLogger::LEVEL_ERROR, array($type, $widgetName));
+			TodoyuLogger::logError('Filter widget not found', array($type, $widgetName));
 		}
 
 		return $config;
@@ -179,7 +179,7 @@ class TodoyuSearchFilterWidgetManager	{
 		if( TodoyuFunction::isFunctionReference($funcRefString) ) {
 			$results = TodoyuFunction::callUserFunction($funcRefString, $sword, $funcRefParams);
 		} else {
-			Todoyu::log('Invalid AC-callback function', TodoyuLogger::LEVEL_ERROR, array('widget'=>$widgetName, 'acFunc'=>$funcRefString));
+			TodoyuLogger::logError('Invalid AC-callback function', array('widget'=>$widgetName, 'acFunc'=>$funcRefString));
 			$results = array();
 		}
 
@@ -279,7 +279,7 @@ class TodoyuSearchFilterWidgetManager	{
 		$definitions	= TodoyuArray::assure(Todoyu::$CONFIG['FILTERS'][$filterType]['widgets'][$widgetName]);
 
 		if( sizeof($definitions) === 0 ) {
-			Todoyu::log('Widget definitions not found', TodoyuLogger::LEVEL_ERROR, array($filterType, $widgetName));
+			TodoyuLogger::logError('Widget definitions not found', array($filterType, $widgetName));
 		}
 
 		return $definitions;

@@ -205,7 +205,7 @@ abstract class TodoyuSearchFilterBase {
 		}
 
 			// If no function reference found, log error
-		Todoyu::log('Filter method "' . $filter . '" (table: ext_search_filtercondition) not found for type ' . $this->type);
+		TodoyuLogger::logError('Filter method "' . $filter . '" (table: ext_search_filtercondition) not found for type ' . $this->type);
 
 		return false;
 	}
@@ -276,7 +276,7 @@ abstract class TodoyuSearchFilterBase {
 					$queryParts['join'] = TodoyuArray::merge($queryParts['join'], $filterQueryParts['join']);
 				}
 			} else {
-				Todoyu::log('Unknown filter: ' . $filter['filter'], TodoyuLogger::LEVEL_ERROR);
+				TodoyuLogger::logError('Unknown filter: ' . $filter['filter']);
 			}
 		}
 

@@ -45,7 +45,7 @@ class TodoyuSearchFilterWidgetRenderer {
 		);
 
 		if( is_null($tmpl) ) {
-			Todoyu::log('Missing widget template (' . $type . '/' . $widgetKey . ')');
+			TodoyuLogger::logError('Missing widget template (' . $type . '/' . $widgetKey . ')');
 			return '';
 		}
 
