@@ -181,7 +181,7 @@ class TodoyuSearchPreferences {
 		$value		= $currentFilter;
 		$unique		= true;
 
-		TodoyuPreferenceManager::savePreference($extID, $preference, $value, null, $unique, 0, personid());
+		TodoyuPreferenceManager::savePreference($extID, $preference, $value, null, $unique, 0, Todoyu::personid());
 	}
 
 
@@ -208,7 +208,7 @@ class TodoyuSearchPreferences {
 		$extID 		= EXTID_SEARCH;
 		$preference = 'searchcurrentfilter';
 
-		return TodoyuPreferenceManager::deletePreference($extID, $preference, null, 0, 0, personid());
+		return TodoyuPreferenceManager::deletePreference($extID, $preference, null, 0, 0, Todoyu::personid());
 	}
 
 

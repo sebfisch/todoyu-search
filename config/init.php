@@ -20,7 +20,7 @@
 
 require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
 
-if( allowed('search', 'general:use') ) {
+if( Todoyu::allowed('search', 'general:use') ) {
 	TodoyuSearchManager::addEngine('all', null, '', 'search.ext.search.label', 0);
 }
 

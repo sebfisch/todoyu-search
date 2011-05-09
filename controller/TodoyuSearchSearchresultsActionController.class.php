@@ -32,7 +32,7 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function init(array $params) {
-		restrict('search', 'general:use');
+		Todoyu::restrict('search', 'general:use');
 	}
 
 

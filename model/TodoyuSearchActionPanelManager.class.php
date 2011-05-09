@@ -37,7 +37,7 @@ class TodoyuSearchActionPanelManager {
 			'exports'	=> self::getExportOfType($activeTab)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

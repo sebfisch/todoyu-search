@@ -42,7 +42,7 @@ class TodoyuSearchHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 			'query'			=> $this->params['query']
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -53,7 +53,7 @@ class TodoyuSearchHeadletQuickSearch extends TodoyuHeadletTypeOverlay {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return Label('search.ext.headlet.label');
+		return Todoyu::Label('search.ext.headlet.label');
 	}
 
 }

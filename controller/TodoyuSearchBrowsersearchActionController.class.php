@@ -40,7 +40,7 @@ class TodoyuSearchBrowsersearchActionController extends TodoyuActionController {
 
 		TodoyuHeader::sendTypeXML();
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

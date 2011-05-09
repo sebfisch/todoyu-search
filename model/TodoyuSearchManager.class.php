@@ -64,7 +64,7 @@ class TodoyuSearchManager {
 			$require	= explode('.', $data['config']['require']);
 
 				// Add if no require set or require clause is allowed
-			if( ! isset($data['config']['require']) || allowed($require[0], $require[1]) ) {
+			if( ! isset($data['config']['require']) || Todoyu::allowed($require[0], $require[1]) ) {
 				$config[$type] = $data['config'];
 			}
 		}

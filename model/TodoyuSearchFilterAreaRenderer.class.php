@@ -80,7 +80,7 @@ class TodoyuSearchFilterAreaRenderer {
 			$data['init'] = 'Todoyu.Ext.search.Filter.init(\'' . $activeTab . '\', \'' . $idFilterset . '\', ' . json_encode($conditions) . ')';
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -163,7 +163,7 @@ class TodoyuSearchFilterAreaRenderer {
 			'activeConjunction'	=> $conjunction
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -229,11 +229,11 @@ class TodoyuSearchFilterAreaRenderer {
 		$tmpl	= 'ext/search/view/search-results.tmpl';
 		$data	= array(
 			'itemsAmount'	=> sizeof($itemIDs),
-			'itemsLabel'	=> Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
+			'itemsLabel'	=> Todoyu::Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
 			'itemsList'		=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

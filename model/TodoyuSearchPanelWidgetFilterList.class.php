@@ -76,7 +76,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 			'toggleStatus' 		=> $toggleStatus
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -91,7 +91,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 		$groups = array();
 
 		foreach($filtersets as $filterset) {
-			$groups[ $filterset['type'] ]['label']			= Label(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
+			$groups[ $filterset['type'] ]['label']			= Todoyu::Label(Todoyu::$CONFIG['FILTERS'][strtoupper($filterset['type'])]['config']['label']);
 			$groups[ $filterset['type'] ]['filtersets'][]	= $filterset;
 		}
 
@@ -106,7 +106,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('search', 'general:use');
+		return Todoyu::allowed('search', 'general:use');
 	}
 
 }

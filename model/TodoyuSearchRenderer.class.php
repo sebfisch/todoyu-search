@@ -42,7 +42,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	public static function renderSuggestions(array $suggestions) {
 		$tmpl	= 'ext/search/view/suggest.tmpl';
 
-		return render($tmpl, $suggestions);
+		return Todoyu::render($tmpl, $suggestions);
 	}
 
 
@@ -59,7 +59,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 			'searchModes'	=> TodoyuSearch::getSearchModes()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

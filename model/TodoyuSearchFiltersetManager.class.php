@@ -106,7 +106,7 @@ class TodoyuSearchFiltersetManager {
 	private static function getNextFiltersetSortingPosition($type) {
 		$field	= 'sorting';
 		$table	= self::TABLE;
-		$where	= '		id_person_create= ' . personid()
+		$where	= '		id_person_create= ' . Todoyu::personid()
 				. ' AND	deleted			= 0'
 				. ' AND `type`			= ' . Todoyu::db()->quote($type, true);
 		$order	= 'sorting DESC';
@@ -313,7 +313,7 @@ class TodoyuSearchFiltersetManager {
 	 */
 	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false) {
 		$type		= empty($type) ? 'TASK' : strtolower(trim($type));
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= '*';
 		$table	= self::TABLE;
@@ -338,7 +338,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersets($idPerson = 0, $type = null) {
-		$idPerson		= personid($idPerson);
+		$idPerson		= Todoyu::personid($idPerson);
 		$filtersetTypes	= TodoyuSearchFiltersetManager::getFiltersetTypes();
 		$typeList		= TodoyuArray::implodeQuoted($filtersetTypes);
 
@@ -366,7 +366,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersetIDs($idPerson = 0, $type = null) {
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= 'id';
 		$table	= self::TABLE;
@@ -393,7 +393,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getFiltersetTitles($idPerson = 0, $type = null) {
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= 'title';
 		$table	= self::TABLE;
@@ -583,7 +583,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getTaskFilterSetSelectionOptions(array $definitions) {
-		$allFiltersets	= self::getTypeFiltersets('TASK', personid(), true);
+		$allFiltersets	= self::getTypeFiltersets('TASK', Todoyu::personid(), true);
 		$activeFilterset= TodoyuSearchPreferences::getActiveFilterset('task');
 
 		$definitions['options']	= self::buildFiltersetOptions($allFiltersets, $activeFilterset);
@@ -600,7 +600,7 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Array
 	 */
 	public static function getProjectFilterSetSelectionOptions(array $definitions) {
-		$allFiltersets	= self::getTypeFiltersets('PROJECT', personid(), true);
+		$allFiltersets	= self::getTypeFiltersets('PROJECT', Todoyu::personid(), true);
 		$activeFilterset= TodoyuSearchPreferences::getActiveFilterset('project');
 
 		$definitions['options']	= self::buildFiltersetOptions($allFiltersets, $activeFilterset);
