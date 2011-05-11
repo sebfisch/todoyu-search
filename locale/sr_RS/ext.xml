@@ -24,6 +24,6 @@
 	<label index="filterwidget.condtion.remove">Уклони услов</label>
 	<label index="search.noEntryFound">Ништа није нађено</label>
 	<label index="search.noResultsForActiveFilters">Нема нађених резултата за овај филтер</label>
-	<label index="contextmenu.project.showinproject">Отвори поглед пројект-а </label>
+	<label index="contextmenu.project.showinproject">Отвори поглед пројект-а</label>
 	<label index="headlet.label">Претражи todoyu</label>
 </labels>
