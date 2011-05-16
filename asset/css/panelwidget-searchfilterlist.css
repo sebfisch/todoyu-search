@@ -7,23 +7,24 @@
 }
 
 #panelwidget-searchfilterlist .listItem .actions .save {
-	background:transparent url(../img/icons.png) no-repeat scroll 5px -118px !important;
+	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -208px !important;
 }
 
 #panelwidget-searchfilterlist .listItem .actions .delete {
-	background:transparent url(../img/icons.png) no-repeat scroll 4px -88px !important;
+	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 4px -357px !important;
+
 }
 
 #panelwidget-searchfilterlist .listItem .actions .visibility {
-	background:url(../img/icons.png) no-repeat 4px -178px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 4px -1078px;
 }
 
 #panelwidget-searchfilterlist .listItem .actions .invisible {
-	background-position:5px -148px !important;
+	opacity:0.6;filter:alpha(opacity=60);
 }
 
 #panelwidget-searchfilterlist .listItem .actions .rename {
-	background:transparent url(../img/icons.png) no-repeat scroll 5px -238px !important;
+	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -148px !important;
 }
 
 #panelwidget-searchfilterlistsearchFilterButton {

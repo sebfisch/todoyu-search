@@ -53,11 +53,11 @@ h1.extIconSearch .title {
 	------------------------------- */
 
 #action-panel button.clearFilterArea .icon	{
-	background:url(../img/icons.png) no-repeat 0 -87px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -357px;
 }
 
 #action-panel button.saveAsNewFilter .icon	{
-	background:url(../img/icons.png) no-repeat 0 -117px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -208px;
 }
 
 #action-panel {
