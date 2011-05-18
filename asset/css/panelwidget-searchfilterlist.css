@@ -20,7 +20,7 @@
 }
 
 #panelwidget-searchfilterlist .listItem .actions .invisible {
-	opacity:0.6;filter:alpha(opacity=60);
+	opacity:0.3;filter:alpha(opacity=60);
 }
 
 #panelwidget-searchfilterlist .listItem .actions .rename {
