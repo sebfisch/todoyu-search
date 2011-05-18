@@ -108,6 +108,8 @@ class TodoyuSearchFilterConditionManager {
 			$conditionConfigs = array();
 		}
 
+		$conditionConfigs = self::removeConditionByRights($conditionConfigs);
+
 		return $conditionConfigs;
 	}
 
@@ -236,6 +238,39 @@ class TodoyuSearchFilterConditionManager {
 		}
 
 		return $conditions;
+	}
+
+
+
+	/**
+	 * Remove restricted filter conditions
+	 *
+	 * @param 	Array		$filterConditions
+	 * @return	Array
+	 */
+	protected static function removeConditionByRights(array $filterConditions = array()) {
+		$unset = false;
+
+		foreach($filterConditions as $index => $condition) {
+			if( isset( $condition['require'] ) ) {
+				$requireArray = explode('.', $condition['require']);
+				if( !Todoyu::allowed($requireArray[0], $requireArray[1]) ) {
+					$unset = true;
+				}
+			}
+
+			if( isset( $condition['internal'] ) && !TodoyuAuth::isInternal() ) {
+				$unset = true;
+			}
+
+			if( $unset === true) {
+				unset($filterConditions[$index]);
+			}
+
+			$unset = false;
+		}
+
+		return $filterConditions;
 	}
 
 }
