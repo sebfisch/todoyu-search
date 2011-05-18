@@ -227,10 +227,17 @@ class TodoyuSearchFilterAreaRenderer {
 		}
 
 		$tmpl	= 'ext/search/view/search-results.tmpl';
+
+		$foundResultsCount = sizeof($itemIDs);
+
+		$replaceArray = array(
+			Todoyu::Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
+			$foundResultsCount
+		);
+
 		$data	= array(
-			'itemsAmount'	=> sizeof($itemIDs),
-			'itemsLabel'	=> Todoyu::Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
-			'itemsList'		=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
+			'resultLabel'		=> str_replace(array('%s', '%e'), $replaceArray, (sizeof($typeFilter->getItemIDs()) > $foundResultsCount ? Todoyu::Label('LLL:search.ext.areMatching.overLimit') : Todoyu::Label('LLL:search.ext.areMatching'))),
+			'itemsList'			=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
 		);
 
 		return Todoyu::render($tmpl, $data);
