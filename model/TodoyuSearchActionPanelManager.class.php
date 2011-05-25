@@ -49,6 +49,7 @@ class TodoyuSearchActionPanelManager {
 	 * @param	String		$type			'task' / 'project' etc.
 	 * @param	Array		$conditions
 	 * @param	String		$conjunction	logical conjunction ('AND' / 'OR')
+	 * @return	Mixed
 	 */
 	public static function dispatchExport($name, $type, $conditions, $conjunction) {
 		$export	= self::getExportOfTypeAndName($type, $name);

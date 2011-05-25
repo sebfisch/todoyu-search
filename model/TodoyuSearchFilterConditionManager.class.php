@@ -116,10 +116,10 @@ class TodoyuSearchFilterConditionManager {
 
 
 	/**
-	 * Groups the filtercondition by their option group.
+	 * Groups the filter condition by their option group.
 	 * Used for the filterwidget selector in the search extension
 	 *
-	 * @param	Array	$filters
+	 * @param	Array	$conditions
 	 * @return	Array
 	 */
 	public static function groupConditionsByType(array $conditions) {

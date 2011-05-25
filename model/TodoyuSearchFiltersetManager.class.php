@@ -56,10 +56,10 @@ class TodoyuSearchFiltersetManager {
 
 
 	/**
-	 * Get filter
+	 * Get filterset
 	 *
-	 * @param	Integer		$idFilter
-	 * @return	TodoyuSearchFilterset
+	 * @param	Integer						$idFilterset
+	 * @return	TodoyuSearchFilterset		Filterset record
 	 */
 	public static function getFilterset($idFilterset) {
 		$idFilterset	= intval($idFilterset);
@@ -161,7 +161,7 @@ class TodoyuSearchFiltersetManager {
 	/**
 	 * Get conditions of filterset
 	 *
-	 * @param	Integer	$idSet
+	 * @param	Integer		$idFilterset
 	 * @return	Array
 	 */
 	public static function getFiltersetConditions($idFilterset) {
@@ -273,7 +273,7 @@ class TodoyuSearchFiltersetManager {
 	 * Update filterset visibility: Set hidden attribute of the filterset
 	 *
 	 * @param	Integer		$idFilterset
-	 * @param	Boolean		$isHidden
+	 * @param	Boolean		$isVisible
 	 */
 	public static function updateFiltersetVisibility($idFilterset, $isVisible = true) {
 		$data = array(
@@ -309,6 +309,7 @@ class TodoyuSearchFiltersetManager {
 	 *
 	 * @param	String		$type
 	 * @param	Integer		$idPerson
+	 * @param	Boolean		$showHidden
 	 * @return 	Array
 	 */
 	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false) {

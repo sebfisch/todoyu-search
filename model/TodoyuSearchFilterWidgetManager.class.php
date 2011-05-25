@@ -66,7 +66,7 @@ class TodoyuSearchFilterWidgetManager	{
 	/**
 	 * Get type configuration for a field type of a widget
 	 *
-	 * @param	String		$fieldType
+	 * @param	String		$type
 	 * @return	Array
 	 */
 	public static function getWidgetTypeConfig($type) {
@@ -115,6 +115,7 @@ class TodoyuSearchFilterWidgetManager	{
 	 * @param	String	$widgetName
 	 * @param	String	$numOfWidget
 	 * @param	Mixed	$value
+	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
 	public static function getFilterWidgetDefinitions($filterType, $widgetName, $numOfWidget, $value = '', $negate = false) {

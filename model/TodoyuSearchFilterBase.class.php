@@ -90,6 +90,7 @@ abstract class TodoyuSearchFilterBase {
 	 * @param	String		$type				Type of the filter (funcRefs are stored in the config unter this type)
 	 * @param	String		$defaultTable		Table to get the IDs from
 	 * @param	Array		$activeFilters		Active filters of the current request
+	 * @param	String		$conjunction
 	 */
 	protected function __construct($type, $defaultTable, array $activeFilters = array(), $conjunction = 'AND') {
 		$this->type					= strtoupper($type);

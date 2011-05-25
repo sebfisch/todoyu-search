@@ -96,6 +96,7 @@ class TodoyuSearch {
 	 * @param	Array 		$find			Words to find
 	 * @param	Array		$ignore			Words to ignore
 	 * @param	Integer		$limit
+	 * @param	String		$addToWhere
 	 * @return	String
 	 */
 	public static function searchTable($table, array $fields, array $find, array $ignore = array(), $limit = 200, $addToWhere = ' AND deleted = 0') {

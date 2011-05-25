@@ -29,6 +29,7 @@ class TodoyuSearchFilterHelper {
 	/**
 	 * Get query parts for date field filtering
 	 *
+	 * @param	String		$tables
 	 * @param	String		$field
 	 * @param	Integer		$date
 	 * @param	Boolean		$negate

@@ -28,9 +28,11 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 
 	/**
 	 * Constructor of the class
-	 *
-	 * - intitializes the filters
+	 * - initializes the filters
 	 * - modifies the filters
+	 *
+	 * @param	Array	$config
+	 * @param	Array	$params
 	 */
 	public function __construct(array $config, array $params = array()) {
 		TodoyuExtensions::loadAllFilters();
