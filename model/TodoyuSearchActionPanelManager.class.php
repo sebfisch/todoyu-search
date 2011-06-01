@@ -63,7 +63,7 @@ class TodoyuSearchActionPanelManager {
 
 		if( $typeFilter->hasActiveFilters() ) {
 			$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
-			$itemIDs	= $typeFilter->getItemIDs($sorting);
+			$itemIDs	= $typeFilter->getItemIDs($sorting, 3000);
 		} else {
 			$itemIDs	= array();
 		}
