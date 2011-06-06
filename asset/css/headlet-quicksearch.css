@@ -98,11 +98,8 @@
 
 	#todoyusearchheadletquicksearch-suggest a span.title {
 		font-weight:bold;
-		padding-left:10px;
 	}
 
 	#todoyusearchheadletquicksearch-suggest a span.info {
 		color:#aaa;
-		display:block;
-		padding-left:10px;
 	}
