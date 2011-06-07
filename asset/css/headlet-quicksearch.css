@@ -95,8 +95,11 @@
 	#todoyusearchheadletquicksearch-suggest ul li ul li a:hover {
 		background-color:#f2f2d2;
 	}
-
+	
 	#todoyusearchheadletquicksearch-suggest a span.title {
+		display: block;
+	}
+	#todoyusearchheadletquicksearch-suggest a span.keyword {
 		font-weight:bold;
 	}
 
