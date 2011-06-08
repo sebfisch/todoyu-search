@@ -24,7 +24,7 @@ if( Todoyu::allowed('search', 'general:use') ) {
 
 		// Menu entries
 	if( Todoyu::allowed('search', 'general:area') ) {
-		TodoyuFrontend::addMenuEntry('search', 'LLL:search.ext.page.title', '?ext=search', 50);
+		TodoyuFrontend::addMenuEntry('search', 'search.ext.page.title', '?ext=search', 50);
 
 			// Add filter types as sub menu
 		$filterTypes= TodoyuSearchManager::getFilters();
