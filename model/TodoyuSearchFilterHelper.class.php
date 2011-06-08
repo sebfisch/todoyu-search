@@ -33,7 +33,7 @@ class TodoyuSearchFilterHelper {
 	 * @param	String		$field
 	 * @param	Integer		$date
 	 * @param	Boolean		$negate
-	 * @return	Boolean
+	 * @return	Array|Boolean
 	 */
 	public static function getDateFilterQueryparts($tables, $field, $date, $negate = false) {
 		$queryParts	= false;
