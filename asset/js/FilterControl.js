@@ -62,8 +62,8 @@ Todoyu.Ext.search.FilterControl = {
 	 * @method	installObservers
 	 */
 	installObservers: function() {
-		this.conditionsObserver = this.onConditionsChange.bindAsEventListener(this);
-		this.conjunctionObserver = this.onConjunctionChange.bindAsEventListener(this);
+		this.conditionsObserver	= this.onConditionsChange.bind(this);
+		this.conjunctionObserver= this.onConjunctionChange.bind(this);
 
 		$('filtercontrol-conditions').observe('change', this.conditionsObserver);
 		$('filtercontrol-conjunction').observe('change', this.conjunctionObserver);
@@ -95,7 +95,7 @@ Todoyu.Ext.search.FilterControl = {
 	onConditionsChange: function(event) {
 		var value 		= event.element().getValue();
 		var type		= value.split('_').first();
-		var condition	= value.split('_').last();
+		var condition	= value.split('_').slice(1).join('_');
 
 		event.element().selectedIndex = 0;
 
