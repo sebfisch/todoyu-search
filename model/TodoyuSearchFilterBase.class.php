@@ -81,6 +81,13 @@ abstract class TodoyuSearchFilterBase {
 	 */
 	protected $resultIDs	= array();
 
+	/**
+	 * Total found rows of last query
+	 *
+	 * @var	Integer
+	 */
+	private $totalFoundRows	= 0;
+
 
 
 
@@ -376,7 +383,7 @@ abstract class TodoyuSearchFilterBase {
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
 		$queryArray	= array();
 
-		$queryArray['fields']	= $this->defaultTable . '.id';
+		$queryArray['fields']	= 'SQL_CALC_FOUND_ROWS ' . $this->defaultTable . '.id';
 		$queryArray['tables']	= implode(', ', $tables);
 		$queryArray['where']	= ''; // WHERE clause is added later
 		$queryArray['group']	= $this->defaultTable . '.id';
@@ -483,9 +490,22 @@ abstract class TodoyuSearchFilterBase {
 				$queryArray['limit'],
 				'id'
 			);
+
+			$this->totalFoundRows	= Todoyu::db()->getTotalFoundRows();
 		}
 
 		return $this->resultIDs[$cacheID];
+	}
+
+
+
+	/**
+	 * Get total found rows. Same as when the filter would have been called without a limit
+	 *
+	 * @return	Integer
+	 */
+	public final function getTotalItems() {
+		return $this->totalFoundRows;
 	}
 
 

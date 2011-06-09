@@ -25,8 +25,8 @@
 	<label index="newFilterLabel.preset">新規フィルタ</label>
 	<label index="subMenuEntry.task">タスク</label>
 	<label index="subMenuEntry.project">プロジェクト</label>
-	<label index="areMatching">%e %sが検索基準に適合します</label>
-	<label index="areMatching.overLimit">%e %s以上が検索基準に一致します。ポータルビューでこのフィルタを使うことで一致した全レコードが見れます。</label>
+	<label index="areMatching">%1$d %2$s が検索基準に適合します</label>
+	<label index="areMatching.overLimit">%1$d %2$s 以上が検索基準に一致します。ポータルビューでこのフィルタを使うことで一致した全レコードが見れます。</label>
 	<label index="filterwidget.condtion.remove">条件の削除</label>
 	<label index="search.noEntryFound">検索結果なし</label>
 	<label index="search.noResultsForActiveFilters">現在選択したフィルタの結果はありません</label>

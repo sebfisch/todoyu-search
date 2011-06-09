@@ -25,8 +25,8 @@
 	<label index="newFilterLabel.preset">New Filter</label>
 	<label index="subMenuEntry.task">Tasks</label>
 	<label index="subMenuEntry.project">Projects</label>
-	<label index="areMatching">%e %s are matching your search criteria</label>
-	<label index="areMatching.overLimit">More than %e %s are matching your search criteria. Use this filter in the portal view to see all matching records.</label>
+	<label index="areMatching">%1$d %2$s are matching your search criteria</label>
+	<label index="areMatching.overLimit">More than %1$d %2$s are matching your search criteria. Use this filter in the portal view to see all matching records.</label>
 	<label index="filterwidget.condtion.remove">Remove Condition</label>
 	<label index="search.noEntryFound">No Results Found</label>
 	<label index="search.noResultsForActiveFilters">No results found for currently selected filters</label>

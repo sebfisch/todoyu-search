@@ -202,6 +202,7 @@ class TodoyuSearchFilterAreaRenderer {
 	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
+		$hardLimit		= 200;
 
 			// If filterset is given, use its conditions
 		if( $idFilterset !== 0 ) {
@@ -217,30 +218,55 @@ class TodoyuSearchFilterAreaRenderer {
 		 * @var	TodoyuProjectTaskFilter	$typeFilter
 		 */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
-
 		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
+		$itemIDs	= array();
 
 		if( $typeFilter->hasActiveFilters() ) {
-			$itemIDs	= $typeFilter->getItemIDs($sorting, 200);
-		} else {
-			$itemIDs	= array();
+			$itemIDs	= $typeFilter->getItemIDs($sorting, $hardLimit);
 		}
 
+			// Prepare variables
+		$numItems	= sizeof($itemIDs);
+		$totalItems	= $typeFilter->getTotalItems();
+		$resultLabel= self::renderResultInfoText($type, $numItems, $totalItems, $hardLimit);
+
 		$tmpl	= 'ext/search/view/search-results.tmpl';
-
-		$foundResultsCount = sizeof($itemIDs);
-
-		$replaceArray = array(
-			Todoyu::Label(Todoyu::$CONFIG['FILTERS'][strtoupper($type)]['config']['label']),
-			$foundResultsCount
-		);
-
 		$data	= array(
-			'resultLabel'		=> str_replace(array('%s', '%e'), $replaceArray, (sizeof($typeFilter->getItemIDs()) > $foundResultsCount ? Todoyu::Label('LLL:search.ext.areMatching.overLimit') : Todoyu::Label('LLL:search.ext.areMatching'))),
-			'itemsList'			=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
+			'resultLabel'	=> $resultLabel,
+			'itemsList'		=> TodoyuSearchRenderer::renderResultsListing($type, $itemIDs)
 		);
 
 		return Todoyu::render($tmpl, $data);
+	}
+
+
+	/**
+	 * Render info text about the number of matching elements in the result
+	 *
+	 * @param	String		$type
+	 * @param	Integer		$numItems
+	 * @param	Integer		$totalItems
+	 * @param	Integer		$hardLimit
+	 * @return	String
+	 */
+	private static function renderResultInfoText($type, $numItems, $totalItems, $hardLimit) {
+		$type		= trim(strtoupper($type));
+		$numItems	= intval($numItems);
+		$totalItems	= intval($totalItems);
+		$hardLimit	= intval($hardLimit);
+
+					// Prepare variables
+		$typeLabel	= Todoyu::Label(Todoyu::$CONFIG['FILTERS'][$type]['config']['label']);
+
+			// Get text pattern
+		if( $numItems > 0 && $totalItems > $hardLimit ) {
+			$infoTextPattern	= Todoyu::Label('search.ext.areMatching.overLimit');
+		} else {
+			$infoTextPattern	= Todoyu::Label('search.ext.areMatching');
+		}
+
+			// Compile string from string and variables
+		return sprintf($infoTextPattern, $numItems, $typeLabel);
 	}
 
 }
