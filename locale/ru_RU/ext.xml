@@ -17,13 +17,20 @@
 	<label index="negation.default.false">Да</label>
 	<label index="negation.datetime.true">С</label>
 	<label index="negation.datetime.false">До</label>
+	<label index="negation.datetimeDyn.true">С</label>
+	<label index="negation.datetimeDyn.false">До</label>
+	<label index="negation.numbercompare.true">меньше, чем</label>
+	<label index="negation.numbercompare.false">больше, чем</label>
 	<label index="newFilterLabel">Введите название для нового фильтра</label>
 	<label index="newFilterLabel.preset">Новый фильтр</label>
 	<label index="subMenuEntry.task">Задачи</label>
 	<label index="subMenuEntry.project">Проекты</label>
+	<label index="areMatching">%e %s подходят по критериям поиска</label>
+	<label index="areMatching.overLimit">Больше, чем %e %s подходят по критериям поиска. Используйте этот фильтр в режиме портала, чтоы увидеть все результаты.</label>
 	<label index="filterwidget.condtion.remove">Удалить условие</label>
 	<label index="search.noEntryFound">Результатов нет</label>
 	<label index="search.noResultsForActiveFilters">Для выбраных фильтров ничего не найдено</label>
 	<label index="contextmenu.project.showinproject">Открыть в проекте</label>
 	<label index="headlet.label">Искать в todoyu</label>
+	<label index="export.error.saveEmpty">Нечего экспортировать.</label>
 </labels>
