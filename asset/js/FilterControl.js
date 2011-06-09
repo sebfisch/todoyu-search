@@ -31,19 +31,6 @@ Todoyu.Ext.search.FilterControl = {
 	 */
 	ext:					Todoyu.Ext.search,
 
-	/**
-	 * @property	conditionsObserver
-	 * @type		Observer
-	 */
-	conditionsObserver:		null,
-
-	/**
-	 * @property	conjunctionObserver
-	 * @type		Observer
-	 */
-	conjunctionObserver:	null,
-
-
 
 	/**
 	 * Initialize search filter controls: install observers
@@ -62,27 +49,12 @@ Todoyu.Ext.search.FilterControl = {
 	 * @method	installObservers
 	 */
 	installObservers: function() {
-		this.conditionsObserver	= this.onConditionsChange.bind(this);
-		this.conjunctionObserver= this.onConjunctionChange.bind(this);
-
-		$('filtercontrol-conditions').observe('change', this.conditionsObserver);
-		$('filtercontrol-conjunction').observe('change', this.conjunctionObserver);
+		$('filtercontrol-conditions').on('change', this.onConditionsChange.bind(this));
+		$('filtercontrol-conjunction').on('change', this.onConjunctionChange.bind(this));
 	},
 
 
 
-	/**
-	 * Uninstall observers
-	 *
-	 * @method	uninstallObservers
-	 */
-	uninstallObservers: function() {
-		$('filtercontrol-conditions').stopObserving('change', this.conditionsObserver);
-		$('filtercontrol-conjunction').stopObserving('change', this.conjunctionObserver);
-
-		this.conditionsObserver = null;
-		this.conjunctionObserver = null;
-	},
 
 
 

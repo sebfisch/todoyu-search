@@ -70,7 +70,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		this.button	= this.getButton();
 		this.content= this.getContent();
 
-		this.query.observe('click', this.onQueryClick.bindAsEventListener(this));
+		this.query.on('click', this.onQueryClick.bind(this));
 
 		this.Suggest.init(this);
 		this.Mode.init(this);
@@ -399,7 +399,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 
 				// Move suggest to body (to scroll)
 			document.body.appendChild(this.suggest);
-			this.headlet.query.observe('keyup', this.onQueryChange.bind(this));
+			this.headlet.query.on('keyup', this.onQueryChange.bind(this));
 		},
 
 
