@@ -25,8 +25,8 @@
 	<label index="newFilterLabel.preset">Neuer Filter</label>
 	<label index="subMenuEntry.task">Aufgaben</label>
 	<label index="subMenuEntry.project">Projekte</label>
-	<label index="areMatching">%1$d %2$s stimmen mit Ihren Suchkriterien überein. Nutzen Sie das Listing im Portal um alle Resultate zu sehen</label>
-	<label index="areMatching.overLimit">Es stimmen mehr als %1$d %2$s mit Ihren Suchkriterien überein</label>
+	<label index="areMatching">%1$d %2$s stimmen mit Ihren Suchkriterien überein.</label>
+	<label index="areMatching.overLimit">Es stimmen mehr als %1$d %2$s mit Ihren Suchkriterien überein. Nutzen Sie das Listing im Portal um alle Resultate zu sehen.</label>
 	<label index="filterwidget.condtion.remove">Bedingung entfernen</label>
 	<label index="search.noEntryFound">Nichts gefunden</label>
 	<label index="search.noResultsForActiveFilters">Keine Resultate für die aktuellen Filter gefunden</label>
