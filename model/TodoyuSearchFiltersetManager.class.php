@@ -117,7 +117,7 @@ class TodoyuSearchFiltersetManager {
 		if( $value === false ) {
 			$value = 0;
 		} else {
-			$value = intval($value+1);
+			$value = intval($value + 1);
 		}
 
 		return $value;
