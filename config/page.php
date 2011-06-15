@@ -44,7 +44,7 @@ if( Todoyu::allowed('search', 'general:use') ) {
 		// Add quick search headlet
 	TodoyuHeadManager::addHeadlet('TodoyuSearchHeadletQuickSearch');
 
-	TodoyuSearchBrowserSearch::addPageLinkTag();
+//	TodoyuSearchBrowserSearch::addPageLinkTag();
 }
 
 ?>
