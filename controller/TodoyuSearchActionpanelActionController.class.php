@@ -46,7 +46,7 @@ class TodoyuSearchActionpanelActionController extends TodoyuActionController	{
 		$exportName	= $params['exportname'];
 		$type		= $params['tab'];
 		$conditions		= trim($params['conditions']);
-		$conditions		= $conditions === '' ? array() : TodoyuArray::assure(json_decode($conditions, true)) ;
+		$conditions		= $conditions === '' ? array() : TodoyuArray::assure(json_decode($conditions, true));
 		$conjunction= $params['conjunction'];
 
 		TodoyuSearchActionPanelManager::dispatchExport($exportName, $type, $conditions, $conjunction);
