@@ -22,8 +22,8 @@
  */
 
 /**
- * @class		search.ActionPanel
- * @namespace	Todoyu.Ext
+ * @class		ActionPanel
+ * @namespace	Todoyu.Ext.search
  */
 Todoyu.Ext.search.ActionPanel = {
 
