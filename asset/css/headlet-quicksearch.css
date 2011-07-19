@@ -97,7 +97,7 @@
 	}
 	
 	#todoyusearchheadletquicksearch-suggest a span.title {
-		display: block;
+		display:block;
 	}
 	#todoyusearchheadletquicksearch-suggest a span.keyword {
 		font-weight:bold;
