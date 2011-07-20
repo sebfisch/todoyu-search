@@ -193,8 +193,6 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
-	 *
 	 * @method	updateControll
 	 * @param	{String}	tab
 	 */
@@ -214,8 +212,6 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Enter description here...
-	 *
 	 * @method	addNewCondition
 	 * @param	{String}	type
 	 * @param	{String}	condition

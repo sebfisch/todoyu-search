@@ -282,6 +282,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		/**
 		 * Handler when clicked on mode list
 		 *
+		 * @method	onModeListClick
 		 * @param	{Event}		event
 		 * @param	{Element}	element
 		 */

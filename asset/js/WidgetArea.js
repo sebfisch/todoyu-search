@@ -196,6 +196,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Handler when autocompleter was cleared because of invalid value
 	 *
+	 * @method	onAutocompleteCleared
 	 * @param	{String}				name		Name of the filter
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
