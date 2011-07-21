@@ -1,6 +1,6 @@
 todoyu search changelog
 
-search 1.1.0 - beta release
+search 1.1.0 - Released on 2011-06-17
 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
