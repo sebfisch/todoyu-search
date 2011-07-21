@@ -32,6 +32,7 @@ Todoyu.Ext.search.FilterControl = {
 	ext:					Todoyu.Ext.search,
 
 
+
 	/**
 	 * Initialize search filter controls: install observers
 	 *

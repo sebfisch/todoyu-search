@@ -175,6 +175,7 @@ Todoyu.Ext.search.Filter = {
 	},
 
 
+
 	/**
 	 * Reset filters
 	 *
@@ -322,6 +323,7 @@ Todoyu.Ext.search.Filter = {
 
 		Todoyu.Ui.update(target, url, options);
 	},
+
 
 
 	/**

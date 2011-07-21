@@ -42,6 +42,7 @@ Todoyu.Ext.search = {
 	Headlet: {},
 
 
+
 	/**
 	 * Initialize
 	 *
