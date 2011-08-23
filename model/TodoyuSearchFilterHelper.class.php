@@ -33,7 +33,7 @@ class TodoyuSearchFilterHelper {
 	 * @param	String		$field
 	 * @param	Integer		$date
 	 * @param	Boolean		$negate
-	 * @return	Array|Boolean
+	 * @return	Array|Boolean			Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
 	public static function getDateFilterQueryparts($tables, $field, $date, $negate = false) {
 		$queryParts	= false;

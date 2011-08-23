@@ -21,7 +21,7 @@
 /**
  * Search filter controller
  *
- * @todo		Move this controller functions to an other controller
+ * @todo		Move this controller functions to another controller
  * @package		Todoyu
  * @subpackage	Search
  */
