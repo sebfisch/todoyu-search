@@ -65,37 +65,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 
 
 	/**
-	 * Render tab head of search area
-	 *
-	 * @param	String		$activeTab
-	 * @return	String
-	 */
-	public static function renderInlineTabHead($activeTab = null) {
-		$tabs 		= array();
-
-			// If no tab forced, get preferrenced tab
-		if( is_null($activeTab) ) {
-			$activeTab = TodoyuSearchPreferences::getActiveTab();
-		}
-
-		$name		= 'search';
-		$jsHandler	= 'Todoyu.Ext.search.Filter.onTabClick.bind(Todoyu.Ext.search.Filter)';
-
-		$tabsArr	= TodoyuSearchManager::getInlineTabHeads();
-
-		foreach($tabsArr as $key => $tab) {
-			$tabs[] = array(
-				'id'		=> $key,
-				'label'		=> $tab['config']['label']
-			);
-		}
-
-		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
-	}
-
-
-
-	/**
 	 * Render panel widgets
 	 *
 	 * @return	String

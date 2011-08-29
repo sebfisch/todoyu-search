@@ -73,24 +73,7 @@ class TodoyuSearchManager {
 	}
 
 
-
-	/**
-	 * Function returns the inline tabs rendered on top of the filter area
-	 *
-	 * @return	Array
-	 */
-	public static function getInlineTabHeads() {
-		$tabs = array();
-
-		foreach(Todoyu::$CONFIG['FILTERS'] as $type => $typeConfig) {
-			$tabs[strtolower($type)] = $typeConfig;
-		}
-
-		return $tabs;
-	}
-
-
-
+	
 	/**
 	 * Convert a simple filter array (from url) to a search filter array
 	 *
