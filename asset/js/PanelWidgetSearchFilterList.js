@@ -141,7 +141,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		element.title	= label;
 		element.update(label);
 
-		this.saveFiltersetVisibility(idFilterSet, !isVisible);
+		this.saveFiltersetVisibility(idFilterSet, ! isVisible);
 	},
 
 
