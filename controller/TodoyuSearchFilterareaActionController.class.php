@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Controller for filterarea (controlls + widgets + results)
+ * Controller for filter area (controls + widgets + results)
  *
  * @package		Todoyu
  * @subpackage	Search

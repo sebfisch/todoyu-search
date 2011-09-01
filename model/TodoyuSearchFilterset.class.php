@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Fitlerset object
+ * Filterset object
  *
  * @package		Todoyu
  * @subpackage	Search

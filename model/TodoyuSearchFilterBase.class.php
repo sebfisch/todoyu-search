@@ -23,8 +23,8 @@
  *
  * @package		Todoyu
  * @subpackage	Filter
+ * @abstract
  */
-
 abstract class TodoyuSearchFilterBase {
 
 	/**
