@@ -71,7 +71,6 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 *
 	 * @return	String
 	 */
-
 	public static function renderPanelWidgets() {
 		return TodoyuPanelWidgetRenderer::renderPanelWidgets(self::EXTKEY);
 	}

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Filter condition
+ * Object class for filter condition
  *
  * @package		Todoyu
  * @subpackage	Search
