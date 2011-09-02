@@ -1,6 +1,9 @@
 todoyu search changelog
 
-search 1.1.0 - Released on 2011-06-17
+search 1.1.1 - not released yet
+	* Add: Hooks: filterset.add, filterset.update, filterset.delete
+
+search 1.1.0 - 2011-06-17
 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name

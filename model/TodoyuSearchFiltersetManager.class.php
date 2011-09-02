@@ -92,7 +92,11 @@ class TodoyuSearchFiltersetManager {
 	public static function addFilterset(array $data) {
 		$data['sorting']= self::getNextFiltersetSortingPosition($data['type']);
 
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idFilterset = TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('search', 'filterset.add', array($idFilterset));
+
+		return $idFilterset;
 	}
 
 
@@ -130,12 +134,13 @@ class TodoyuSearchFiltersetManager {
 	 *
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$data
-	 * @return	Boolean		Updates successfully
 	 */
 	public static function updateFilterset($idFilterset, array $data) {
 		$idFilterset	= intval($idFilterset);
 
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idFilterset, $data);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idFilterset, $data);
+
+		TodoyuHookManager::callHook('search', 'filterset.update', array($idFilterset, $data));
 	}
 
 
@@ -149,11 +154,13 @@ class TodoyuSearchFiltersetManager {
 	public static function deleteFilterset($idFilterset, $deleteConditions = true) {
 		$idFilterset	= intval($idFilterset);
 
-		Todoyu::db()->deleteRecord(self::TABLE, $idFilterset);
+		TodoyuRecordManager::deleteRecord(self::TABLE, $idFilterset);
 
 		if( $deleteConditions ) {
 			TodoyuSearchFilterConditionManager::deleteFiltersetConditions($idFilterset);
 		}
+
+		TodoyuHookManager::callHook('search', 'filterset.delete', array($idFilterset));
 	}
 
 
