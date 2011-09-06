@@ -47,7 +47,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		TodoyuFrontend::setActiveTab('search');
 
 		TodoyuPage::init('ext/search/view/ext.tmpl');
-		TodoyuPage::setTitle('LLL:search.ext.page.title');
+		TodoyuPage::setTitle('search.ext.page.title');
 
 			// Get tab parameter
 		$activeTab	= $params['tab'];

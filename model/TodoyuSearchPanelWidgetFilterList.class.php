@@ -40,7 +40,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 		parent::__construct(
 			'search',
 			'searchfilterlist',
-			'LLL:search.panelwidget-searchfilterlist.title',
+			'search.panelwidget-searchfilterlist.title',
 			$config,
 			$params
 		);
