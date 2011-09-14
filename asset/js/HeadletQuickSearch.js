@@ -61,6 +61,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Initialize quick search headlet: install click observer, initialize search input autoCompleter value suggestion and modes selector
 	 *
 	 * @method	init
+	 * @param	{Function}	$super		Parent constructor: Todoyu.Headlet.initialize
 	 * @param	{String}	name
 	 */
 	initialize: function($super, name) {
@@ -82,6 +83,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Handle headlet button clicks: toggle headlet content visibility
 	 *
 	 * @method	onButtonClick
+	 * @param	{Function}	$super		Todoyu.Headlet.onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function($super, event) {
@@ -112,7 +114,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Upon click: hide mode selector and result suggestions.
 	 *
 	 * @method	onBodyClick
-	 * @param	{Object}	$super
+	 * @param	{Function}	$super		Todoyu.Headlet.onBodyClick
 	 * @param	{Event}		event
 	 */
 	onBodyClick: function($super, event) {
@@ -125,6 +127,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 	 * Hide quick search content and extras
 	 *
 	 * @method	hide
+	 * @param	{Function}	$super		Todoyu.Headlet.hide
 	 */
 	hide: function($super) {
 		$super();

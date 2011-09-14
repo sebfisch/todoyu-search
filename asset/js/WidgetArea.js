@@ -243,8 +243,8 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * Add given "special" configuration to widget area
 	 *
 	 * @method	addSpecialConfig
-	 * @param	{String}		name
-	 * @param	{unknown_type}	config
+	 * @param	{String}	name
+	 * @param	{Object}	config
 	 */
 	addSpecialConfig: function(name, config) {
 		this.specialConfig[name] = config;
