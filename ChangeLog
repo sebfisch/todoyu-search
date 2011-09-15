@@ -1,7 +1,7 @@
 todoyu search changelog
 
-search 1.1.1 - not released yet
-	* Add: Hooks: filterset.add, filterset.update, filterset.delete
+search 1.1.1 - 2011-09-15
+	* Added: Hooks: filterset.add, filterset.update, filterset.delete
 
 search 1.1.0 - 2011-06-17
 	* Changed: Requires core 2.1
@@ -11,7 +11,3 @@ search 1.1.0 - 2011-06-17
 	* Bugfix: Dynamic foreign filtersets are not found anymore after big class rename session
 	* Bugfix: Fixed date-time negation labels (renamed From/To => Before/After)
 	* Bugfix: Fixed missing rights init/check methods in controllers
-
-
-search 1.0.7
- 	* Start changelog
