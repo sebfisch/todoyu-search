@@ -51,22 +51,10 @@ h1.extIconSearch .title {
 /* --------------------------------
 	Search Action Panel
 	------------------------------- */
-#action-panel button.clearFilterArea .icon	{
-	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -357px;
-}
-
-#action-panel button.saveAsNewFilter .icon	{
-	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -208px;
-}
-
 #action-panel {
 	padding:10px 5px;
 	margin:10px 0;
 	background-color:#EEE;
-}
-
-#action-panel .button.searchExportButton .icon	{
-	background:transparent url('../../../../core/asset/img/icons.png') 1px -1598px no-repeat;
 }
 
 /* --------------------------------
