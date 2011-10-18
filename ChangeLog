@@ -1,5 +1,8 @@
 todoyu search changelog
 
+search 1.1.2 - not released yet
+	* Translation: Polish
+
 search 1.1.1 - 2011-09-15
 	* Added: Hooks: filterset.add, filterset.update, filterset.delete
 
