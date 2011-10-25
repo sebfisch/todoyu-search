@@ -123,7 +123,7 @@ class TodoyuSearchFilterWidgetManager	{
 
 		$definitions['widgetDefinitions'] = self::getWidgetTypeConfig($definitions['widget']);
 
-			// Create id for the widget
+			// Create ID for the widget
 		$definitions['widgetID'] = $widgetName . '-' . $numOfWidget;
 
 			// Add filter name to widget
