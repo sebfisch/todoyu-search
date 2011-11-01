@@ -88,6 +88,11 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 			'file'		=> 'ext/search/asset/css/panelwidget-searchfilterlist.css',
 			'media'		=> 'all',
 			'position'	=> 110
+		),
+		array(
+			'file'		=> 'ext/search/asset/css/print.css',
+			'media'		=> 'print',
+			'position'	=> 120
 		)
 	)
 );
