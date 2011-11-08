@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.1.2 - not released yet
+	* Changed: Namespace of filter-widget
 	* Translation: Polish
 
 search 1.1.1 - 2011-09-15

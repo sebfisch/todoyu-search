@@ -19,20 +19,20 @@
 *****************************************************************************/
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['text'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-text.tmpl',
+	'tmpl'			=> 'ext/search/view/filterwidget/text.tmpl',
 	'configFunc'	=> 'TodoyuSearchFilterWidgetManager::manipulateAutocompleteDefinitions'
 );
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['date'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-date.tmpl',
+	'tmpl'			=> 'ext/search/view/filterwidget/date.tmpl',
 );
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['checkbox'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-checkbox.tmpl'
+	'tmpl'			=> 'ext/search/view/filterwidget/checkbox.tmpl'
 );
 
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['select'] = array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-select.tmpl',
+	'tmpl'			=> 'ext/search/view/filterwidget/select.tmpl',
 	'configFunc'	=> 'TodoyuSearchFilterWidgetManager::prepareSelectionOptions'
 );
 
