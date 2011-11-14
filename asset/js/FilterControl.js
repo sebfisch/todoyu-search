@@ -60,7 +60,7 @@ Todoyu.Ext.search.FilterControl = {
 
 
 	/**
-	 * Handler when condition changes
+	 * Handler when condition changes (new filter-condition is selected for being added)
 	 *
 	 * @method	onConditionsChange
 	 * @param	{Event}		event

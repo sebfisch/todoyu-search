@@ -84,7 +84,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 
 	/**
-	 * Evoked after adding filter widget. Installs widget autoCompleter and negation handling
+	 * Evoked after adding filter widget. Installs widget autoCompleter and negation handling, focuses the widget
 	 *
 	 * @method	onAdded
 	 * @param	{String}			name
@@ -96,6 +96,8 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 
 		this.installAutocomplete.bind(this).defer(widgetID);
 		this.installNegation.bind(this).defer(widgetID);
+
+		this.focusWidget(widgetID);
 	},
 
 
@@ -131,6 +133,20 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 */
 	getNumOfWidgets: function() {
 		return $(this.areaID).select('.filterWidget').size();
+	},
+
+
+
+	/**
+	 * Focus form element of given filter widget
+	 *
+	 * @method	focusWidget
+	 * @param	{String}	widgetID
+	 */
+	focusWidget: function(widgetID) {
+		var formElement	= $(widgetID).down('.widgetbody').children[0];
+
+		formElement.focus();
 	},
 
 

@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.1.2 - not released yet
+	* Added: Newly added filter widgets are given focus
 	* Changed: Namespace of filter-widget
 	* Translation: Polish
 

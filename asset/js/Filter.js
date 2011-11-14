@@ -213,6 +213,8 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
+	 * Add new condition: update condition and add resp. filter-widget
+	 *
 	 * @method	addNewCondition
 	 * @param	{String}	type
 	 * @param	{String}	condition
