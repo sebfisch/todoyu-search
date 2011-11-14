@@ -367,7 +367,7 @@ abstract class TodoyuSearchFilterBase {
 			// Get normal query parts
 		$queryParts	= $this->fetchFilterQueryParts();
 
-			// If no conditions in WHERE clause and $noResultOnEmptyConditions flag set, return flag (no sql query performed)
+			// If no conditions in WHERE clause and $noResultOnEmptyConditions flag set, return flag (no SQL query performed)
 		if( $noResultOnEmptyConditions === true && sizeof($queryParts['where']) === 0 ) {
 			return false;
 		}
