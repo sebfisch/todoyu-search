@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.1.2 - 2011-11-17
+	* Bugfix: External filter methods were not called correct (not found)
 	* Added: Newly added filter widgets are given focus
 	* Changed: Namespace of filter-widget
 	* Translation: Polish

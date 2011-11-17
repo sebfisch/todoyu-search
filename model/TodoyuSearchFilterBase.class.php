@@ -208,7 +208,11 @@ abstract class TodoyuSearchFilterBase {
 			$config	= TodoyuSearchFilterManager::getFilterConfig($this->type, $filter);
 
 			if( $config !== false ) {
-				return explode('::', $config['funcRef']);
+				$funcRef	= $config['wConf']['FuncRef'];
+
+				if( TodoyuFunction::isFunctionReference($funcRef) ) {
+					return explode('::', $funcRef);
+				}
 			}
 		}
 
