@@ -47,17 +47,42 @@ Todoyu.Ext.search.ActionPanel = {
 		var conjunction	= this.filter.getConjunction();
 
 		var options = {
-				action:		'export',
-				'tab':			this.filter.getActiveTab(),
-				'exportname':	name,
-				'conditions':	conditions,
-				'conjunction':	conjunction
+				action:			'export',
+				tab:			this.filter.getActiveTab(),
+				exportname:		name,
+				conditions:		conditions,
+				conjunction:	conjunction
 		};
 
-		Todoyu.goTo('search', 'actionpanel', options , '', false);
+		this.sendExportPostRequest('actionpanel', options);
 		} else {
 			alert('[LLL:search.ext.export.error.saveEmpty]');
 		}
+	},
+
+
+
+	/**
+	 * 
+	 * @param controller
+	 * @param options
+	 */
+	sendExportPostRequest: function(controller, options) {
+		var form = document.createElement('form');
+		form.setAttribute('method', 'post');
+		form.setAttribute('action', Todoyu.getUrl('search', controller));
+
+		$H(options).each(function(form, pair){
+			var hiddenField = document.createElement('input');
+			hiddenField.writeAttribute('type', 'hidden');
+			hiddenField.writeAttribute('name', pair.key);
+			hiddenField.writeAttribute('value', pair.value);
+			form.appendChild(hiddenField);
+		}.bind(this, form));
+
+		$$('body')[0].appendChild(form);
+		form.submit();
+		form.remove();
 	}
 
 };
