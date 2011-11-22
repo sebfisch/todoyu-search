@@ -68,16 +68,11 @@ Todoyu.Ext.search.ActionPanel = {
 	 * @param options
 	 */
 	sendExportPostRequest: function(controller, options) {
-		var form = document.createElement('form');
-		form.setAttribute('method', 'post');
-		form.setAttribute('action', Todoyu.getUrl('search', controller));
+		var url =  Todoyu.getUrl('search', controller);
+		var form = new Element('form', {method: 'post', action: url});
 
 		$H(options).each(function(form, pair){
-			var hiddenField = document.createElement('input');
-			hiddenField.writeAttribute('type', 'hidden');
-			hiddenField.writeAttribute('name', pair.key);
-			hiddenField.writeAttribute('value', pair.value);
-			form.appendChild(hiddenField);
+			form.appendChild(new Element('input', {type: 'hidden', name: pair.key, value: pair.value}));
 		}.bind(this, form));
 
 		$$('body')[0].appendChild(form);
