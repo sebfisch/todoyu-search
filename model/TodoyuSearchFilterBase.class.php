@@ -478,7 +478,7 @@ abstract class TodoyuSearchFilterBase {
 	 * @param	Boolean		$showDeleted				Show deleted records
 	 * @return	Array		List of IDs of matching records
 	 */
-	protected function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
+	public function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
 		$cacheID	= md5(serialize(func_get_args()));
 
 			// Check if results are already cached

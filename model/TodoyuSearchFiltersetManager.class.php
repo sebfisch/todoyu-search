@@ -198,13 +198,15 @@ class TodoyuSearchFiltersetManager {
 	 * Get result items to given set of filter conditions
 	 *
 	 * @param	Integer		$idFilterset
+	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public static function getFiltersetResultItemIDs($idFilterset) {
+	public static function getFiltersetResultItemIDs($idFilterset, $limit = 1000) {
 		$idFilterset	= intval($idFilterset);
+		$limit			= intval($limit);
 		$filterset		= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
 
-		return $filterset->getItemIDs();
+		return $filterset->getItemIDs($limit);
 	}
 
 
@@ -213,6 +215,7 @@ class TodoyuSearchFiltersetManager {
 	 * Get items IDs for all filtersets
 	 * Combination: OR
 	 *
+	 * @note	The limit per filter is set to 500, because everything else is useless
 	 * @param	Array		$filtersetIDs
 	 * @return	Array
 	 */
@@ -221,7 +224,7 @@ class TodoyuSearchFiltersetManager {
 		$allResultItems	= array();
 
 		foreach($filtersetIDs as $idFilterset) {
-			$allResultItems[] = self::getFiltersetResultItemIDs($idFilterset);
+			$allResultItems[] = self::getFiltersetResultItemIDs($idFilterset, 500);
 		}
 
 		$resultItems	= array_unique(TodoyuArray::mergeSubArrays($allResultItems));
@@ -238,9 +241,14 @@ class TodoyuSearchFiltersetManager {
 	 * @return	Integer
 	 */
 	public static function getFiltersetCount($idFilterset) {
-		$itemIDs	= self::getFiltersetResultItemIDs($idFilterset);
+		$idFilterset	= intval($idFilterset);
+		$filterset		= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
+		$filterObject	= $filterset->getFilterObject();
 
-		return sizeof($itemIDs);
+			// Execute dummy query to count the result rows
+		$filterObject->getItemIDs('', 1);
+
+		return $filterObject->getTotalItems();
 	}
 
 

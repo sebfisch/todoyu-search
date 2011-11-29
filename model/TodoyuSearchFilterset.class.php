@@ -95,16 +95,18 @@ class TodoyuSearchFilterset extends TodoyuBaseObject {
 	/**
 	 * Get matching item IDs
 	 *
+	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs() {
+	public function getItemIDs($limit = 1000) {
+		$limit			= intval($limit);
 		$filterObject	= $this->getFilterObject();
 		$itemIDs		= array();
 
 		if( $filterObject !== false ) {
 			$sorting= TodoyuSearchFilterManager::getFilterDefaultSorting($this->getType());
 
-			return $filterObject->getItemIDs($sorting);
+			return $filterObject->getItemIDs($sorting, $limit);
 		}
 
 		return $itemIDs;
