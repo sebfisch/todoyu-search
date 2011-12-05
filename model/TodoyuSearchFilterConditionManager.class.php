@@ -251,25 +251,26 @@ class TodoyuSearchFilterConditionManager {
 	 * @return	Array
 	 */
 	protected static function removeConditionByRights(array $filterConditions = array()) {
-		$unset = false;
-
 		foreach($filterConditions as $index => $condition) {
+			$remove = false;
+
+				// Missing right
 			if( isset( $condition['require'] ) ) {
 				$requireArray = explode('.', $condition['require']);
 				if( !Todoyu::allowed($requireArray[0], $requireArray[1]) ) {
-					$unset = true;
+					$remove = true;
 				}
 			}
 
+				// Marked as 'internal only'
 			if( isset( $condition['internal'] ) && !TodoyuAuth::isInternal() ) {
-				$unset = true;
+				$remove = true;
 			}
 
-			if( $unset === true) {
+				// Remove condition
+			if( $remove ) {
 				unset($filterConditions[$index]);
 			}
-
-			$unset = false;
 		}
 
 		return $filterConditions;
