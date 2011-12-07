@@ -167,11 +167,11 @@ abstract class TodoyuSearchFilterBase {
 	 * @param	Mixed		$value
 	 */
 	public function addRightsFilter($name, $value) {
-		 $this->rightsFilters[] = array(
-			 'filter'	=> $name,
-			 'value'	=> $value,
-			 'negate'	=> false
-		 );
+		$this->rightsFilters[] = array(
+		 'filter'	=> $name,
+		 'value'	=> $value,
+		 'negate'	=> false
+		);
 	}
 
 
