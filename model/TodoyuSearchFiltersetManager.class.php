@@ -219,12 +219,12 @@ class TodoyuSearchFiltersetManager {
 	 * @param	Array		$filtersetIDs
 	 * @return	Array
 	 */
-	public static function getFiltersetsResultItemIDs(array $filtersetIDs) {
+	public static function getFiltersetsResultItemIDs(array $filtersetIDs, $limit = 1000) {
 		$filtersetIDs	= TodoyuArray::intval($filtersetIDs, true, true);
 		$allResultItems	= array();
 
 		foreach($filtersetIDs as $idFilterset) {
-			$allResultItems[] = self::getFiltersetResultItemIDs($idFilterset, 500);
+			$allResultItems[] = self::getFiltersetResultItemIDs($idFilterset, $limit);
 		}
 
 		$resultItems	= array_unique(TodoyuArray::mergeSubArrays($allResultItems));
