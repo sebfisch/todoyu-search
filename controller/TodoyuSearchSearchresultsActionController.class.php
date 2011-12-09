@@ -49,8 +49,9 @@ class TodoyuSearchSearchresultsActionController extends TodoyuActionController {
 		$conditions		= trim($params['conditions']);
 		$conditions		= $conditions === '' ? array() : TodoyuArray::assure(json_decode($conditions, true));
 		$conjunction	= trim($params['conjunction']);
+		$sorting		= empty($params['sorting']) ? array() : TodoyuArray::assure(json_decode($params['sorting'], true));
 
-		return TodoyuSearchFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction);
+		return TodoyuSearchFilterAreaRenderer::renderResults($tab, $idFilterset, $conditions, $conjunction, $sorting);
 	}
 
 }

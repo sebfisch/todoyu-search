@@ -52,6 +52,10 @@ Todoyu.Ext.search.FilterControl = {
 	installObservers: function() {
 		$('filtercontrol-conditions').on('change', this.onConditionsChange.bind(this));
 		$('filtercontrol-conjunction').on('change', this.onConjunctionChange.bind(this));
+
+		if( $('filtercontrol-sorting') ) {
+			$('filtercontrol-sorting').on('change', this.onSortingChange.bind(this));
+		}
 	},
 
 
@@ -65,12 +69,12 @@ Todoyu.Ext.search.FilterControl = {
 	 * @method	onConditionsChange
 	 * @param	{Event}		event
 	 */
-	onConditionsChange: function(event) {
-		var value 		= event.element().getValue();
+	onConditionsChange: function(event, select) {
+		var value 		= $F(select);
 		var type		= value.split('_').first();
 		var condition	= value.split('_').slice(1).join('_');
 
-		event.element().selectedIndex = 0;
+		select.selectedIndex = 0;
 
 		this.ext.Filter.setFiltersetID(0);
 
@@ -80,19 +84,39 @@ Todoyu.Ext.search.FilterControl = {
 
 
 	/**
-	 * Enter description here...
+	 * Handle change on conjunction select element
 	 *
 	 * @method	onConjunctionChange
 	 * @param	{Event}	event
 	 */
-	onConjunctionChange: function(event) {
+	onConjunctionChange: function(event, select) {
 		this.ext.Filter.updateResults();
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Handle change on sorting select element
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	select
+	 * @method	onSortingChange
+	 */
+	onSortingChange: function(event, select) {
+		var name	= $F(select);
+		var label	= select.options[select.selectedIndex].text;
+
+		select.selectedIndex = 0;
+
+		if( name != 0 ) {
+			this.ext.Filter.Sorting.add(name, label, false);
+		}
+	},
+
+
+
+	/**
+	 * Get selected conjunction
 	 *
 	 * @method	getConjunction
 	 * @return	{String}

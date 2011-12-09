@@ -17,32 +17,74 @@ h1.extIconSearch .title {
 #filter-controls .headerLine span {
 	margin:2px 0 0 5px;
 }
-
-#filtercontrol-conditions option {
+#filter-controls .conditions option {
 	border-bottom:1px solid #ddd;
 	color:#333;
 }
-
-#filtercontrol-conditions option.default {
+#filter-controls option.default {
 	padding:0;
 }
-
-#filtercontrol-conditions optgroup {
+#filter-controls optgroup {
 	font-weight:bold;
 }
-
-#filtercontrol-conditions optgroup option {
+#filter-controls optgroup option {
 	padding-left:10px;
 }
-
-#filtercontrol-conditions option.odd {
-
+#filter-controls span.sorting {
+	float:right;
+}
+#filter-controls span.sorting select {
+	max-width: 250px;
+	min-width: 200px;
 }
 
-#filtercontrol-conditions option.even {
 
+/* --------------------------------
+	Sorting Flags
+	------------------------------- */
+#sorting-flags {
+	background-color:#EFEFEF;
+	border-radius: 5px;
+	padding:3px;
+	margin: 3px 5px;
 }
-
+#sorting-flags .sort {
+    background: url(../../../../core/asset/img/bg-button-css3.png) repeat-x 0 50% #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px;
+    float: left;
+    padding: 2px 3px;
+	margin:2px 2px;
+}
+#sorting-flags .sort span {
+	float: left;
+}
+#sorting-flags .sort span.action {
+    height: 14px;
+    width: 12px;
+	margin-left: 4px;
+	cursor: pointer;
+}
+#sorting-flags .sort .label {
+	margin-right: 2px;
+	padding-left:2px;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	cursor: default;
+	
+}
+#sorting-flags .sort .dir {
+	background:url(../img/icons.png) no-repeat 2px -355px;
+}
+#sorting-flags .sort .dir.desc {
+	background-position: 2px -385px;
+}
+#sorting-flags .sort .remove {
+	background: url(../../../../core/asset/img/icons.png) no-repeat 2px -1495px;
+}
 
 /* --------------------------------
 	Search Action Panel

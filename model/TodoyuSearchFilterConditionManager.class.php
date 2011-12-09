@@ -118,25 +118,6 @@ class TodoyuSearchFilterConditionManager {
 
 
 	/**
-	 * Groups the filter condition by their option group.
-	 * Used for the filterwidget selector in the search extension
-	 *
-	 * @param	Array	$conditions
-	 * @return	Array
-	 */
-	public static function groupConditionsByType(array $conditions) {
-		$grouped = array();
-
-		foreach($conditions as $name => $condition) {
-			$grouped[ $condition['optgroup'] ][$name] = $condition;
-		}
-
-		return $grouped;
-	}
-
-
-
-	/**
 	 * Get conditions of a type, grouped by their optgroup attribute
 	 *
 	 * @param	String		$type
@@ -145,7 +126,7 @@ class TodoyuSearchFilterConditionManager {
 	public static function getGroupedTypeConditions($type = 'TASK') {
 		$conditions	= self::getTypeConditions($type);
 
-		return self::groupConditionsByType($conditions);
+		return TodoyuArray::groupByField($conditions, 'optgroup', 'project.task.search.label');
 	}
 
 

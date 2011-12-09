@@ -71,6 +71,59 @@ class TodoyuSearchFilterset extends TodoyuBaseObject {
 
 
 	/**
+	 * Get result sorting flags
+	 *
+	 * @return	Array
+	 */
+	public function getResultSorting() {
+		$sorting	= trim($this->get('resultsorting'));
+
+		if( $sorting === '' ) {
+			$sorting = array();
+		} else {
+			$sorting = json_decode($sorting, true);
+		}
+
+		return $sorting;
+	}
+
+
+
+	/**
+	 * Get result sorting flags with labels
+	 *
+	 * @return	Array[]
+	 */
+	public function getResultSortingWithLabels() {
+		$resultSortings = $this->getResultSorting();
+
+		TodoyuExtensions::loadAllFilters();
+
+		foreach($resultSortings as $index => $resultSorting) {
+			$resultSortings[$index]['label'] = TodoyuSearchSortingManager::getLabel($this->getType(), $resultSorting['name']);
+		}
+
+		return $resultSortings;
+	}
+
+
+
+	/**
+	 * Get javascript code to initialize all sorting flags of the filterset
+	 *
+	 * @return	String
+	 */
+	public function getResultSortingJsInitCode() {
+		$resultSortings	= $this->getResultSortingWithLabels();
+
+		$jsCode	= 'Todoyu.Ext.search.Filter.Sorting.addAll(' . json_encode($resultSortings) . ')';
+
+		return TodoyuString::wrapScript($jsCode);
+	}
+
+
+
+	/**
 	 * Get filterset title
 	 *
 	 * @return	String
@@ -136,8 +189,9 @@ class TodoyuSearchFilterset extends TodoyuBaseObject {
 		if( $class !== false ) {
 			$conditions	= $this->getConditions();
 			$conjunction= $this->getConjunction();
+			$sorting	= $this->getResultSorting();
 
-			return new $class($conditions, $conjunction);
+			return new $class($conditions, $conjunction, $sorting);
 		} else {
 			return false;
 		}

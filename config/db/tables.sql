@@ -34,6 +34,7 @@ CREATE TABLE `ext_search_filterset` (
 	`type` varchar(16) NOT NULL,
 	`title` varchar(64) NOT NULL,
 	`conjunction` varchar(3) NOT NULL,
+	`resultsorting` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `createdelete` (`id_person_create`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;

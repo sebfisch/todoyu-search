@@ -1,6 +1,7 @@
 todoyu search changelog
 
-search 1.1.3 - not released yet
+search 1.2.0 - not released yet
+	* Feature: Filter result sorting
 	* Bugfix: Fixed empty exports caused by too long get-parameter (conditions)
 	* Added: Limit parameter to filterset item fetching methods
 

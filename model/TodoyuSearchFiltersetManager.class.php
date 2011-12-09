@@ -458,7 +458,8 @@ class TodoyuSearchFiltersetManager {
 		$filtersetData	= array(
 			'type'			=> $filterData['type'],
 			'title'			=> $filterData['title'],
-			'conjunction'	=> $filterData['conjunction']
+			'conjunction'	=> $filterData['conjunction'],
+			'resultsorting'	=> $filterData['resultsorting']
 		);
 
 			// Add or update filterset

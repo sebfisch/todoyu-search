@@ -33,4 +33,6 @@
 	<label index="contextmenu.project.showinproject">Projekt-Ansicht öffnen</label>
 	<label index="headlet.label">In todoyu suchen</label>
 	<label index="export.error.saveEmpty">Es sind keine Ergebnisse zum Export vorhanden.</label>
+	<label index="filtercontrol.add.condition">Filter hinzufügen</label>
+	<label index="filtercontrol.add.sorting">Sortierung hinzufügen</label>
 </labels>

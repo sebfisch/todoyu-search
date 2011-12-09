@@ -18,9 +18,14 @@
 *****************************************************************************/
 
 /**
+ * @module		Search
+ */
+
+/**
  * Handles the filter
  *
- * @module	Search
+ * @class		Filter
+ * @namespace	Todoyu.Ext.search
  */
 
 Todoyu.Ext.search.Filter = {
@@ -352,25 +357,28 @@ Todoyu.Ext.search.Filter = {
 	 *
 	 * @method	updateResults
 	 * @param	{Number}		idFilterSet
-	 * @param	{Array}			conditions
-	 * @param	{String}		conjunction
+	 * @param	{Array}			conditions			Filter conditions
+	 * @param	{String}		conjunction			Conjunction: AND or OR
+	 * @param	{Object}		sorting			Sorting flags
 	 */
-	updateResults: function(tab, idFilterSet, conditions, conjunction) {
+	updateResults: function(tab, idFilterSet, conditions, conjunction, sorting) {
 		tab 		= tab || this.getActiveTab();
 		idFilterSet	= idFilterSet || 0;
 		conditions	= conditions || this.Conditions.getAll();
 		conjunction	= conjunction || this.getConjunction();
+		sorting		= sorting || this.Sorting.getAll();
 
 		var url		= Todoyu.getUrl('search', 'searchresults');
 		var options	= {
 			parameters: {
 				action:		'update',
-				'tab':			tab,
-				'filterset':	idFilterSet,
-				'conditions':	Object.toJSON(conditions),
-				'conjunction':	conjunction
+				tab:		tab,
+				filterset:	idFilterSet,
+				conditions:	Object.toJSON(conditions),
+				conjunction:conjunction,
+				sorting:	Object.toJSON(sorting)
 			},
-			onComplete: 	this.onResultsUpdated.bind(this, tab, idFilterSet)
+			onComplete: this.onResultsUpdated.bind(this, tab, idFilterSet)
 		};
 		var target	= 'search-results';
 
@@ -445,7 +453,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	toggleConditionNegation: function(name) {
 		this.Conditions.toggleNegated(name);
-		this.updateResults(this.getActiveTab(), 0);
+		this.updateResults();
 	},
 
 
@@ -476,10 +484,11 @@ Todoyu.Ext.search.Filter = {
 			var options	= {
 				parameters: {
 					action:		'saveAsNew',
-					'title':		title,
-					'type':			this.getActiveTab(),
-					'conditions':	this.Conditions.getAll(true),
-					'conjunction':	this.getConjunction()
+					title:		title,
+					type:		this.getActiveTab(),
+					conditions:	this.Conditions.getAll(true),
+					conjunction:this.getConjunction(),
+					sorting:	this.Sorting.getAll(true)
 				}
 			};
 
@@ -507,10 +516,11 @@ Todoyu.Ext.search.Filter = {
 		var options	= {
 			parameters: {
 				action:		'save',
-				'filterset':	idFilterSet,
-				'tab':			this.getActiveTab(),
-				'conditions':	this.Conditions.getAll(true),
-				'conjunction':	this.getConjunction()
+				filterset:	idFilterSet,
+				tab:		this.getActiveTab(),
+				conditions:	this.Conditions.getAll(true),
+				conjunction:this.getConjunction(),
+				sorting:	this.Sorting.getAll(true)
 			}
 		};
 

@@ -140,6 +140,26 @@ class TodoyuSearchFilterManager {
 		return Todoyu::$CONFIG['FILTERS'][$type]['config']['resultsRenderer'];
 	}
 
+
+
+	/**
+	 * Get conjunction options
+	 *
+	 * @return	Array
+	 */
+	public static function getConjunctionOptions() {
+		return array(
+			array(
+				'value'	=> 'AND',
+				'label'	=> 'search.ext.and'
+			),
+			array(
+				'value'	=> 'OR',
+				'label'	=> 'search.ext.or'
+			)
+		);
+	}
+
 }
 
 ?>

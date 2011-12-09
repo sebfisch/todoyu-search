@@ -52,27 +52,28 @@ class TodoyuSearchFilterAreaRenderer {
 			$conjunction= 'AND';
 		}
 
-			// Render controls
-		$controls	= self::renderControls($activeTab, $idFilterset);
+			// Preset template data
+		$activeWidgets	= '';
+		$searchResults	= '';
+		$filterControls	= self::renderControls($activeTab, $idFilterset);
+		$actionPanel	= TodoyuSearchActionPanelManager::renderActionPanel($activeTab);
 
 			// Render filterset widgets
 		if( $idFilterset !== 0 ) {
-			$widgetArea	= self::renderWidgetArea($idFilterset);
-		} elseif( sizeof($conditions) > 0 ) {
-			# render conditions here
+			$activeWidgets	= self::renderWidgetArea($idFilterset);
 		}
 
 			// If filterset or conditions are defined, render search results
 		if( $idFilterset !== 0 || sizeof($conditions) > 0 ) {
-			$results	= self::renderResults($activeTab, $idFilterset, $conditions, $conjunction);
+			$searchResults	= self::renderResults($activeTab, $idFilterset, $conditions, $conjunction);
 		}
 
 		$tmpl	= 'ext/search/view/filter-area.tmpl';
 		$data	= array(
-			'controls'		=> $controls,
-			'activeWidgets'	=> $widgetArea,
-			'actionpanel'	=> TodoyuSearchActionPanelManager::renderActionPanel($activeTab),
-			'searchResults'	=> $results
+			'filterControls'=> $filterControls,
+			'activeWidgets'	=> $activeWidgets,
+			'actionPanel'	=> $actionPanel,
+			'searchResults'	=> $searchResults
 		);
 
 			// If init necessary (AJAX), add it to the response
@@ -144,24 +145,20 @@ class TodoyuSearchFilterAreaRenderer {
 		}
 
 			// Get grouped type conditions
-		$groupedConditions	= TodoyuSearchFilterConditionManager::getGroupedTypeConditions($tab);
+		$groupedConditionOptions= TodoyuSearchFilterConditionManager::getGroupedTypeConditions($tab);
+		$groupedSortingOptions	= TodoyuSearchSortingManager::getGroupedSortingOptions($tab);
+		$conjunctionOptions		= TodoyuSearchFilterManager::getConjunctionOptions();
 
 		$tmpl	= 'ext/search/view/filter-action-controls.tmpl';
 		$data 	= array(
-			'type'				=> $tab,
-			'groupedConditions'	=> $groupedConditions,
-			'conjunctions'		=> array(
-				array(
-					'key'	=> 'AND',
-					'label'	=> 'search.ext.and'
-				),
-				array(
-					'key'	=> 'OR',
-					'label'	=> 'search.ext.or'
-				)
-			),
-			'activeConjunction'	=> $conjunction
+			'type'						=> $tab,
+			'groupedConditionOptions'	=> $groupedConditionOptions,
+			'conjunctionOptions'		=> $conjunctionOptions,
+			'groupedSortingOptions'		=> $groupedSortingOptions,
+			'conjunction'				=> array($conjunction)
 		);
+
+		TodoyuDebug::printInFirebug($groupedSortingOptions, '$groupedSortingOptions');
 
 		return Todoyu::render($tmpl, $data);
 	}
@@ -176,11 +173,13 @@ class TodoyuSearchFilterAreaRenderer {
 	 */
 	public static function renderWidgetArea($idFilterset) {
 		$idFilterset= intval($idFilterset);
-		$filterset	= TodoyuSearchFiltersetManager::getFiltersetRecord($idFilterset);
-		$conditions	= TodoyuSearchFilterConditionManager::getFiltersetConditions($idFilterset);
+		$filterset	= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
+		$conditions	= $filterset->getConditions();
 
-		$content	= '';
+			// Add sorting init js
+		$content	= $filterset->getResultSortingJsInitCode();
 
+			// Add filter widgets
 		foreach($conditions as $condition) {
 			$content .= TodoyuSearchFilterWidgetRenderer::renderWidget($filterset['type'], $condition['filter'], $condition['id'], $condition['value'], $condition['is_negated']==1);
 		}
@@ -197,16 +196,19 @@ class TodoyuSearchFilterAreaRenderer {
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$conditions
 	 * @param	String		$conjunction
+	 * @param	Array		$sorting
 	 * @return	String
 	 */
-	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND') {
+	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND', array $sorting = array()) {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 		$hardLimit		= 200;
 
 			// If filterset is given, use its conditions
 		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterset);
+			$filterset	= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
+			$conditions	= $filterset->getConditions();
+			$sorting	= $filterset->getResultSorting();
 		} else {
 			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
 		}
@@ -217,7 +219,7 @@ class TodoyuSearchFilterAreaRenderer {
 		/**
 		 * @var	TodoyuProjectTaskFilter	$typeFilter
 		 */
-		$typeFilter	= new $typeClass($conditions, $conjunction);
+		$typeFilter	= new $typeClass($conditions, $conjunction, $sorting);
 		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
 		$itemIDs	= array();
 

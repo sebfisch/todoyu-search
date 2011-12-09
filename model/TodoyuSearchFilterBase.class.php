@@ -75,6 +75,13 @@ abstract class TodoyuSearchFilterBase {
 	protected $conjunction = 'AND';
 
 	/**
+	 * Sorting flags
+	 *
+	 * @var	Array
+	 */
+	protected $sorting = array();
+
+	/**
 	 * Cache for result IDs
 	 *
 	 * @var	Array
@@ -97,13 +104,15 @@ abstract class TodoyuSearchFilterBase {
 	 * @param	String		$type				Type of the filter (funcRefs are stored in the config unter this type)
 	 * @param	String		$defaultTable		Table to get the IDs from
 	 * @param	Array		$activeFilters		Active filters of the current request
-	 * @param	String		$conjunction
+	 * @param	String		$conjunction		AND or OR
+	 * @param	Array		$sorting			Sorting flags
 	 */
-	protected function __construct($type, $defaultTable, array $activeFilters = array(), $conjunction = 'AND') {
+	protected function __construct($type, $defaultTable, array $activeFilters = array(), $conjunction = 'AND', array $sorting = array()) {
 		$this->type					= strtoupper($type);
 		$this->defaultTable			= $defaultTable;
 		$this->activeFilters		= $activeFilters;
 		$this->conjunction			= $conjunction;
+		$this->sorting				= $sorting;
 
 		TodoyuExtensions::loadAllFilters();
 	}
@@ -191,6 +200,20 @@ abstract class TodoyuSearchFilterBase {
 
 
 	/**
+	 * Check whether name is a valid sorting flag
+	 *
+	 * @param	String		$name
+	 * @return	Boolean
+	 */
+	protected function isSorting($name) {
+		$sortingMethod	= $this->getSortingMethod($name);
+
+		return method_exists($sortingMethod[0], $sortingMethod[1]);
+	}
+
+
+
+	/**
 	 * Check first if its a filterWidget. then return class Todoyu and method
 	 *
 	 * else build it from current type and filter
@@ -225,6 +248,38 @@ abstract class TodoyuSearchFilterBase {
 
 
 	/**
+	 * Get sorting flag method reference
+	 *
+	 * @param	String		$name
+	 * @return array|bool
+	 */
+	protected function getSortingMethod($name) {
+		$method	= 'Sorting_' . $name;
+
+			// Check if filter is a local function
+		if( method_exists($this, $method) ) {
+			return array($this, $method);
+		} else {
+			$config	= TodoyuSearchSortingManager::getSortingConfig($this->type, $name);
+
+			if( isset($config['funcRef']) ) {
+				$funcRef= $config['funcRef'];
+
+				if( TodoyuFunction::isFunctionReference($funcRef) ) {
+					return explode('::', $funcRef);
+				}
+			}
+		}
+
+			// If no function reference found, log error
+		TodoyuLogger::logError('Sorting method "' . $name . '" not found for type ' . $this->type);
+
+		return false;
+	}
+
+
+
+	/**
 	 * returns the function to render the searchresults
 	 *
 	 * @param	String	$type
@@ -243,11 +298,16 @@ abstract class TodoyuSearchFilterBase {
 	 */
 	protected function fetchFilterQueryParts() {
 		$queryParts	= array(
-			'tables'	=> array(
+			'fields'		=> array(
+				$this->defaultTable . '.id'
+			),
+			'tables'		=> array(
 				$this->defaultTable
 			),
-			'where'		=> array(),
-			'join'		=> array()
+			'removeTables' 	=> array(),
+			'where'			=> array(),
+			'join'			=> array(),
+			'order'			=> array()
 		);
 
 			// Add extra tables and WHERE parts
@@ -287,8 +347,60 @@ abstract class TodoyuSearchFilterBase {
 				if( is_array($filterQueryParts['join']) ) {
 					$queryParts['join'] = TodoyuArray::merge($queryParts['join'], $filterQueryParts['join']);
 				}
+					// Add remove tables
+				if( is_array($filterQueryParts['removeTables']) ) {
+					$queryParts['removeTables'] = TodoyuArray::merge($queryParts['removeTables'], $filterQueryParts['removeTables']);
+				}
 			} else {
 				TodoyuLogger::logError('Unknown filter: ' . $filter['filter']);
+			}
+		}
+
+			// Add sorting flag query parts
+		foreach($this->sorting as $sorting) {
+			if( $this->isSorting($sorting['name']) ) {
+					// Get array which references the filter function
+				$funcRef	= $this->getSortingMethod($sorting['name']);
+
+					// Filter function parameters
+				$params		= array(
+					$sorting['dir'] === 'desc'
+				);
+
+					// Call filter function to get query parts for filter
+				$sortingQueryParts = call_user_func_array($funcRef, $params);
+
+					// Check if return value is an array
+				if( ! is_array($sortingQueryParts) ) {
+					continue;
+				}
+
+					#### Add queryParts from sorting ####
+				if( is_array($sortingQueryParts['fields']) ) {
+					$queryParts['fields'] = TodoyuArray::merge($queryParts['fields'], $sortingQueryParts['fields']);
+				}
+					// Add tables
+				if( is_array($sortingQueryParts['tables']) ) {
+					$queryParts['tables'] = TodoyuArray::merge($queryParts['tables'], $sortingQueryParts['tables']);
+				}
+					// Add WHERE
+				if( is_string($sortingQueryParts['where']) ) {
+					$queryParts['where'][] = $sortingQueryParts['where'];
+				}
+					// Add JOIN WHERE
+				if( is_array($sortingQueryParts['join']) ) {
+					$queryParts['join'] = TodoyuArray::merge($queryParts['join'], $sortingQueryParts['join']);
+				}
+					// Add ORDER
+				if( is_array($sortingQueryParts['order']) ) {
+					$queryParts['order'] = TodoyuArray::merge($queryParts['order'], $sortingQueryParts['order']);
+				}
+					// Add remove tables
+				if( is_array($sortingQueryParts['removeTables']) ) {
+					$queryParts['removeTables'] = TodoyuArray::merge($queryParts['removeTables'], $sortingQueryParts['removeTables']);
+				}
+			} else {
+				TodoyuLogger::logError('Unknown sorting: ' . $sorting['name']);
 			}
 		}
 
@@ -361,13 +473,13 @@ abstract class TodoyuSearchFilterBase {
 	 * fields, tables, where, group, order, limit
 	 * Extra fields for internal use: whereNoJoin, join
 	 *
-	 * @param	String		$orderBy					Optional ORDER BY for query
+	 * @param	String		$sortingFallback					Optional ORDER BY for query
 	 * @param	String		$limit						Optional LIMIT for query
 	 * @param	Boolean		$showDeleted				Show deleted records?
 	 * @param	Boolean		$noResultOnEmptyConditions	Return false if no condition is active
 	 * @return	Array|Boolean
 	 */
-	public function getQueryArray($orderBy = '', $limit = '', $showDeleted = false, $noResultOnEmptyConditions = false) {
+	public function getQueryArray($sortingFallback = '', $limit = '', $showDeleted = false, $noResultOnEmptyConditions = false) {
 			// Get normal query parts
 		$queryParts	= $this->fetchFilterQueryParts();
 
@@ -382,17 +494,24 @@ abstract class TodoyuSearchFilterBase {
 			// Combine join from filter and rights
 		$join	= array_unique(TodoyuArray::merge($queryParts['join'], $rightsParts['join']));
 		$tables	= array_unique(TodoyuArray::merge($queryParts['tables'], $rightsParts['tables']));
-
+			// Remove tables
+		$tables	= array_diff($tables, $queryParts['removeTables']);
 
 		$connection	= $this->conjunction ? $this->conjunction : 'AND';
 		$queryArray	= array();
 
-		$queryArray['fields']	= 'SQL_CALC_FOUND_ROWS ' . $this->defaultTable . '.id';
+		$queryArray['fields']	= 'SQL_CALC_FOUND_ROWS ' . implode(', ', $queryParts['fields']);
 		$queryArray['tables']	= implode(', ', $tables);
 		$queryArray['where']	= ''; // WHERE clause is added later
 		$queryArray['group']	= $this->defaultTable . '.id';
-		$queryArray['order']	= $orderBy;
 		$queryArray['limit']	= $limit;
+
+			// Has custom sorting or use fallback?
+		if( sizeof($queryParts) === 0 ) {
+			$queryArray['order'] = $sortingFallback;
+		} else {
+			$queryArray['order'] = implode(', ', $queryParts['order']);
+		}
 
 
 		$whereParts	= array();
@@ -473,17 +592,17 @@ abstract class TodoyuSearchFilterBase {
 	/**
 	 * Get item IDs from default table which match to all active filters
 	 *
-	 * @param	String		$orderBy					Optional order by for query
+	 * @param	String		$sortingFallback			Optional order by for query
 	 * @param	String		$limit						Optional limit for query
 	 * @param	Boolean		$showDeleted				Show deleted records
 	 * @return	Array		List of IDs of matching records
 	 */
-	public function getItemIDs($orderBy = '', $limit = '', $showDeleted = false) {
+	public function getItemIDs($sortingFallback = '', $limit = '', $showDeleted = false) {
 		$cacheID	= md5(serialize(func_get_args()));
 
 			// Check if results are already cached
 		if( ! array_key_exists($cacheID, $this->resultIDs) ) {
-			$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted, false);
+			$queryArray = $this->getQueryArray($sortingFallback, $limit, $showDeleted, false);
 
 			$this->resultIDs[$cacheID] = Todoyu::db()->getColumn(
 				$queryArray['fields'],
@@ -494,6 +613,8 @@ abstract class TodoyuSearchFilterBase {
 				$queryArray['limit'],
 				'id'
 			);
+
+//			TodoyuDebug::printLastQueryInFirebug();
 
 			$this->totalFoundRows	= Todoyu::db()->getTotalFoundRows();
 		}
@@ -544,6 +665,19 @@ abstract class TodoyuSearchFilterBase {
 			return false;
 		}
 	}
+
+
+
+	/**
+	 * Get sorting direction string
+	 *
+	 * @param	Boolean		$desc
+	 * @return	String		DESC or ASC
+	 */
+	protected static function getSortDir($desc = false) {
+		return $desc ? ' DESC' : ' ASC';
+	}
+
 }
 
 ?>

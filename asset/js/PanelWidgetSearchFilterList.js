@@ -268,6 +268,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	clearFilterArea: function() {
 		this.ext.Filter.reset();
 		this.unmarkActiveFilterset();
+		this.ext.Filter.Sorting.removeAll(true);
 
 		this.saveCleanArea();
 	},

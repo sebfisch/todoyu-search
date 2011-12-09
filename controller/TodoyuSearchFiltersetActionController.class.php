@@ -43,17 +43,18 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 	 */
 	public function saveAsNewAction(array $params) {
 		$type		= $params['type'];
-		$conditions	= $params['conditions'];
-		$conditions = empty($conditions) ? array() : json_decode($conditions, true);
+		$conditions = empty($params['conditions']) ? array() : json_decode($params['conditions'], true);
 		$title		= trim($params['title']);
 		$conjunction= $params['conjunction'];
+		$sorting	= trim($params['sorting']);
 
 		$data = array(
-			'filterset'	=> 0,
-			'type'		=> $type,
-			'title'		=> TodoyuSearchFiltersetManager::validateTitle($type, $title),
-			'conjunction'=> $conjunction,
-			'conditions'=> $conditions
+			'filterset'		=> 0,
+			'type'			=> $type,
+			'title'			=> TodoyuSearchFiltersetManager::validateTitle($type, $title),
+			'conjunction'	=> $conjunction,
+			'conditions'	=> $conditions,
+			'resultsorting'	=> $sorting
 		);
 
 		$idFilterset = TodoyuSearchFiltersetManager::saveFilterset($data);
@@ -73,13 +74,14 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 	 */
 	public function saveAction(array $params) {
 		$idFilterset= intval($params['filterset']);
-		$conditions	= $params['conditions'];
-		$conditions = empty($conditions) ? array() : json_decode($conditions, true);
+		$conditions = empty($params['conditions']) ? array() : json_decode($params['conditions'], true);
 		$conjunction= $params['conjunction'];
 		$tab		= $params['tab'];
+		$sorting	= trim($params['sorting']);
 
 		$data = array(
-			'conjunction'=> $conjunction,
+			'conjunction'	=> $conjunction,
+			'resultsorting'	=> $sorting
 		);
 		TodoyuSearchFiltersetManager::updateFilterset($idFilterset, $data);
 		TodoyuSearchFilterConditionManager::saveFilterConditions($idFilterset, $conditions);

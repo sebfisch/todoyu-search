@@ -33,6 +33,7 @@ Todoyu::$CONFIG['EXT']['search']['info'] = array(
 	'state' 		=> 'stable',
 	'version' 		=> '1.1.3a',
 	'constraints' => array(
+		'core'		=> '2.1.4rc',
 		'depends' 	=> array(),
 		'conflicts' => array(),
 		'system'	=> true

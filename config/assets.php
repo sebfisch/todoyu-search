@@ -66,6 +66,10 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 		array(
 			'file' => 'ext/search/asset/js/ActionPanel.js',
 			'position' => 111
+		),
+		array(
+			'file' => 'ext/search/asset/js/FilterSorting.js',
+			'position' => 112
 		)
 	),
 	'css' => array(
