@@ -91,6 +91,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 		sortEl.insert(removeEl);
 
 			// Add observers
+		labelEl.on('click', '.sort', this.onDirClick.bind(this));
 		dirEl.on('click', '.sort', this.onDirClick.bind(this));
 		removeEl.on('click', '.sort', this.onRemoveClick.bind(this));
 

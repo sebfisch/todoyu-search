@@ -73,7 +73,7 @@ h1.extIconSearch .title {
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
-	cursor: default;
+	cursor: pointer;
 	
 }
 #sorting-flags .sort .dir {
