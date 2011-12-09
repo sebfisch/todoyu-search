@@ -33,6 +33,6 @@
 	<label index="contextmenu.project.showinproject">Open in project view</label>
 	<label index="headlet.label">Search In todoyu</label>
 	<label index="export.error.saveEmpty">There are no results to be exported.</label>
-	<label index="filtercontrol.add.condition">Add new condition</label>
-	<label index="filtercontrol.add.sorting">Add new sorting</label>
+	<label index="filtercontrol.add.condition">Add New Condition</label>
+	<label index="filtercontrol.add.sorting">Add New Sorting</label>
 </labels>
