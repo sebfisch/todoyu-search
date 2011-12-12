@@ -1,7 +1,11 @@
 {extends "ext/search/view/filterwidget/wrap.tmpl"}
 
 {block name="widgetbody"}
-	{$selected = explode(',', $definitions.value)}
+	{if $definitions.value}
+		{$selected = explode(',', $definitions.value)}
+	{else}
+		{$selected = array()}
+	{/if}
 	<select class="select value" {if $definitions.wConf.multiple == true}multiple="multiple"{/if} size="{$definitions.wConf.size}" onchange="Todoyu.Ext.search.Filter.updateConditionValue('{$definitions.widgetID}', $F(this))">
 		{if $definitions.wConf.size === 1}
 			<option value="0">{Label core.form.select.pleaseSelect}</option>
