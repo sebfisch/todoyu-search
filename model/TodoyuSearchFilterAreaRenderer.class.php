@@ -158,8 +158,6 @@ class TodoyuSearchFilterAreaRenderer {
 			'conjunction'				=> array($conjunction)
 		);
 
-		TodoyuDebug::printInFirebug($groupedSortingOptions, '$groupedSortingOptions');
-
 		return Todoyu::render($tmpl, $data);
 	}
 
