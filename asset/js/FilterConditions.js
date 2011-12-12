@@ -150,6 +150,17 @@ Todoyu.Ext.search.Filter.Conditions = {
 	 */
 	size: function() {
 		return Object.keys(this.conditions).size();
+	},
+
+
+
+	/**
+	 * Check whether current view has conditions
+	 *
+	 * @return	{Boolean}
+	 */
+	hasConditions: function() {
+		return this.size() !== 0;
 	}
 
 };

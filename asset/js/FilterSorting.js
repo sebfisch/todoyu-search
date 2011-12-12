@@ -262,7 +262,9 @@ Todoyu.Ext.search.Filter.Sorting = {
 	 * Update the search results
 	 */
 	update: function() {
-		this.ext.Filter.updateResults();
+		if( this.ext.Filter.Conditions.hasConditions() ) {
+			this.ext.Filter.updateResults();
+		}
 	},
 
 
