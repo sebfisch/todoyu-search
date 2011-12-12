@@ -41,11 +41,24 @@ class TodoyuSearchSortingManager {
 		$sortings	= TodoyuArray::assure(Todoyu::$CONFIG['FILTERS'][$type]['sorting']);
 
 		foreach($sortings as $name => $config) {
-			$options[$name] = array(
-				'value'	=> $name,
-				'label'	=> $config['label'],
-				'group'	=> $config['optgroup']
-			);
+			$allowed	= true;
+			if( array_key_exists('right', $config) ) {
+				$rightParts	= explode(':', $config['right']);
+				$extKey	= $rightParts[0];
+				$right	= $rightParts[1];
+
+				$allowed = TodoyuRightsManager::isAllowed($extKey, $right);
+			} elseif( array_key_exists('restrictInternal', $config) && TodoyuAuth::isInternal() === false ) {
+				$allowed = false;
+			}
+
+			if( $allowed ) {
+				$options[$name] = array(
+					'value'	=> $name,
+					'label'	=> $config['label'],
+					'group'	=> $config['optgroup']
+				);
+			}
 		}
 
 		return TodoyuArray::groupByField($options, 'group', 'project.task.task');
