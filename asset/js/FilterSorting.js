@@ -217,10 +217,10 @@ Todoyu.Ext.search.Filter.Sorting = {
 
 		if( dir.hasClassName('desc') ) {
 			dir.removeClassName('desc');
-			dir.title = 'Sorting direction: Ascending';
+			dir.title = '[LLL:search.ext.sorting.direction.asc]';
 		} else {
 			dir.addClassName('desc');
-			dir.title = 'Sorting direction: Descending';
+			dir.title = '[LLL:search.ext.sorting.direction.desc]';
 		}
 	},
 
