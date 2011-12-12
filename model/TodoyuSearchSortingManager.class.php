@@ -42,13 +42,10 @@ class TodoyuSearchSortingManager {
 
 		foreach($sortings as $name => $config) {
 			$allowed	= true;
-			if( array_key_exists('right', $config) ) {
-				$rightParts	= explode(':', $config['right']);
-				$extKey	= $rightParts[0];
-				$right	= $rightParts[1];
-
+			if( isset($config['right']) ) {
+				list($extKey, $right) = explode(':', $config['right']);
 				$allowed = TodoyuRightsManager::isAllowed($extKey, $right);
-			} elseif( array_key_exists('restrictInternal', $config) && TodoyuAuth::isInternal() === false ) {
+			} elseif( isset($config['restrictInternal']) && TodoyuAuth::isExternal() ) {
 				$allowed = false;
 			}
 
