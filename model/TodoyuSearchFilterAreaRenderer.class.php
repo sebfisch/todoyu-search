@@ -194,10 +194,10 @@ class TodoyuSearchFilterAreaRenderer {
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$conditions
 	 * @param	String		$conjunction
-	 * @param	Array		$sorting
+	 * @param	Array		$defaultSorting
 	 * @return	String
 	 */
-	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND', array $sorting = array()) {
+	public static function renderResults($type = 'TASK', $idFilterset = 0, array $conditions = array(), $conjunction = 'AND', array $defaultSorting = array()) {
 		$idFilterset	= intval($idFilterset);
 		$conjunction	= strtoupper($conjunction) === 'OR' ? 'OR' : 'AND';
 		$hardLimit		= 200;
@@ -206,7 +206,7 @@ class TodoyuSearchFilterAreaRenderer {
 		if( $idFilterset !== 0 ) {
 			$filterset	= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
 			$conditions	= $filterset->getConditions();
-			$sorting	= $filterset->getResultSorting();
+			$defaultSorting	= $filterset->getResultSorting();
 		} else {
 			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
 		}
@@ -217,12 +217,12 @@ class TodoyuSearchFilterAreaRenderer {
 		/**
 		 * @var	TodoyuProjectTaskFilter	$typeFilter
 		 */
-		$typeFilter	= new $typeClass($conditions, $conjunction, $sorting);
-		$sorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
-		$itemIDs	= array();
+		$typeFilter		= new $typeClass($conditions, $conjunction, $defaultSorting);
+		$defaultSorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
+		$itemIDs		= array();
 
 		if( $typeFilter->hasActiveFilters() ) {
-			$itemIDs	= $typeFilter->getItemIDs($sorting, $hardLimit);
+			$itemIDs	= $typeFilter->getItemIDs($defaultSorting, $hardLimit);
 		}
 
 			// Prepare variables
