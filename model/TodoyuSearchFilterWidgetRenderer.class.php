@@ -44,12 +44,34 @@ class TodoyuSearchFilterWidgetRenderer {
 			'definitions' => $config
 		);
 
+		if( $config['widget'] === 'date' ) {
+			$data['jsSetup']	= self::getDateWidgetCalendarSetupJS($config['widgetID']);
+		}
+
 		if( is_null($tmpl) ) {
 			TodoyuLogger::logError('Missing widget template (' . $type . '/' . $widgetKey . ')');
 			return '';
 		}
 
 		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Get JavaScript setup code for calendar of date filter widget
+	 *
+	 * @return	String
+	 */
+	public static function getDateWidgetCalendarSetupJS($widgetID) {
+		$idInput= 'filterwidget-date-' . $widgetID;
+		$format	= TodoyuTime::getFormat('date');
+		$config	= TodoyuFormElement_Date::getSetupOptions($idInput, $format);
+
+		$jsSetup	= TodoyuFormElement_Date::getCalendarSetupJS($config);
+		$jsSetup   .= TodoyuFormElement_Date::getCalendarFormatSetupJS($idInput);
+
+		return $jsSetup;
 	}
 
 }

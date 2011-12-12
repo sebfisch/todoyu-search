@@ -3,6 +3,7 @@ todoyu search changelog
 search 1.2.0 - not released yet
 	* Feature: Filter result sorting
 	* Bugfix: Fixed empty exports caused by too long get-parameter (conditions)
+	* Bugfix: Search date widget now uses jsCalendar initialization of todoyuForm API (fixes bug in english date widgets)
 	* Added: Limit parameter to filterset item fetching methods
 
 search 1.1.2 - 2011-11-17
