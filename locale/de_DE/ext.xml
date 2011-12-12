@@ -35,4 +35,7 @@
 	<label index="export.error.saveEmpty">Es sind keine Ergebnisse zum Export vorhanden.</label>
 	<label index="filtercontrol.add.condition">Filter hinzufügen</label>
 	<label index="filtercontrol.add.sorting">Sortierung hinzufügen</label>
+	<label index="sorting.remove">Sortierung entfernen</label>
+	<label index="sorting.direction.asc">Aufsteigend sortieren</label>
+	<label index="sorting.direction.desc">Absteigend sortieren</label>
 </labels>

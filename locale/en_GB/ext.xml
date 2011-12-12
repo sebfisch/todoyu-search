@@ -35,4 +35,7 @@
 	<label index="export.error.saveEmpty">There are no results to be exported.</label>
 	<label index="filtercontrol.add.condition">Add New Condition</label>
 	<label index="filtercontrol.add.sorting">Add New Sorting</label>
+	<label index="sorting.remove">Remove sorting</label>
+	<label index="sorting.direction.asc">Sort ascending</label>
+	<label index="sorting.direction.desc">Sort descending</label>
 </labels>

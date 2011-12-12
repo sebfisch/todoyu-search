@@ -73,16 +73,16 @@ Todoyu.Ext.search.Filter.Sorting = {
 		}).update(label);
 		var dirEl	= new Element('span', {
 			'class': 'action dir',
-			'title': 'Sorting direction: ASCending'
+			'title': '[LLL:search.ext.sorting.direction.asc]'
 		});
 		var removeEl= new Element('span', {
 			'class': 'action remove',
-			'title': 'Remove sorting'
+			'title': '[LLL:search.ext.sorting.remove]'
 		});
 
 		if( desc ) {
 			dirEl.addClassName('desc');
-			dirEl.title = 'Sorting direction: DESCending';
+			dirEl.title = '[LLL:search.ext.sorting.direction.desc]';
 		}
 
 			// Nest the elements
