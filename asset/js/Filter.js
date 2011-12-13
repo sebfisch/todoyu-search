@@ -413,7 +413,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	updateConditionValue: function(name, value) {
 		this.setConditionValue(name, value);
-		this.updateResults(this.getActiveTab(), 0);
+		this.updateResults();
 	},
 
 

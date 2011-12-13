@@ -217,7 +217,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onAutocompleteCleared: function(name, autocompleter) {
-		this.ext.Filter.updateConditionValue(name, 0);
+		this.ext.Filter.updateConditionValue(name, '');
 	},
 
 
