@@ -26,7 +26,7 @@
 	<label index="subMenuEntry.task">Zadania</label>
 	<label index="subMenuEntry.project">Projekty</label>
 	<label index="areMatching">%1$d %2$s pasują do kryteriów wyszukiwania.</label>
-	<label index="areMatching.overLimit">Więcej niż %1$d %2$s pasuje do kryteriów wyszukiwania. Użyj tego filtra w widoku portalu w celu wyświetlenia wszystkich pasujących rekordów.</label>
+	<label index="areMatching.overLimit">Więcej niż %1$d %2$s pasuje do kryteriów wyszukiwania.</label>
 	<label index="filterwidget.condtion.remove">Usuń warunek</label>
 	<label index="search.noEntryFound">Nie znaleziono wyników</label>
 	<label index="search.noResultsForActiveFilters">Nie znaleziono wyników dla aktualnie wybranych filtrów</label>
