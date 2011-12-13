@@ -217,6 +217,7 @@ class TodoyuSearchFiltersetManager {
 	 *
 	 * @note	The limit per filter is set to 500, because everything else is useless
 	 * @param	Array		$filtersetIDs
+	 * @param	Integer		$limit
 	 * @return	Array
 	 */
 	public static function getFiltersetsResultItemIDs(array $filtersetIDs, $limit = 1000) {
@@ -229,7 +230,7 @@ class TodoyuSearchFiltersetManager {
 
 		$resultItems	= array_unique(TodoyuArray::mergeSubArrays($allResultItems));
 
-		return $resultItems;
+		return array_slice($resultItems, 0, $limit);
 	}
 
 
