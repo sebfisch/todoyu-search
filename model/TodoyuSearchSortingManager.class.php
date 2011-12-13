@@ -43,7 +43,7 @@ class TodoyuSearchSortingManager {
 		foreach($sortings as $name => $config) {
 			$allowed	= true;
 			if( isset($config['right']) ) {
-				list($extKey, $right) = explode(':', $config['right']);
+				list($extKey, $right) = explode('.', $config['right']);
 				$allowed = TodoyuRightsManager::isAllowed($extKey, $right);
 			} elseif( isset($config['restrictInternal']) && TodoyuAuth::isExternal() ) {
 				$allowed = false;
