@@ -507,7 +507,7 @@ abstract class TodoyuSearchFilterBase {
 		$queryArray['limit']	= $limit;
 
 			// Has custom sorting or use fallback?
-		if( sizeof($queryParts) === 0 ) {
+		if( sizeof($queryParts['order']) === 0 ) {
 			$queryArray['order'] = $sortingFallback;
 		} else {
 			$queryArray['order'] = implode(', ', $queryParts['order']);
