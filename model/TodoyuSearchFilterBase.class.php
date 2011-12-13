@@ -614,7 +614,7 @@ abstract class TodoyuSearchFilterBase {
 				'id'
 			);
 
-			//TodoyuDebug::printLastQueryInFirebug();
+//			TodoyuDebug::printLastQueryInFirebug();
 
 			$this->totalFoundRows	= Todoyu::db()->getTotalFoundRows();
 		}

@@ -1,7 +1,8 @@
 todoyu search changelog
 
-search 1.2.0 - not released yet
+search 1.2.0 - 2011-12-13
 	* Feature: Filter result sorting
+	* Feature: Use MySQL internals to count result instead of php (performance boost)
 	* Bugfix: Fixed empty exports caused by too long get-parameter (conditions)
 	* Bugfix: Search date widget now uses jsCalendar initialization of todoyuForm API (fixes bug in english date widgets)
 	* Added: Limit parameter to filterset item fetching methods
