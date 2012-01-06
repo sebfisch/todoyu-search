@@ -334,7 +334,7 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		type 				= ' . Todoyu::db()->quote($type, true)
+		$where	= '		`type` 				= ' . Todoyu::db()->quote($type, true)
 				. ' AND	deleted				= 0'
 				. '	AND ' .	( $showHidden ? '' : 'is_hidden	= 0' )
 				. ' AND current				= 0'
@@ -362,10 +362,10 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		id_person_create= ' . $idPerson .
-				  ' AND	deleted			= 0'
-				. '	AND	type IN(' . $typeList . ')'
-				. ' AND current = 0';
+		$where	= '		id_person_create	= ' . $idPerson
+				. ' AND	deleted				= 0'
+				. '	AND	`type` 				IN(' . $typeList . ')'
+				. ' AND current 			= 0';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
@@ -389,8 +389,8 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '		id_person_create= ' . $idPerson .
-				  ' AND	deleted			= 0';
+		$where	= '			id_person_create	= ' . $idPerson
+				  . ' AND	deleted				= 0';
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
@@ -416,8 +416,8 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= 'title';
 		$table	= self::TABLE;
-		$where	= '		id_person_create= ' . $idPerson .
-				  ' AND	deleted			= 0';
+		$where	= '		id_person_create	= ' . $idPerson
+				. ' AND	deleted				= 0';
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
@@ -572,9 +572,9 @@ class TodoyuSearchFiltersetManager {
 				$joins	= array_unique($joins);
 
 				$queryParts	= array(
-					'tables'=> $tables,
-					'where'	=> $where,
-					'join'	=> $joins
+					'tables'	=> $tables,
+					'where'		=> $where,
+					'join'		=> $joins
 				);
 			}
 

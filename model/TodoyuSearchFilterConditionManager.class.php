@@ -74,7 +74,8 @@ class TodoyuSearchFilterConditionManager {
 		$idFilterset	= intval($idFilterset);
 
 			// Get all conditions of filter set
-		$where	= '	id_set	= ' . $idFilterset . ' AND deleted	= 0';
+		$where	= '		id_set	= ' . $idFilterset
+				. ' AND deleted	= 0';
 		$order	= 'id';
 
 		$conditions = TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
