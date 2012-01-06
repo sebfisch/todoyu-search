@@ -1,5 +1,8 @@
 todoyu search changelog
 
+search 1.3.0 - Not released yet
+	* Feature: Search area keeps prefs of currently set-up unsaved filter conditions
+
 search 1.2.0 - 2011-12-13
 	* Feature: Filter result sorting
 	* Feature: Use MySQL internals to count result instead of php (performance boost)

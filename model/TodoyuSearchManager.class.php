@@ -27,6 +27,43 @@
 class TodoyuSearchManager {
 
 	/**
+	 * Get ID of filterset storing the current condition of the given search type tab
+	 *
+	 * @param	String		$type		'task' / 'project' etc.
+	 * @return	Integer
+	 */
+	public static function getIDCurrentTabFilterset($type) {
+		$field	= 'id';
+		$table	= TodoyuSearchFiltersetManager::TABLE;
+		$where	= ' deleted 				= 0'
+				. ' AND current 			= 1'
+				. ' AND id_person_create	= ' . Todoyu::personid()
+				. ' AND `type`				= ' . Todoyu::db()->quote($type, true);
+
+		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
+	}
+
+
+
+	/**
+	 * Get current tab filterset
+	 *
+	 * @param	String	$type
+	 * @return	Array|TodoyuSearchFilterset
+	 */
+	public static function getCurrentTabFilterset($type) {
+		$idFilterset	= self::getIDCurrentTabFilterset($type);
+
+		if( $idFilterset === 0 ) {
+			return array();
+		}
+
+		return TodoyuSearchFiltersetManager::getFilterset($idFilterset);
+	}
+
+
+
+	/**
 	 * Get filter type configs
 	 *
 	 * @return	Array

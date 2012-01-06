@@ -104,9 +104,9 @@ class TodoyuSearchFilterConditionManager {
 
 		TodoyuExtensions::loadAllFilters();
 
-		$conditionConfigs	= Todoyu::$CONFIG['FILTERS'][$type]['widgets'];
-
-		if( ! is_array($conditionConfigs) ) {
+		if( is_array(Todoyu::$CONFIG['FILTERS'][$type]['widgets']) ) {
+			$conditionConfigs = Todoyu::$CONFIG['FILTERS'][$type]['widgets'];
+		} else {
 			$conditionConfigs = array();
 		}
 
@@ -166,17 +166,12 @@ class TodoyuSearchFilterConditionManager {
 	 */
 	public static function addFilterCondition($idFilterset, $filterName, $value, $negate = false) {
 		$idFilterset= intval($idFilterset);
-		$negate		= $negate ? 1 : 0;
-
-		if( is_array($value) ) {
-			$value = implode(',', $value);
-		}
 
 		$data = array(
 			'id_set'		=> $idFilterset,
 			'filter'		=> $filterName,
-			'value'			=> $value,
-			'is_negated'	=> $negate
+			'value'			=> is_array($value) ? implode(',', $value) : $value,
+			'is_negated'	=> $negate ? 1 : 0
 		);
 
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
@@ -198,7 +193,7 @@ class TodoyuSearchFilterConditionManager {
 
 
 	/**
-	 * Transform the filterconditions to a valid filter condition array
+	 * Transform the filter conditions to a valid filter condition array
 	 *
 	 * @param	Array		$filterConditions
 	 * @return	Array
@@ -207,16 +202,11 @@ class TodoyuSearchFilterConditionManager {
 		$conditions	= array();
 
 		foreach($filterConditions as $condition) {
-				// Join array values to a string
-			if( is_array($condition['value']) ) {
-				$condition['value'] = implode(',', $condition['value']);
-			}
-
 			$conditions[] = array(
 				'name'		=> $condition['name'],
 				'filter'	=> $condition['condition'],
 				'is_negated'=> $condition['negate'],
-				'value'		=> $condition['value']
+				'value'		=> is_array($condition['value']) ? implode(',', $condition['value']) : $condition['value']
 			);
 		}
 

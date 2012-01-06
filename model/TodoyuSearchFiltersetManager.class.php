@@ -334,10 +334,11 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		type 		= ' . Todoyu::db()->quote($type, true) .
-				  ' AND	deleted		= 0
-					AND ' .	($showHidden ? '' : 'is_hidden 	= 0 AND') .
-					' ( id_person_create	= ' . $idPerson . '	)';
+		$where	= '		type 				= ' . Todoyu::db()->quote($type, true)
+				. ' AND	deleted				= 0'
+				. '	AND ' .	( $showHidden ? '' : 'is_hidden	= 0' )
+				. ' AND current				= 0'
+				. ' AND ( id_person_create	= ' . $idPerson . '	)';
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -362,12 +363,13 @@ class TodoyuSearchFiltersetManager {
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= '		id_person_create= ' . $idPerson .
-				  ' AND	deleted			= 0
-					AND	type IN(' . $typeList . ')';
+				  ' AND	deleted			= 0'
+				. '	AND	type IN(' . $typeList . ')'
+				. ' AND current = 0';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -392,7 +394,7 @@ class TodoyuSearchFiltersetManager {
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -419,7 +421,7 @@ class TodoyuSearchFiltersetManager {
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND type = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
 		}
 
 		return Todoyu::db()->getColumn($fields, $table, $where, '', $order);
@@ -460,7 +462,8 @@ class TodoyuSearchFiltersetManager {
 			'type'			=> $filterData['type'],
 			'title'			=> $filterData['title'],
 			'conjunction'	=> $filterData['conjunction'],
-			'resultsorting'	=> $filterData['resultsorting']
+			'resultsorting'	=> $filterData['resultsorting'],
+			'current'		=> intval($filterData['current']) === 1 ? '1' : '0'
 		);
 
 			// Add or update filterset

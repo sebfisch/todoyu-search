@@ -38,7 +38,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 
 	/**
-	 * Render search view
+	 * Render search area view
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -49,19 +49,10 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 		TodoyuPage::init('ext/search/view/ext.tmpl');
 		TodoyuPage::setTitle('search.ext.page.title');
 
-			// Get tab parameter
-		$activeTab	= $params['tab'];
+			// Get given tab parameter or load preference
+		$activeTab	= ( ! empty($params['tab']) ) ? $params['tab'] : TodoyuSearchPreferences::getActiveTab();
 
-			// If tab is set manually
-		if( ! empty($activeTab) ) {
-			$idFilterset= 0;
-//			$filters 	= isset($params['filters']) ? json_decode($params['filters'], true) : array();
-//			$conditions = TodoyuSearchManager::convertSimpleToFilterConditionArray($filters);
-		} else {
-				// Normal preferences rendering
-			$activeTab	= TodoyuSearchPreferences::getActiveTab();
-			$idFilterset= TodoyuSearchPreferences::getActiveFilterset($activeTab);
-		}
+		$idFilterset	= TodoyuSearchManager::getIDCurrentTabFilterset($activeTab);
 
 		$panelWidgets	= TodoyuSearchRenderer::renderPanelWidgets();
 		$tabs			= TodoyuSearchFilterAreaRenderer::renderTypeTabs($activeTab);
@@ -73,6 +64,38 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 		return TodoyuPage::render();
 	}
+
+
+
+	/**
+	 * Loads whole filter area on tab change
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function tabAction(array $params) {
+		$tab		= $params['tab'];
+
+		$idFilterset	= TodoyuSearchManager::getIDCurrentTabFilterset($tab);
+
+		TodoyuSearchPreferences::saveActiveTab($tab);
+
+			// Save preferences
+		if( $idFilterset === 0 ) {
+			$data = array(
+				'type'			=> $tab,
+				'current'		=> '1',
+				'conditions'	=> array(),
+				'conjunction'	=> strtoupper($params['conjunction']) === 'AND' ? 'AND' : 'OR',
+				'resultsorting'	=> trim($params['sorting'])
+			);
+
+			TodoyuSearchFiltersetManager::saveFilterset($data);
+		}
+
+		return TodoyuSearchFilterAreaRenderer::renderFilterArea($tab, $idFilterset);
+	}
+
 }
 
 ?>

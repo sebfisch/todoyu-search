@@ -129,7 +129,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Set current search filter to given ID
+	 * Set active filterset to given ID
 	 *
 	 * @method	setFiltersetID
 	 * @param	{Number}	idFilterset
@@ -141,7 +141,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Get ID of current search filter
+	 * Get ID of active filterset
 	 *
 	 * @method	getFiltersetID
 	 * @return	{Number}
@@ -198,22 +198,22 @@ Todoyu.Ext.search.Filter = {
 
 
 
-	/**
-	 * @method	updateControll
-	 * @param	{String}	tab
-	 */
-	updateControll: function(tab) {
-		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
-		var options = {
-			parameters: {
-				action:	'load',
-				'tab':		tab
-			}
-		};
-		var target	= 'filterActionControls';
-
-		Todoyu.Ui.replace(target, url, options);
-	},
+//	/**
+//	 * @method	updateControll
+//	 * @param	{String}	tab
+//	 */
+//	updateControll: function(tab) {
+//		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
+//		var options = {
+//			parameters: {
+//				action:	'load',
+//				'tab':		tab
+//			}
+//		};
+//		var target	= 'filterActionControls';
+//
+//		Todoyu.Ui.replace(target, url, options);
+//	},
 
 
 
@@ -292,12 +292,11 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{Number}	idFilterSet
 	 */
 	updateFilterArea: function(tab, idFilterSet) {
-		var url		= Todoyu.getUrl('search', 'filterarea');
+		var url		= Todoyu.getUrl('search', 'ext');
 		var options	= {
 			parameters: {
-				action:		'load',
-				'tab':			tab,
-				'filterset':	idFilterSet
+				action:			'tab',
+				'tab':			tab
 			},
 			onComplete: 	this.onResultsUpdated.bind(this, tab)
 		};
@@ -344,8 +343,10 @@ Todoyu.Ext.search.Filter = {
 	onWidgetAreaUpdated: function(tab, idFilterSet, response) {
 			// Get conjunction of loaded filterset
 		var conjunction	= response.getTodoyuHeader('conjunction');
+
 			// Update conjunction in selector element
 		this.ext.FilterControl.setConjunction(conjunction);
+
 			// Update results for new filterset
 		this.updateResults(tab, idFilterSet, undefined, conjunction);
 	},
@@ -399,6 +400,14 @@ Todoyu.Ext.search.Filter = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onResultsUpdated: function(tab, idFilterSet, response) {
+			// Store currently set filter conditions of this search type tab
+		this.ext.Filter.saveCurrentTabFilterset();
+
+			// If this was no save/select of filterset but a change of filters/tab: deselect all filterset items
+		if( idFilterSet === 0 ) {
+			this.ext.PanelWidget.SearchFilterList.unmarkActiveFilterset();
+		}
+
 		Todoyu.Hook.exec('search.results.updated', tab, idFilterSet);
 	},
 
@@ -413,6 +422,7 @@ Todoyu.Ext.search.Filter = {
 	 */
 	updateConditionValue: function(name, value) {
 		this.setConditionValue(name, value);
+
 		this.updateResults();
 	},
 
@@ -459,12 +469,35 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Save the current widget collection as a new filterset
+	 * Save the current widget collection as "current" filterset (restored when reloading this tab)
 	 *
-	 * @method	saveCurrentAreaAsNewFilterset
+	 * @method	saveCurrentTabFilterset
+	 */
+	saveCurrentTabFilterset: function() {
+		var url		= Todoyu.getUrl('search', 'filterset');
+		var options	= {
+			parameters: {
+				action:		'saveAsCurrent',
+				title:		'current',
+				type:		this.getActiveTab(),
+				conditions:	this.Conditions.getAll(true),
+				conjunction:this.getConjunction(),
+				sorting:	this.Sorting.getAll(true)
+			}
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Save the current filter widgets as new filterset
+	 *
+	 * @method	saveNewFilterset
 	 * @param	{Function}		onComplete
 	 */
-	saveCurrentAreaAsNewFilterset: function(onComplete) {
+	saveNewFilterset: function(onComplete) {
 		if( this.Conditions.size() > 0 ) {
 				// Get name for new filter
 			var title 	= prompt('[LLL:search.ext.newFilterLabel]', '[LLL:search.ext.newFilterLabel.preset]');
@@ -505,13 +538,13 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Save current collection of filters as filterSet
+	 * Save current collection of filter widgets as filterSet
 	 *
-	 * @method	saveCurrentAreaAsFilterset
+	 * @method	saveFilterset
 	 * @param	{Number}	idFilterSet
 	 * @param	{Function}	onComplete
 	 */
-	saveCurrentAreaAsFilterset: function(idFilterSet, onComplete) {
+	saveFilterset: function(idFilterSet, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');
 		var options	= {
 			parameters: {
@@ -534,7 +567,7 @@ Todoyu.Ext.search.Filter = {
 
 
 	/**
-	 * Save pref: currently active filterSet ID
+	 * Save pref: currently active (selected) filterSet ID
 	 *
 	 * @method	saveActiveFilterset
 	 * @param	{String}	tab

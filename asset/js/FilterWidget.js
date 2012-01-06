@@ -43,7 +43,7 @@ Todoyu.Ext.search.FilterWidget = {
 
 
 	/**
-	 * Handler when text in a text-widget is entered
+	 * Handler when text inside a text-widget is changed: update search results
 	 * The update is delayed, so no every key will force a result update
 	 *
 	 * @method	onTextEntered

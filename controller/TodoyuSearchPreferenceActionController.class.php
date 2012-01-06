@@ -36,7 +36,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Save currently active filter
+	 * Save current selected filterset
 	 *
 	 * @param	Array	$params
 	 */

@@ -51,8 +51,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @method	init
 	 */
 	init: function() {
-		//this.initSortable();
-
 		this.initSortableList();
 	},
 
@@ -156,7 +154,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	saveFilterset: function(idFilterSet, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
 			if( confirm('[LLL:search.ext.filterset.confirm.overwrite]') ) {
-				this.ext.Filter.saveCurrentAreaAsFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
+				this.ext.Filter.saveFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
 			}
 		} else {
 			alert('[LLL:search.ext.filterset.error.saveWrongType]');
@@ -197,10 +195,10 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	/**
 	 * Saves a new filter
 	 *
-	 * @method	saveCurrentAreaAsNewFilterset
+	 * @method	saveNewFilterset
 	 */
-	saveCurrentAreaAsNewFilterset: function() {
-		this.ext.Filter.saveCurrentAreaAsNewFilterset(this.onNewFiltersetSaved.bind(this));
+	saveNewFilterset: function() {
+		this.ext.Filter.saveNewFilterset(this.onNewFiltersetSaved.bind(this));
 	},
 
 
@@ -243,8 +241,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @param	{Number}	idFilterSet
 	 */
 	markActiveFilterset: function(idFilterSet) {
-		//$('filterset_' + idFilterSet).up('div').select('.filterset').invoke('removeClassName', 'current');
-		//$('filterset_' + idFilterSet).addClassName('current');
+		this.unmarkActiveFilterset();
+		$('filterset_' + idFilterSet).addClassName('current');
 	},
 
 
@@ -255,7 +253,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @method	unmarkActiveFilterset
 	 */
 	unmarkActiveFilterset: function() {
-		$('panelwidget-searchfilterlist').select('.filterset').invoke('removeClassName', 'current');
+		$('panelwidget-searchfilterlist-content').select('.listItem').invoke('removeClassName', 'current');
 	},
 
 

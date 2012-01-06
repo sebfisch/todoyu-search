@@ -408,7 +408,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 
 
 		/**
-		 * Enter description here...
+		 * Handler when search query has changed
 		 *
 		 * @method	onQueryChange
 		 * @param	{Event}		event

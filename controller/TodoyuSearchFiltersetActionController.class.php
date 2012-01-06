@@ -36,7 +36,31 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 
 
 	/**
-	 * Save current conditions with their settings as new Filter(set)
+	 * Save current conditions as "current" filterset (being restored when reloading the tab)
+	 *
+	 * @param	Array	$params
+	 */
+	public function saveAsCurrentAction(array $params) {
+		$type		= $params['type'];
+		$idFilterset	= TodoyuSearchManager::getIDCurrentTabFilterset($type);
+
+		$data = array(
+			'filterset'		=> $idFilterset,
+			'current'		=> '1',
+			'type'			=> $type,
+			'conjunction'	=> $params['conjunction'],
+			'resultsorting'	=> trim($params['sorting']),
+			'conditions'	=> empty($params['conditions']) ? array() : json_decode($params['conditions'], true)
+		);
+
+			// Save filterset and have conditions updated (store newly or update existing)
+		TodoyuSearchFiltersetManager::saveFilterset($data);
+	}
+
+
+
+	/**
+	 * Save current conditions with their settings as new filterset
 	 *
 	 * @param	Array	$params
 	 * @return	Integer
@@ -44,17 +68,14 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 	public function saveAsNewAction(array $params) {
 		$type		= $params['type'];
 		$conditions = empty($params['conditions']) ? array() : json_decode($params['conditions'], true);
-		$title		= trim($params['title']);
-		$conjunction= $params['conjunction'];
-		$sorting	= trim($params['sorting']);
 
 		$data = array(
 			'filterset'		=> 0,
 			'type'			=> $type,
-			'title'			=> TodoyuSearchFiltersetManager::validateTitle($type, $title),
-			'conjunction'	=> $conjunction,
+			'title'			=> TodoyuSearchFiltersetManager::validateTitle($type, trim($params['title'])),
+			'conjunction'	=> $params['conjunction'],
 			'conditions'	=> $conditions,
-			'resultsorting'	=> $sorting
+			'resultsorting'	=> trim($params['sorting'])
 		);
 
 		$idFilterset = TodoyuSearchFiltersetManager::saveFilterset($data);
@@ -83,6 +104,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 			'conjunction'	=> $conjunction,
 			'resultsorting'	=> $sorting
 		);
+		// @todo	use TodoyuSearchFiltersetManager::saveFilterset instead - it updates the set and conditions
 		TodoyuSearchFiltersetManager::updateFilterset($idFilterset, $data);
 		TodoyuSearchFilterConditionManager::saveFilterConditions($idFilterset, $conditions);
 

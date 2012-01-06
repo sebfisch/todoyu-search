@@ -20,6 +20,7 @@ CREATE TABLE `ext_search_filtercondition` (
 
 --
 -- Table structure for table `ext_search_filterset`
+-- current = currently active widgets per search tab + person
 --
 
 CREATE TABLE `ext_search_filterset` (
@@ -30,6 +31,7 @@ CREATE TABLE `ext_search_filterset` (
 	`deleted` tinyint(2) NOT NULL DEFAULT '0',
 	`sorting` int(10) unsigned NOT NULL,
 	`is_hidden` tinyint(2) NOT NULL DEFAULT '0',
+	`current` tinyint(2) NOT NULL DEFAULT '0',
 	`roles` varchar(16) NOT NULL,
 	`type` varchar(16) NOT NULL,
 	`title` varchar(64) NOT NULL,
