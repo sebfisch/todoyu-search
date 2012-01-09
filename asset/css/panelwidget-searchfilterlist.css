@@ -6,31 +6,46 @@
 	margin-top:5px;
 }
 
-#panelwidget-searchfilterlist .listItem .actions .save {
-	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -208px !important;
+#panelwidget-searchfilterlist .listItem.separator {
+	margin-top:-1px;
+	background:#d6d9db url(../img/icons.png) repeat-x 5px -272px !important;
+	border-top:0 !important;
+	border-bottom:0 !important;
 }
+	#panelwidget-searchfilterlist .listItem.separator span.title {
+		padding-left:20px;
+	}
 
-#panelwidget-searchfilterlist .listItem .actions .delete {
-	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 4px -357px !important;
+	#panelwidget-searchfilterlist .listItem .actions .save {
+		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -209px !important;
+	}
 
-}
+	#panelwidget-searchfilterlist .listItem .actions .delete {
+		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 4px -358px !important;
+	}
 
-#panelwidget-searchfilterlist .listItem .actions .visibility {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 4px -1078px;
-}
+	#panelwidget-searchfilterlist .listItem .actions .visibility {
+		background:url(../../../../core/asset/img/icons.png) no-repeat 4px -1079px;
+	}
 
-#panelwidget-searchfilterlist .listItem .actions .invisible {
-	opacity:0.3;filter:alpha(opacity=60);
-}
+	#panelwidget-searchfilterlist .listItem .actions .invisible {
+		opacity:0.3;filter:alpha(opacity=60);
+	}
 
-#panelwidget-searchfilterlist .listItem .actions .rename {
-	background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -148px !important;
-}
+	#panelwidget-searchfilterlist .listItem .actions .rename {
+		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -149px !important;
+	}
+
+
 
 #panelwidget-searchfilterlistsearchFilterButton {
 	padding:5px;
 }
 
-#panelwidget-searchfilterlist button	{
+#panelwidget-searchfilterlist button {
 	margin-top:10px;
+}
+
+#panelwidget-searchfilterlist button.addseparator{
+	background: transparent url('../img/panelwidget-filterlist.png') no-repeat 6px 3px;
 }

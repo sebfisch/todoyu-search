@@ -449,11 +449,10 @@ class TodoyuSearchFiltersetManager {
 
 
 	/**
-	 * Store submitted filterset data.
-	 * Updates or creates a filterset and (re-)creates the conditions in the database
+	 * Create new / update existing filterset and (re-)create the conditions in the database
 	 *
 	 * @param	Array		$filterData
-	 * @return	Integer
+	 * @return	Integer						Filterset ID
 	 */
 	public static function saveFilterset(array $filterData) {
 		$idFilterset= intval($filterData['filterset']);
@@ -475,6 +474,33 @@ class TodoyuSearchFiltersetManager {
 
 			// Save conditions
 		TodoyuSearchFilterConditionManager::saveFilterConditions($idFilterset, $filterData['conditions']);
+
+		return $idFilterset;
+	}
+
+
+
+	/**
+	 * Save (update or create new) separator
+	 *
+	 * @param	Array	$data
+	 * @return	Integer			Separator's filterset ID
+	 */
+	public static function saveFiltersetSeparator(array $data) {
+		$idFilterset= intval($data['filterset']);
+
+		$filtersetData	= array(
+			'type'			=> $data['type'],
+			'title'			=> $data['title'],
+			'is_separator'	=> '1'
+		);
+
+			// Add or update filterset
+		if( $idFilterset === 0 ) {
+			$idFilterset = self::addFilterset($filtersetData);
+		} else {
+			self::updateFilterset($idFilterset, $filtersetData);
+		}
 
 		return $idFilterset;
 	}

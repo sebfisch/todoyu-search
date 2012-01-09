@@ -145,7 +145,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Save given filterSet
+	 * Save given existing filterSet
 	 *
 	 * @method	saveFilterset
 	 * @param	{Number}	idFilterSet
@@ -173,6 +173,40 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	onFiltersetSaved: function(idFilterSet, response) {
 		var tab = this.ext.Filter.getActiveTab();
 		this.showFilterset(tab, idFilterSet);
+	},
+
+
+
+	/**
+	 * Save new separator
+	 *
+	 * @method	saveNewSeparator
+	 */
+	saveNewSeparator: function() {
+		var title 	= prompt('[LLL:search.ext.newSeparatorLabel]', '[LLL:search.ext.newSeparatorLabel.preset]');
+
+			// Canceled saving
+		if( title === null ) {
+			return;
+		}
+			// No name entered
+		if( title.strip() === '' ) {
+			alert('[LLL:search.ext.filterset.error.saveEmptyName]');
+			return;
+		}
+
+			// Save separator
+		var url		= Todoyu.getUrl('search', 'panelwidgetsearchfilterlist');
+		var options	= {
+			parameters: {
+				action:		'saveNewSeparator',
+				title:		title,
+				type:		this.ext.Filter.getActiveTab()
+			},
+			onComplete:		this.refresh.bind(this)
+		};
+
+		Todoyu.send(url, options);
 	},
 
 

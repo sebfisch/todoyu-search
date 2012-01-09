@@ -3,4 +3,5 @@
 	<label index="title">Filtersets</label>
 	<label index="saveFilterButton">Als neuen Filter speichern</label>
 	<label index="clearFilterArea">Filter-Bereich leeren</label>
+	<label index="addSeparator">Trenner hinzufügen</label>
 </labels>

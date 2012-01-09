@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.3.0 - Not released yet
+	* Feature: Added option to manage item separators for filters list
 	* Feature: Search area keeps prefs of currently set-up unsaved filter conditions
 
 search 1.2.0 - 2011-12-13

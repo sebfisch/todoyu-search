@@ -52,6 +52,27 @@ class TodoyuSearchPanelwidgetSearchfilterlistActionController extends TodoyuActi
 		return $panelWidget->renderContent();
 	}
 
+
+
+	/**
+	 * @param	Array	$params
+	 * @return	Integer				Separator's (filterset) ID
+	 */
+	public function saveNewSeparatorAction(array $params) {
+		$type	= $params['type'];
+
+		$data = array(
+			'filterset'		=> 0,
+			'type'			=> $type,
+			'title'			=> TodoyuSearchFiltersetManager::validateTitle($type, trim($params['title'])),
+			'is_separator'	=> '1'
+		);
+
+		$idFilterset = TodoyuSearchFiltersetManager::saveFiltersetSeparator($data);
+
+		return $idFilterset;
+	}
+
 }
 
 ?>

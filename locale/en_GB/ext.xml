@@ -38,4 +38,6 @@
 	<label index="sorting.remove">Remove sorting</label>
 	<label index="sorting.direction.asc">Sort ascending</label>
 	<label index="sorting.direction.desc">Sort descending</label>
+	<label index="newSeparatorLabel">Enter a name for the new separator</label>
+	<label index="newSeparatorLabel.preset">New Separator</label>
 </labels>
