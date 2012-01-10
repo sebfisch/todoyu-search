@@ -14,7 +14,7 @@
 							{htmlencode(truncate($filterset.title,25))}
 						</a>
 					{else}
-						<span id="filterset-{$filterset.id}-label" class="title">{htmlencode(truncate($filterset.title,25))}</span>
+						<span id="filterset-{$filterset.id}-label" title="{htmlencode $filterset.title}" class="title">{htmlencode(truncate($filterset.title,25))}</span>
 					{/if}
 					<span class="actions">
 						<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.global.rename}" href="javascript:void(0)">
