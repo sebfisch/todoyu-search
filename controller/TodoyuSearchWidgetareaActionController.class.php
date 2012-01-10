@@ -83,7 +83,7 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 				// Send widgets
 			$content	= TodoyuSearchFilterAreaRenderer::renderWidgetArea($idFilterset);
 				// Add JS init for loaded widgets
-			$content 	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
+			$content	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
 		} else {
 			$content	= 'No widgets';
 		}

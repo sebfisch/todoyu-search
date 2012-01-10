@@ -219,7 +219,7 @@ class TodoyuSearchFilterConditionManager {
 	/**
 	 * Remove restricted filter conditions
 	 *
-	 * @param 	Array		$filterConditions
+	 * @param	Array		$filterConditions
 	 * @return	Array
 	 */
 	protected static function removeConditionByRights(array $filterConditions = array()) {

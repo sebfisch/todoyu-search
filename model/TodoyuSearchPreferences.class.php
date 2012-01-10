@@ -205,8 +205,8 @@ class TodoyuSearchPreferences {
 	 * @return	Boolean
 	 */
 	public static function removeCurrentFilter() {
-		$extID 		= EXTID_SEARCH;
-		$preference = 'searchcurrentfilter';
+		$extID		= EXTID_SEARCH;
+		$preference	= 'searchcurrentfilter';
 
 		return TodoyuPreferenceManager::deletePreference($extID, $preference, null, 0, 0, Todoyu::personid());
 	}

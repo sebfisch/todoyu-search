@@ -326,7 +326,7 @@ class TodoyuSearchFiltersetManager {
 	 * @param	String		$type
 	 * @param	Integer		$idPerson
 	 * @param	Boolean		$showHidden
-	 * @return 	Array
+	 * @return	Array
 	 */
 	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false) {
 		$type		= empty($type) ? 'TASK' : strtolower(trim($type));
@@ -334,7 +334,7 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		`type` 				= ' . Todoyu::db()->quote($type, true)
+		$where	= '		`type`				= ' . Todoyu::db()->quote($type, true)
 				. ' AND	deleted				= 0'
 				. '	AND ' .	( $showHidden ? '' : 'is_hidden	= 0' )
 				. ' AND current				= 0'
@@ -364,8 +364,8 @@ class TodoyuSearchFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '		id_person_create	= ' . $idPerson
 				. ' AND	deleted				= 0'
-				. '	AND	`type` 				IN(' . $typeList . ')'
-				. ' AND current 			= 0';
+				. '	AND	`type`				IN(' . $typeList . ')'
+				. ' AND current				= 0';
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {

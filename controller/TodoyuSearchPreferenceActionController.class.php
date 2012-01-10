@@ -68,7 +68,7 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 				// Send widgets
 			$content	= TodoyuSearchFilterAreaRenderer::renderWidgetArea($idFilterset);
 				// Add JS init for loaded widgets
-			$content 	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
+			$content	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
 		} else {
 			$content	= 'No widgets';
 		}
@@ -98,9 +98,9 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 	 */
 	public function activeFiltersetAction(array $params) {
 		$idFilterset= intval($params['item']);
- 		$tab		= $params['value'];
+		$tab		= $params['value'];
 
- 		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
+		TodoyuSearchPreferences::saveActiveFilterset($tab, $idFilterset);
 	}
 
 

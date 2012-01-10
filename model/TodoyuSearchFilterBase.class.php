@@ -304,15 +304,15 @@ abstract class TodoyuSearchFilterBase {
 			'tables'		=> array(
 				$this->defaultTable
 			),
-			'removeTables' 	=> array(),
+			'removeTables'	=> array(),
 			'where'			=> array(),
 			'join'			=> array(),
 			'order'			=> array()
 		);
 
 			// Add extra tables and WHERE parts
-		$queryParts['tables'] 	= TodoyuArray::merge($queryParts['tables'], $this->extraTables);
-		$queryParts['where'] 	= TodoyuArray::merge($queryParts['where'], $this->extraWhere);
+		$queryParts['tables']	= TodoyuArray::merge($queryParts['tables'], $this->extraTables);
+		$queryParts['where']	= TodoyuArray::merge($queryParts['where'], $this->extraWhere);
 
 			// Fetch all query parts from the filters
 		foreach($this->activeFilters as $filter) {
@@ -532,9 +532,9 @@ abstract class TodoyuSearchFilterBase {
 			// Filter
 		if( sizeof($queryParts['where']) > 0 ) {
 			$basicFilterWhere			= implode(' ' . $connection . ' ', $queryParts['where']);
-			$whereParts[] 				= $basicFilterWhere;
+			$whereParts[]				= $basicFilterWhere;
 				// Make a backup of the basic filters which are combined by the conjunction of the filterset
-			$queryArray['whereBasic'] 	= $basicFilterWhere;
+			$queryArray['whereBasic']	= $basicFilterWhere;
 		}
 
 			// Join
@@ -641,7 +641,7 @@ abstract class TodoyuSearchFilterBase {
 	 * @param	Integer		$value
 	 * @param	Boolean		$negate
 	 * @return	Array
-	 * @todo 	Implement negation?
+	 * @todo	Implement negation?
 	 */
 	public function Filter_filterSet($value, $negate = false) {
 		$filtersetIDs	= TodoyuArray::intExplode(',', $value, true, true);

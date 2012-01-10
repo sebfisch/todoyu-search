@@ -35,8 +35,8 @@ class TodoyuSearchManager {
 	public static function getIDCurrentTabFilterset($type) {
 		$field	= 'id';
 		$table	= TodoyuSearchFiltersetManager::TABLE;
-		$where	= ' deleted 				= 0'
-				. ' AND current 			= 1'
+		$where	= ' deleted					= 0'
+				. ' AND current				= 1'
 				. ' AND id_person_create	= ' . Todoyu::personid()
 				. ' AND `type`				= ' . Todoyu::db()->quote($type, true);
 

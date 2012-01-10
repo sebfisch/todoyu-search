@@ -93,7 +93,7 @@ class TodoyuSearch {
 	 *
 	 * @param	String		$table			Table to search in
 	 * @param	Array		$fields			Fields to search in
-	 * @param	Array 		$find			Words to find
+	 * @param	Array		$find			Words to find
 	 * @param	Array		$ignore			Words to ignore
 	 * @param	Integer		$limit
 	 * @param	String		$addToWhere

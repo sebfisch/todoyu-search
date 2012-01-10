@@ -56,7 +56,7 @@ class TodoyuSearchExtActionController extends TodoyuActionController {
 
 		$panelWidgets	= TodoyuSearchRenderer::renderPanelWidgets();
 		$tabs			= TodoyuSearchFilterAreaRenderer::renderTypeTabs($activeTab);
-		$filterArea 	= TodoyuSearchFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset);
+		$filterArea		= TodoyuSearchFilterAreaRenderer::renderFilterArea($activeTab, $idFilterset);
 
 		TodoyuPage::setPanelWidgets($panelWidgets);
 		TodoyuPage::setTabs($tabs);

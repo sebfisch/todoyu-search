@@ -75,7 +75,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 			'id'				=> $this->getID(),
 			'groupedFiltersets'	=> $groupedFiltersets,
 			'activeFiltersets'	=> $activeFiltersets,
-			'toggleStatus' 		=> $toggleStatus
+			'toggleStatus'		=> $toggleStatus
 		);
 
 		return Todoyu::render($tmpl, $data);

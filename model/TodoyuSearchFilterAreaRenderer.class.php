@@ -93,7 +93,7 @@ class TodoyuSearchFilterAreaRenderer {
 	 * @return	String
 	 */
 	public static function renderTypeTabs($activeTab = null) {
-		$tabs 		= array();
+		$tabs	= array();
 
 			// If no tab forced, get preferenced tab
 		if( is_null($activeTab) ) {
@@ -150,7 +150,7 @@ class TodoyuSearchFilterAreaRenderer {
 		$conjunctionOptions		= TodoyuSearchFilterManager::getConjunctionOptions();
 
 		$tmpl	= 'ext/search/view/filter-action-controls.tmpl';
-		$data 	= array(
+		$data	= array(
 			'type'						=> $tab,
 			'groupedConditionOptions'	=> $groupedConditionOptions,
 			'conjunctionOptions'		=> $conjunctionOptions,

@@ -24,17 +24,17 @@
 
 Todoyu::$CONFIG['EXT']['search']['info'] = array(
 	'title'			=> 'todoyu Search',
-	'description' 	=> 'todoyu Search',
-	'author' 		=> array(
+	'description'	=> 'todoyu Search',
+	'author'		=> array(
 		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
-	'state' 		=> 'stable',
-	'version' 		=> '1.2.0',
+	'state'			=> 'stable',
+	'version'		=> '1.2.0',
 	'constraints' => array(
 		'core'		=> '2.1.4',
-		'depends' 	=> array(),
+		'depends'	=> array(),
 		'conflicts' => array(),
 		'system'	=> true
 	),
