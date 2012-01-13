@@ -336,9 +336,13 @@ class TodoyuSearchFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '		`type`				= ' . Todoyu::db()->quote($type, true)
 				. ' AND	deleted				= 0'
-				. '	AND ' .	( $showHidden ? '' : 'is_hidden	= 0' )
 				. ' AND current				= 0'
 				. ' AND ( id_person_create	= ' . $idPerson . '	)';
+
+		if( $showHidden === false ) {
+			$where .= 'AND is_hidden = 0';
+		}
+
 		$order	= 'sorting';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
