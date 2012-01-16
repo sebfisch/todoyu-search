@@ -90,11 +90,11 @@ Todoyu.Ext.search.Preference = {
 	/**
 	 * Save preference: collapsed-state of given element
 	 *
-	 * @method	saveToggeling
+	 * @method	saveToggling
 	 * @param	{String}	elementID
 	 * @param	{Boolean}	elementDisplay
 	 */
-	saveToggeling: function(elementID, elementDisplay) {
+	saveToggling: function(elementID, elementDisplay) {
 		var action = 'saveToggleStatus';
 
 		var value = Object.toJSON({
