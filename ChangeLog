@@ -4,6 +4,7 @@ search 1.3.0 - Not released yet
 	* Feature: Added option to manage item separators for filters list
 	* Feature: Search area keeps prefs of currently set-up unsaved filter conditions
 	* Changed: Filter area buttons (clear, save filter, export) are now placed above filter widgets
+	* Feature: Automatic scrolling to top when selecting a new filter in the portal
 
 search 1.2.0 - 2011-12-13
 	* Feature: Filter result sorting
