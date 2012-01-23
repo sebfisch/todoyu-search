@@ -22,6 +22,6 @@
 define('EXTID_SEARCH', 115);
 define('PATH_EXT_SEARCH', PATH_EXT . '/search');
 
-TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuSearchBrowserSearch::hookNotLoggedIn', 980);
+//TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuSearchBrowserSearch::hookNotLoggedIn', 980);
 
 ?>
