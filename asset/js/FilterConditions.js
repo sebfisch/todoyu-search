@@ -41,11 +41,11 @@ Todoyu.Ext.search.Filter.Conditions = {
 		var conditionName = condition + '-' + name;
 
 		this.conditions[conditionName] = {
-			'name':			conditionName,
-			'type':			type,
-			'condition':	condition,
-			'value':		value,
-			'negate':		( negate === true || negate == 1 )
+			name:		conditionName,
+			type:		type,
+			condition:	condition,
+			value:		value,
+			negate:		negate ? 1 : 0
 		};
 	},
 

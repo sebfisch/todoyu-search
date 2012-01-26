@@ -68,11 +68,11 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 		var options	= {
 			parameters: {
 				action:		'add',
-				'name':			name,
-				'type':			type,
-				'condition':	condition,
-				'value':		value,
-				'negate':		negate ? 1 : 0
+				name:		name,
+				type:		type,
+				condition:	condition,
+				value:		value,
+				negate:		negate ? 1 : 0
 			},
 			onComplete:	this.onAdded.bind(this, name, condition)
 		};

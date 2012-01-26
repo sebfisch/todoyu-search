@@ -132,7 +132,7 @@ Todoyu.Ext.search.Preference = {
 		var options = {
 			parameters: {
 				action:	action,
-				'value':	value
+				value:	value
 			}
 		};
 

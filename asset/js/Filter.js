@@ -295,8 +295,8 @@ Todoyu.Ext.search.Filter = {
 		var url		= Todoyu.getUrl('search', 'ext');
 		var options	= {
 			parameters: {
-				action:			'tab',
-				'tab':			tab
+				action:	'tab',
+				tab:	tab
 			},
 			onComplete: 	this.onResultsUpdated.bind(this, tab)
 		};

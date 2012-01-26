@@ -66,18 +66,18 @@ Todoyu.Ext.search.Filter.Sorting = {
 	buildElement: function(name, label, desc) {
 		var sortEl	= new Element('div', {
 			'class': 'sort',
-			'id': 'sort-flag-' + name + '-' + this.counter++
+			id: 'sort-flag-' + name + '-' + this.counter++
 		});
 		var labelEl	= new Element('span', {
 			'class': 'label'
 		}).update(label);
 		var dirEl	= new Element('span', {
 			'class': 'action dir',
-			'title': '[LLL:search.ext.sorting.direction.asc]'
+			title:	'[LLL:search.ext.sorting.direction.asc]'
 		});
 		var removeEl= new Element('span', {
 			'class': 'action remove',
-			'title': '[LLL:search.ext.sorting.remove]'
+			title: '[LLL:search.ext.sorting.remove]'
 		});
 
 		if( desc ) {

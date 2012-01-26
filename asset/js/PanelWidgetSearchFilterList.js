@@ -332,8 +332,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	saveFiltersetOrder: function(type, items) {
 		var action		= 'filtersetOrder';
 		var value	= Object.toJSON({
-			'type':		type,
-			'items':	items
+			type:	type,
+			items:	items
 		});
 		var idItem	= 0;
 

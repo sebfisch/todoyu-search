@@ -353,8 +353,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			var left	= contentDim.width - modeWidth + 1;
 
 			this.modes.setStyle({
-				'position':	'absolute',
-				'left':		left + 'px'
+				position:	'absolute',
+				left:		left + 'px'
 			});
 
 			this.positioned = true;
@@ -532,8 +532,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			var options	= {
 				parameters: {
 					action:	'suggest',
-					'query':	this.headlet.getValue(),
-					'mode':		this.headlet.Mode.getMode()
+					query:	this.headlet.getValue(),
+					mode:	this.headlet.Mode.getMode()
 				},
 				onComplete:	this.onResultsUpdated.bind(this)
 			};
@@ -569,8 +569,8 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			var suggestDim		= this.suggest.getDimensions();
 
 			this.suggest.setStyle({
-				'left':	contentOffset.left - suggestDim.width + contentDim.width - 1 + 'px',
-				'top':	contentOffset.top + contentDim.height + 'px'
+				left:	contentOffset.left - suggestDim.width + contentDim.width - 1 + 'px',
+				top:	contentOffset.top + contentDim.height + 'px'
 			});
 
 			Todoyu.Ui.scrollToTop();
