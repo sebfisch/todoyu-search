@@ -484,7 +484,7 @@ abstract class TodoyuSearchFilterBase {
 		$queryParts	= $this->fetchFilterQueryParts();
 
 			// If no conditions in WHERE clause and $noResultOnEmptyConditions flag set, return flag (no SQL query performed)
-		if( $noResultOnEmptyConditions === true && sizeof($queryParts['where']) === 0 ) {
+		if( $noResultOnEmptyConditions && sizeof($queryParts['where']) === 0 ) {
 			return false;
 		}
 
@@ -517,7 +517,7 @@ abstract class TodoyuSearchFilterBase {
 		$whereParts	= array();
 
 			// Deleted
-		if( $showDeleted === false ) {
+		if( !$showDeleted ) {
 			$whereParts[] = $this->defaultTable . '.deleted = 0';
 		}
 

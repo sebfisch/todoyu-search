@@ -339,7 +339,7 @@ class TodoyuSearchFiltersetManager {
 				. ' AND current				= 0'
 				. ' AND ( id_person_create	= ' . $idPerson . '	)';
 
-		if( $showHidden === false ) {
+		if( !$showHidden ) {
 			$where .= 'AND is_hidden = 0';
 		}
 
@@ -541,7 +541,7 @@ class TodoyuSearchFiltersetManager {
 		$cacheID	= md5(serialize(func_get_args()));
 
 			// Prevent processing the same filterset in nested conditions
-		if( self::$filterObjectProcessing[$cacheID] === true ) {
+		if( self::$filterObjectProcessing[$cacheID] ) {
 			TodoyuLogger::logFatal('Filterset was nested recursively. Skipped processing. Will cause empty result');
 			return false;
 		} else {
@@ -727,7 +727,7 @@ class TodoyuSearchFiltersetManager {
 							// Save check to cache
 						self::$filtersetChecked[$idFiltersetToCheck][$subFiltersetID] = $isUsed;
 
-						if( $isUsed === true ) {
+						if( $isUsed ) {
 							return true;
 						}
 					}

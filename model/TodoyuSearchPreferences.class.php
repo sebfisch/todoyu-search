@@ -161,11 +161,7 @@ class TodoyuSearchPreferences {
 	public static function getFiltersetListToggle() {
 		$pref	= self::getPref('filtersetListToggle', 0, 0, true);
 
-		if( $pref === false ) {
-			$pref = array();
-		}
-
-		return $pref;
+		return TodoyuArray::assure($pref);
 	}
 
 

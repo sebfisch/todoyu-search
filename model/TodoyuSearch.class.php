@@ -36,11 +36,11 @@ class TodoyuSearch {
 	 * @return	Array
 	 */
 	public static function getSuggestions($query, $mode = 'all', $limit = false) {
-		$query	= trim($query);
-		$find	= $ignore	= $results= array();
-		$configLimit	= $mode == 'all' ? Todoyu::$CONFIG['EXT']['search']['suggestLimitAll'] : Todoyu::$CONFIG['EXT']['search']['suggestLimit'];
+		$query		= trim($query);
+		$find		= $ignore	= $results= array();
+		$configLimit= $mode == 'all' ? Todoyu::$CONFIG['EXT']['search']['suggestLimitAll'] : Todoyu::$CONFIG['EXT']['search']['suggestLimit'];
 
-		$limit	= $limit === false ? $configLimit : intval($limit) ;
+		$limit	= $limit ? intval($limit) : $configLimit;
 
 			// Empty search? abort
 		if( $query === '' ) {

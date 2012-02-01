@@ -41,7 +41,7 @@ class TodoyuSearchFilterWidgetManager	{
 
 		$config		= TodoyuSearchFilterManager::getFilterConfig($type, $widgetName);
 
-		if( $config === false ) {
+		if( !$config ) {
 			return array();
 		}
 
