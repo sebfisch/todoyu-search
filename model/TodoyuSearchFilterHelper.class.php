@@ -65,12 +65,12 @@ class TodoyuSearchFilterHelper {
 
 		if( $negate ) {
 			$info	= array(
-				'timestamp'	=> TodoyuTime::getStartOfDay($timestamp),
+				'timestamp'	=> TodoyuTime::getDayStart($timestamp),
 				'logic'		=> '>='
 			);
 		} else {
 			$info	= array(
-				'timestamp'	=> TodoyuTime::getEndOfDay($timestamp),
+				'timestamp'	=> TodoyuTime::getDayEnd($timestamp),
 				'logic'		=> '<='
 			);
 		}
