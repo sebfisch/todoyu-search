@@ -59,6 +59,7 @@ class TodoyuSearchActionPanelManager {
 
 			// Build filter
 		$typeClass	= TodoyuSearchFiltersetManager::getFiltersetTypeClass($type);
+		/** @var $typeFilter TodoyuSearchFilterBase */
 		$typeFilter	= new $typeClass($conditions, $conjunction);
 
 		if( $typeFilter->hasActiveFilters() ) {
@@ -100,8 +101,8 @@ class TodoyuSearchActionPanelManager {
 			'htmlClass'	=> $htmlClass ? $htmlClass : $name,
 			'label'		=> $label,
 			'right'		=> array(
-				'ext'	=> $rightExt,
-				'right'=> $rightRight
+				'ext'	=> isset($rightExt) ? $rightExt : '',
+				'right'	=> isset($rightRight) ? $rightRight : ''
 			)
 		);
 	}
