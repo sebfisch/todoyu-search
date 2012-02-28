@@ -443,7 +443,7 @@ abstract class TodoyuSearchFilterBase {
 			if( is_array($filterQueryParts['tables']) ) {
 				$tables = TodoyuArray::merge($tables, $filterQueryParts['tables']);
 			}
-			if( $filterQueryParts !== false && array_key_exists('where', $filterQueryParts) ) {
+			if( $filterQueryParts !== false && isset($filterQueryParts['where']) ) {
 				$whereParts[] = $filterQueryParts['where'];
 			}
 			if( is_array($filterQueryParts['join']) ) {
