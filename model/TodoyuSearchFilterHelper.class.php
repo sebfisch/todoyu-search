@@ -31,16 +31,15 @@ class TodoyuSearchFilterHelper {
 	 *
 	 * @param	String		$tables
 	 * @param	String		$field
-	 * @param	Integer		$date
+	 * @param	Integer		$time
 	 * @param	Boolean		$negate
 	 * @return	Array|Boolean			Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
-	public static function getDateFilterQueryparts($tables, $field, $date, $negate = false) {
+	public static function getDateFilterQueryparts($tables, $field, $time, $negate = false) {
 		$queryParts	= false;
-		$timestamp	= TodoyuTime::parseDate($date);
 
-		if( $timestamp !== 0 ) {
-			$info	= self::getTimeAndLogicForDate($timestamp, $negate);
+		if( $time !== 0 ) {
+			$info	= self::getTimeAndLogicForDate($time, $negate);
 
 			$queryParts = array(
 				'tables'=> $tables,
