@@ -20,6 +20,7 @@
 
 require_once( PATH_EXT_SEARCH . '/config/filterwidgetconf.php' );
 
+	//  Register "all" search engine for general types to search headlet
 if( Todoyu::allowed('search', 'general:use') ) {
 	TodoyuSearchManager::addEngine('all', null, '', 'search.ext.search.label', 0);
 }
