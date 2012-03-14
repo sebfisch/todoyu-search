@@ -43,18 +43,17 @@ Todoyu.Ext.search.ActionPanel = {
 	 */
 	exportResults: function(name) {
 		if( Todoyu.Ext.search.Filter.Conditions.size() > 0 ) {
-		var conditions	= this.filter.Conditions.getAll(true);
-		var conjunction	= this.filter.getConjunction();
+			var conditions	= this.filter.Conditions.getAll(true);
+			var conjunction	= this.filter.getConjunction();
 
-		var options = {
+			var options = {
 				action:			'export',
 				tab:			this.filter.getActiveTab(),
 				exportname:		name,
 				conditions:		conditions,
 				conjunction:	conjunction
-		};
-
-		this.sendExportPostRequest('actionpanel', options);
+			};
+			this.sendExportPostRequest('actionpanel', options);
 		} else {
 			alert('[LLL:search.ext.export.error.saveEmpty]');
 		}
@@ -69,7 +68,7 @@ Todoyu.Ext.search.ActionPanel = {
 	 */
 	sendExportPostRequest: function(controller, options) {
 		var url =  Todoyu.getUrl('search', controller);
-		var form = new Element('form', {method: 'post', action: url});
+		var form= new Element('form', {method: 'post', action: url});
 
 		$H(options).each(function(form, pair){
 			form.appendChild(new Element('input', {type: 'hidden', name: pair.key, value: pair.value}));

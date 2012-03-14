@@ -86,6 +86,7 @@ class TodoyuSearchRenderer extends TodoyuRenderer {
 	 */
 	public static function renderResultsListing($type, array $itemIDs) {
 		$listRenderFunc	= TodoyuSearchFilterManager::getFilterTypeResultsRenderer($type);
+//		TodoyuDebug::printInFirebug($listRenderFunc, 'listRenderFunc');
 
 		return TodoyuFunction::callUserFunction($listRenderFunc, $itemIDs);
 	}

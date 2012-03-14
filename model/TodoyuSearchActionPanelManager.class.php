@@ -70,9 +70,10 @@ class TodoyuSearchActionPanelManager {
 		}
 
 		if( TodoyuFunction::isFunctionReference($export['method']) ) {
+//			die($export['method']);
 			return TodoyuFunction::callUserFunction($export['method'], $itemIDs);
 		} else {
-			TodoyuLogger::logError("Tried to call undefined method: " . $export['method'] . ' in ' . __CLASS__ . ' on line ' . __LINE__);
+			TodoyuLogger::logError('Tried to call undefined method: ' . $export['method'] . ' in ' . __CLASS__ . ' on line ' . __LINE__);
 		}
 	}
 
