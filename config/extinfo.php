@@ -34,8 +34,6 @@ Todoyu::$CONFIG['EXT']['search']['info'] = array(
 	'version'		=> '1.4.0a',
 	'constraints' => array(
 		'core'		=> '2.2.0dev',
-		'depends'	=> array(),
-		'conflicts' => array(),
 		'system'	=> true
 	),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?search'
