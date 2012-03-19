@@ -24,7 +24,7 @@ if( Todoyu::allowed('search', 'general:use') ) {
 
 		// Menu entries
 	if( Todoyu::allowed('search', 'general:area') ) {
-		TodoyuFrontend::addMenuEntry('search', 'search.ext.page.title', '?ext=search', 50);
+		TodoyuFrontend::addMenuEntry('search', 'search.ext.page.title', 'index.php?ext=search', 50);
 
 			// Add filter types as sub menu
 		$filterTypes= TodoyuSearchManager::getFilters();
@@ -34,7 +34,7 @@ if( Todoyu::allowed('search', 'general:use') ) {
 			$parentKey	= 'search';
 			$key		= 'search' . ucfirst($typeConfig['key']);
 			$label		= $typeConfig['config']['label'];
-			$href		= '?ext=search&tab=' . $typeConfig['key'];
+			$href		= 'index.php?ext=search&tab=' . $typeConfig['key'];
 			$position	= $typeConfig['config']['position'] + 100;
 
 			TodoyuFrontend::addSubmenuEntry($parentKey, $key, $label, $href, $position);
