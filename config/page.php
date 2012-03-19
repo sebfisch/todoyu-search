@@ -20,7 +20,7 @@
 
 	// Add add JS inits, menu entry
 if( Todoyu::allowed('search', 'general:use') ) {
-//	TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)', 100);
+//	TodoyuPage::addJsInit('Todoyu.Ext.search.init.bind(Todoyu.Ext.search)', 100);
 
 		// Menu entries
 	if( Todoyu::allowed('search', 'general:area') ) {
