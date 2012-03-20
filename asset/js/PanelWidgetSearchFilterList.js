@@ -46,7 +46,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 
 
 	/**
-	 * Initialize filter list sortable
+	 * Initialize filter list drag and drop sortable
 	 *
 	 * @method	init
 	 */
@@ -338,6 +338,8 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		var idItem	= 0;
 
 		this.ext.Preference.save(action, value, idItem);
+
+		Todoyu.notifySuccess('[LLL:search.panelwidget-searchfilterlist.notify.orderchanged]')
 	},
 
 
