@@ -53,8 +53,11 @@
 	padding:0;
 }
 
+select#filtercontrol-conditions {
+	width:320px;
+}
 select#filtercontrol-conjunction {
-	margin-right:4px;
+	margin-left:8px;
 }
 
 #widget-area .filterWidget span.negationButton {
