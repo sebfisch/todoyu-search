@@ -2,8 +2,8 @@
 	background:transparent url('../img/icons.png') no-repeat 6px -325px;
 }
 
-#panelwidget-searchfilterlist .panelwidgetContent {
-	margin-top:5px;
+#panelwidget-searchfilterlist div.panelwidgetContent {
+	margin-top:0;
 }
 
 #panelwidget-searchfilterlist .listItem.separator {
