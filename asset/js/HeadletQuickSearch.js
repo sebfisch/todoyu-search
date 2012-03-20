@@ -93,7 +93,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			this.focus();
 		}
 
-		this.saveOpenStatus();
+//		this.saveOpenStatus();
 	},
 
 
@@ -133,7 +133,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		$super();
 
 		this.hideExtras();
-		this.saveOpenStatus();
+//		this.saveOpenStatus();
 	},
 
 
