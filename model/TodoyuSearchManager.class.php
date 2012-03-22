@@ -38,7 +38,7 @@ class TodoyuSearchManager {
 		$where	= ' deleted					= 0'
 				. ' AND current				= 1'
 				. ' AND id_person_create	= ' . Todoyu::personid()
-				. ' AND `type`				= ' . Todoyu::db()->quote($type, true);
+				. ' AND `type`				= ' . TodoyuSql::quote($type, true);
 
 		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
 	}

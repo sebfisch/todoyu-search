@@ -564,7 +564,7 @@ abstract class TodoyuSearchFilterBase {
 	public function getQuery($orderBy = '', $limit = '', $showDeleted = false) {
 		$queryArray = $this->getQueryArray($orderBy, $limit, $showDeleted);
 
-		$query	= Todoyu::db()->buildSELECTquery(
+		$query	= TodoyuSql::buildSELECTquery(
 			$queryArray['fields'],
 			$queryArray['tables'],
 			$queryArray['where'],

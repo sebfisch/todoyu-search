@@ -112,7 +112,7 @@ class TodoyuSearchFiltersetManager {
 		$table	= self::TABLE;
 		$where	= '		id_person_create= ' . Todoyu::personid()
 				. ' AND	deleted			= 0'
-				. ' AND `type`			= ' . Todoyu::db()->quote($type, true);
+				. ' AND `type`			= ' . TodoyuSql::quote($type, true);
 		$order	= 'sorting DESC';
 		$limit	= 1;
 
@@ -334,7 +334,7 @@ class TodoyuSearchFiltersetManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '		`type`				= ' . Todoyu::db()->quote($type, true)
+		$where	= '		`type`				= ' . TodoyuSql::quote($type, true)
 				. ' AND	deleted				= 0'
 				. ' AND current				= 0'
 				. ' AND ( id_person_create	= ' . $idPerson . '	)';
@@ -373,7 +373,7 @@ class TodoyuSearchFiltersetManager {
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . TodoyuSql::quote($type, true);
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -398,7 +398,7 @@ class TodoyuSearchFiltersetManager {
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . TodoyuSql::quote($type, true);
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -425,7 +425,7 @@ class TodoyuSearchFiltersetManager {
 		$order	= 'title';
 
 		if( ! is_null($type) ) {
-			$where .= ' AND `type` = ' . Todoyu::db()->quote($type, true);
+			$where .= ' AND `type` = ' . TodoyuSql::quote($type, true);
 		}
 
 		return Todoyu::db()->getColumn($fields, $table, $where, '', $order);
