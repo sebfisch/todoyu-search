@@ -14,7 +14,7 @@
 }
 	#panelwidget-searchfilterlist .listItem.separator span.title {
 		padding-left:20px;
-		text-transform:uppercase;
+		/*text-transform:uppercase;*/
 	}
 
 	#panelwidget-searchfilterlist .listItem .actions .save {
