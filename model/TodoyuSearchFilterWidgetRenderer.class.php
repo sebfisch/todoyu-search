@@ -61,17 +61,15 @@ class TodoyuSearchFilterWidgetRenderer {
 	/**
 	 * Get JavaScript setup code for calendar of date filter widget
 	 *
+	 * @param	String		$widgetID
 	 * @return	String
 	 */
 	public static function getDateWidgetCalendarSetupJS($widgetID) {
-		$idInput= 'filterwidget-date-' . $widgetID;
+		$htmlID	= 'filterwidget-date-' . $widgetID;
 		$format	= TodoyuTime::getFormat('date');
-		$config	= TodoyuFormElement_Date::getSetupOptions($idInput, $format);
+		$config	= TodoyuFormElement_Date::getBaseCalendarConfig($htmlID, $format);
 
-		$jsSetup	= TodoyuFormElement_Date::getCalendarSetupJS($config);
-		$jsSetup   .= TodoyuFormElement_Date::getCalendarFormatSetupJS($idInput);
-
-		return $jsSetup;
+		return 'Todoyu.Ui.initCalendar(' . json_encode($config) . ');';
 	}
 
 }
