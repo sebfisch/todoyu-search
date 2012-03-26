@@ -9,6 +9,13 @@ h1.extIconSearch .title {
 	background:url('../img/exticon.png') no-repeat 0 5px;
 }
 
+.areaBox {
+	background-color:#EFEFEF;
+	border-radius: 5px;
+	padding:3px;
+	margin: 3px 0;
+}
+
 
 
 /* --------------------------
@@ -43,10 +50,7 @@ h1.extIconSearch .title {
 	Sorting Flags
 	------------------------------- */
 #sorting-flags {
-	background-color:#EFEFEF;
-	border-radius: 5px;
-	padding:3px;
-	margin: 3px 5px;
+
 }
 #sorting-flags .sort {
     background: url(../../../../core/asset/img/bg-button-css3.png) repeat-x 0 50% #FFFFFF;
@@ -90,9 +94,14 @@ h1.extIconSearch .title {
 	Search Action Panel
 	------------------------------- */
 #action-panel {
-	padding:10px 5px;
+	margin-top:0;
+	padding-top:5px;
+	padding-bottom: 5px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	/*padding:10px 5px;*/
 	/*margin:10px 0;*/
-	background-color:#eee;
+	/*background-color:#eee;*/
 }
 
 /* --------------------------------
