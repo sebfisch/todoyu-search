@@ -88,14 +88,13 @@ Todoyu.Ext.search.Filter = {
 	initConditions: function(tab, conditions) {
 		this.Conditions.clear();
 
-		conditions.each(function(tab, condition) {
+		conditions.each(function(condition) {
 			var name	= condition.filter + '-' + condition.id;
 
-			this.Conditions.add(condition.id, tab, condition.filter, condition.value, condition.is_negated);
-
+			this.Conditions.add(condition.id, tab, condition.filter, condition.value, condition.is_negated == 1);
 			this.WidgetArea.installAutocomplete(name);
 			this.WidgetArea.installNegation(name);
-		}.bind(this, tab));
+		}, this);
 
 		this.nameCounter = this.Conditions.size();
 	},

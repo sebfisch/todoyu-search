@@ -138,6 +138,7 @@ class TodoyuSearchFilterConditionManager {
 	 * @param	Integer		$idFilterset
 	 * @param	Array		$filterConditions
 	 * @return	Array		Condition IDs
+	 * @todo	Do not delete every filtercondition, update them
 	 */
 	public static function saveFilterConditions($idFilterset, array $filterConditions) {
 		$idFilterset	= intval($idFilterset);

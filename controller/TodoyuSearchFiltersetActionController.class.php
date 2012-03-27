@@ -50,7 +50,7 @@ class TodoyuSearchFiltersetActionController extends TodoyuActionController {
 			'type'			=> $type,
 			'conjunction'	=> $params['conjunction'],
 			'resultsorting'	=> trim($params['sorting']),
-			'conditions'	=> empty($params['conditions']) ? array() : json_decode($params['conditions'], true)
+			'conditions'	=> TodoyuArray::assureFromJSON($params['conditions'])
 		);
 
 			// Save filterset and have conditions updated (store newly or update existing)

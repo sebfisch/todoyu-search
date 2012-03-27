@@ -45,7 +45,7 @@ Todoyu.Ext.search.Filter.Conditions = {
 			type:		type,
 			condition:	condition,
 			value:		value,
-			negate:		negate ? 1 : 0
+			negate:		!!negate
 		};
 	},
 
