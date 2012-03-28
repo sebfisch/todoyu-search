@@ -77,6 +77,141 @@ class TodoyuSearchFilterHelper {
 		return $info;
 	}
 
+
+
+	/**
+	 * Get config for dynamic date options
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getDynamicDateOptions() {
+		return array(
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.today'),
+				'value'	=> 'today'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.tomorrow'),
+				'value'	=> 'tomorrow'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.dayaftertomorrow'),
+				'value'	=> 'dayaftertomorrow'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.yesterday'),
+				'value'	=> 'yesterday'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.daybeforeyesterday'),
+				'value'	=> 'daybeforeyesterday'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.currentweek'),
+				'value'	=> 'currentweek'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.nextweek'),
+				'value'	=> 'nextweek'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.lastweek'),
+				'value'	=> 'lastweek'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.currentmonth'),
+				'value'	=> 'currentmonth'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.nextyear'),
+				'value'	=> 'nextyear'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.currentyear'),
+				'value'	=> 'currentyear'
+			),
+			array(
+				'label' => Todoyu::Label('core.date.dyndate.lastyear'),
+				'value'	=> 'lastyear'
+			)
+
+		);
+	}
+
+
+
+	/**
+	 * Calculate timestamp from dynamic date key ("today", "tomorrow", ...). Optionally suiting negated comparisom.
+	 *
+	 * @param	String		$dateRangeKey
+	 * @param	Boolean		$negate
+	 * @return	Integer
+	 */
+	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {
+		$todayStart	= TodoyuTime::getDayStart();
+		$todayEnd	= TodoyuTime::getDayEnd();
+		$date		= $negate ? $todayStart : $todayEnd;
+
+		switch( $dateRangeKey ) {
+			case 'tomorrow':
+				$date += TodoyuTime::SECONDS_DAY;
+				break;
+
+			case 'dayaftertomorrow':
+				$date += TodoyuTime::SECONDS_DAY * 2;
+				break;
+
+			case 'yesterday':
+				$date -= TodoyuTime::SECONDS_DAY;
+				break;
+
+			case 'daybeforeyesterday':
+				$date -= TodoyuTime::SECONDS_DAY * 2;
+				break;
+
+			case 'currentweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW);
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
+				break;
+
+			case 'nextweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW + TodoyuTime::SECONDS_WEEK);
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
+				break;
+
+			case 'lastweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW - TodoyuTime::SECONDS_WEEK);
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
+				break;
+
+			case 'currentmonth':
+				$monthRange	= TodoyuTime::getMonthRange(NOW);
+				$date		= $negate ? $monthRange['start'] : $monthRange['end'] ;
+				break;
+
+			case 'currentyear':
+				$date		= $negate ? TodoyuTime::getYearStart(NOW) : TodoyuTime::getYearEnd(NOW) ;
+				break;
+
+			case 'nextyear':
+				$nextYear	= NOW + TodoyuTime::SECONDS_WEEK * 52;
+				$date		= $negate ? TodoyuTime::getYearStart($nextYear) : TodoyuTime::getYearEnd($nextYear) ;
+				break;
+
+			case 'lastyear':
+				$oneYearAgo	= NOW - TodoyuTime::SECONDS_WEEK * 52;
+				$date		= $negate ? TodoyuTime::getYearStart($oneYearAgo) : TodoyuTime::getYearEnd($oneYearAgo) ;
+				break;
+
+			case 'todoay':
+			default:
+				break;
+		}
+
+		return $date;
+	}
+
 }
 
 ?>
