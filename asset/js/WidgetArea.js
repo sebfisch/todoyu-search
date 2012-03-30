@@ -62,8 +62,9 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param	{String}	condition
 	 * @param	{String}	value
 	 * @param	{Boolean}	negate
+	 * @param	{Function}	onComplete
 	 */
-	add: function(name, type, condition, value, negate) {
+	add: function(name, type, condition, value, negate, onComplete) {
 		var url		= Todoyu.getUrl('search', 'widgetarea');
 		var options	= {
 			parameters: {
@@ -74,7 +75,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 				value:		value,
 				negate:		negate ? 1 : 0
 			},
-			onComplete:	this.onAdded.bind(this, name, condition)
+			onComplete:	this.onAdded.bind(this, name, condition, value, onComplete)
 		};
 		var target	= this.areaID;
 
@@ -89,15 +90,50 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @method	onAdded
 	 * @param	{String}			name
 	 * @param	{String}			condition
+	 * @param	{String|Null}		value
 	 * @param	{Ajax.Response}		response
 	 */
-	onAdded: function(name, condition, response) {
+	onAdded: function(name, condition, value, onComplete, response) {
 		var widgetID	= condition + '-' + name;
 
 		this.installAutocomplete.bind(this).defer(widgetID);
 		this.installNegation.bind(this).defer(widgetID);
 
 		this.focusWidget(widgetID);
+
+		if( value === null ) {
+			value = this.updateConditionValueFromWidget(widgetID);
+		}
+
+		if( onComplete ) {
+			onComplete(name, condition, value, response);
+		}
+	},
+
+
+
+	/**
+	 * Try to fetch the value from widget from element
+	 *
+	 * @param	{String}	widgetID
+	 * @return	{String|Array|Null}
+	 */
+	updateConditionValueFromWidget: function(widgetID) {
+		var widget = $(widgetID), valueField, value;
+
+		if( widget) {
+			valueField = widget.down(':input.value');
+
+			if( valueField ) {
+				value = $F(valueField);
+
+				this.ext.Filter.setConditionValue(widgetID, value);
+
+				return value;
+			}
+		}
+
+		return null;
 	},
 
 

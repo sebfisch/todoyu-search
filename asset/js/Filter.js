@@ -195,26 +195,7 @@ Todoyu.Ext.search.Filter = {
 		$('search-results').update('');
 	},
 
-
-
-//	/**
-//	 * @method	updateControll
-//	 * @param	{String}	tab
-//	 */
-//	updateControll: function(tab) {
-//		var url		= Todoyu.getUrl('search', 'filteractioncontroll');
-//		var options = {
-//			parameters: {
-//				action:	'load',
-//				'tab':		tab
-//			}
-//		};
-//		var target	= 'filterActionControls';
-//
-//		Todoyu.Ui.replace(target, url, options);
-//	},
-
-
+	
 
 	/**
 	 * Add new condition: update condition and add resp. filter-widget
@@ -229,8 +210,20 @@ Todoyu.Ext.search.Filter = {
 		var name = this.makeNewWidgetName(condition);
 
 		this.Conditions.add(name, type, condition, value, negate);
-		this.WidgetArea.add(name, type, condition, value, negate);
+		this.WidgetArea.add(name, type, condition, value, negate, this.onWidgetLoaded.bind(this));
+	},
 
+
+
+	/**
+	 * Handle widget element loaded
+	 *
+	 * @param	{String}		name
+	 * @param	{String}		condition
+	 * @param	{String|Array}	value
+	 * @param	{Ajax.Response}	response
+	 */
+	onWidgetLoaded: function(name, condition, value, response) {
 		this.updateResults();
 	},
 
