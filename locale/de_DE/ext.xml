@@ -13,6 +13,7 @@
 	<label index="filterset.error.saveWrongType">Bitte korrekten Filtertyp wählen</label>
 	<label index="filterset.error.saveNoConditions">Es gibt keine Bedingungen zur Speicherung</label>
 	<label index="filterset.error.saveEmptyName">Bitte geben Sie einen Namen für das Filterset ein</label>
+	<label index="filterset.notify.saved">The filter set has been saved.</label>
 	<label index="negation.default.true">ist nicht</label>
 	<label index="negation.default.false">ist</label>
 	<label index="negation.datetime.true">ab</label>

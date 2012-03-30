@@ -13,6 +13,7 @@
 	<label index="filterset.error.saveWrongType">You tried to save the filter set under a wrong type</label>
 	<label index="filterset.error.saveNoConditions">No conditions to save</label>
 	<label index="filterset.error.saveEmptyName">Please enter a name for the filter set</label>
+	<label index="filterset.notify.saved">The filter set has been saved.</label>
 	<label index="negation.default.true">Is Not</label>
 	<label index="negation.default.false">Is</label>
 	<label index="negation.datetime.true">After</label>

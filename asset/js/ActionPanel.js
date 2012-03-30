@@ -62,9 +62,10 @@ Todoyu.Ext.search.ActionPanel = {
 
 
 	/**
-	 * 
-	 * @param controller
-	 * @param options
+	 *
+	 * @method	sendExportPostRequest
+	 * @param	{String}	controller
+	 * @param	{Object}	options
 	 */
 	sendExportPostRequest: function(controller, options) {
 		var url =  Todoyu.getUrl('search', controller);
