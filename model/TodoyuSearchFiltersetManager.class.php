@@ -332,20 +332,7 @@ class TodoyuSearchFiltersetManager {
 		$type		= empty($type) ? 'TASK' : strtolower(trim($type));
 		$idPerson	= Todoyu::personid($idPerson);
 
-		$fields	= '*';
-		$table	= self::TABLE;
-		$where	= '		`type`				= ' . TodoyuSql::quote($type, true)
-				. ' AND	deleted				= 0'
-				. ' AND current				= 0'
-				. ' AND ( id_person_create	= ' . $idPerson . '	)';
-
-		if( !$showHidden ) {
-			$where .= 'AND is_hidden = 0';
-		}
-
-		$order	= 'sorting';
-
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		return self::getFiltersets($idPerson, $type, $showHidden, false);
 	}
 
 
@@ -357,9 +344,11 @@ class TodoyuSearchFiltersetManager {
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	String		$type
+	 * @param	Boolean		$showHidden
+	 * @param	Boolean		$includeSeparators
 	 * @return	Array
 	 */
-	public static function getFiltersets($idPerson = 0, $type = null) {
+	public static function getFiltersets($idPerson = 0, $type = null, $showHidden = false, $includeSeparators = true) {
 		$idPerson		= Todoyu::personid($idPerson);
 		$filtersetTypes	= TodoyuSearchFiltersetManager::getFiltersetTypes();
 		$typeList		= TodoyuArray::implodeQuoted($filtersetTypes);
@@ -370,6 +359,15 @@ class TodoyuSearchFiltersetManager {
 				. ' AND	deleted				= 0'
 				. '	AND	`type`				IN(' . $typeList . ')'
 				. ' AND current				= 0';
+
+		if( !$includeSeparators ) {
+			$where	.= ' AND is_separator	= 0';
+		}
+
+		if( !$showHidden ) {
+			$where	.= ' AND is_hidden		= 0';
+		}
+
 		$order	= 'sorting, date_create';
 
 		if( ! is_null($type) ) {
@@ -382,7 +380,7 @@ class TodoyuSearchFiltersetManager {
 
 
 	/**
-	 * Get IDs of filtersets of given person. if no type given: get all types
+	 * Get IDs of filtersets of given person. if no type given: all types
 	 *
 	 * @param	Integer	$idPerson
 	 * @param	String	$type
