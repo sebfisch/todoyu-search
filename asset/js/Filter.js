@@ -195,7 +195,7 @@ Todoyu.Ext.search.Filter = {
 		$('search-results').update('');
 	},
 
-	
+
 
 	/**
 	 * Add new condition: update condition and add resp. filter-widget
