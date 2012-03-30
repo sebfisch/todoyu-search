@@ -353,7 +353,7 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 			var left	= contentDim.width - modeWidth + 1;
 
 			this.modes.setStyle({
-				position:	'absolute',
+//				position:	'absolute',
 				left:		left + 'px'
 			});
 
