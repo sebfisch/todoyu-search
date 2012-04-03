@@ -115,6 +115,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	/**
 	 * Try to fetch the value from widget from element
 	 *
+	 * @method	updateConditionValueFromWidget
 	 * @param	{String}	widgetID
 	 * @return	{String|Array|Null}
 	 */

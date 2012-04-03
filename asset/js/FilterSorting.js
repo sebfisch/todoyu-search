@@ -59,6 +59,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Build a sort DOM element
 	 *
+	 * @method	buildElement
 	 * @param	{String}	name
 	 * @param	{String}	label
 	 * @param	{Boolean}	desc
@@ -103,6 +104,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Add a new element
 	 *
+	 * @method	add
 	 * @param	{String}	name			Name of the sorting
 	 * @param	{String}	label			Label for the button
 	 * @param	{Boolean}	desc			Sort descending
@@ -122,6 +124,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * All a list of sortings
 	 *
+	 * @method	addAll
 	 * @param	{Object}	sortings
 	 */
 	addAll: function(sortings) {
@@ -140,6 +143,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	 * Remove all sortings
 	 * No animation, just remove them all
 	 *
+	 * @method	removeAll
 	 * @param	{Boolean}	noUpdate		No no update the results
 	 */
 	removeAll: function(noUpdate) {
@@ -157,6 +161,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Remove a sorting (with animation) {
 	 *
+	 * @method	remove
 	 * @param	{Element}	sort		Sorting DOM element
 	 * @param	{Boolean}	noUpdate
 	 */
@@ -169,6 +174,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Callback when sorting was removed
 	 *
+	 * @method	onRemoved
 	 * @param	{Boolean}	noUpdate
 	 */
 	onRemoved: function(noUpdate) {
@@ -196,6 +202,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Handler when clicked on direction icon
 	 *
+	 * @method	onDirClick
 	 * @param	{Event}		event
 	 * @param	{Element}	sort
 	 */
@@ -210,6 +217,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Toggle direction icon
 	 *
+	 * @method	toggleDirIcon
 	 * @param sort
 	 */
 	toggleDirIcon: function(sort) {
@@ -240,6 +248,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Animate remove of sorting and call the callback when finished
 	 *
+	 * @method	animateRemove
 	 * @param	{Element}	sort
 	 * @param	{Function}	callback
 	 */
@@ -272,6 +281,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Get direction of sorting
 	 *
+	 * @method	getDirection
 	 * @param	{Element}	sort
 	 * @return	{String}
 	 */
@@ -284,6 +294,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Get name of a sorting element
 	 *
+	 * @method	getName
 	 * @param	{Element}	sort
 	 * @return	{String}
 	 */
@@ -296,6 +307,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Set direction of element
 	 *
+	 * @method	setDirection
 	 * @param	{Element}	sort
 	 * @param	{String}	dir		asc or desc
 	 */
@@ -319,6 +331,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Get all sortings as config object
 	 *
+	 * @method	getAll
 	 * @param	{Boolean}	asJson
 	 * @return	{Object[]|String}
 	 */

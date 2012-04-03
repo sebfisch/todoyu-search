@@ -218,6 +218,7 @@ Todoyu.Ext.search.Filter = {
 	/**
 	 * Handle widget element loaded
 	 *
+	 * @method	onWidgetLoaded
 	 * @param	{String}		name
 	 * @param	{String}		condition
 	 * @param	{String|Array}	value

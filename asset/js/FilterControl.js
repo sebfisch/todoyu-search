@@ -98,6 +98,7 @@ Todoyu.Ext.search.FilterControl = {
 	/**
 	 * Handle change on sorting select element
 	 *
+	 * @method	onSortingChange
 	 * @param	{Event}		event
 	 * @param	{Element}	select
 	 * @method	onSortingChange
