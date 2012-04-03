@@ -31,15 +31,15 @@ class TodoyuSearchFilterHelper {
 	 *
 	 * @param	String		$tables
 	 * @param	String		$field
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @param	Boolean		$negate
 	 * @return	Array|Boolean			Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
-	public static function getDateFilterQueryparts($tables, $field, $time, $negate = false) {
+	public static function getDateFilterQueryparts($tables, $field, $timestamp, $negate = false) {
 		$queryParts	= false;
 
-		if( $time !== 0 ) {
-			$info	= self::getTimeAndLogicForDate($time, $negate);
+		if( $timestamp !== 0 ) {
+			$info	= self::getTimeAndLogicForDate($timestamp, $negate);
 
 			$queryParts = array(
 				'tables'=> $tables,
@@ -210,6 +210,26 @@ class TodoyuSearchFilterHelper {
 		}
 
 		return $date;
+	}
+
+
+
+	/**
+	 * Prepare query parts for date based filter widget
+	 *
+	 * @param	String			$table
+	 * @param	String			$field
+	 * @param	String			$date		Formatted (according to current locale) date string
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean
+	 */
+	public static function makeFilter_date($table, $field, $date, $negate = false) {
+		$tables	= array($table);
+		$field	= $table . '.' . $field;
+
+		$timestamp	= TodoyuTime::parseDate($date);
+
+		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $timestamp, $negate);
 	}
 
 }
