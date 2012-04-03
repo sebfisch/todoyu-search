@@ -53,19 +53,19 @@ h1.extIconSearch .title {
 
 }
 #sorting-flags .sort {
-    background:url(../../../../core/asset/img/bg-button-css3.png) repeat-x 0 50% #fff;
-    border:1px solid #bbb;
-    border-radius:5px;
-    float:left;
-    padding:2px 3px;
+	background:url(../../../../core/asset/img/bg-button-css3.png) repeat-x 0 50% #fff;
+	border:1px solid #bbb;
+	border-radius:5px;
+	float:left;
+	padding:2px 3px;
 	margin:2px 2px;
 }
 #sorting-flags .sort span {
 	float:left;
 }
 #sorting-flags .sort span.action {
-    height:14px;
-    width:12px;
+	height:14px;
+	width:12px;
 	margin-left:4px;
 	cursor:pointer;
 }
