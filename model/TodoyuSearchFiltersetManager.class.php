@@ -328,11 +328,11 @@ class TodoyuSearchFiltersetManager {
 	 * @param	Boolean		$showHidden
 	 * @return	Array
 	 */
-	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false) {
+	public static function getTypeFiltersets($type = 'TASK', $idPerson = 0, $showHidden = false, $includeSeparators = false) {
 		$type		= empty($type) ? 'TASK' : strtolower(trim($type));
 		$idPerson	= Todoyu::personid($idPerson);
 
-		return self::getFiltersets($idPerson, $type, $showHidden, false);
+		return self::getFiltersets($idPerson, $type, $showHidden, $includeSeparators);
 	}
 
 
@@ -360,11 +360,11 @@ class TodoyuSearchFiltersetManager {
 				. '	AND	`type`				IN(' . $typeList . ')'
 				. ' AND current				= 0';
 
-		if( !$includeSeparators ) {
+		if( $includeSeparators === false ) {
 			$where	.= ' AND is_separator	= 0';
 		}
 
-		if( !$showHidden ) {
+		if( $showHidden === false ) {
 			$where	.= ' AND is_hidden		= 0';
 		}
 
