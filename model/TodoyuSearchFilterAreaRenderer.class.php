@@ -217,18 +217,23 @@ class TodoyuSearchFilterAreaRenderer {
 		/**
 		 * @var	TodoyuProjectTaskFilter	$typeFilter
 		 */
-		$typeFilter		= new $typeClass($conditions, $conjunction, $defaultSorting);
-		$defaultSorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
-		$itemIDs		= array();
+		if( ! empty($typeClass) ) {
+			$typeFilter		= new $typeClass($conditions, $conjunction, $defaultSorting);
+			$defaultSorting	= TodoyuSearchFilterManager::getFilterDefaultSorting($type);
+			$itemIDs		= array();
 
-		if( $typeFilter->hasActiveFilters() ) {
-			$itemIDs	= $typeFilter->getItemIDs($defaultSorting, $hardLimit);
+			if( $typeFilter->hasActiveFilters() ) {
+				$itemIDs	= $typeFilter->getItemIDs($defaultSorting, $hardLimit);
+			}
+
+				// Prepare variables
+			$numItems	= sizeof($itemIDs);
+			$totalItems	= $typeFilter->getTotalItems();
+			$resultLabel= self::renderResultInfoText($type, $numItems, $totalItems, $hardLimit);
+		} else {
+			$itemIDs	= '';
+			$resultLabel= '';
 		}
-
-			// Prepare variables
-		$numItems	= sizeof($itemIDs);
-		$totalItems	= $typeFilter->getTotalItems();
-		$resultLabel= self::renderResultInfoText($type, $numItems, $totalItems, $hardLimit);
 
 		$tmpl	= 'ext/search/view/search-results.tmpl';
 		$data	= array(
