@@ -59,7 +59,7 @@ class TodoyuSearchPanelWidgetFilterList extends TodoyuPanelWidget {
 	 */
 	public function renderContent() {
 		$filtersetTypes		= TodoyuSearchFiltersetManager::getFiltersetTypes();
-		$filters			= TodoyuSearchFiltersetManager::getFiltersets();
+		$filters			= TodoyuSearchFiltersetManager::getFiltersets(0, null, true);
 		$groupedFiltersets	= $this->groupFiltersets($filters);
 		$toggleStatus		= TodoyuSearchPreferences::getFiltersetListToggle();
 		$activeFiltersets	= array();
