@@ -231,7 +231,7 @@ class TodoyuSearchFilterAreaRenderer {
 			$totalItems	= $typeFilter->getTotalItems();
 			$resultLabel= self::renderResultInfoText($type, $numItems, $totalItems, $hardLimit);
 		} else {
-			$itemIDs	= '';
+			$itemIDs	= array();
 			$resultLabel= '';
 		}
 
