@@ -522,7 +522,7 @@ Todoyu.Ext.search.Filter = {
 				options.onComplete = onComplete;
 			}
 
-			Todoyu.notifyInfo(['LLL:filterset.notify.saved']);
+			Todoyu.notifyInfo(['LLL:search.ext.filterset.notify.saved']);
 			Todoyu.send(url, options);
 		} else {
 			alert('[LLL:search.ext.filterset.error.saveNoConditions]');
@@ -555,7 +555,7 @@ Todoyu.Ext.search.Filter = {
 			options.onComplete = onComplete;
 		}
 
-		Todoyu.notifyInfo(['LLL:filterset.notify.saved']);
+		Todoyu.notifyInfo(['LLL:search.ext.filterset.notify.saved']);
 		Todoyu.send(url, options);
 	},
 
