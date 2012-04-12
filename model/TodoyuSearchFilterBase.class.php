@@ -177,9 +177,9 @@ abstract class TodoyuSearchFilterBase {
 	 */
 	public function addRightsFilter($name, $value) {
 		$this->rightsFilters[] = array(
-		 'filter'	=> $name,
-		 'value'	=> $value,
-		 'negate'	=> false
+			 'filter'	=> $name,
+			 'value'	=> $value,
+			 'negate'	=> false
 		);
 	}
 
