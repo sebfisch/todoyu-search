@@ -31,13 +31,23 @@ if( Todoyu::allowed('search', 'general:use') ) {
 		$filterTypes= TodoyuArray::sortByLabel($filterTypes, 'position');
 
 		foreach($filterTypes as $type => $typeConfig) {
-			$parentKey	= 'search';
-			$key		= 'search' . ucfirst($typeConfig['key']);
-			$label		= $typeConfig['config']['label'];
-			$href		= 'index.php?ext=search&tab=' . $typeConfig['key'];
-			$position	= $typeConfig['config']['position'] + 100;
+			$allowed	= true;
 
-			TodoyuFrontend::addSubmenuEntry($parentKey, $key, $label, $href, $position);
+			if( isset($typeConfig['config']['require']) ) {
+				$required	= explode('.', $typeConfig['config']['require']);
+				$allowed	= Todoyu::allowed($required[0], $required[1]);
+			}
+
+				// Add entry
+			if( $allowed ) {
+				$parentKey	= 'search';
+				$key		= 'search' . ucfirst($typeConfig['key']);
+				$label		= $typeConfig['config']['label'];
+				$href		= 'index.php?ext=search&tab=' . $typeConfig['key'];
+				$position	= $typeConfig['config']['position'] + 100;
+
+				TodoyuFrontend::addSubmenuEntry($parentKey, $key, $label, $href, $position);
+			}
 		}
 	}
 
