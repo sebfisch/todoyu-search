@@ -14,7 +14,7 @@ CREATE TABLE `ext_search_filtercondition` (
 	`is_negated` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`),
 	KEY `id_set` (`id_set`,`deleted`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
 
 -- --------------------------------------------------------
 
@@ -40,4 +40,4 @@ CREATE TABLE `ext_search_filterset` (
 	`resultsorting` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `createdelete` (`id_person_create`,`deleted`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
