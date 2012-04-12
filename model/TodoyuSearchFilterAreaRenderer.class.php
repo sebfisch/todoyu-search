@@ -145,14 +145,14 @@ class TodoyuSearchFilterAreaRenderer {
 		}
 
 			// Get grouped type conditions
-		$groupedConditionOptions= TodoyuSearchFilterConditionManager::getGroupedTypeConditions($tab);
+		$groupedFilterOptions	= TodoyuSearchFilterConditionManager::getGroupedTypeFilterConditions($tab);
 		$groupedSortingOptions	= TodoyuSearchSortingManager::getGroupedSortingOptions($tab);
 		$conjunctionOptions		= TodoyuSearchFilterManager::getConjunctionOptions();
 
 		$tmpl	= 'ext/search/view/filter-action-controls.tmpl';
 		$data	= array(
 			'type'						=> $tab,
-			'groupedConditionOptions'	=> $groupedConditionOptions,
+			'groupedConditionOptions'	=> $groupedFilterOptions,
 			'conjunctionOptions'		=> $conjunctionOptions,
 			'groupedSortingOptions'		=> $groupedSortingOptions,
 			'conjunction'				=> array($conjunction)

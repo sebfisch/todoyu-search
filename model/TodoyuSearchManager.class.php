@@ -98,12 +98,15 @@ class TodoyuSearchManager {
 
 			// Check all filter types
 		foreach($filters as $type => $data) {
-			$require	= explode('.', $data['config']['require']);
+			if( isset($data['config']['require']) ) {
+				list($extKey, $rightKey) = explode('.', $data['config']['require'], 2);
 
-				// Add if no require set or require clause is allowed
-			if( ! isset($data['config']['require']) || Todoyu::allowed($require[0], $require[1]) ) {
-				$config[$type] = $data['config'];
+				if( !Todoyu::allowed($extKey, $rightKey) ) {
+					continue; // Don't add not allowed filter configs
+				}
 			}
+
+			$config[$type] = $data['config'];
 		}
 
 		return $config;

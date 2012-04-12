@@ -81,7 +81,7 @@ class TodoyuSearchFilterConditionManager {
 		$conditions = TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 
 			// Get conditions to type of filter set
-		$config = self::getTypeConditions(TodoyuSearchFiltersetManager::getFiltersetType($idFilterset));
+		$config = self::getTypeFilterConditions(TodoyuSearchFiltersetManager::getFiltersetType($idFilterset));
 			// Remove conditions without configuration
 		foreach($conditions as $key => $condition) {
 			if( ! $config[$condition['filter']] ) {
@@ -95,25 +95,28 @@ class TodoyuSearchFilterConditionManager {
 
 
 	/**
-	 * Get type conditions (filter options)
+	 * Get type filters (conditions)
 	 *
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public static function getTypeConditions($type = 'TASK') {
+	public static function getTypeFilterConditions($type = 'TASK') {
 		$type	= strtoupper(trim($type));
 
 		TodoyuExtensions::loadAllFilters();
 
-		if( is_array(Todoyu::$CONFIG['FILTERS'][$type]['widgets']) ) {
-			$conditionConfigs = Todoyu::$CONFIG['FILTERS'][$type]['widgets'];
-		} else {
-			$conditionConfigs = array();
+		$filters= TodoyuArray::assure(Todoyu::$CONFIG['FILTERS'][$type]['widgets']);
+
+		if( isset(Todoyu::$CONFIG['FILTERS'][$type]['config']['require']) ) {
+			list($extKey, $rightKey) = explode('.', Todoyu::$CONFIG['FILTERS'][$type]['config']['require'], 2);
+
+			if( !Todoyu::allowed($extKey, $rightKey) ) {
+				TodoyuDebug::printInFirebug('remove all');
+				$filters = array();
+			}
 		}
 
-		$conditionConfigs = self::removeConditionByRights($conditionConfigs);
-
-		return $conditionConfigs;
+		return self::removeNotAllowedFilters($filters);
 	}
 
 
@@ -124,10 +127,10 @@ class TodoyuSearchFilterConditionManager {
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public static function getGroupedTypeConditions($type = 'TASK') {
-		$conditions	= self::getTypeConditions($type);
+	public static function getGroupedTypeFilterConditions($type = 'TASK') {
+		$filters	= self::getTypeFilterConditions($type);
 
-		return TodoyuArray::groupByField($conditions, 'optgroup', 'project.task.search.label');
+		return TodoyuArray::groupByField($filters, 'optgroup', 'project.task.search.label');
 	}
 
 
@@ -223,7 +226,7 @@ class TodoyuSearchFilterConditionManager {
 	 * @param	Array		$filterConditions
 	 * @return	Array
 	 */
-	protected static function removeConditionByRights(array $filterConditions = array()) {
+	protected static function removeNotAllowedFilters(array $filterConditions) {
 		foreach($filterConditions as $index => $condition) {
 			$remove = false;
 
