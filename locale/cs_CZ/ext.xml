@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="ext.title">Hledání nebo vytváření nových filtrů</label>
-	<label index="page.title">Filtry</label>
+	<label index="page.title">Vyhledávání</label>
 	<label index="or">NEBO</label>
 	<label index="and">A</label>
 	<label index="search.label">Prohledat vše</label>
@@ -13,6 +13,7 @@
 	<label index="filterset.error.saveWrongType">Pokoušíte se uložit sadu filtrů nesprávného typu</label>
 	<label index="filterset.error.saveNoConditions">Žádné podmínky k uložení</label>
 	<label index="filterset.error.saveEmptyName">Zadejte název sady filtrů</label>
+	<label index="filterset.notify.saved">Filtr byl uložen.</label>
 	<label index="negation.default.true">Není</label>
 	<label index="negation.default.false">Je</label>
 	<label index="negation.datetime.true">Od</label>
@@ -38,4 +39,6 @@
 	<label index="sorting.remove">Odstranit třídění</label>
 	<label index="sorting.direction.asc">Řadit vzestupně</label>
 	<label index="sorting.direction.desc">Řadit sestupně</label>
+	<label index="newSeparatorLabel">Vložte název nového oddělovače</label>
+	<label index="newSeparatorLabel.preset">Nový oddělovač</label>
 </labels>
