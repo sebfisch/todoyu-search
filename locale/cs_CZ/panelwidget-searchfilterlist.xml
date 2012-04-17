@@ -2,5 +2,5 @@
 <labels>
 	<label index="title">Sady filtrů</label>
 	<label index="saveFilterButton">Uložit nový filtr</label>
-	<label index="clearFilterArea">Vyčistit filtr</label>
+	<label index="clearFilterArea">Vyčistit oblast filtru</label>
 </labels>
