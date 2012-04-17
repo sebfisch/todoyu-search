@@ -101,12 +101,12 @@ class TodoyuSearch {
 	 */
 	public static function searchTable($table, array $fields, array $find, array $ignore = array(), $limit = 200, $addToWhere = ' AND deleted = 0') {
 		$field	= 'id';
-		$where	= TodoyuSql::buildLikeQuery($find, $fields);
+		$where	= TodoyuSql::buildLikeQueryPart($find, $fields);
 		$where	.= $addToWhere;
 		$limit	= intval($limit);
 
 		if( sizeof($ignore) > 0 ) {
-			$where .= ' AND NOT (' . TodoyuSql::buildLikeQuery($ignore, $fields) . ')';
+			$where .= ' AND NOT (' . TodoyuSql::buildLikeQueryPart($ignore, $fields) . ')';
 		}
 
 		return Todoyu::db()->getColumn($field, $table, $where, '', '', $limit);
