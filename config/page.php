@@ -43,7 +43,7 @@ if( Todoyu::allowed('search', 'general:use') ) {
 				$parentKey	= 'search';
 				$key		= 'search' . ucfirst($typeConfig['key']);
 				$label		= $typeConfig['config']['label'];
-				$href		= 'index.php?ext=search&tab=' . $typeConfig['key'];
+				$href		= 'index.php?ext=search&amp;tab=' . $typeConfig['key'];
 				$position	= $typeConfig['config']['position'] + 100;
 
 				TodoyuFrontend::addSubmenuEntry($parentKey, $key, $label, $href, $position);
