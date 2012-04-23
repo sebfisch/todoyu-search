@@ -247,7 +247,9 @@ class TodoyuSearchFiltersetManager {
 		$filterObject	= $filterset->getFilterObject();
 
 			// Execute dummy query to count the result rows
+		TodoyuCache::disable(); // Disable cache to make sure result count is correct
 		$filterObject->getItemIDs('', 1);
+		TodoyuCache::enable();
 
 		return $filterObject->getTotalItems();
 	}
