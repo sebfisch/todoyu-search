@@ -522,7 +522,7 @@ Todoyu.Ext.search.Filter = {
 				options.onComplete = onComplete;
 			}
 
-			Todoyu.notifyInfo(['LLL:search.ext.filterset.notify.saved']);
+			Todoyu.notifyInfo('[LLL:search.ext.filterset.notify.saved]');
 			Todoyu.send(url, options);
 		} else {
 			alert('[LLL:search.ext.filterset.error.saveNoConditions]');
@@ -536,7 +536,7 @@ Todoyu.Ext.search.Filter = {
 	 *
 	 * @method	saveFilterset
 	 * @param	{Number}	idFilterSet
-	 * @param	{Function}	onComplete
+	 * @param	{Function}	[onComplete]
 	 */
 	saveFilterset: function(idFilterSet, onComplete) {
 		var url		= Todoyu.getUrl('search', 'filterset');
@@ -548,15 +548,30 @@ Todoyu.Ext.search.Filter = {
 				conditions:	this.Conditions.getAll(true),
 				conjunction:this.getConjunction(),
 				sorting:	this.Sorting.getAll(true)
-			}
+			},
+			onComplete: this.onFiltersetSaved.bind(this, idFilterSet, onComplete)
 		};
 
-		if( onComplete !== undefined ) {
-			options.onComplete = onComplete;
-		}
 
-		Todoyu.notifyInfo(['LLL:search.ext.filterset.notify.saved']);
 		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Handle filterset saved
+	 *
+	 * @method	onFiltersetSaved
+	 * @param	{Number}		idFilterset
+	 * @param	{Function}		onComplete
+	 * @param	{Ajax.Response}	response
+	 */
+	onFiltersetSaved: function(idFilterset, onComplete, response) {
+		Todoyu.notifyInfo('[LLL:search.ext.filterset.notify.saved]');
+
+		if( onComplete ) {
+			onComplete(idFilterset, response);
+		}
 	},
 
 

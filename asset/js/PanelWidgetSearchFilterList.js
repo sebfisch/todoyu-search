@@ -154,7 +154,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	saveFilterset: function(idFilterSet, tab) {
 		if( tab === this.ext.Filter.getActiveTab() ) {
 			if( confirm('[LLL:search.ext.filterset.confirm.overwrite]') ) {
-				this.ext.Filter.saveFilterset(idFilterSet, this.onFiltersetSaved.bind(this, idFilterSet));
+				this.ext.Filter.saveFilterset(idFilterSet, this.onFiltersetSaved.bind(this));
 			}
 		} else {
 			alert('[LLL:search.ext.filterset.error.saveWrongType]');
