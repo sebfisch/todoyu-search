@@ -54,7 +54,7 @@ class TodoyuSearchFilterConditionManager {
 	 * Get filter condition database record
 	 *
 	 * @param	Integer		$idFilterCondition
-	 * @return	Arraay
+	 * @return	Array
 	 */
 	public static function getFilterConditionRecord($idFilterCondition) {
 		$idFilterCondition	= intval($idFilterCondition);

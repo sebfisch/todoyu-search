@@ -601,7 +601,7 @@ abstract class TodoyuSearchFilterBase {
 		$cacheID	= md5(serialize(func_get_args()));
 
 			// Check if results are already cached
-		if( ! array_key_exists($cacheID, $this->resultIDs) ) {
+		if( !isset($this->resultIDs[$cacheID]) ) {
 			$queryArray = $this->getQueryArray($sortingFallback, $limit, $showDeleted, false);
 
 			$this->resultIDs[$cacheID] = Todoyu::db()->getColumn(
