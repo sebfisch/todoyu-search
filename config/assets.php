@@ -56,7 +56,7 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 			'position' => 104
 		),
 		array(
-			'file' => 'ext/search/asset/js/WidgetArea.js',
+			'file' => 'ext/search/asset/js/FilterWidgetArea.js',
 			'position' => 105
 		),
 		array(
