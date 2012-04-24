@@ -49,36 +49,6 @@ class TodoyuSearchPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Remove given one from currently active filters
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function removeCurrentFilterSetAction(array $params) {
-		$idFilterset= intval($params['filterset']);
-		$tab		= $params['tab'];
-
-		if( $idFilterset === 0 ) {
-			$idFilterset = TodoyuSearchPreferences::getActiveFilterset($tab);
-		}
-
-		if( $idFilterset !== 0 ) {
-			$conditions	= TodoyuSearchFiltersetManager::getFiltersetConditions($idFilterset);
-
-				// Send widgets
-			$content	= TodoyuSearchFilterAreaRenderer::renderWidgetArea($idFilterset);
-				// Add JS init for loaded widgets
-			$content	.= TodoyuString::wrapScript('Todoyu.Ext.search.Filter.initConditions(\'' . $tab . '\', ' . json_encode($conditions) . ');');
-		} else {
-			$content	= 'No widgets';
-		}
-
-		return $content;
-	}
-
-
-
-	/**
 	 * Save preference of active search tab
 	 *
 	 * @param	Array	$params

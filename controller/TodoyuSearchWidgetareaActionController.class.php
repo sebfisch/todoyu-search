@@ -76,7 +76,6 @@ class TodoyuSearchWidgetareaActionController extends TodoyuActionController {
 		if( $idFilterset !== 0 ) {
 			$filterSet	= TodoyuSearchFiltersetManager::getFilterset($idFilterset);
 			$conditions	= $filterSet->getConditions();
-//			$conditions	= TodoyuSearchFiltersetManager::getFiltersetConditions($idFilterset);
 
 			TodoyuHeader::sendTodoyuHeader('conjunction', $filterSet->getConjunction());
 

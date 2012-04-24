@@ -76,18 +76,6 @@ Todoyu.Ext.search.Preference = {
 
 
 	/**
-	 * Remove current filter set
-	 *
-	 * @method	removeCurrentFilter
-	 */
-	removeCurrentFilter: function() {
-		var action	= 'removeCurrentFilterSet';
-		this.sendAction(action, '');
-	},
-
-
-
-	/**
 	 * Save preference: collapsed-state of given element
 	 *
 	 * @method	saveToggling
