@@ -31,18 +31,6 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 */
 	ext:		Todoyu.Ext.search,
 
-	/**
-	 * @property	key
-	 * @type		String
-	 */
-	key:		'searchfilterlist',
-
-	/**
-	 * @property	sortables
-	 * @type		Array
-	 */
-	sortables:	[],
-
 
 
 	/**
@@ -62,7 +50,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 	 * @method	initSortableList
 	 */
 	initSortableList: function() {
-		new Todoyu.SortablePanelList('filterset-list', this.toggleList.bind(this), this.saveFiltersetOrder.bind(this));
+		new Todoyu.SortablePanelList('filterset-list', this.toggleList.bind(this), this.onUpdateFiltersetSorting.bind(this));
 	},
 
 
@@ -318,6 +306,18 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 		var	idItem	= 0;
 
 		this.ext.Preference.save(action, value, idItem);
+	},
+
+
+	/**
+	 * Callback for filter item sorting change
+	 *
+	 * @method	onUpdateFiltersetSorting
+	 * @param	{String}	type
+	 * @param	{Array}		items
+	 */
+	onUpdateFiltersetSorting: function(type, items) {
+		this.saveFiltersetOrder(type, items);
 	},
 
 
