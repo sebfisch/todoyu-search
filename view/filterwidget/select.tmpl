@@ -1,7 +1,7 @@
 {extends "ext/search/view/filterwidget/wrap.tmpl"}
 
 {block name="widgetbody"}
-	{if $definitions.value}
+	{if $definitions.value != ''}
 		{$selected = explode(',', $definitions.value)}
 	{else}
 		{$selected = array()}
