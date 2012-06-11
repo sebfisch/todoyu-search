@@ -1,5 +1,9 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 #widget-area .filterWidget .widgetheader {
 	width:auto !important;
-	border:1px solid #ddd;
+	border:1px solid $grey02;
 	border-bottom:none;
 }

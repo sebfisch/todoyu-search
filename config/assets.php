@@ -74,17 +74,17 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 	),
 	'css' => array(
 		array(
-			'file'		=> 'ext/search/asset/css/ext.css',
+			'file'		=> 'ext/search/asset/css/ext.scss',
 			'media'		=> 'all',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/search/asset/css/headlet-quicksearch.css',
+			'file'		=> 'ext/search/asset/css/headlet-quicksearch.scss',
 			'media'		=> 'all',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/search/asset/css/filterwidgets.css',
+			'file'		=> 'ext/search/asset/css/filterwidgets.scss',
 			'media'		=> 'all',
 			'position'	=> 101
 		),
@@ -94,7 +94,7 @@ Todoyu::$CONFIG['EXT']['search']['assets'] = array(
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/search/asset/css/print.css',
+			'file'		=> 'ext/search/asset/css/print.scss',
 			'media'		=> 'print',
 			'position'	=> 120
 		)

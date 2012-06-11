@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 #todoyusearchheadletquicksearch-button {
 	background:url(../img/icons.png) no-repeat 5px 5px;
 }
@@ -56,16 +60,16 @@
 }
 
 	#todoyusearchheadletquicksearch-suggest ul {
-		background-color:#fff;
+		background-color:$white;
 		border-top:none;
-		border:1px solid #ddd;
+		border:1px solid $grey02;
 		border-bottom:none;
 	}
 
 	#todoyusearchheadletquicksearch-suggest .quicksearch-suggest {
-		-webkit-box-shadow:2px 2px 5px #999;
-		-moz-box-shadow:2px 2px 5px #999;
-		box-shadow:2px 2px 5px #999;
+		-webkit-box-shadow:2px 2px 5px $grey06;
+		-moz-box-shadow:2px 2px 5px $grey06;
+		box-shadow:2px 2px 5px $grey06;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul ul {
@@ -80,13 +84,13 @@
 		letter-spacing:1px;
 		padding:5px 3px 5px 10px;
 		background-color:#e2e2e2;
-		border-bottom:1px solid #ddd;
+		border-bottom:1px solid $grey02;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul li ul li a {
 		display:block;
 		padding:2px 2px 2px 10px;
-		border-bottom:1px solid #ccc;
+		border-bottom:1px solid $grey03;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul li ul li.active a,
@@ -102,5 +106,5 @@
 	}
 
 	#todoyusearchheadletquicksearch-suggest a span.info {
-		color:#aaa;
+		color:$grey05;
 	}
