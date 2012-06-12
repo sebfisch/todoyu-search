@@ -29,7 +29,7 @@ h1.extIconSearch .title {
 	margin:2px 0 0 5px;
 }
 #filter-controls .conditions option {
-	border-bottom:1px solid $grey02;
+	border-bottom:1px solid $colorNeutral02;
 	color:#333;
 }
 #filter-controls option.default {
@@ -58,7 +58,7 @@ h1.extIconSearch .title {
 }
 #sorting-flags .sort {
 	background:url(../../../../core/asset/img/bg-button-css3.png) repeat-x 0 50% $white;
-	border:1px solid $grey04;
+	border:1px solid $colorNeutral04;
 	border-radius:5px;
 	float:left;
 	padding:2px 3px;

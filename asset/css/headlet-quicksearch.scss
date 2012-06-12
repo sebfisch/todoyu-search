@@ -62,14 +62,14 @@
 	#todoyusearchheadletquicksearch-suggest ul {
 		background-color:$white;
 		border-top:none;
-		border:1px solid $grey02;
+		border:1px solid $colorNeutral02;
 		border-bottom:none;
 	}
 
 	#todoyusearchheadletquicksearch-suggest .quicksearch-suggest {
-		-webkit-box-shadow:2px 2px 5px $grey06;
-		-moz-box-shadow:2px 2px 5px $grey06;
-		box-shadow:2px 2px 5px $grey06;
+		-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+		-moz-box-shadow:2px 2px 5px $colorNeutral06;
+		box-shadow:2px 2px 5px $colorNeutral06;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul ul {
@@ -83,14 +83,14 @@
 		text-transform:uppercase;
 		letter-spacing:1px;
 		padding:5px 3px 5px 10px;
-		background-color:#e2e2e2;
-		border-bottom:1px solid $grey02;
+		background-color:$colorNeutral01;
+		border-bottom:1px solid $colorNeutral02;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul li ul li a {
 		display:block;
 		padding:2px 2px 2px 10px;
-		border-bottom:1px solid $grey03;
+		border-bottom:1px solid $colorNeutral03;
 	}
 
 	#todoyusearchheadletquicksearch-suggest ul li ul li.active a,
@@ -106,5 +106,5 @@
 	}
 
 	#todoyusearchheadletquicksearch-suggest a span.info {
-		color:$grey05;
+		color:$colorNeutral05;
 	}
