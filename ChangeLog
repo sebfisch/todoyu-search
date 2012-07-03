@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.4.1 - not released yet
+	* Bugfix: fixed cropping of filter-set-labels
 	* Bugfix: Update title-tag on filterset rename
 	* Bugfix: Fixed Problem with default value 0 in select widget
 

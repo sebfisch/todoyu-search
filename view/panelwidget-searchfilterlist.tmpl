@@ -11,7 +11,7 @@
 					<div id="filterset-{$filterset.id}-handle" class="handle"></div>
 					{if $filterset.is_separator == 0}
 						<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.showFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)" title="{htmlencode $filterset.title}">
-							{htmlencode(truncate($filterset.title,25))}
+							{htmlencode(truncate($filterset.title,28,'...',true))}
 						</a>
 					{else}
 						<span id="filterset-{$filterset.id}-label" title="{htmlencode $filterset.title}" class="title">{htmlencode(truncate($filterset.title,25))}</span>
