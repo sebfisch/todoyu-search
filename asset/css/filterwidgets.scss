@@ -2,62 +2,6 @@
 
 
 
-#widget-area .filterWidget {
-	height:auto;
-	width:32%;
-	float:left;
-	margin:0 6px 5px 0;
-}
-
-#widget-area .filterWidget span {
-	display:block;
-	padding:5px 2px 5px 7px;
-}
-
-#widget-area .filterWidget span.calendaricon {
-	float:left;
-	padding:0;
-}
-
-#widget-area {
-	padding:5px 0;
-}
-
-#widget-area .filterWidget .widgetheader {
-	width:100%;
-	position:relative;
-	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat 0 0;
-}
-#widget-area .filterWidget .widgetheader .widgetLabel {
-	width:120px;
-	padding-right:0;
-}
-
-#widget-area .filterWidget .widgetheader .widgetLabel.staggered {
-	padding-top:22px;
-}
-
-#widget-area .filterWidget .widgetheaderRgt {
-	background:#e5e5e5 url(../img/bg-headerline_filter.png) no-repeat scroll 100% 0;
-	height:24px;
-	width:3px;
-	position:absolute;
-	right:0;
-	padding:0;
-}
-
-#widget-area .filterWidget .widgetheader span {
-	float:left;
-	display:block;
-}
-
-#widget-area .filterWidget .widgetheader span.clear {
-	display:block;
-	clear:both;
-	float:none;
-	padding:0;
-}
-
 select#filtercontrol-conditions {
 	width:320px;
 }
@@ -65,70 +9,127 @@ select#filtercontrol-conjunction {
 	margin-left:8px;
 }
 
-#widget-area .filterWidget span.negationButton {
-	position:absolute;
-	top:0;
-	right:25px;
-	padding:0;
-}
 
-#widget-area .filterWidget span.negation {
-	padding:0 0 0 6px;
-	background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll 2px 4px;
-}
 
-#widget-area .filterWidget span.negationRgt {
-	height:10px;
-	background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll -280px 4px;
-}
+#widget-area {
+	padding:5px 0;
 
-#widget-area .filterWidget .negation span {
-	cursor:pointer;
-}
+	.filterWidget {
+		height:auto;
+		width:32%;
+		float:left;
+		margin:0 6px 5px 0;
 
-#widget-area .filterWidget .negation span.false {
-	color:green;
-}
+		span{
+			display:block;
+			padding:5px 2px 5px 7px;
 
-#widget-area .filterWidget .negation span.true {
-	color:red;
-}
+			.calendaricon {
+				float:left;
+				padding:0;
+			}
 
-#widget-area .filterWidget .widgetheader span.widgetClose {
-	position:absolute;
-	right:5px;
-	z-index:1;
-}
+			&.negationButton {
+				position:absolute;
+				top:0;
+				right:25px;
+				padding:0;
+			}
 
-#widget-area .filterWidget .widgetheader span.widgetClose a {
-	display:block;
-	background:url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
-	height:14px;
-	width:14px;
-	text-indent:-9999px;
-}
+			&.negation {
+				padding:0 0 0 6px;
+				background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll 2px 4px;
+			}
 
-#widget-area .widgetbody {
-	min-height:25px;
-	border:1px solid $colorNeutral02;
-	border-top:none;
-	padding:5px;
-}
+			&.negationRgt {
+				height:10px;
+				background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll -280px 4px;
+			}
+		}
 
+		.negation span {
+			cursor:pointer;
+
+			&.false {
+				color:green;
+			}
+
+			&.true {
+				color:red;
+			}
+		}
+
+		.widgetheader {
+			width:100%;
+			position:relative;
+			background:$colorNeutral02 url(../img/bg-headerline_filter.png) no-repeat 0 0;
+
+			span {
+				float:left;
+				display:block;
+
+				&.widgetClose {
+					position:absolute;
+					right:5px;
+					z-index:1;
+
+					a {
+						display:block;
+						background:url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
+						height:14px;
+						width:14px;
+						text-indent:-9999px;
+					}
+				}
+
+				&.clear {
+					display:block;
+					clear:both;
+					float:none;
+					padding:0;
+				}
+			}
+
+			.widgetLabel {
+				width:120px;
+				padding-right:0;
+
+				&.staggered {
+					padding-top:22px;
+				}
+			}
+		}
+
+		.widgetheaderRgt {
+			background:$colorNeutral02 url(../img/bg-headerline_filter.png) no-repeat scroll 100% 0;
+			height:24px;
+			width:3px;
+			position:absolute;
+			right:0;
+			padding:0;
+		}
+	}
+
+	.widgetbody {
+		min-height:25px;
+		border:1px solid $colorNeutral02;
+		border-top:none;
+		padding:5px;
+
+		select {
+			width:100%;
+		}
+	}
+
+	input.date {
+		float:left;
+		margin-right:5px;
+		width:85%;
+	}
+}
 
 #widget-area .type .widgetbody,
 #widget-area .status .widgetbody,
 #widget-area .filterSet .widgetbody {
 	min-height:85px;
-}
-
-
-#widget-area input.date {
-	float:left;
-	margin-right:5px;
-	width:85%;
-}
-
-#widget-area .widgetbody select {
-	width:100%;
 }
