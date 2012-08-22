@@ -2,6 +2,7 @@ todoyu search changelog
 
 search 1.5.0 - not released yet
 	* Require: core 2.3
+	* Bugfix: Tables from filterset filter were fetched with whitespaces and not removed by removeTables option
 
 search 1.4.1 - not released yet
 	* Bugfix: fixed cropping of filter-set-labels

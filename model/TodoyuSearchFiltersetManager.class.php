@@ -586,7 +586,7 @@ class TodoyuSearchFiltersetManager {
 						// Add WHERE statement to list
 					$wheres[] = $where;
 						// Add tables (they are already concatenated as string, so explode)
-					$tables	= array_merge($tables, explode(',', $queryArray['tables']));
+					$tables	= array_merge($tables, TodoyuArray::trimExplode(',', $queryArray['tables'], true));
 						// Add joins
 					if( is_array($queryArray['join']) ) {
 						$joins	= array_merge($joins, $queryArray['join']);
