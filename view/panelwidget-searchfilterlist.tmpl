@@ -20,10 +20,10 @@
 						<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.global.rename}" href="javascript:void(0)">
 							{Label core.global.rename}
 						</a>
+						<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}invisible{/if}" title="{if $filterset.is_hidden == 0}{Label core.global.hide}{else}{Label core.global.unhide}{/if}">
+							{if $filterset.is_hidden == 0}{Label search.panelwidget-searchfilterlist.hide}{else}{Label core.global.unhide}{/if}
+						</a>
 						{if $filterset.is_separator == 0}
-							<a id="filterset-{$filterset.id}-control-visibility" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.hideFilterset({$filterset.id})" href="javascript:void(0)" class="visibility {if $filterset.is_hidden == 1}invisible{/if}" title="{if $filterset.is_hidden == 0}{Label core.global.hide}{else}{Label core.global.unhide}{/if}">
-								{if $filterset.is_hidden == 0}{Label search.panelwidget-searchfilterlist.hide}{else}{Label core.global.unhide}{/if}
-							</a>
 							<a id="filterset-{$filterset.id}-control-save" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.saveFilterset({$filterset.id}, '{$groupKey}')" class="save" title="{Label core.global.save}" href="javascript:void(0)">
 								{Label core.global.save}
 							</a>
