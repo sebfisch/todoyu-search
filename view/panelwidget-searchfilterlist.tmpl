@@ -11,10 +11,10 @@
 					<div id="filterset-{$filterset.id}-handle" class="handle"></div>
 					{if $filterset.is_separator == 0}
 						<a id="filterset-{$filterset.id}-label" class="title" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.showFilterset('{$groupKey}', {$filterset.id})" href="javascript:void(0)" title="{htmlencode $filterset.title}">
-							{htmlencode(truncate($filterset.title,28,'...',true))}
+							{htmlencode $filterset.title}
 						</a>
 					{else}
-						<span id="filterset-{$filterset.id}-label" title="{htmlencode $filterset.title}" class="title">{htmlencode(truncate($filterset.title,25))}</span>
+						<span id="filterset-{$filterset.id}-label" title="{htmlencode $filterset.title}" class="title">{htmlencode $filterset.title}</span>
 					{/if}
 					<span class="actions">
 						<a id="filterset-{$filterset.id}-control-rename" onclick="Todoyu.Ext.search.PanelWidget.SearchFilterList.renameFilterset({$filterset.id})" class="rename" title="{Label core.global.rename}" href="javascript:void(0)">

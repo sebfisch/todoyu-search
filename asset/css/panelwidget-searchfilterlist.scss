@@ -1,48 +1,66 @@
-#panelwidget-searchfilterlist div.panelwidgetContent {
-	margin-top:0;
+#panelwidget-searchfilterlist {
+	div.panelwidgetContent {
+		margin-top:0;
+	}
+
+	.listItem {
+
+		&.separator {
+			margin-top:-1px;
+			background:#d6d9db url(../img/icons.png) repeat-x 5px -272px !important;
+			border-top:0 !important;
+			border-bottom:0 !important;
+
+			.title {
+				padding-left:20px;
+				text-transform:uppercase;
+			}
+		}
+
+		.title {
+			display: inline-block;
+			width: 50%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.actions a {
+			background: transparent url(../../../../core/asset/img/icons.png) no-repeat scroll !important;
+
+			&.save {
+				background-position: 5px -209px !important;
+			}
+
+			&.delete {
+				background-position: 4px -330px !important;
+			}
+
+			&.visibility {
+				background-position: 4px -1079px !important;
+			}
+
+			&.rename {
+				background-position:  5px -149px !important;
+			}
+
+			&.invisible {
+				opacity:0.3;
+				filter:alpha(opacity=60);
+			}
+		}
+	}
+
+
+	button {
+		margin-top:10px;
+
+		.addseparator {
+			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 6px -27px;
+		}
+	}
 }
-
-#panelwidget-searchfilterlist .listItem.separator {
-	margin-top:-1px;
-	background:#d6d9db url(../img/icons.png) repeat-x 5px -272px !important;
-	border-top:0 !important;
-	border-bottom:0 !important;
-}
-	#panelwidget-searchfilterlist .listItem.separator span.title {
-		padding-left:20px;
-		text-transform:uppercase;
-	}
-
-	#panelwidget-searchfilterlist .listItem .actions .save {
-		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -209px !important;
-	}
-
-	#panelwidget-searchfilterlist .listItem .actions .delete {
-		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 4px -330px !important;
-	}
-
-	#panelwidget-searchfilterlist .listItem .actions .visibility {
-		background:url(../../../../core/asset/img/icons.png) no-repeat 4px -1079px;
-	}
-
-	#panelwidget-searchfilterlist .listItem .actions .invisible {
-		opacity:0.3;filter:alpha(opacity=60);
-	}
-
-	#panelwidget-searchfilterlist .listItem .actions .rename {
-		background:transparent url(../../../../core/asset/img/icons.png) no-repeat scroll 5px -149px !important;
-	}
-
-
 
 #panelwidget-searchfilterlistsearchFilterButton {
 	padding:5px;
-}
-
-#panelwidget-searchfilterlist button {
-	margin-top:10px;
-}
-
-#panelwidget-searchfilterlist button.addseparator{
-	background:transparent url('../../../../core/asset/img/icons.png') no-repeat 6px -27px;
 }

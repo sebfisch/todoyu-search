@@ -101,7 +101,7 @@ Todoyu.Ext.search.PanelWidget.SearchFilterList = {
 			var label = $('filterset-' + idFilterSet + '-label');
 			newName = newName.stripScripts().strip();
 
-			label.update(Todoyu.String.cropText(newName.escapeHTML(), 28));
+			label.update(newName.escapeHTML());
 			label.title = newName.escapeHTML();
 
 			this.saveFiltersetRename(idFilterSet, newName);

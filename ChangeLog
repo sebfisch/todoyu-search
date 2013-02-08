@@ -1,6 +1,7 @@
 todoyu search changelog
 
 search 1.5.0 - not released yet
+	* Changed: Text-cropping over css and css clean-up
 	* Added: Ability to toggle visibility for separator
 	* Require: core 2.3
 	* Bugfix: Tables from filterset filter were fetched with whitespaces and not removed by removeTables option
