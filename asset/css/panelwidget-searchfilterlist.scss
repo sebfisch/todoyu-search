@@ -54,8 +54,8 @@
 	button {
 		margin-top:10px;
 
-		.addseparator {
-			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 6px -27px;
+		&.addseparator .icon{
+			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 3px -27px;
 		}
 	}
 }
