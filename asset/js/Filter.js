@@ -350,10 +350,11 @@ Todoyu.Ext.search.Filter = {
 	 * Replace search results by result of current filter
 	 *
 	 * @method	updateResults
-	 * @param	{Number}		idFilterSet
-	 * @param	{Array}			conditions			Filter conditions
-	 * @param	{String}		conjunction			Conjunction: AND or OR
-	 * @param	{Object}		sorting			Sorting flags
+	 * @param	{String}		[tab]
+	 * @param	{Number}		[idFilterSet]
+	 * @param	{Array}			[conditions]		Filter conditions
+	 * @param	{String}		[conjunction]		Conjunction: AND or OR
+	 * @param	{Object}		[sorting]			Sorting flags
 	 */
 	updateResults: function(tab, idFilterSet, conditions, conjunction, sorting) {
 		tab 		= tab || this.getActiveTab();

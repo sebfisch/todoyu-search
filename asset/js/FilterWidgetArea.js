@@ -91,6 +91,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 * @param	{String}			name
 	 * @param	{String}			condition
 	 * @param	{String|Null}		value
+	 * @param	{String}			onComplete
 	 * @param	{Ajax.Response}		response
 	 */
 	onAdded: function(name, condition, value, onComplete, response) {
@@ -193,7 +194,7 @@ Todoyu.Ext.search.Filter.WidgetArea = {
 	 *
 	 * @method	installAutocomplete
 	 * @param	{String}	name
-	 * @param	{Number}	index
+	 * @param	{Number}	[index]
 	 */
 	installAutocomplete: function(name, index) {
 		var index	= index || 0;
