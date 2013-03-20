@@ -218,7 +218,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	 * Toggle direction icon
 	 *
 	 * @method	toggleDirIcon
-	 * @param sort
+	 * @param	{Element}	sort
 	 */
 	toggleDirIcon: function(sort) {
 		var dir = sort.down('.dir');
@@ -236,8 +236,10 @@ Todoyu.Ext.search.Filter.Sorting = {
 
 	/**
 	 * Handler when clicked on remove
-	 * @param event
-	 * @param sort
+	 *
+	 * @method	onRemoveClick
+	 * @param	{Event}		event
+	 * @param	{Element}	sort
 	 */
 	onRemoveClick: function(event, sort) {
 		this.remove(sort, false);
@@ -269,6 +271,8 @@ Todoyu.Ext.search.Filter.Sorting = {
 
 	/**
 	 * Update the search results
+	 *
+	 * @method	update
 	 */
 	update: function() {
 		if( this.ext.Filter.Conditions.hasConditions() ) {
@@ -320,6 +324,7 @@ Todoyu.Ext.search.Filter.Sorting = {
 	/**
 	 * Get all sorting elements
 	 *
+	 * @method	getSortings
 	 * @return	{Element[]}
 	 */
 	getSortings: function() {
