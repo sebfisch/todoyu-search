@@ -1,3 +1,5 @@
+@import "../../../../core/config/theme.scss";
+
 #panelwidget-searchfilterlist {
 	div.panelwidgetContent {
 		margin-top:0;
@@ -7,9 +9,9 @@
 
 		&.separator {
 			margin-top:-1px;
-			background:#d6d9db url(../img/icons.png) repeat-x 5px -272px !important;
-			border-top:0 !important;
-			border-bottom:0 !important;
+			background:	$colorNeutral03;
+			border-bottom: 0px;
+
 
 			.title {
 				padding-left:20px;
