@@ -34,13 +34,20 @@ h1.extIconSearch .title {
 		}
 	}
 
-	span.sorting {
-		float:right;
-		margin: 0 12px 0 0;
-
+	span{
 		select {
-			max-width:250px;
-			min-width:200px;
+			background-color:$white;
+		}
+
+		&.sorting {
+			float:right;
+			margin: 0 12px 0 0;
+
+			select {
+				max-width:250px;
+				min-width:200px;
+				margin-right:12px;
+			}
 		}
 	}
 
