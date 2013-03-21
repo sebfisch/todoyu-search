@@ -111,7 +111,6 @@ class TodoyuSearchFilterConditionManager {
 			list($extKey, $rightKey) = explode('.', Todoyu::$CONFIG['FILTERS'][$type]['config']['require'], 2);
 
 			if( !Todoyu::allowed($extKey, $rightKey) ) {
-				TodoyuDebug::printInFirebug('remove all');
 				$filters = array();
 			}
 		}
