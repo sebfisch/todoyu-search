@@ -2,27 +2,27 @@
 
 
 
-select#filtercontrol-conditions {
-	width:320px;
+select{
+	&#filtercontrol-conditions {
+		width:320px;
+	}
+	&#filtercontrol-conjunction {
+		margin-left:8px;
+	}
 }
-select#filtercontrol-conjunction {
-	margin-left:8px;
-}
-
-
 
 #widget-area {
 	padding:5px 0;
 
 	.filterWidget {
-		height:auto;
-		width:32%;
 		float:left;
-		margin:0 6px 5px 0;
+		height:auto;
+		margin:0 10px 5px 0;
+		width:32%;
 
 		span{
 			display:block;
-			padding:5px 2px 5px 7px;
+			padding:4px;
 
 			.calendaricon {
 				float:left;
@@ -30,20 +30,14 @@ select#filtercontrol-conjunction {
 			}
 
 			&.negationButton {
+				background-color:#fff;
+				border-radius:15px;
+				border:1px solid $colorNeutral03;
+				height:12px;
+				padding:0 6px 6px;
 				position:absolute;
-				top:0;
-				right:25px;
-				padding:0;
-			}
-
-			&.negation {
-				padding:0 0 0 6px;
-				background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll 2px 4px;
-			}
-
-			&.negationRgt {
-				height:10px;
-				background:url(../../../../core/asset/img/bg-button-small.png) no-repeat scroll -280px 4px;
+				right:27px;
+				top:2px;
 			}
 		}
 
@@ -60,13 +54,16 @@ select#filtercontrol-conjunction {
 		}
 
 		.widgetheader {
-			width:100%;
+			background-color:$colorNeutral01;
+			border:1px solid $colorNeutral03;
+			border-radius:5px 5px 0 0;
+			padding:1px 0 0 4px;
 			position:relative;
-			background:$colorNeutral02 url(../img/bg-headerline_filter.png) no-repeat 0 0;
+			width:100%;
 
 			span {
-				float:left;
 				display:block;
+				float:left;
 
 				&.widgetClose {
 					position:absolute;
@@ -74,17 +71,17 @@ select#filtercontrol-conjunction {
 					z-index:1;
 
 					a {
-						display:block;
 						background:url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
+						display:block;
 						height:14px;
-						width:14px;
 						text-indent:-9999px;
+						width:14px;
 					}
 				}
 
 				&.clear {
-					display:block;
 					clear:both;
+					display:block;
 					float:none;
 					padding:0;
 				}
@@ -99,24 +96,18 @@ select#filtercontrol-conjunction {
 				}
 			}
 		}
-
-		.widgetheaderRgt {
-			background:$colorNeutral02 url(../img/bg-headerline_filter.png) no-repeat scroll 100% 0;
-			height:24px;
-			width:3px;
-			position:absolute;
-			right:0;
-			padding:0;
-		}
 	}
 
 	.widgetbody {
-		min-height:25px;
-		border:1px solid $colorNeutral02;
+		background-color:$colorNeutral02;
 		border-top:none;
+		border:1px solid $colorNeutral03;
+		min-height:25px;
+		margin:0 -6px 0 0;
 		padding:5px;
 
 		select {
+			background-color:$white;
 			width:100%;
 		}
 	}
