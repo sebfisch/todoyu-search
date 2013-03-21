@@ -30,9 +30,8 @@ select{
 			}
 
 			&.negationButton {
-				background-color:#fff;
-				border-radius:15px;
-				border:1px solid $colorNeutral03;
+				background-color:$white;
+				@include border-button;
 				height:12px;
 				padding:0 6px 6px;
 				position:absolute;
@@ -54,7 +53,7 @@ select{
 		}
 
 		.widgetheader {
-			background-color:$colorNeutral01;
+			@include gradient-header;
 			border:1px solid $colorNeutral03;
 			border-radius:5px 5px 0 0;
 			padding:1px 0 0 4px;
@@ -74,7 +73,7 @@ select{
 						background:url(../../../../core/asset/img/icons.png) no-repeat scroll 0 -360px transparent;
 						display:block;
 						height:14px;
-						text-indent:-9999px;
+						text-indent: -9999px;
 						width:14px;
 					}
 				}
