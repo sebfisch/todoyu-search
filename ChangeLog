@@ -6,12 +6,10 @@ search 1.5.0 - 2013-03-27
 	* Changed: Removed widget elements former workaround background images
 	* Bugfix: Tables from filterset filter were fetched with whitespaces and not removed by removeTables option
 	* Bugfix: Added missing icon
-	* Require: core 2.3
-
-search 1.4.1 - not released yet
 	* Bugfix: fixed cropping of filter-set-labels
 	* Bugfix: Update title-tag on filterset rename
 	* Bugfix: Fixed Problem with default value 0 in select widget
+	* Require: core 2.3
 
 search 1.4.0 - 2012-05-03
 	* Adapted to core 2.2
