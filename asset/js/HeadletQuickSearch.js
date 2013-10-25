@@ -68,13 +68,17 @@ Todoyu.Ext.search.Headlet.QuickSearch = Class.create(Todoyu.Headlet, {
 		$super(name);
 
 		this.query	= $('todoyusearchheadletquicksearch-query');
-		this.button	= this.getButton();
-		this.content= this.getContent();
 
-		this.query.on('click', this.onQueryClick.bind(this));
+		if( this.query ) {
+			this.button	= this.getButton();
+			this.content= this.getContent();
 
-		this.Suggest.init(this);
-		this.Mode.init(this);
+			this.query.on('click', this.onQueryClick.bind(this));
+
+			this.Suggest.init(this);
+			this.Mode.init(this);
+		}
+
 	},
 
 
