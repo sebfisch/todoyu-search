@@ -1,6 +1,6 @@
 todoyu search changelog
 
-search 1.5.1 - not released yet
+search 1.5.1 - 2013-12-31
 	* Added: Catalan language. Credits to Carles Baiges Camprubí LaCol (www.lacol.org)
 	* Changed: Headlet initialisation only if present (fullscreen-support)
 
