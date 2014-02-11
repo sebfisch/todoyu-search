@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="ext.title">Cari dan membuat filter</label>
+	<label index="page.title">Cari</label>
+	<label index="or">Atau</label>
+	<label index="and">Dan</label>
+	<label index="search.label">Cari Semua</label>
+	<label index="filterlabel.filterset">Pengaturan Pencarian</label>
+	<label index="filterset.rename">Ubah nama Pengaturan Filter</label>
+	<label index="filterset.delete">Hapus Pengaturan Filter</label>
+	<label index="filterset.confirm.delete">Benar-benar menghapus pengaturan filter?</label>
+	<label index="filterset.confirm.overwrite">Timpa penyaring mengatur yang ada?</label>
+	<label index="filterset.error.saveWrongType">Anda mencoba untuk menyimpan filter mengatur di bawah tipe yang salah</label>
+	<label index="filterset.error.saveNoConditions">Tidak ada kondisi untuk menyimpan</label>
+	<label index="filterset.error.saveEmptyName">Masukkan nama untuk mengatur penyaring</label>
+	<label index="filterset.notify.saved">Filter mengatur telah disimpan.</label>
+	<label index="negation.default.true">Bukan</label>
+	<label index="negation.default.false">Adalah</label>
+	<label index="negation.datetime.true">Setelah</label>
+	<label index="negation.datetime.false">Sebelum</label>
+	<label index="negation.datetimeDyn.true">Dari</label>
+	<label index="negation.datetimeDyn.false">Sampai</label>
+	<label index="negation.numbercompare.true">lebih kecil dari</label>
+	<label index="negation.numbercompare.false">lebih besar dari</label>
+	<label index="newFilterLabel">Masukkan nama untuk filter baru</label>
+	<label index="newFilterLabel.preset">Filter baru</label>
+	<label index="subMenuEntry.task">Tugas</label>
+	<label index="subMenuEntry.project">Proyek</label>
+	<label index="areMatching">%1$d %2$s sesuai dengan kriteria pencarian Anda.</label>
+	<label index="areMatching.overLimit">Lebih dari %1$d %2$s sesuai dengan kriteria pencarian Anda. Gunakan kriteria pencarian lebih untuk mempersempit-down atau menggunakan penyortiran untuk melihat hasil yang relevan.</label>
+	<label index="filterwidget.condtion.remove">Hapus Kondisi</label>
+	<label index="search.noEntryFound">Hasil Tidak Ditemukan</label>
+	<label index="search.noResultsForActiveFilters">Tidak ada hasil yang ditemukan untuk filter yang dipilih saat</label>
+	<label index="contextmenu.project.showinproject">Buka dalam pandangan proyek</label>
+	<label index="headlet.label">Cari Di todoyu</label>
+	<label index="export.error.saveEmpty">Tidak ada hasil yang akan diekspor.</label>
+	<label index="filtercontrol.add.condition">Tambahkan Kondisi Baru</label>
+	<label index="filtercontrol.add.sorting">Tambah Penyaringan Baru</label>
+	<label index="sorting.remove">Hapus menyortir</label>
+	<label index="sorting.direction.asc">Urutkan menaik</label>
+	<label index="sorting.direction.desc">Urut turun</label>
+	<label index="newSeparatorLabel">Masukkan nama untuk pemisah baru</label>
+	<label index="newSeparatorLabel.preset">Pemisah baru</label>
+</labels>

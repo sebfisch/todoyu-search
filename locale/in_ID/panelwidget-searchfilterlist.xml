@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="title">Pengaturan Filter</label>
+	<label index="saveFilterButton">Simpan sebagai Penyaringan Baru</label>
+	<label index="clearFilterArea">Hapus Filter Area</label>
+	<label index="addSeparator">Tambahkan Pemisah</label>
+	<label index="addSeparator">Tambahkan Pemisah</label>
+	<label index="notify.orderchanged">Berubah urutan filter set telah disimpan.</label>
+</labels>
